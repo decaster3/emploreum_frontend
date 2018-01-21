@@ -17,7 +17,10 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
   render() {
     return (
       <h1>
-        <FormattedMessage {...messages.header} />
+        <FormattedMessage
+          {...messages.header}
+          values={{ name: 'qwe' }}
+        />
       </h1>
     );
   }

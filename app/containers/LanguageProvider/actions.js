@@ -9,8 +9,10 @@ import {
 } from './constants';
 
 export function changeLocale(languageLocale) {
-  return {
-    type: CHANGE_LOCALE,
-    locale: languageLocale,
+  return (dispatch) => {
+    dispatch({
+      type: CHANGE_LOCALE,
+      locale: languageLocale,
+    });
   };
 }
