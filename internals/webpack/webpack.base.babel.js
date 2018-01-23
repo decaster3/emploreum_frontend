@@ -82,6 +82,10 @@ module.exports = (options) => ({
       },
     ],
   },
+  node: {
+    fs: 'empty',
+    dgram: 'empty',
+  },
   plugins: options.plugins.concat([
     new webpack.ProvidePlugin({
       // make fetch available
