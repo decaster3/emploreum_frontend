@@ -15,6 +15,14 @@ const app = express();
 // app.use('/api', myApi);
 
 // In production we need to pass these values in instead of relying on webpack
+
+
+app.get('/', (req, res) => {
+  res.send({
+    hi: 'there',
+  });
+});
+
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
   publicPath: '/',
@@ -25,8 +33,13 @@ const customHost = argv.host || process.env.HOST;
 const host = customHost || null; // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost';
 
+console.log('werfueirufheirufeiur');
+console.log(port);
+console.log('werfueirufheirufeiur');
+
 // Start your app.
 app.listen(port, host, (err) => {
+  console.log(port);
   if (err) {
     return logger.error(err.message);
   }
