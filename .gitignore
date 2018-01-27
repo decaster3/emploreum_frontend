@@ -3,7 +3,7 @@ coverage
 build
 node_modules
 stats.json
-server/config
+server/config/*.json
 # Cruft
 .DS_Store
 npm-debug.log
