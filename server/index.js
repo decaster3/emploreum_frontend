@@ -10,6 +10,7 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 const db = require('./models');
+const Employee = db.Employee;
 
 // const Sequelize = require('sequelize');
 // const sequelize = new Sequelize('emploreum-dev', 'postgres', 'postgres', {
@@ -67,16 +68,16 @@ const db = require('./models');
 //     console.log(jane.toJSON());
 //   });
 
-// app.get('/users', (req, res) => {
-//   console.log('INSIDE GET METHOD');
-//   Client.findOne({
-//     where: { id: '2' },
-//     attributes: ['id', ['username', 'title']],
-//   }).then((project) => {
-//     if (project != null) { res.send(project); } else res.send('null');
-//     // project will be the first entry of the Projects table with the title 'aProject' || null
-//   });
-// });
+app.get('/users', (req, res) => {
+  console.log('INSIDE GET METHOD');
+  Employee.findOne({
+    where: { id: '5' },
+    attributes: ['id', ['first_name', 'name'], 'last_name'],
+  }).then((project) => {
+    if (project != null) { res.send(project); } else res.send('null');
+    // project will be the first entry of the Projects table with the title 'aProject' || null
+  });
+});
 
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
