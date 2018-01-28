@@ -11,7 +11,18 @@ describe('<HomePage />', () => {
       <HomePage />
     );
     expect(renderedComponent.contains(
-      <FormattedMessage {...messages.header} />
+      <FormattedMessage {...messages.header} values={{ name: 'qwe' }} />
+    )).toEqual(true);
+  });
+});
+
+describe('<HomePage />', () => {
+  it('should render the newM', () => {
+    const renderedComponent = shallow(
+      <HomePage />
+    );
+    expect(renderedComponent.contains(
+      <FormattedMessage {...messages.newM} />
     )).toEqual(true);
   });
 });

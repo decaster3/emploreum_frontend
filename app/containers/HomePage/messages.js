@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.components.HomePage.header',
     defaultMessage: 'This is HomePage component!, {name}',
   },
+  newM: {
+    id: 'app.components.HomePage.newM',
+    defaultMessage: 'New message',
+  },
 });
