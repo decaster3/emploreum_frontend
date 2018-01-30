@@ -7,7 +7,7 @@ module.exports = {
       first_name: 'Rinat',
       last_name: 'Gumarov',
       email: 'tiran678@icloud.com',
-      password: '1',
+      password: '$2a$10$tBpIQMbmzMhHMRbxJrSGwu6zLrOD8xvcy.53l0ZdySivQu/JCpG9i',
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});

@@ -1,98 +1,90 @@
 /* eslint consistent-return:0 */
 
 const express = require('express');
+const flash = require('express-flash');
 const logger = require('./logger');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+const routes = require('./routes/index');
+const users = require('./routes/users');
+const Employee = require('./models').Employee;
+const app = express();
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
-const app = express();
-const db = require('./models');
-const Employee = db.Employee;
 
-// const Sequelize = require('sequelize');
-// const sequelize = new Sequelize('emploreum-dev', 'postgres', 'postgres', {
-//   host: 'localhost',
-//   dialect: 'postgres',
-//   port: 5432,
-//
-//   pool: {
-//     max: 5,
-//     min: 0,
-//     acquire: 30000,
-//     idle: 10000,
-//   },
-//
-//   operatorsAliases: false,
-// });
-
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch((err) => {
-//     console.error('Unable to connect to the database:', err);
-//   });
-
-// const Client = sequelize.define('client', {
-//   username: Sequelize.STRING,
-//   birthday: Sequelize.DATE,
-// });
-
-// const Usser = sequelize.define('usser', {
-//   firstName: {
-//     type: Sequelize.STRING,
-//   },
-//   lastName: {
-//     type: Sequelize.STRING,
-//   },
-// });
-
-// force: true will drop the table if it already exists
-// Usser.sync({ force: true }).then(() =>
-//   // Table created
-//   Usser.create({
-//     firstName: 'John',
-//     lastName: 'Hancock',
-//   }));
-
-// sequelize.sync()
-//   .then(() => Client.create({
-//     username: 'janedoe',
-//     birthday: new Date(1980, 6, 20),
-//   }))
-//   .then((jane) => {
-//     console.log(jane.toJSON());
-//   });
-
-app.get('/users', (req, res) => {
-  console.log('INSIDE GET METHOD');
-  Employee.findOne({
-    where: { id: '5' },
-    attributes: ['id', ['first_name', 'name'], 'last_name'],
-  }).then((project) => {
-    if (project != null) { res.send(project); } else res.send('null');
-    // project will be the first entry of the Projects table with the title 'aProject' || null
-  });
+passport.serializeUser((user, done) => {
+  done(null, user.id);
 });
 
-setup(app, {
-  outputPath: resolve(process.cwd(), 'build'),
-  publicPath: '/',
-});
+passport.deserializeUser((id, done) => Employee.findById(id)
+    .then((user) => done(null, user)));
+
+passport.use(new LocalStrategy({
+  usernameField: 'username',
+  passwordField: 'password',
+},
+  (username, password, done) => {
+    // console.log('0987');
+    Employee.findOne({
+      where: { email: username },
+    }).then((employee, err) => {
+      if (err) {
+        done(err);
+      }
+      if (!employee) {
+        done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!employee.validPassword(password)) {
+        done(null, false, { message: 'Incorrect password.' });
+      }
+      done(null, employee);
+    });
+  }
+));
+
+// app.use(logger('dev'));
+app.use(flash());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(require('serve-static')(`${__dirname}/../public`));
+app.use('/', routes);
+app.use('/olo', users);
+app.use('/users', users);
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+// authentication(app);
 
 // get the intended host and port number, use localhost and port 3000 if not provided
 const customHost = argv.host || process.env.HOST;
 const host = customHost || null; // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost';
 
+setup(app, {
+  outputPath: resolve(process.cwd(), 'build'),
+  publicPath: '/',
+});
+
 // Start your app.
 app.listen(port, host, (err) => {
-  console.log(port);
-  db.sequelize.sync();
+  // db.sequelize.sync();
   if (err) {
     return logger.error(err.message);
   }
