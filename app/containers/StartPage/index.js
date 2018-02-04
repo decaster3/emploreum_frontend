@@ -9,16 +9,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
-
 import injectReducer from 'utils/injectReducer';
-import selectRole from './selectors';
-import reducer from './reducer';
-import { changeRole } from './actions';
-
-import {
-  EMPLOYEE,
-  COMPANY,
-} from './constants';
+import { changeRole } from '../Registration/actions';
+import reducer from '../Registration/reducer';
+import StartPageComponent from '../../components/StartPageComponent/Loadable';
 
 export class StartPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -28,33 +22,26 @@ export class StartPage extends React.Component { // eslint-disable-line react/pr
           <title>StartPage</title>
           <meta name="description" content="Description of StartPage" />
         </Helmet>
-        <button onClick={() => this.props.handleChangeRole(COMPANY)}>Company</button>
-        <button onClick={() => this.props.handleChangeRole(EMPLOYEE)}>Employee</button>
+        <StartPageComponent
+          changeRole={this.props.changeRole}
+        />
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    role: selectRole(state),
-  };
-}
+StartPage.propTypes = {
+  changeRole: PropTypes.func,
+};
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleChangeRole: (evt) => dispatch(changeRole(evt)),
+    changeRole: (evt) => dispatch(changeRole(evt)),
   };
 }
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
-const withReducer = injectReducer({ key: 'startPage', reducer });
-
-StartPage.propTypes = {
-  handleChangeRole: PropTypes.func,
-};
-
+const withConnect = connect(null, mapDispatchToProps);
+const withReducer = injectReducer({ key: 'registration', reducer });
 export default compose(
   withReducer,
   withConnect,

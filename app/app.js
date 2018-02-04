@@ -17,6 +17,8 @@ import 'sanitize.css/sanitize.css';
 // Import root app
 import App from 'containers/App';
 
+import { saveState } from './localStorage';
+
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
@@ -48,6 +50,12 @@ const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
+
+store.subscribe(() => {
+  saveState({
+    userSession: store.getState().get('userSession')
+  });
+});
 
 const render = (messages) => {
   ReactDOM.render(

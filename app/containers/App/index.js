@@ -12,20 +12,37 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import StartPage from '../StartPage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import RegistrationEmployee from '../RegistrationEmployee/Loadable';
+import NotFoundPage from '../NotFoundPage/Loadable';
+import Registration from '../Registration/Loadable';
+import EmployeeMain from '../EmployeeMain/Loadable';
+import UserSession from '../UserSession/Loadable';
+import { selectUserState } from './selectors';
 
-export default function App() {
+ const App = (props) => {
+   const { userState } = props;
   return (
     <div>
       <Switch>
+        {userState === 'ANONYMOUS'
+          ? <Route exact path="/" component={StartPage} />
+          : <Route exact path="/" component={EmployeeMain} />
+        }
         <Route exact path="/" component={StartPage} />
-        <Route exact path="/registration/employee" component={RegistrationEmployee} />
+        <Route exact path="/registration" component={Registration} />
+        <Route exact path="/login" component={UserSession} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    userState: selectUserState(state),
+  };
+}
+
+export default withRouter(connect(mapStateToProps, null)(App));
