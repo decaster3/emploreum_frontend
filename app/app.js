@@ -51,6 +51,7 @@ import '!!style-loader!css-loader!./assets/css/search.css';
 
 
 // <!-- GOOGLE FONTS -->
+import '!!style-loader!css-loader!./assets/css/fonts.css';
 // <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" type="text/css">
 
 import 'script-loader!./assets/vendor/jquery/jquery.min.js';

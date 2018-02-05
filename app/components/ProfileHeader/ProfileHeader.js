@@ -6,20 +6,22 @@ export const ProfileHeader = (props) => {
 
   return (
     <div className="panel panel-headline">
-        <div className="panel-heading">
-            <h3 className="panel-title">Ethereum address: {address}
-            </h3>
-        </div>
-        <div className="panel-body padding-bottom-30">
-                {props.children}
-
-        </div>
+      <div className="panel-heading">
+        <h3 className="panel-title">Ethereum address: {address}
+        </h3>
+      </div>
+      <div className="panel-body padding-bottom-30">
+        {props.children}
+      </div>
     </div>
 
   );
 };
 
 ProfileHeader.propTypes = {
-  address: PropTypes.string,
-  children: PropTypes.element.isRequired,
+  address: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };

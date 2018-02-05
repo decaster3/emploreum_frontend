@@ -17,13 +17,12 @@ import { connect } from 'react-redux';
 import StartPage from '../StartPage/Loadable';
 import NotFoundPage from '../NotFoundPage/Loadable';
 import Registration from '../Registration/Loadable';
-import EmployeeMain from '../EmployeeMain/Loadable';
+import {EmployeeMain}  from '../EmployeeMain';
 import UserSession from '../UserSession/Loadable';
 import { selectUserState } from './selectors';
 
 const App = (props) => {
   const { userState } = props;
-
   return (
     <div>
       <Switch>
@@ -31,7 +30,7 @@ const App = (props) => {
           ? <Route exact path="/" component={StartPage} />
           : <Route exact path="/" component={EmployeeMain} />
         }
-        <Route exact path="/employee" component={EmployeeMain} />
+        <Route path="/employee" component={EmployeeMain} />
         <Route exact path="/" component={StartPage} />
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/login" component={UserSession} />

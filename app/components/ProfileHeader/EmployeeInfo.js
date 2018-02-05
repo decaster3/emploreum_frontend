@@ -5,12 +5,11 @@ import { Card } from './Card';
 export const EmployeeInfo = (props) => {
   const { balance, income } = props;
   return (
-
     <div className="row">
-        { <Card number={balance + ' ETH'} title={'Balance'}/> }
-        { <Card number={income + ' ETH'} title={'income per month'}/> }
-        { <Card number={'10'} title={'ended contracts'}/> }
-        { <Card number={'20'} title={'current contracts'}/> }
+      { <Card number={balance + ' ETH'} title={'Balance'} /> }
+      { <Card number={income + ' ETH'} title={'income per month'} /> }
+      { <Card number={'10'} title={'ended contracts'} /> }
+      { <Card number={'20'} title={'current contracts'} /> }
     </div>
 
   );
