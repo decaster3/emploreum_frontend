@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the employeeMain state domain
  */
-const selectEmployeeMainDomain = (state) => state.get('employeeMain');
+const selectEmployeeMainDomain = (state) => state.get('employeemain');
 
 /**
  * Other specific selectors
@@ -14,12 +14,13 @@ const selectEmployeeMainDomain = (state) => state.get('employeeMain');
  * Default selector used by EmployeeMain
  */
 
-const makeSelectEmployeeMain = () => createSelector(
+const selectView = () => createSelector(
   selectEmployeeMainDomain,
-  (substate) => substate.toJS()
+  (substate) => substate.get('view')
 );
 
-export default makeSelectEmployeeMain;
+
 export {
+  selectView,
   selectEmployeeMainDomain,
 };

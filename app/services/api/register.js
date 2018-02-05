@@ -1,6 +1,6 @@
 import AxiosService from '../AxiosService';
 
-const baseURL = 'http://192.168.0.107:3000';
+const baseURL = 'http://emploreum.herokuapp.com';
 
 export const loginAPI = (credentails, successCallBack, errorCallBack, dispatch) =>
   AxiosService.post(`${baseURL}/auth/login`, credentails, successCallBack, errorCallBack, dispatch);

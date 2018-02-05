@@ -17,16 +17,17 @@ const initialState = fromJS({
     userInformation: {},
   },
 });
-//не проверял
+// не проверял registrationStep
 function userReducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_REGISTRATION_STEP:
-      var userInfo = state.get('userAuth').get('userInformation').toJS();
-      userInfo['registrationStep'] = action.payload;
+    case UPDATE_REGISTRATION_STEP: {
+      const userInfo = state.get('userAuth').get('userInformation').toJS();
+      userInfo.registrationStep = action.payload;
       return state.set('userAuth', fromJS({
         userState: state.get('userAuth').get('userState'),
-        userInformation: userInfo
-      }))
+        userInformation: userInfo,
+      }));
+    }
     case CHANGE_USER_STATE:
       return state.set('userAuth', fromJS(action.payload));
     default:

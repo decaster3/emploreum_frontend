@@ -3,7 +3,7 @@
  * User actions
  *
  */
-
+import { push } from 'react-router-redux';
 import {
   LOGGING_IN,
   LOGED_IN,
@@ -13,7 +13,6 @@ import {
 } from './constants';
 
 import { loginAPI } from '../../services/api/register';
-import { push } from 'react-router-redux';
 export const login = (values) => (
   (dispatch) => {
     const { email, password } = values.toJS();
@@ -35,7 +34,7 @@ export const login = (values) => (
           },
         },
       });
-      dispatch(push('/'))
+      dispatch(push('/'));
     }, (err) => {
       console.log(err.response.data);
     }, dispatch);

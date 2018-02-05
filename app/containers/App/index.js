@@ -14,11 +14,9 @@
 import React from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import NotFoundPage from '../NotFoundPage/Loadable';
 
 import RolesRoutesSelector from './Routes/RolesRoutesSelector';
-import AllRoutes from './Routes/AllRoutes';
 
 import {
   selectUserState,
@@ -26,15 +24,12 @@ import {
   selectUserRole,
  } from './selectors';
 
-const App = (props) => {
-  const { userState, isUserCompleteRegistration, userRole } = props;
-  return (
-    <Switch>
-      {RolesRoutesSelector(props).map(r => <Route exact path={r.path} component={r.component} key={r.path} />)}
-      <Route component={NotFoundPage} />
-    </Switch>
-  );
-};
+const App = (props) => (
+  <Switch>
+    {RolesRoutesSelector(props).map((r) => <Route exact path={r.path} component={r.component} key={r.path} />)}
+    <Route component={NotFoundPage} />
+  </Switch>
+);
 
 function mapStateToProps(state) {
   return {
@@ -45,9 +40,6 @@ function mapStateToProps(state) {
 }
 
 App.propTypes = {
-  userState: PropTypes.string,
-  userRole: PropTypes.string,
-  isUserCompleteRegistration: PropTypes.bool,
 };
 
 

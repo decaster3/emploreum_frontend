@@ -80,6 +80,9 @@ module.exports = (options) => ({
           },
         },
       },
+      { test: /assets\/*\.(jsx|js)$/,
+        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
+      }
     ],
   },
   plugins: options.plugins.concat([

@@ -1,7 +1,6 @@
 import React from 'react';
-import { reduxForm, Field, formValueSelector } from 'redux-form/immutable';
+import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { renderField } from '../../../forms/fields/FormRegisterField';
 import { passwordValidation, passwordMatch } from '../../../forms/validation/PasswordValidation';
@@ -9,8 +8,8 @@ import { asyncValidate, emailValidation } from '../../../forms/validation/EmailV
 import { required } from '../../../forms/validation/RequiredValidation';
 
 
-let FormRegisterFirstStep = (props) => {
-  const { role, handleSubmit, submitEmail, submitting, email } = props
+const FormRegisterFirstStep = (props) => {
+  const { role, handleSubmit, submitEmail, submitting } = props;
   return (
     <form onSubmit={handleSubmit(submitEmail)}>
       <h3>{role}</h3>
@@ -39,29 +38,26 @@ let FormRegisterFirstStep = (props) => {
   );
 };
 
-FormRegisterFirstStep = reduxForm({
+export default reduxForm({
   form: 'FormRegisterFirstStep',
   validate: passwordMatch,
   asyncValidate,
   asyncBlurFields: ['email'],
 })(FormRegisterFirstStep);
 
-const selector = formValueSelector('FormRegisterFirstStep');
-FormRegisterFirstStep = connect(
-  (state) => {
-    const { email } = selector(state, 'firstName', 'email');
-    return {
-      email,
-    };
-  }
-)(FormRegisterFirstStep);
+// const selector = formValueSelector('FormRegisterFirstStep');
+// FormRegisterFirstStep = connect(
+//   (state) => {
+//     const { email } = selector(state, 'firstName', 'email');
+//     return {
+//       email,
+//     };
+//   }
+// )(FormRegisterFirstStep);
 
 FormRegisterFirstStep.propTypes = {
   role: PropTypes.string,
   handleSubmit: PropTypes.func,
   submitEmail: PropTypes.func,
   submitting: PropTypes.func,
-  email: PropTypes.func,
 };
-
-export default FormRegisterFirstStep;

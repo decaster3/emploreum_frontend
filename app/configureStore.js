@@ -14,7 +14,7 @@ export default function configureStore(initialState = {}, history) {
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
 
-  //previous state of store from local storage
+  // previous state of store from local storage
   const persistedState = loadState();
 
   const middlewares = [

@@ -1,8 +1,5 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
-import EmployeeMain from '../../EmployeeMain/Loadable';
+import { EmployeeMain } from '../../EmployeeMain';
 
 export default [
    { path: '/', component: EmployeeMain },
-]
+];

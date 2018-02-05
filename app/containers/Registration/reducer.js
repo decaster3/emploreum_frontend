@@ -20,13 +20,13 @@ function registrationEmployeeReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_ROLE:
       return state
-        .set('role', fromJS(action.payload))
+        .set('role', fromJS(action.payload));
     case UP_REGISTRATION_STEP:
       return state.set('registrationStep',
-        (state.get('registrationStep') + 1))
+        (state.get('registrationStep') + 1));
     case DOWN_REGISTRATION_STEP:
-    return state.set('registrationStep',
-      (state.get('registrationStep') - 1))
+      return state.set('registrationStep',
+        (state.get('registrationStep') - 1));
     default:
       return state;
   }

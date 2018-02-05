@@ -14,14 +14,14 @@ import {
 
 
 const RoleSelectionRegistration = (props) => { // eslint-disable-line react/prefer-stateless-function
-  const { changeRole } = props
+  const { changeRole } = props;
   return (
     <div>
-        <button onClick={() => changeRole(COMPANY)}>Company register</button>
-        <button onClick={() => changeRole(EMPLOYEE)}>Employee register</button>
+      <button onClick={() => changeRole(COMPANY)}>Company register</button>
+      <button onClick={() => changeRole(EMPLOYEE)}>Employee register</button>
     </div>
   );
-}
+};
 
 RoleSelectionRegistration.propTypes = {
   changeRole: PropTypes.func,

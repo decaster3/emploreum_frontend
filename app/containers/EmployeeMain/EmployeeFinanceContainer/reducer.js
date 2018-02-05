@@ -1,6 +1,6 @@
 /*
  *
- * EmployeeMain reducer
+ * EmployeeFinanceContainer reducer
  *
  */
 
@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({});
 
-function employeeMainReducer(state = initialState, action) {
+function employeeFinanceContainerReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -20,4 +20,4 @@ function employeeMainReducer(state = initialState, action) {
   }
 }
 
-export default employeeMainReducer;
+export default employeeFinanceContainerReducer;

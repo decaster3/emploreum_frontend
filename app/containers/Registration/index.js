@@ -7,10 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { compose } from 'redux';
-import { Redirect } from 'react-router-dom';
 
 import injectReducer from 'utils/injectReducer';
 import {
@@ -27,7 +24,7 @@ import {
   changeRole,
 } from './actions';
 
-export class Registration extends React.Component {
+export class Registration extends React.PureComponent {
   render() {
     // if (this.props.userAuth.get('userState') !== ANONYMOUS)
     //   return <Redirect to='/'/>;

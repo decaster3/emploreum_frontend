@@ -17,7 +17,7 @@ function get(url, successCallBack, errorCallBack, dispatch) {
     new Promise((resolve) => resolve(successCallBack(response.data)))
   ).catch((err) => {
     console.log(err.response.data.error);
-    if (err.response.data.error === 'unauthorized') {
+    if (err.response.data.error === UNAUTHORIZED) {
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -38,14 +38,14 @@ function post(url, obj, successCallBack, errorCallBack, dispatch) {
        new Promise((resolve) => resolve(successCallBack(response.data)))
     ).catch((err) => {
       console.log(err);
-      if (err.response.data.error === 'unauthorized') {
+      if (err.response.data.error === UNAUTHORIZED) {
         dispatch({
           type: CHANGE_USER_STATE,
           payload: {
             userState: ANONYMOUS,
             userInformation: {},
           },
-        })
+        });
         dispatch(push('/login'));
       } else {
         errorCallBack(err);

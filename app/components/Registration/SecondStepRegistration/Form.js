@@ -1,14 +1,12 @@
 import React from 'react';
-import { reduxForm, Field, formValueSelector } from 'redux-form/immutable';
+import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { renderField } from '../../../forms/fields/FormRegisterField';
 import { required } from '../../../forms/validation/RequiredValidation';
-import { asyncValidate } from '../../../forms/validation/VerificationEmailCode';
 
-let FormRegisterSecondStep = (props) => {
-  const { handleSubmit, submitEmailVerification, submitting, code } = props;
+const FormRegisterSecondStep = (props) => {
+  const { handleSubmit, submitEmailVerification, submitting } = props;
   return (
     <form onSubmit={handleSubmit(submitEmailVerification)}>
       <h3>Employee</h3>
@@ -23,7 +21,7 @@ let FormRegisterSecondStep = (props) => {
   );
 };
 
-FormRegisterSecondStep = reduxForm({
+export default reduxForm({
   form: 'FormRegisterSecondStep',
   // asyncValidate,
   // asyncBlurFields: ['code'],
@@ -33,17 +31,14 @@ FormRegisterSecondStep.propTypes = {
   handleSubmit: PropTypes.func,
   submitEmailVerification: PropTypes.func,
   submitting: PropTypes.func,
-  code: PropTypes.string,
 };
 
-const selector = formValueSelector('FormRegisterSecondStep');
-FormRegisterSecondStep = connect(
-  (state) => {
-    const code = selector(state, 'code');
-    return {
-      code,
-    };
-  }
-)(FormRegisterSecondStep);
-
-export default FormRegisterSecondStep;
+// const selector = formValueSelector('FormRegisterSecondStep');
+// FormRegisterSecondStep = connect(
+//   (state) => {
+//     const code = selector(state, 'code');
+//     return {
+//       code,
+//     };
+//   }
+// )(FormRegisterSecondStep);

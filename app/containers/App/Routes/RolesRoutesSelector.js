@@ -1,6 +1,4 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
 import AnonymousRoutes from './AnonymousRoutes';
 import EmployeeRoutes from './EmployeeRoutes';
 import CompanyRoutes from './CompanyRoutes';
@@ -10,7 +8,7 @@ import NotRegistredCompanyRoutes from './NotRegistredCompanyRoutes';
 const RolesRoutes = (props) => {
   const { userState, isUserCompleteRegistration, userRole } = props;
   if (userState === 'ANONYMOUS') {
-    return AnonymousRoutes
+    return AnonymousRoutes;
   }
   if (isUserCompleteRegistration) {
     if (userRole === 'COMPANY') {
