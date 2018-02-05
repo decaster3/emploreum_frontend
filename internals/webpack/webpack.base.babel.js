@@ -80,6 +80,9 @@ module.exports = (options) => ({
           },
         },
       },
+      { test: /assets\/*\.(jsx|js)$/,
+        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
+      }
     ],
   },
   plugins: options.plugins.concat([
@@ -107,8 +110,8 @@ module.exports = (options) => ({
     ],
     mainFields: [
       'browser',
-      'jsnext:main',
       'main',
+      'jsnext:main',
     ],
   },
   devtool: options.devtool,

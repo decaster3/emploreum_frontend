@@ -7,7 +7,8 @@ import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
-
+import { reducer as formReducer } from 'redux-form/immutable';
+import UserSessionReducer from 'containers/UserSession/reducer';
 /*
  * routeReducer
  *
@@ -41,7 +42,9 @@ function routeReducer(state = routeInitialState, action) {
  */
 export default function createReducer(injectedReducers) {
   return combineReducers({
+    form: formReducer,
     route: routeReducer,
+    userSession: UserSessionReducer,
     language: languageProviderReducer,
     ...injectedReducers,
   });
