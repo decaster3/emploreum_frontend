@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import asyncValidate from '../validation/EmailValidation';
+import { asyncValidate } from '../validation/EmailValidation';
 
 export const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div>

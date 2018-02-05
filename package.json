@@ -153,7 +153,8 @@
       "react/require-default-props": 0,
       "react/require-extension": 0,
       "react/self-closing-comp": 0,
-      "require-yield": 0
+      "require-yield": 0,
+      "linebreak-style": 0
     },
     "settings": {
       "import/resolver": {
@@ -222,6 +223,7 @@
     "intl": "1.2.5",
     "invariant": "2.2.2",
     "ip": "1.1.5",
+    "jquery": "^3.3.1",
     "lodash": "^4.17.4",
     "minimist": "1.2.0",
     "prop-types": "15.5.10",
@@ -292,6 +294,7 @@
     "pre-commit": "1.2.2",
     "react-test-renderer": "^16.2.0",
     "rimraf": "2.6.1",
+    "script-loader": "^0.7.2",
     "shelljs": "^0.7.8",
     "style-loader": "0.18.1",
     "url-loader": "0.5.8",

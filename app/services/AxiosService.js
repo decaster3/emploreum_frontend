@@ -40,10 +40,10 @@ function post(url, obj, successCallBack, errorCallBack, dispatch) {
         dispatch({
           type: CHANGE_USER_STATE,
           payload: {
-            userState: LOGED_IN,
+            userState: ANONYMOUS,
             userInformation: {},
           },
-        })
+        });
         dispatch(push('/login'));
       } else {
         errorCallBack(err);

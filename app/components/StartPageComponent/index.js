@@ -27,6 +27,9 @@ const StartPageComponent = (props) => {
       <Link to="/login">
         <button>Login</button>
       </Link>
+      <Link to="/employee">
+        <button>employeeProfile</button>
+      </Link>
     </div>
   );
 };

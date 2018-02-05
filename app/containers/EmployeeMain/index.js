@@ -8,25 +8,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
 import injectReducer from 'utils/injectReducer';
 import makeSelectEmployeeMain from './selectors';
 import reducer from './reducer';
-import messages from './messages';
+import EmployeeProfile from '../../components/EmployeeProfile';
+import { EmployeeWrapper } from '../../components/Wrapper';
 
 export class EmployeeMain extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const address = '0x05b89ad8ef43fcf3d3f6b2e5fdac4cd4719bafa0';
+    const balance = 2;
+    const income = 0.5;
+
     return (
-      <div>
-        <Helmet>
-          <title>EmployeeMain</title>
-          <meta name="description" content="Description of EmployeeMain" />
-        </Helmet>
-        <FormattedMessage {...messages.header} />
-      </div>
+      <EmployeeWrapper finance={true}>
+        <EmployeeProfile address={address} balance={balance} income={income} />
+      </EmployeeWrapper>
     );
   }
 }

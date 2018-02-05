@@ -21,8 +21,9 @@ import EmployeeMain from '../EmployeeMain/Loadable';
 import UserSession from '../UserSession/Loadable';
 import { selectUserState } from './selectors';
 
- const App = (props) => {
-   const { userState } = props;
+const App = (props) => {
+  const { userState } = props;
+
   return (
     <div>
       <Switch>
@@ -30,6 +31,7 @@ import { selectUserState } from './selectors';
           ? <Route exact path="/" component={StartPage} />
           : <Route exact path="/" component={EmployeeMain} />
         }
+        <Route exact path="/employee" component={EmployeeMain} />
         <Route exact path="/" component={StartPage} />
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/login" component={UserSession} />

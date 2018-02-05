@@ -35,8 +35,33 @@ import '!file-loader?name=[name].[ext]!./images/icon-384x384.png';
 import '!file-loader?name=[name].[ext]!./images/icon-512x512.png';
 import '!file-loader?name=[name].[ext]!./manifest.json';
 import 'file-loader?name=[name].[ext]!./.htaccess';
-/* eslint-enable import/no-unresolved, import/extensions */
 
+// VENDOR CSS
+import '!!style-loader!css-loader!./assets/vendor/bootstrap/css/bootstrap.min.css';
+import '!!style-loader!css-loader!./assets/vendor/font-awesome/css/font-awesome.min.css';
+import '!!style-loader!css-loader!./assets/vendor/linearicons/style.css';
+import '!!style-loader!css-loader!./assets/vendor/chartist/css/chartist-custom.css';
+import '!!style-loader!css-loader!./assets/vendor/lightbox/css/lightbox.css';
+import '!!style-loader!css-loader!./assets/vendor/dropzone/css/dropzone.css';
+
+// MAIN CSS
+import '!!style-loader!css-loader!./assets/css/klorofil.css';
+import '!!style-loader!css-loader!./assets/css/style.css';
+import '!!style-loader!css-loader!./assets/css/search.css';
+
+
+// <!-- GOOGLE FONTS -->
+// <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" type="text/css">
+
+import 'script-loader!./assets/vendor/jquery/jquery.min.js';
+import './assets/vendor/bootstrap/js/bootstrap.min.js';
+import './assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js';
+import './assets/js/klorofil-common.js';
+import './assets/js/script.js';
+/* hard code images TODO delete  */
+import '!file-loader?name=[name].[ext]!./assets/img/avatar.jpeg';
+import '!file-loader?name=[name].[ext]!./assets/img/language/ru.png';
+import '!file-loader?name=[name].[ext]!./assets/img/language/us.png';
 import configureStore from './configureStore';
 
 // Import i18n messages
