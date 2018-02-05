@@ -1,49 +1,25 @@
 import { createSelector } from 'reselect';
-import { fromJS } from 'immutable';
+
 /**
- * Direct selector to the registrationEmployee state domain
+ * Direct selector to the continueRegistration state domain
+ */
+const selectContinueRegistrationDomain = (state) => state.get('registration');
+
+/**
+ * Other specific selectors
  */
 
- // state
-const selectRegistrationEmployeeDomain = (state) => state.get('registration');
 
-const selectRegistrationStep = createSelector(
-   selectRegistrationEmployeeDomain,
-   (registrationStep) => fromJS(registrationStep).get('registrationStep').get('step')
- );
+/**
+ * Default selector used by ContinueRegistration
+ */
 
-const selectRegistrationStepStatus = createSelector(
-    selectRegistrationEmployeeDomain,
-    (registrationStep) => fromJS(registrationStep).get('registrationStep').get('registrationStepStatus')
-  );
-
-const selectSpecificationList = createSelector(
-    selectRegistrationEmployeeDomain,
-    (specificationList) => specificationList.get('specificationList').get('list')
+export const selectRegistrationStep = createSelector(
+  selectContinueRegistrationDomain,
+  (registrationStep) => registrationStep.get('registrationStep')
 );
 
-const selectSpecificationListStatus = createSelector(
-    selectRegistrationEmployeeDomain,
-    (specificationList) => specificationList.get('specificationList').get('specificationListStatus')
+export const selectRole = createSelector(
+  selectContinueRegistrationDomain,
+  (registrationStep) => registrationStep.get('role')
 );
-
-const selectChoosenSpecifications = createSelector(
-    selectRegistrationEmployeeDomain,
-    (choosenSpecifications) => choosenSpecifications.get('choosenSpecifications').get('items')
-);
-
-const selectRole = createSelector(
-   selectRegistrationEmployeeDomain,
-   (role) => role.get('role')
- );
-
-
-export {
-  selectRole,
-  selectChoosenSpecifications,
-  selectSpecificationListStatus,
-  selectRegistrationStep,
-  selectSpecificationList,
-  selectRegistrationEmployeeDomain,
-  selectRegistrationStepStatus,
-};

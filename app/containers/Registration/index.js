@@ -10,123 +10,56 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom';
 
 import injectReducer from 'utils/injectReducer';
 import {
-  selectRegistrationStep,
-  selectSpecificationList,
-  selectRegistrationStepStatus,
-  selectSpecificationListStatus,
-  selectChoosenSpecifications,
   selectRole,
+  selectRegistrationStep,
 } from './selectors';
 import reducer from './reducer';
-import messages from './messages';
-import FirstStep from '../../components/FirstStepRegistration/Loadable';
-import SecondStep from '../../components/SecondStepRegistration/Loadable';
-import ThirdStep from '../../components/ThirdStepRegistration/Loadable';
-import FourthStep from '../../components/FourthStepRegistration/Loadable';
+import FirstStep from '../../components/Registration/FirstStepRegistration/Loadable';
+import SecondStep from '../../components/Registration/SecondStepRegistration/Loadable';
+import RoleSelectionRegistration from '../../components/Registration/RoleSelectionRegistration/Loadable';
 import {
-  addSkill,
-  getRegistrationStep,
-  submitFirstStep,
-  submitSecondStep,
-  submitThirdStep,
-  getSpecification,
-  getSkills,
-  addSpecificationWithSkills,
-  deleteSpecificationFromChoosen,
-  deleteSkillFromSpecification,
-  submitFourthStep,
+  submitEmail,
+  submitEmailVerification,
+  changeRole,
 } from './actions';
-import {
-  LOADING,
-  NOT_LOADED,
-  LOADED,
-} from './constants';
 
-export class Registration extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  componentDidMount() {
-    console.log(123);
-    this.props.getRegistrationStep();
-  }
+export class Registration extends React.Component {
   render() {
-    switch (this.props.registrationStepStatus) {
-      case NOT_LOADED:
+    // if (this.props.userAuth.get('userState') !== ANONYMOUS)
+    //   return <Redirect to='/'/>;
+    if (!this.props.role) {
+      return (
+        <RoleSelectionRegistration
+          changeRole={this.props.changeRole}
+        />
+      );
+    }
+    switch (this.props.registrationStep) {
+      case 1:
         return (
           <div>
-            Error loading
+            <FirstStep
+              submitEmail={this.props.submitEmail}
+            />
           </div>
         );
-      case LOADING:
+      case 2:
         return (
           <div>
-            Loading
+            <SecondStep
+              submitEmailVerification={this.props.submitEmailVerification}
+              role={this.props.role}
+            />
           </div>
         );
-      case LOADED:
-        switch (this.props.registrationStep) {
-          case 1:
-            return (
-              <div>
-                <FirstStep
-                  submitFirstStep={this.props.submitFirstStep}
-                  role={this.props.role}
-                />
-              </div>
-            );
-          case 2:
-            return (
-              <div>
-                <SecondStep
-                  submitSecondStep={this.props.submitSecondStep}
-                  role={this.props.role}
-                />
-              </div>
-            );
-          case 3:
-            return (
-              <div>
-                <ThirdStep
-                  role={this.props.role}
-                  getSpecification={this.props.getSpecification}
-                  getSkills={this.props.getSkills}
-                  specificationListStatus={this.props.specificationListStatus}
-                  skillsListStatus={this.props.skillsListStatus}
-                  specificationList={this.props.specificationList}
-                  skillsList={this.props.skillsList}
-                  addSkill={this.props.addSkill}
-                  addSpecificationWithSkills={this.props.addSpecificationWithSkills}
-                  choosenSpecifications={this.props.choosenSpecifications}
-                  deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
-                  deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
-                  submitThirdStep={this.props.submitThirdStep}
-                />
-              </div>
-            );
-          case 4:
-            return (
-              <div>
-                <FourthStep
-                  submitFourthStep={this.props.submitFourthStep}
-                  role={this.props.role}/>
-              </div>
-            )
-          default:
-            return (
-              <div>
-                Error
-              </div>
-            );
-        }
       default:
         return (
           <div>
-            <Helmet>
-              <title>Registration</title>
-              <meta name="description" content="Description of Registration" />
-            </Helmet>
-            <FormattedMessage {...messages.header} />
+            Error
           </div>
         );
     }
@@ -136,27 +69,15 @@ export class Registration extends React.Component { // eslint-disable-line react
 function mapStateToProps(state) {
   return {
     role: selectRole(state),
-    choosenSpecifications: selectChoosenSpecifications(state),
     registrationStep: selectRegistrationStep(state),
-    specificationList: selectSpecificationList(state),
-    registrationStepStatus: selectRegistrationStepStatus(state),
-    specificationListStatus: selectSpecificationListStatus(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getRegistrationStep: () => dispatch(getRegistrationStep()),
-    submitFirstStep: (evt) => dispatch(submitFirstStep(evt)),
-    submitSecondStep: (evt) => dispatch(submitSecondStep(evt)),
-    submitThirdStep: () => dispatch(submitThirdStep()),
-    submitFourthStep: (evt, ev) => dispatch(submitFourthStep(evt, ev)),
-    getSpecification: () => dispatch(getSpecification()),
-    getSkills: () => dispatch(getSkills()),
-    addSkill: (evt, ev) => dispatch(addSkill(evt, ev)),
-    deleteSkillFromSpecification: (evt, ev) => dispatch(deleteSkillFromSpecification(evt, ev)),
-    addSpecificationWithSkills: (evt) => dispatch(addSpecificationWithSkills(evt)),
-    deleteSpecificationFromChoosen: (evt) => dispatch(deleteSpecificationFromChoosen(evt)),
+    changeRole: (evt) => dispatch(changeRole(evt)),
+    submitEmail: (evt) => dispatch(submitEmail(evt)),
+    submitEmailVerification: (evt) => dispatch(submitEmailVerification(evt)),
   };
 }
 
@@ -165,24 +86,10 @@ const withReducer = injectReducer({ key: 'registration', reducer });
 
 Registration.propTypes = {
   role: PropTypes.string,
-  getSpecification: PropTypes.func,
-  getSkills: PropTypes.func,
-  submitSecondStep: PropTypes.func,
-  submitFirstStep: PropTypes.func,
+  submitEmail: PropTypes.func,
+  submitEmailVerification: PropTypes.func,
+  changeRole: PropTypes.func,
   registrationStep: PropTypes.number,
-  getRegistrationStep: PropTypes.func,
-  specificationListStatus: PropTypes.string,
-  skillsListStatus: PropTypes.string,
-  skillsList: PropTypes.object,
-  specificationList: PropTypes.object,
-  registrationStepStatus: PropTypes.string,
-  addSkill: PropTypes.func,
-  addSpecificationWithSkills: PropTypes.func,
-  deleteSpecificationFromChoosen: PropTypes.func,
-  deleteSkillFromSpecification: PropTypes.func,
-  submitThirdStep: PropTypes.func,
-  submitFourthStep: PropTypes.func,
-  choosenSpecifications: PropTypes.object,
 };
 
 

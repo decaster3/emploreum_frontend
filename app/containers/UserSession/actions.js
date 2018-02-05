@@ -9,10 +9,11 @@ import {
   LOGED_IN,
   CHANGE_USER_STATE,
   ANONYMOUS,
+  UPDATE_REGISTRATION_STEP,
 } from './constants';
 
 import { loginAPI } from '../../services/api/register';
-
+import { push } from 'react-router-redux';
 export const login = (values) => (
   (dispatch) => {
     const { email, password } = values.toJS();
@@ -29,14 +30,39 @@ export const login = (values) => (
         payload: {
           userState: LOGED_IN,
           userInformation: {
-            name: data.name,
+            registrationStep: data.registrationStep,
             role: data.role,
           },
         },
       });
+      dispatch(push('/'))
     }, (err) => {
       console.log(err.response.data);
     }, dispatch);
+  }
+);
+
+export const loginAfterRegistration = (data) => (
+  (dispatch) => {
+    dispatch({
+      type: CHANGE_USER_STATE,
+      payload: {
+        userState: LOGED_IN,
+        userInformation: {
+          registrationStep: data.registrationStep,
+          role: data.role,
+        },
+      },
+    });
+  }
+);
+
+export const updateRegistrationStep = (step) => (
+  (dispatch) => {
+    dispatch({
+      type: UPDATE_REGISTRATION_STEP,
+      payload: step,
+    });
   }
 );
 

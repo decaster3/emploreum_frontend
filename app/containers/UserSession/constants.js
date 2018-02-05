@@ -5,6 +5,7 @@
  */
 // actions
 export const CHANGE_USER_STATE = 'CHANGE_USER_STATE';
+export const UPDATE_REGISTRATION_STEP = 'UPDATE_REGISTRATION_STEP';
 
 // states
 export const ANONYMOUS = 'ANONYMOUS';

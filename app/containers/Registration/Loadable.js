@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for RegistrationEmployee
+ * Asynchronously loads the component for ContinueRegistration
  *
  */
 

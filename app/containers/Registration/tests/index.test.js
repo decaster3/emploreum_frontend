@@ -1,10 +1,10 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import { RegistrationEmployee } from '../index';
+// import { ContinueRegistration } from '../index';
 
-describe('<RegistrationEmployee />', () => {
+describe('<ContinueRegistration />', () => {
   it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(true);
+    expect(true).toEqual(false);
   });
 });

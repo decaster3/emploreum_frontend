@@ -12,37 +12,43 @@
  */
 
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import StartPage from '../StartPage/Loadable';
+import PropTypes from 'prop-types';
 import NotFoundPage from '../NotFoundPage/Loadable';
-import Registration from '../Registration/Loadable';
-import EmployeeMain from '../EmployeeMain/Loadable';
-import UserSession from '../UserSession/Loadable';
-import { selectUserState } from './selectors';
 
- const App = (props) => {
-   const { userState } = props;
+import RolesRoutesSelector from './Routes/RolesRoutesSelector';
+import AllRoutes from './Routes/AllRoutes';
+
+import {
+  selectUserState,
+  selectIsUserCompleteRegistration,
+  selectUserRole,
+ } from './selectors';
+
+const App = (props) => {
+  const { userState, isUserCompleteRegistration, userRole } = props;
   return (
-    <div>
-      <Switch>
-        {userState === 'ANONYMOUS'
-          ? <Route exact path="/" component={StartPage} />
-          : <Route exact path="/" component={EmployeeMain} />
-        }
-        <Route exact path="/" component={StartPage} />
-        <Route exact path="/registration" component={Registration} />
-        <Route exact path="/login" component={UserSession} />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </div>
+    <Switch>
+      {RolesRoutesSelector(props).map(r => <Route exact path={r.path} component={r.component} key={r.path} />)}
+      <Route component={NotFoundPage} />
+    </Switch>
   );
-}
+};
 
 function mapStateToProps(state) {
   return {
+    userRole: selectUserRole(state),
     userState: selectUserState(state),
+    isUserCompleteRegistration: selectIsUserCompleteRegistration(state),
   };
 }
+
+App.propTypes = {
+  userState: PropTypes.string,
+  userRole: PropTypes.string,
+  isUserCompleteRegistration: PropTypes.bool,
+};
+
 
 export default withRouter(connect(mapStateToProps, null)(App));

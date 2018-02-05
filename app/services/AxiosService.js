@@ -16,7 +16,8 @@ function get(url, successCallBack, errorCallBack, dispatch) {
   .then((response) =>
     new Promise((resolve) => resolve(successCallBack(response.data)))
   ).catch((err) => {
-    if (err.response.data === UNAUTHORIZED) {
+    console.log(err.response.data.error);
+    if (err.response.data.error === 'unauthorized') {
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -34,13 +35,14 @@ function get(url, successCallBack, errorCallBack, dispatch) {
 function post(url, obj, successCallBack, errorCallBack, dispatch) {
   return axios.post(url, obj, { withCredentials: true })
     .then((response) =>
-      new Promise((resolve) => resolve(successCallBack(response.data)))
+       new Promise((resolve) => resolve(successCallBack(response.data)))
     ).catch((err) => {
-      if (err.response.data === UNAUTHORIZED) {
+      console.log(err);
+      if (err.response.data.error === 'unauthorized') {
         dispatch({
           type: CHANGE_USER_STATE,
           payload: {
-            userState: LOGED_IN,
+            userState: ANONYMOUS,
             userInformation: {},
           },
         })
