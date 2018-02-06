@@ -1,0 +1,76 @@
+.profile-header .profile-main {
+    background-image: none;
+    background: #444f63;
+}
+
+.hexagon img {
+    position: relative;
+    height: 100%;
+}
+
+.profile-detail {
+    padding-bottom: 0;
+    background: #f8f8f8;
+}
+
+.panel-profile .profile-left {
+    position: relative;
+}
+
+.profile-detail .metric {
+    border: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.profile-detail .metric .icon {
+    background: #eeebef;
+}
+
+.profile-detail .metric .icon .fa {
+    color: #7c7c7c;
+}
+
+.profile-left .stat-item span.badge-bg {
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+    display: inline-block;
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+}
+
+ul.activity-timeline > li .edit {
+    display: block;
+    font-size: .85em;
+    color: #a3a3a3;
+}
+
+.activity-timeline .activity-icon.bg-not-trus {
+    background: #cdcbce;
+}
+
+.text-avatar {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    width: 64px;
+    height: 64px;
+    font-size: 34px;
+    line-height: 64px;
+    text-align: center;
+    background-color: #fff;
+    color: #444f63;
+}
+
+@media screen and (max-width: 767px) {
+
+    .awards {
+        margin-bottom: 20px;
+    }
+}

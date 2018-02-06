@@ -12,18 +12,35 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import NotFoundPage from '../NotFoundPage/Loadable';
 
-import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import RolesRoutesSelector from './Routes/RolesRoutesSelector';
 
-export default function App() {
-  return (
-    <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </div>
-  );
+import {
+  selectUserState,
+  selectIsUserCompleteRegistration,
+  selectUserRole,
+ } from './selectors';
+
+const App = (props) => (
+  <Switch>
+    {RolesRoutesSelector(props).map((r) => <Route exact={!r.notExact} path={r.path} component={r.component} key={r.path} />)}
+    <Route component={NotFoundPage} />
+  </Switch>
+);
+
+function mapStateToProps(state) {
+  return {
+    userRole: selectUserRole(state),
+    userState: selectUserState(state),
+    isUserCompleteRegistration: selectIsUserCompleteRegistration(state),
+  };
 }
+
+App.propTypes = {
+};
+
+
+export default withRouter(connect(mapStateToProps, null)(App));

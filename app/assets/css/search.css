@@ -1,0 +1,44 @@
+.vacancy{
+    position: relative;
+    width: 100%;
+    border: 1px solid #dddddd;
+    padding: 10px;
+}
+.vacancy .vacancy-name {
+    margin-bottom: 10px;
+}
+.vacancy .vacancy-name > a{
+    font-size: 20px;
+}
+.vacancy .vacancy-name .vacancy-money{
+    display: inline-block;
+    float: right;
+}
+.vacancy .vacancy-name .vacancy-currency{
+    font-size: 14px;
+}
+.vacancy .vacancy-desc .vacancy-contact,
+.vacancy .vacancy-desc .vacancy-add{
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 20px;
+}
+.vacancy .vacancy-desc .vacancy-date{
+    display: inline-block;
+    float: right;
+}
+.vacancy .vacancy-desc p{
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 767px) {
+    .vacancy .vacancy-desc .vacancy-contact,
+    .vacancy .vacancy-desc .vacancy-date,
+    .vacancy .vacancy-desc .vacancy-add,
+    .vacancy .vacancy-name .vacancy-money{
+        display: block;
+        float: none;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
