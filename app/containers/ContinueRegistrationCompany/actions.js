@@ -45,9 +45,9 @@ export const downRegistrationStep = () => ({ type: DOWN_REGISTRATION_STEP });
 export const submitSpecificationSkillsStep = () => (
   (dispatch, getState) => {
     console.log(getState());
-    const arrOfChoosenSpecifications = getState().get('continueRegistrationCompany')
+    const specs = getState().get('continueRegistrationCompany')
       .get('choosenSpecifications').get('items');
-    submitCompanySpecificationsSkillsAPI(arrOfChoosenSpecifications, (data) => {
+    submitCompanySpecificationsSkillsAPI({ specs }, (data) => {
 // надо тестить
       dispatch(updateRegistrationStep(data.registrationStep));
     }, (err) => {
