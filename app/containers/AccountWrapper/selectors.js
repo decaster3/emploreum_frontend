@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the employeeMain state domain
  */
-const selectEmployeeMainDomain = (state) => state.get('employeemain');
+const selectEmployeeMainDomain = (state) => state.get('accountWrapper');
 
 /**
  * Other specific selectors

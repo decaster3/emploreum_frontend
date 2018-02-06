@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ProfileHeader = (props) => {
+export const FinanceHeader = (props) => {
   const { address } = props;
 
   return (
@@ -18,7 +18,7 @@ export const ProfileHeader = (props) => {
   );
 };
 
-ProfileHeader.propTypes = {
+FinanceHeader.propTypes = {
   address: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

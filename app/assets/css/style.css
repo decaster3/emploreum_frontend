@@ -213,3 +213,16 @@ label {
         min-width: 100px;
     }
 }
+
+#modal-vacancy {
+  display: none;
+}
+
+.modal-content {
+  overflow: hidden;
+}
+
+.modal-body {
+  max-height: 435px;
+  overflow-y: auto;
+}

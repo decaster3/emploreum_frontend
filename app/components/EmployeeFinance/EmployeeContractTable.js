@@ -14,7 +14,7 @@ export const EmployeeContractTable = (props) => {
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>Contract id</th>
+                <th>Contract address</th>
                 <th>Company</th>
                 <th>Salary</th>
                 <th>Start date</th>

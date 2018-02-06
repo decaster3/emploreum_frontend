@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({ view: 'profile' });
 
-function employeeMainReducer(state = initialState, action) {
+function accountWrapperReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_VIEW:
       return state
@@ -21,4 +21,4 @@ function employeeMainReducer(state = initialState, action) {
   }
 }
 
-export default employeeMainReducer;
+export default accountWrapperReducer;

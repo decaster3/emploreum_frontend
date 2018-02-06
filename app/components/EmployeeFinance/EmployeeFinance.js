@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ProfileHeader, EmployeeInfo } from '../ProfileHeader';
+import { FinanceHeader, EmployeeInfo } from '../FinanceHeader';
 import { EmployeeContractTable } from './EmployeeContractTable';
 
 export const EmployeeFinance = (props) => {
@@ -8,9 +8,9 @@ export const EmployeeFinance = (props) => {
 
   return (
     <div className="container-fluid">
-      <ProfileHeader address={address}>
+      <FinanceHeader address={address}>
         <EmployeeInfo balance={balance} income={income} />
-      </ProfileHeader>
+      </FinanceHeader>
       <EmployeeContractTable tableName="Current contracts">
         {currentContracts}
       </EmployeeContractTable>

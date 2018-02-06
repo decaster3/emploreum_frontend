@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
-import { Switch, Route } from 'react-router-dom';
 import reducer from './reducer';
-import EmployeeFinanceContainer from '../EmployeeFinanceContainer';
-import Test from '../Test';
-import { EmployeeWrapper } from '../../../components/Wrapper';
+import { AccountWrapper } from '../../components/AccountWrapper';
 import {
   selectView,
 } from './selectors';
@@ -17,23 +13,25 @@ import {
   changeView,
 } from './actions';
 
-export class EmployeeMain extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
+export class AccountWrapperContainer extends React.PureComponent {
+// TODO component DID mount check path
   render() {
     return (
-      <EmployeeWrapper changeView={this.props.changeView} view={this.props.view} >
-        <Switch>
-          <Route exact path="/employee" component={Test} />
-          <Route path="/employee/finance" component={EmployeeFinanceContainer} />
-        </Switch>
-      </EmployeeWrapper>
+      <AccountWrapper changeView={this.props.changeView} view={this.props.view} url={this.props.url}>
+        {this.props.children}
+      </AccountWrapper>
     );
   }
 }
 
-EmployeeMain.propTypes = {
+AccountWrapperContainer.propTypes = {
+  url: PropTypes.string,
   view: PropTypes.string,
   changeView: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 
@@ -48,9 +46,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
-const withReducer = injectReducer({ key: 'employeemain', reducer });
+const withReducer = injectReducer({ key: 'accountWrapper', reducer });
 
 export default compose(
   withReducer,
   withConnect,
-)(EmployeeMain);
+)(AccountWrapperContainer);

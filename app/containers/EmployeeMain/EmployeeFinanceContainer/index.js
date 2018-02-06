@@ -26,7 +26,6 @@ class EmployeeFinanceContainer extends React.Component { // eslint-disable-line 
   }
 
   render() {
-    console.log('asd');
     const mockContracts = [{
       address: '0xaaa89ad8ef43fcf3d3f6b2e5fdac4cd4719bafbb',
       company: 'ООО Компания 1',
@@ -76,7 +75,7 @@ function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'employeeMain', reducer });
+const withReducer = injectReducer({ key: 'finance', reducer });
 
 export default compose(
   withReducer,
