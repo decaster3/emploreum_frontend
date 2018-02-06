@@ -14,13 +14,20 @@ const ChoosenSpecifications = (props) => {
       if (item.possibleSkillsStatus === LOADED) {
         return (
           <div key={item.specification}>
-            <h4>Specification: {item.specification}</h4>
-            <button
-              onClick={() => deleteSpecificationFromChoosen(item.specification)}
-            >
-              Delete spec {item.specification}
-            </button>
-
+            <div className="form-inline">
+              <div className="form-group">
+                <h4 className="heading">{item.specification} developer</h4>
+              </div>
+              <div className="form-group" style={{ marginLeft: 20 }}>
+                <a href="#" className="btn btn-default btn-xs">
+                  <button
+                    onClick={() => deleteSpecificationFromChoosen(item.specification)}
+                  >
+                    <i className="fa fa-trash" />
+                  </button>
+                </a>
+              </div>
+            </div>
             <Skills
               addSkill={addSkill}
               item={item}

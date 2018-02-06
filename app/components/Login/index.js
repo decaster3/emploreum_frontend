@@ -13,9 +13,30 @@ class Login extends React.Component { // eslint-disable-line react/prefer-statel
   render() {
     return (
       <div>
-        <FormLogin
-          login={this.props.login}
-        />
+        <div className="vertical-align-wrap">
+          <div className="vertical-align-middle">
+            <div className="auth-box">
+              <div className="left">
+                <div className="content">
+                  <div className="header">
+                  </div>
+                  <div>
+                    <FormLogin
+                      login={this.props.login}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="right">
+                <div className="overlay"></div>
+                <div className="content text">
+                  <h1 className="heading">Присоединить к одной из 112344 успешной компании</h1>
+                  <p>Расти и зарабатывай больше</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

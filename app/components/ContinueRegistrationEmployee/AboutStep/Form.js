@@ -23,7 +23,7 @@ const FormRegistrationFourthStep = (props) => {
         validate={required}
         label="About"
       />
-      <button type="submit" disabled={submitting}>Submit</button>
+      <button className="btn btn-primary btn-sm btn-block" type="submit" disabled={submitting}>Submit</button>
     </form>
   );
 };
@@ -45,6 +45,6 @@ export default reduxForm({
 
 FormRegistrationFourthStep.propTypes = {
   handleSubmit: PropTypes.func,
-  submitAboutStep: PropTypes.bool,
-  submitting: PropTypes.func,
+  submitAboutStep: PropTypes.func,
+  submitting: PropTypes.bool,
 };

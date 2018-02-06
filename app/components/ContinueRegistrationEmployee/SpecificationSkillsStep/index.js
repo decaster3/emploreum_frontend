@@ -19,19 +19,28 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
     switch (this.props.specificationListStatus) {
       case LOADED:
         return (
-          <div>
-            <AutoComplete
-              addItem={this.props.addSpecificationWithSkills}
-              list={this.props.specificationList}
-              whatToAdd={'specification'}
-            />
-            <ChoosenSpecifications
-              choosenSpecifications={this.props.choosenSpecifications}
-              addSkill={this.props.addSkill}
-              deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
-              deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
-            />
-            <button onClick={() => this.props.submitSpecificationSkillsStep()}>Next</button>
+          <div id="wrapper">
+            <div className="main">
+              <div className="panel panel-headline col-md-8 col-md-offset-1">
+                <h4 className="heading">Add specification</h4>
+                <hr />
+                <AutoComplete
+                  addItem={this.props.addSpecificationWithSkills}
+                  list={this.props.specificationList}
+                  whatToAdd={'specification'}
+                />
+                <hr />
+                <ChoosenSpecifications
+                  choosenSpecifications={this.props.choosenSpecifications}
+                  addSkill={this.props.addSkill}
+                  deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
+                  deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
+                />
+                <div className="col-md-12 text-right">
+                  <button className="btn btn-success" onClick={() => this.props.submitSpecificationSkillsStep()}>Next</button>
+                </div>
+              </div>
+            </div>
           </div>
         );
       default:

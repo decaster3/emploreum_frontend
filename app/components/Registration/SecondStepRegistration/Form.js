@@ -16,7 +16,7 @@ const FormRegisterSecondStep = (props) => {
         validate={required}
         label="Verification Email Code"
       />
-      <button type="submit" disabled={submitting}>Submit</button>
+      <button className="btn btn-primary btn-sm btn-block" type="submit" disabled={submitting}>Submit</button>
     </form>
   );
 };
@@ -30,7 +30,7 @@ export default reduxForm({
 FormRegisterSecondStep.propTypes = {
   handleSubmit: PropTypes.func,
   submitEmailVerification: PropTypes.func,
-  submitting: PropTypes.func,
+  submitting: PropTypes.bool,
 };
 
 // const selector = formValueSelector('FormRegisterSecondStep');

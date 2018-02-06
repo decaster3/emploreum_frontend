@@ -15,16 +15,17 @@ const Skills = (props) => {
         specification={item.specification}
       />
       {item.items && item.items.length ?
-        <div>
-          <h4>Skills: </h4>
-          <ChoosenSkills
-            skills={item.items}
-            deleteSkillFromSpecification={deleteSkillFromSpecification}
-            specification={item.specification}
-          />
+        <div className="awards">
+          <div className="row">
+            <ChoosenSkills
+              skills={item.items}
+              deleteSkillFromSpecification={deleteSkillFromSpecification}
+              specification={item.specification}
+            />
+          </div>
         </div>
       :
-        <div>Choose skill</div>
+        <div />
       }
     </div>
   );

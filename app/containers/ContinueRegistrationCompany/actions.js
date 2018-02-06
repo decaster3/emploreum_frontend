@@ -3,6 +3,7 @@
  * RegistrationEmployee actions
  *
  */
+import { push } from 'react-router-redux';
 import {
   UP_REGISTRATION_STEP,
   DOWN_REGISTRATION_STEP,
@@ -20,11 +21,10 @@ import {
 import {
   submitCompanySpecificationsSkillsAPI,
   submitCompanyAboutAPI,
+  getSpecificationsAPI,
  } from '../../services/api/register';
 
-import { updateRegistrationStep } from '../UserSession/actions';
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import { updateRegistrationStep, completeRegistration } from '../UserSession/actions';
 
 export const getRegistrationStep = () => (
   (dispatch, getState) => {
@@ -62,14 +62,15 @@ export const submitAboutStep = (values) => (
   (dispatch) => {
     const { name, about } = values.toJS();
     submitCompanyAboutAPI({ name, about }, () => {
-      dispatch(upRegistrationStep());
+      dispatch(completeRegistration());
     }, (err) => {
       console.log(err);
-    }, dispatch);
+    }, dispatch).then(() => {
+      dispatch(push('company/finance'));
+    });
   }
 );
 
-const testSpecList = ['Web', 'Bigdata', 'Desctop'];
 export const getSpecification = () => (
   (dispatch) => {
     dispatch({
@@ -79,15 +80,17 @@ export const getSpecification = () => (
         list: {},
       },
     });
-    return sleep(1000).then(() => {
+    getSpecificationsAPI((specList) => {
       dispatch({
         type: GET_EMPLOYEE_SPECIFICATION_LIST,
         payload: {
           specificationListStatus: LOADED,
-          list: testSpecList,
+          list: specList.profiles,
         },
       });
-    });
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
   }
 );
 

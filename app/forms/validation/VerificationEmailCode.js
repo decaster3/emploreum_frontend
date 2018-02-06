@@ -4,11 +4,9 @@ export const VerificationEmailCodeValidation = (value) =>
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const asyncValidate = (values) => {
-  return sleep(1000)
+export const asyncValidate = (values) => sleep(1000)
     .then(() => {
       if (values.get('code') !== '123123') {
-        throw { code: 'Wrong code!' }
+        throw { code: 'Wrong code!' };
       }
     });
-};

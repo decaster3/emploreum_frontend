@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { renderField } from '../../forms/fields/FormRegisterField';
 import { passwordValidation } from '../../forms/validation/PasswordValidation';
@@ -26,7 +27,8 @@ const FormLogin = (props) => {
         validate={[required, passwordValidation]}
         label="Password"
       />
-      <button type="submit" disabled={submitting}>Submit</button>
+      <button className="btn btn-primary btn-sm btn-block" type="submit" disabled={submitting}>Submit</button>
+      <Link to="/registration" className="btn btn-default btn-xs btn-block">Registration</Link>
     </form>
   );
 };
@@ -53,3 +55,4 @@ FormLogin.propTypes = {
   login: PropTypes.func,
   submitting: PropTypes.bool,
 };
+

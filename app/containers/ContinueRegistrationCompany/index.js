@@ -39,7 +39,6 @@ export class ContinueRegistrationCompany extends React.Component { // eslint-dis
     this.props.getRegistrationStep();
   }
   render() {
-    console.log(555);
     switch (this.props.registrationStepStatus) {
       case NOT_LOADED:
         return (

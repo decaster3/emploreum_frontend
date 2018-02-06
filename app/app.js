@@ -63,6 +63,7 @@ import './assets/js/script.js';
 import '!file-loader?name=[name].[ext]!./assets/img/avatar.jpeg';
 import '!file-loader?name=[name].[ext]!./assets/img/language/ru.png';
 import '!file-loader?name=[name].[ext]!./assets/img/language/us.png';
+import '!file-loader?name=[name].[ext]!./assets/img/java.png';
 import configureStore from './configureStore';
 
 // Import i18n messages

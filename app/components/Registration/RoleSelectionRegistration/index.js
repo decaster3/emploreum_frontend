@@ -17,8 +17,28 @@ const RoleSelectionRegistration = (props) => { // eslint-disable-line react/pref
   const { changeRole } = props;
   return (
     <div>
-      <button onClick={() => changeRole(COMPANY)}>Company register</button>
-      <button onClick={() => changeRole(EMPLOYEE)}>Employee register</button>
+      <div className="vertical-align-wrap">
+        <div className="vertical-align-middle">
+          <div className="auth-box">
+            <div className="left">
+              <div className="content">
+                <div className="header">
+                  <p className="lead">Choose your role</p>
+                </div>
+                <button className="btn btn-primary btn-sm btn-block" onClick={() => changeRole(COMPANY)}>Company</button>
+                <button className="btn btn-primary btn-sm btn-block" onClick={() => changeRole(EMPLOYEE)}>Employee</button>
+              </div>
+            </div>
+            <div className="right">
+              <div className="overlay"></div>
+              <div className="content text">
+                <h1 className="heading">Присоединить к одной из 112344 успешной компании</h1>
+                <p>Расти и зарабатывай больше</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

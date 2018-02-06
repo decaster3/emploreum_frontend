@@ -10,6 +10,7 @@ import {
   CHANGE_USER_STATE,
   ANONYMOUS,
   UPDATE_REGISTRATION_STEP,
+  COMPLETE_REGISTRATION,
 } from './constants';
 
 import { loginAPI } from '../../services/api/register';
@@ -24,6 +25,7 @@ export const login = (values) => (
       },
     });
     loginAPI({ email, password }, (data) => {
+      console.log(data);
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -61,6 +63,14 @@ export const updateRegistrationStep = (step) => (
     dispatch({
       type: UPDATE_REGISTRATION_STEP,
       payload: step,
+    });
+  }
+);
+
+export const completeRegistration = () => (
+  (dispatch) => {
+    dispatch({
+      type: COMPLETE_REGISTRATION,
     });
   }
 );

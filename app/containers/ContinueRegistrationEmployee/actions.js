@@ -3,6 +3,8 @@
  * RegistrationEmployee actions
  *
  */
+import { push } from 'react-router-redux';
+
 import {
   UP_REGISTRATION_STEP,
   DOWN_REGISTRATION_STEP,
@@ -25,10 +27,12 @@ import {
 import {
   submitEmployeeSpecificationsSkillsAPI,
   submitEmployeeAboutAPI,
+  getSpecificationsAPI,
+  getSkillsFromSpecificationAPI,
 } from '../../services/api/register';
 
-import { updateRegistrationStep } from '../UserSession/actions';
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import { updateRegistrationStep, completeRegistration } from '../UserSession/actions';
+import { log } from 'util';
 
 export const getRegistrationStep = () => (
   (dispatch, getState) => {
@@ -52,6 +56,7 @@ export const submitSpecificationSkillsStep = () => (
     const arrOfChoosenSpecifications = getState().get('continueRegistrationEmployee')
       .get('choosenSpecifications').get('items');
     submitEmployeeSpecificationsSkillsAPI(arrOfChoosenSpecifications, (data) => {
+      console.log(data);
       dispatch(updateRegistrationStep(data.registrationStep));
     }, (err) => {
       console.log(err);
@@ -65,14 +70,15 @@ export const submitAboutStep = (values) => (
   (dispatch) => {
     const { name, about } = values.toJS();
     submitEmployeeAboutAPI({ name, about }, () => {
-      dispatch(upRegistrationStep());
+      dispatch(completeRegistration());
     }, (err) => {
       console.log(err);
-    }, dispatch);
+    }, dispatch).then(() => {
+      dispatch(push('employee/finance'));
+    });
   }
 );
 
-const testSpecList = ['Web', 'Bigdata', 'Desctop'];
 export const getSpecification = () => (
   (dispatch) => {
     dispatch({
@@ -82,15 +88,17 @@ export const getSpecification = () => (
         list: {},
       },
     });
-    return sleep(1000).then(() => {
+    getSpecificationsAPI((specList) => {
       dispatch({
         type: GET_EMPLOYEE_SPECIFICATION_LIST,
         payload: {
           specificationListStatus: LOADED,
-          list: testSpecList,
+          list: specList.profiles,
         },
       });
-    });
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
   }
 );
 
@@ -181,8 +189,6 @@ export const deleteSkillFromSpecification = (specification, skill) => (
   }
 );
 
-const testSkillsList = ['React', 'JS', 'HTML'];
-
 export const getSkills = (specification) => (
   (dispatch) => {
     dispatch({
@@ -193,16 +199,18 @@ export const getSkills = (specification) => (
         possibleSkills: [],
       },
     });
-    sleep(1000).then(() => {
+    getSkillsFromSpecificationAPI(specification, (response) => {
       dispatch({
         type: GET_EMPLOYEE_SKILLS_LIST,
         payload: {
           possibleSkillsStatus: LOADED,
           specification,
-          possibleSkills: testSkillsList,
+          possibleSkills: response.skills,
         },
       });
-    });
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
   }
 );
 

@@ -38,15 +38,16 @@ export class Registration extends React.PureComponent {
     switch (this.props.registrationStep) {
       case 1:
         return (
-          <div>
+          <div id="wrapper">
             <FirstStep
               submitEmail={this.props.submitEmail}
+              role={this.props.role}
             />
           </div>
         );
       case 2:
         return (
-          <div>
+          <div id="wrapper">
             <SecondStep
               submitEmailVerification={this.props.submitEmailVerification}
               role={this.props.role}
