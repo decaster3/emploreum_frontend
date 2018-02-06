@@ -3,14 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export const EmployeeWrapper = (props) => (
+export const AccountWrapper = (props) => (
   <div id="wrapper">
     {
     // NAVBAR
     }
     <nav id="max-navbar" className="navbar navbar-default navbar-fixed-top">
       <div className="brand">
-        <a href="index.html">Emploreum</a>
+        <Link to={`${props.url}`}>Emploreum</Link>
       </div>
       <div className="container-fluid">
         <div className="navbar-btn hidden-xs">
@@ -80,31 +80,31 @@ export const EmployeeWrapper = (props) => (
         <nav>
           <ul className="nav">
             <li>
-              <Link to="/employee/" onClick={ () => props.changeView('profile')} className={ props.view == 'profile' ? 'active': ''}>
+              <Link to={`${props.url}`} onClick={() => props.changeView('profile')} className={props.view === 'profile' ? 'active' : ''}>
                 <i className="fa fa-user"></i>
                 <span>Profile</span>
               </Link>
             </li>
             <li>
-              <Link to="/employee/finance" onClick={ () => props.changeView('vacation')} className={ props.view == 'vacation' ? 'active': ''}>
+              <Link to={`${props.url}/finance`} onClick={() => props.changeView('vacation')} className={props.view === 'vacation' ? 'active' : ''}>
                 <i className="fa fa-address-book"></i>
                 <span>Vacations</span>
               </Link>
             </li>
             <li>
-              <Link to="/employee/finance" onClick={ () => props.changeView('finance')} className={ props.view == 'finance' ? 'active': ''}>
+              <Link to={`${props.url}/finance`} onClick={() => props.changeView('finance')} className={props.view === 'finance' ? 'active' : ''}>
                 <i className="fa fa-dollar"></i>
                 <span>Finance</span>
               </Link>
             </li>
             <li>
-              <Link to="/employee/finance" onClick={ () => props.changeView('bookmark')} className={ props.view == 'bookmark' ? 'active': ''}>
+              <Link to={`${props.url}/finance`} onClick={() => props.changeView('bookmark')} className={props.view === 'bookmark' ? 'active' : ''}>
                 <i className="fa fa-bookmark"></i>
                 <span>Bookmarks</span>
               </Link>
             </li>
             <li>
-              <Link to="/employee/finance" onClick={ () => props.changeView('exit')} className={props.view == 'exit' ? 'active': ''}>
+              <Link to={`${props.url}/finance`} onClick={() => props.changeView('exit')} className={props.view === 'exit' ? 'active' : ''}>
                 <i className="fa fa-sign-out"></i>
                 <span>Exit</span>
               </Link>
@@ -131,10 +131,12 @@ export const EmployeeWrapper = (props) => (
   </div>
 );
 
-EmployeeWrapper.propTypes = {
+AccountWrapper.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  url: PropTypes.string.isRequired,
   view: PropTypes.string.isRequired,
+  changeView: PropTypes.func.isRequired,
 };

@@ -1,5 +1,5 @@
 import { EmployeeMain } from '../../EmployeeMain';
 
 export default [
-   { path: '/employee', component: EmployeeMain, notexact: true },
+   { path: '/employee', component: EmployeeMain, notExact: true },
 ];

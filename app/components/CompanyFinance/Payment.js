@@ -1,18 +1,19 @@
+/* eslint no-script-url: 0 */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const TableRow = (props) => {
-  const { address, company, salary, startDay, endDay } = props;
+export const Payment = (props) => {
+  const { address, name, payment, date } = props;
 
   return (
     <tr>
       <td>
         <a href="javascript:void(0)" onClick={() => addToClipboard(address)}>Copy address!</a>
       </td>
-      <td>{company}</td>
-      <td>{salary}<i className="fa fa-dollar"></i></td>
-      <td>{startDay}</td>
-      <td>{endDay}</td>
+      <td><a href="">{name}</a></td>
+      <td>{payment} <i className="fa fa-dollar"></i></td>
+      <td>{date}</td>
     </tr>
   );
 };
@@ -26,10 +27,10 @@ function addToClipboard(address) {
   textField.remove();
   alert(`Copied the text: ${address}`);
 }
-TableRow.propTypes = {
+
+Payment.propTypes = {
   address: PropTypes.string.isRequired,
-  company: PropTypes.string.isRequired,
-  salary: PropTypes.number.isRequired,
-  startDay: PropTypes.string.isRequired,
-  endDay: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  payment: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
 };

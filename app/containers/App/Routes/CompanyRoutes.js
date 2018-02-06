@@ -1,5 +1,5 @@
-import CompanyMain from '../../CompanyMain/Loadable';
+import { CompanyMain } from '../../CompanyMain';
 
 export default [
-   { path: '/', component: CompanyMain },
+   { path: '/', component: CompanyMain, notExact: true },
 ];

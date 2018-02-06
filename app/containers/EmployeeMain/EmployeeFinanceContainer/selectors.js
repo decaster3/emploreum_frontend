@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the employeeFinanceContainer state domain
  */
-const selectEmployeeFinanceContainerDomain = (state) => state.get('employeeFinanceContainer');
+const selectEmployeeFinanceContainerDomain = (state) => state.get('finance');
 
 /**
  * Other specific selectors
