@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
+import VacancyCreation from '../VacancyCreation/Loadable';
 import injectReducer from 'utils/injectReducer';
 import makeSelectCompanyFinanceContainer from './selectors';
 import reducer from './reducer';
@@ -20,6 +21,7 @@ export class CompanyFinanceContainer extends React.Component { // eslint-disable
   renderWorkingEmployees(employees) {
     return employees.slice(0, 2).map((employee) =>
       (<WorkingEmployee
+        key={employee.name}
         avatar={employee.avatar}
         name={employee.name}
         position={employee.position}
@@ -31,6 +33,7 @@ export class CompanyFinanceContainer extends React.Component { // eslint-disable
   renderPayment(payments) {
     return payments.slice(0, 4).map((payment) =>
       (<Payment
+        key={payment.address}
         address={payment.address}
         name={payment.name}
         payment={payment.payment}
@@ -42,6 +45,7 @@ export class CompanyFinanceContainer extends React.Component { // eslint-disable
   renderVacations(vacations) {
     return vacations.slice(0, 4).map((vacation) =>
       (<Vacation
+        key={vacation.position}
         position={vacation.position}
         hoursPerWeek={vacation.hoursPerWeek}
         payment={vacation.payment}
@@ -55,7 +59,7 @@ export class CompanyFinanceContainer extends React.Component { // eslint-disable
     const spending = 1.5;
     const employee = 37;
     const mockPayments = [{
-      address: '0xaaa89ad8ef43fcf3d3f6b2e5fdac4cd4719bafbb',
+      address: '0xaaa89ad8ef43fcf3d3f6b2e5fdac4cd47f9bafbb',
       name: 'Mickle',
       payment: 2,
       date: 'Feb 1, 2018',
@@ -65,12 +69,12 @@ export class CompanyFinanceContainer extends React.Component { // eslint-disable
       payment: 2,
       date: 'Feb 1, 2018',
     }, {
-      address: '0xaaa89ad8ef43fcf3d3f6b2e5fdac4cd4719bafbb',
+      address: '0xaaa89ad8ef43fcf3d3f6b2e5fdas4cd4719bafbb',
       name: 'Rinat',
       payment: 2,
       date: 'Feb 1, 2018',
     }, {
-      address: '0xaaa89ad8ef43fcf3d3f6b2e5fdac4cd4719bafbb',
+      address: '0xaaa89ad8ef43fcf3d3f6a2e5fdac4cd4719bafbb',
       name: 'Ilgiz',
       payment: 2,
       date: 'Feb 1, 2018',
@@ -123,6 +127,7 @@ export class CompanyFinanceContainer extends React.Component { // eslint-disable
           recentPaments={recentPaments}
           vacations={vacations}
         />
+        <VacancyCreation />
       </div>
     );
   }

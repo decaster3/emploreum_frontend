@@ -13,6 +13,8 @@ export const WorkingEmployee = (props) => {
         <a href="javascript:void(0)">{name}</a>
         <p>
           <a href="javascript:void(0)">{position}</a>
+        </p>
+        <p>
           <span className="timestamp">{workedTime}</span>
         </p>
       </p>

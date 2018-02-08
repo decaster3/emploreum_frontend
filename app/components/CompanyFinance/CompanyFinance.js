@@ -4,7 +4,6 @@ import { FinanceHeader, CompanyInfo } from '../FinanceHeader';
 import { WorkingEmployees } from './WorkingEmployees';
 import { RecentPayments } from './RecentPayments';
 import { Vacations } from './Vacations';
-import { Modal } from './modal';
 
 export const CompanyFinance = (props) => {
   const { address, balance, spending, employee, workingEmployee, recentPaments, vacations } = props;
@@ -26,8 +25,6 @@ export const CompanyFinance = (props) => {
       <Vacations>
         {vacations}
       </Vacations>
-
-      <Modal />
     </div>
   );
 };
