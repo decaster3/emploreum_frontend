@@ -9,7 +9,7 @@ export const Vacations = (props) => {
     <div className="col-md-12">
       <div className="panel">
         <div className="panel-heading">
-          <h3 className="panel-title">Open vacations</h3>
+          <h3 className="panel-title">Open vacations </h3>
         </div>
 
         <div className="panel-body table-responsive">

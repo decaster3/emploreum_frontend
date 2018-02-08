@@ -9,12 +9,19 @@ const ChoosenSpecifications = (props) => {
   if (choosenSpecifications.toJS().length > 0) {
     choosenSpec = choosenSpecifications.toJS().map((item) =>
       (<div key={item.specification}>
-        <h4>Specification: {item.specification}</h4>
-        <button
-          onClick={() => deleteSpecificationFromChoosen(item.specification)}
-        >
-          Delete spec {item.specification}
-        </button>
+        <div className="form-inline">
+          <div className="form-group">
+            <h4 className="heading">{item.specification}</h4>
+          </div>
+          <div className="form-group" style={{ marginLeft: 20 }}>
+            <button
+              className="btn btn-default btn-xs"
+              onClick={() => deleteSpecificationFromChoosen(item.specification)}
+            >
+              <i className="fa fa-trash" />
+            </button>
+          </div>
+        </div>
       </div>)
     );
   }

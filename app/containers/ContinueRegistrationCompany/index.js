@@ -16,6 +16,8 @@ import {
   selectRegistrationStepStatus,
   selectSpecificationListStatus,
   selectChoosenSpecifications,
+  selectSubmitSpecificationButtonState,
+  selectSubmitAboutButtonState,
 } from './selectors';
 import reducer from './reducer';
 import SpecificationSkillsStep from '../../components/ContinueRegistrationCompany/SpecificationSkillsStep/Loadable';
@@ -65,6 +67,7 @@ export class ContinueRegistrationCompany extends React.Component { // eslint-dis
                   choosenSpecifications={this.props.choosenSpecifications}
                   deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
                   submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
+                  submittingSpecification={this.props.submittingSpecification}
                 />
               </div>
             );
@@ -73,6 +76,7 @@ export class ContinueRegistrationCompany extends React.Component { // eslint-dis
               <div>
                 <AboutStep
                   submitAboutStep={this.props.submitAboutStep}
+                  submittingAbout={this.props.submittingAbout}
                 />
               </div>
             );
@@ -100,6 +104,8 @@ function mapStateToProps(state) {
     specificationList: selectSpecificationList(state),
     registrationStepStatus: selectRegistrationStepStatus(state),
     specificationListStatus: selectSpecificationListStatus(state),
+    submittingSpecification: selectSubmitSpecificationButtonState(state),
+    submittingAbout: selectSubmitAboutButtonState(state),
   };
 }
 
@@ -129,6 +135,8 @@ ContinueRegistrationCompany.propTypes = {
   addSpecificationWithSkills: PropTypes.func,
   submitSpecificationSkillsStep: PropTypes.func,
   choosenSpecifications: PropTypes.object,
+  submittingAbout: PropTypes.bool,
+  submittingSpecification: PropTypes.bool,
 };
 
 

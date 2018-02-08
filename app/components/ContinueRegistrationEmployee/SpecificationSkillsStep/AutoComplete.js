@@ -12,11 +12,13 @@ class AutoComplete extends React.Component {
     this.unlockButton = this.unlockButton.bind(this);
     this.sendElement = this.sendElement.bind(this);
   }
+
   unlockButton() {
     this.setState({
       isButton: true,
     });
   }
+
   sendElement(value) {
     if (this.props.specification) {
       this.props.addItem(this.props.specification, value);
@@ -28,10 +30,12 @@ class AutoComplete extends React.Component {
       isButton: false,
     });
   }
+
   render() {
     return (
       <div className="input-group">
         <ReactAutocomplete
+          inputProps={{ className: 'form-control'}}
           items={this.props.list.toJS()}
           shouldItemRender={(item, value) => item.toLowerCase().indexOf(value.toLowerCase()) > -1}
           getItemValue={(item) => item}
@@ -47,7 +51,6 @@ class AutoComplete extends React.Component {
             this.unlockButton();
           }}
         />
-
         <span className="input-group-btn">
           <button
             className="btn btn-primary"

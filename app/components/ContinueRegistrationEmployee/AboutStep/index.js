@@ -15,6 +15,7 @@ class AboutStep extends React.Component { // eslint-disable-line react/prefer-st
       <div>
         <FormRegistrationFourthStep
           submitAboutStep={this.props.submitAboutStep}
+          submittingAbout={this.props.submittingAbout}
         />
       </div>
     );
@@ -23,6 +24,7 @@ class AboutStep extends React.Component { // eslint-disable-line react/prefer-st
 
 AboutStep.propTypes = {
   submitAboutStep: PropTypes.func,
+  submittingAbout: PropTypes.bool,
 };
 
 export default AboutStep;

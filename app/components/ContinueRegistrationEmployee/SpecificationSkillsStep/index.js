@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { SyncLoader } from 'react-spinners';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { LOADED } from '../../../containers/Registration/constants';
@@ -37,7 +38,17 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
                   deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
                 />
                 <div className="col-md-12 text-right">
-                  <button className="btn btn-success" onClick={() => this.props.submitSpecificationSkillsStep()}>Next</button>
+                  <button
+                    onClick={() => this.props.submitSpecificationSkillsStep()}
+                    className="btn btn-success"
+                    type="submit"
+                    disabled={this.props.submittingSpecification}
+                  >
+                    { this.props.submittingSpecification
+                        ? <SyncLoader color={'#ffffff'} size={5} />
+                        : <span>Next</span>
+                    }
+                  </button>
                 </div>
               </div>
             </div>
@@ -63,6 +74,7 @@ SpecificationSkillsStep.propTypes = {
   deleteSkillFromSpecification: PropTypes.func,
   specificationListStatus: PropTypes.string,
   choosenSpecifications: PropTypes.object,
+  submittingSpecification: PropTypes.bool,
 };
 
 export default SpecificationSkillsStep;

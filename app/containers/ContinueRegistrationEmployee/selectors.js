@@ -28,6 +28,16 @@ const selectChoosenSpecifications = createSelector(
     (choosenSpecifications) => choosenSpecifications.get('choosenSpecifications').get('items')
 );
 
+export const selectSubmitSpecificationButtonState = createSelector(
+    selectRegistrationEmployeeDomain,
+    (submittingSpecification) => submittingSpecification.get('submittingSpecification')
+);
+
+export const selectSubmitAboutButtonState = createSelector(
+    selectRegistrationEmployeeDomain,
+    (submittingAbout) => submittingAbout.get('submittingAbout')
+);
+
 export {
   selectChoosenSpecifications,
   selectSpecificationListStatus,

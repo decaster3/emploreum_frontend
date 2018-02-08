@@ -6,8 +6,6 @@
 import { push } from 'react-router-redux';
 
 import {
-  UP_REGISTRATION_STEP,
-  DOWN_REGISTRATION_STEP,
   GET_EMPLOYEE_REGISTRATION_STEP,
   LOADING,
   GET_EMPLOYEE_SKILLS_LIST,
@@ -22,6 +20,8 @@ import {
   ADD_SKILL_TO_POSSIBLE,
   DELETE_SPECIFICATION_FROM_CHOOSEN,
   DELETE_SKILL_FROM_SPECIFICATION,
+  CHANGE_SUBMIT_SPECIFICATION_BUTTON_STATUS,
+  CHANGE_SUBMIT_ABOUT_BUTTON_STATUS,
 } from './constants';
 // imitation server
 import {
@@ -32,7 +32,10 @@ import {
 } from '../../services/api/register';
 
 import { updateRegistrationStep, completeRegistration } from '../UserSession/actions';
-import { log } from 'util';
+
+export const changeSubmitSpecificationButtonState = () => ({ type: CHANGE_SUBMIT_SPECIFICATION_BUTTON_STATUS });
+export const changeSubmitAboutButtonState = () => ({ type: CHANGE_SUBMIT_ABOUT_BUTTON_STATUS });
+
 
 export const getRegistrationStep = () => (
   (dispatch, getState) => {
@@ -47,18 +50,16 @@ export const getRegistrationStep = () => (
   }
 );
 
-export const upRegistrationStep = () => ({ type: UP_REGISTRATION_STEP });
-export const downRegistrationStep = () => ({ type: DOWN_REGISTRATION_STEP });
-
-
 export const submitSpecificationSkillsStep = () => (
   (dispatch, getState) => {
+    dispatch(changeSubmitSpecificationButtonState());
     const arrOfChoosenSpecifications = getState().get('continueRegistrationEmployee')
       .get('choosenSpecifications').get('items');
     submitEmployeeSpecificationsSkillsAPI(arrOfChoosenSpecifications, (data) => {
-      console.log(data);
+      dispatch(changeSubmitSpecificationButtonState());
       dispatch(updateRegistrationStep(data.registrationStep));
     }, (err) => {
+      dispatch(changeSubmitSpecificationButtonState());
       console.log(err);
     }, dispatch).then(() => {
       dispatch(getRegistrationStep());
@@ -68,6 +69,8 @@ export const submitSpecificationSkillsStep = () => (
 
 export const submitAboutStep = (values) => (
   (dispatch) => {
+    console.log(values);
+    
     const { name, about } = values.toJS();
     submitEmployeeAboutAPI({ name, about }, () => {
       dispatch(completeRegistration());

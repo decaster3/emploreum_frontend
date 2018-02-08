@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { SyncLoader } from 'react-spinners';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { LOADED } from '../../../containers/Registration/constants';
@@ -19,17 +20,36 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
     switch (this.props.specificationListStatus) {
       case LOADED:
         return (
-          <div>
-            <AutoComplete
-              addItem={this.props.addSpecificationWithSkills}
-              list={this.props.specificationList}
-              whatToAdd={'specification'}
-            />
-            <ChoosenSpecifications
-              choosenSpecifications={this.props.choosenSpecifications}
-              deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
-            />
-            <button onClick={() => this.props.submitSpecificationSkillsStep()}>Next</button>
+          <div id="wrapper">
+            <div className="main">
+              <div className="panel panel-headline col-md-8 col-md-offset-1">
+                <h4 className="heading">Add specification</h4>
+                <hr />
+                <AutoComplete
+                  addItem={this.props.addSpecificationWithSkills}
+                  list={this.props.specificationList}
+                  whatToAdd={'specification'}
+                />
+                <hr />
+                <ChoosenSpecifications
+                  choosenSpecifications={this.props.choosenSpecifications}
+                  deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
+                />
+                <div className="col-md-12 text-right">
+                  <button
+                    onClick={() => this.props.submitSpecificationSkillsStep()}
+                    className="btn btn-success"
+                    type="submit"
+                    disabled={this.props.submittingSpecification}
+                  >
+                    { this.props.submittingSpecification
+                        ? <SyncLoader color={'#ffffff'} size={5} />
+                        : <span>Next</span>
+                    }
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         );
       default:
@@ -50,6 +70,7 @@ SpecificationSkillsStep.propTypes = {
   addSpecificationWithSkills: PropTypes.func,
   specificationListStatus: PropTypes.string,
   choosenSpecifications: PropTypes.object,
+  submittingSpecification: PropTypes.bool,
 };
 
 export default SpecificationSkillsStep;

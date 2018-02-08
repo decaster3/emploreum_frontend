@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for ContinueRegistration
+ * Asynchronously loads the component for StartPage
  *
  */
 

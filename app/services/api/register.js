@@ -1,6 +1,6 @@
 import AxiosService from '../AxiosService';
 
-const baseURL = 'http://192.168.0.107:3000';
+const baseURL = 'http://emploreum.herokuapp.com';
 
 export const loginAPI = (credentails, successCallBack, errorCallBack, dispatch) =>
   AxiosService.post(`${baseURL}/auth/login`, credentails, successCallBack, errorCallBack, dispatch);
@@ -37,12 +37,12 @@ export const submitEmployeeSpecificationsSkillsAPI = (credentails, successCallBa
 };
 // не тестил
 export const submitCompanySpecificationsSkillsAPI = (credentails, successCallBack, errorCallBack, dispatch) => {
-  const arr = [];
+  const specs = [];
   credentails.toJS().forEach((element) => {
     const specification = element.specification;
-    arr.push(specification);
+    specs.push(specification);
   });
-  return AxiosService.post(`${baseURL}/auth/signup/3`, arr, successCallBack, errorCallBack, dispatch);
+  return AxiosService.post(`${baseURL}/auth/signup/3`, specs, successCallBack, errorCallBack, dispatch);
 };
 
 export const logoutTestAPI = (credentails, successCallBack, errorCallBack, dispatch) =>

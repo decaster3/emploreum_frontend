@@ -1,13 +1,16 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
+import { SyncLoader } from 'react-spinners';
 
 import { renderField } from '../../../forms/fields/FormRegisterField';
 import { required } from '../../../forms/validation/RequiredValidation';
 
 
 const FormRegistrationFourthStep = (props) => {
-  const { handleSubmit, submitAboutStep, submitting } = props;
+  const { handleSubmit, submitAboutStep, submittingAbout } = props;
+  console.log(submittingAbout);
+  
   return (
     <form onSubmit={handleSubmit(submitAboutStep)}>
       <Field
@@ -23,7 +26,16 @@ const FormRegistrationFourthStep = (props) => {
         validate={required}
         label="About"
       />
-      <button className="btn btn-primary btn-sm btn-block" type="submit" disabled={submitting}>Submit</button>
+      <button
+        className="btn btn-primary btn-sm btn-block"
+        type="submit"
+        disabled={submittingAbout}
+      >
+        { submittingAbout
+            ? <SyncLoader color={'#ffffff'} size={5} />
+            : <span>Submit</span>
+        }
+      </button>
     </form>
   );
 };
@@ -46,5 +58,5 @@ export default reduxForm({
 FormRegistrationFourthStep.propTypes = {
   handleSubmit: PropTypes.func,
   submitAboutStep: PropTypes.func,
-  submitting: PropTypes.bool,
+  submittingAbout: PropTypes.bool,
 };

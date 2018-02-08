@@ -3,10 +3,9 @@
  * RegistrationEmployee actions
  *
  */
+import { SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
 import {
-  UP_REGISTRATION_STEP,
-  DOWN_REGISTRATION_STEP,
   GET_EMPLOYEE_REGISTRATION_STEP,
   LOADING,
   LOADED,
@@ -16,6 +15,8 @@ import {
   ADD_SPECIFICATION_TO_POSSIBLE,
   DELETE_SPECIFICATION_FROM_CHOOSEN,
   GET_EMPLOYEE_SPECIFICATION_LIST,
+  CHANGE_SUBMIT_SPECIFICATION_BUTTON_STATUS,
+  CHANGE_SUBMIT_ABOUT_BUTTON_STATUS,
 } from './constants';
 // imitation server
 import {
@@ -25,6 +26,10 @@ import {
  } from '../../services/api/register';
 
 import { updateRegistrationStep, completeRegistration } from '../UserSession/actions';
+
+export const changeSubmitSpecificationButtonState = () => ({ type: CHANGE_SUBMIT_SPECIFICATION_BUTTON_STATUS });
+export const changeSubmitAboutButtonState = () => ({ type: CHANGE_SUBMIT_ABOUT_BUTTON_STATUS });
+
 
 export const getRegistrationStep = () => (
   (dispatch, getState) => {
@@ -38,16 +43,11 @@ export const getRegistrationStep = () => (
   }
 );
 
-export const upRegistrationStep = () => ({ type: UP_REGISTRATION_STEP });
-export const downRegistrationStep = () => ({ type: DOWN_REGISTRATION_STEP });
-
-
 export const submitSpecificationSkillsStep = () => (
   (dispatch, getState) => {
-    console.log(getState());
     const specs = getState().get('continueRegistrationCompany')
       .get('choosenSpecifications').get('items');
-    submitCompanySpecificationsSkillsAPI({ specs }, (data) => {
+    submitCompanySpecificationsSkillsAPI(specs, (data) => {
 // надо тестить
       dispatch(updateRegistrationStep(data.registrationStep));
     }, (err) => {
@@ -64,7 +64,9 @@ export const submitAboutStep = (values) => (
     submitCompanyAboutAPI({ name, about }, () => {
       dispatch(completeRegistration());
     }, (err) => {
-      console.log(err);
+      if (err) {
+        throw new SubmissionError({ _error: 'Incorrect data format!' });
+      }
     }, dispatch).then(() => {
       dispatch(push('company/finance'));
     });

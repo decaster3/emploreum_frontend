@@ -14,7 +14,7 @@ export const selectUserDomain = (state) => state.get('userSession');
  * Default selector used by User
  */
 
-export const selectUserAuth = createSelector(
+export const selectUserStatus = createSelector(
   selectUserDomain,
-  (userAuth) => userAuth.get('userAuth')
+  (userStatus) => userStatus.get('userAuth').get('userState')
 );

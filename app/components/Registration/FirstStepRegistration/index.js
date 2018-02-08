@@ -24,6 +24,7 @@ class FirstStepRegistration extends React.Component { // eslint-disable-line rea
                   <FormRegisterFirstStep
                     submitEmail={this.props.submitEmail}
                     role={this.props.role}
+                    submittingButton={this.props.submittingEmail}
                   />
                 </div>
               </div>
@@ -44,6 +45,7 @@ class FirstStepRegistration extends React.Component { // eslint-disable-line rea
 FirstStepRegistration.propTypes = {
   submitEmail: PropTypes.func,
   role: PropTypes.string,
+  submittingEmail: PropTypes.bool,
 };
 
 export default FirstStepRegistration;

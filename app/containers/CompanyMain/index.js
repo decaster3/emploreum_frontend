@@ -4,7 +4,7 @@ import AccountWrapperContainer from '../AccountWrapper';
 import CompanyProfileContainer from './CompanyProfileContainer';
 import CompanyFinanceContainer from './CompanyFinanceContainer';
 
-export const CompanyMain = (props) => (
+export const CompanyMain = () => (
   <AccountWrapperContainer url={'/company'}>
     <Switch>
       <Route exact path="/company" component={CompanyProfileContainer} />

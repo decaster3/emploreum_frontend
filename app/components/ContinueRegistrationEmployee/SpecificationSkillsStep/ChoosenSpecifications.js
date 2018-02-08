@@ -19,13 +19,12 @@ const ChoosenSpecifications = (props) => {
                 <h4 className="heading">{item.specification} developer</h4>
               </div>
               <div className="form-group" style={{ marginLeft: 20 }}>
-                <a href="#" className="btn btn-default btn-xs">
-                  <button
-                    onClick={() => deleteSpecificationFromChoosen(item.specification)}
-                  >
-                    <i className="fa fa-trash" />
-                  </button>
-                </a>
+                <button
+                  className="btn btn-default btn-xs"
+                  onClick={() => deleteSpecificationFromChoosen(item.specification)}
+                >
+                  <i className="fa fa-trash" />
+                </button>
               </div>
             </div>
             <Skills
