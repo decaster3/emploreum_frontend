@@ -6,7 +6,7 @@ export const renderField = ({ input, label, type, meta: { touched, error, warnin
   <div>
     <label htmlFor="vacancy-eth" className="small">{label}</label>
     <div className={asyncValidate ? 'async-validate' : ''}>
-      <input type="text" id="vacancy-eth" className="form-control" {...input} placeholder={label} type={type} />
+      <input id="vacancy-eth" className="form-control" {...input} placeholder={label} type={type} />
       {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   </div>

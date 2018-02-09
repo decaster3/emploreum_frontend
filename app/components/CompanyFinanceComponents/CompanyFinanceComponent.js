@@ -5,7 +5,7 @@ import { WorkingEmployees } from './Employees/WorkingEmployees';
 import { RecentPayments } from './Payments/RecentPayments';
 import { Vacations } from './Vacancys/Vacations';
 
-export const CompanyFinance = (props) => {
+export const CompanyFinanceComponent = (props) => {
   const { address, balance, spending, employee, workingEmployee, recentPaments, vacations } = props;
 
   return (
@@ -29,7 +29,7 @@ export const CompanyFinance = (props) => {
   );
 };
 
-CompanyFinance.propTypes = {
+CompanyFinanceComponent.propTypes = {
   address: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
   spending: PropTypes.number.isRequired,

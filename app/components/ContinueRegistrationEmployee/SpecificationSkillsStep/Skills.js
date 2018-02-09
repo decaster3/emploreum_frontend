@@ -9,6 +9,7 @@ const Skills = (props) => {
   return (
     <div>
       <AutoComplete
+        inputProps={{ className: 'form-control' }}
         addItem={addSkill}
         list={fromJS(item.possibleSkills)}
         whatToAdd={'skill'}

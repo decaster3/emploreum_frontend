@@ -16,7 +16,7 @@ import {
   selectChoosenSpecifications,
 } from './selectors';
 import reducer from './reducer';
-import VacancyCreationModal from '../../../components/CompanyFinance/VacancyCreation/Loadable';
+import VacancyCreationModal from '../../../components/CompanyFinanceComponents/VacancyCreation/Loadable';
 import {
   addSkill,
   getSpecification,

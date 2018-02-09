@@ -19,6 +19,7 @@ import {
   DELETE_SPECIFICATION_FROM_CHOOSEN,
   DELETE_SKILL_FROM_SPECIFICATION,
   CHANGE_SUBMIT_VACANCY_BUTTON_STATUS,
+  VACANCY_CREATED,
 } from './constants';
 
 const initialState = fromJS({
@@ -35,6 +36,8 @@ const initialState = fromJS({
 
 function registrationEmployeeReducer(state = initialState, action) {
   switch (action.type) {
+    case VACANCY_CREATED:
+      return initialState;
     case CHANGE_SUBMIT_VACANCY_BUTTON_STATUS:
       return state
         .set('submittingSpecification', !state.get('submittingSpecification'));

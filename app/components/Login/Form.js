@@ -13,7 +13,6 @@ import { LOGGING_IN } from '../../containers/UserSession/constants';
 const FormLogin = (props) => {
   const { error, handleSubmit, login, userStatus } = props;
   const submitting = userStatus === LOGGING_IN;
-  
   return (
     <form onSubmit={handleSubmit(login)}>
       <h3>Login</h3>
@@ -49,19 +48,6 @@ const FormLogin = (props) => {
 export default reduxForm({
   form: 'FormLogin',
 })(FormLogin);
-
-// NOTE: for vorm value in that form
-
-// const selector = formValueSelector('FormLogin');
-// FormLogin = connect(
-//   (state) => {
-//     const { email, password } = selector(state, 'firstName', 'email', 'password');
-//     return {
-//       email,
-//       password,
-//     };
-//   }
-// )(FormLogin);
 
 FormLogin.propTypes = {
   handleSubmit: PropTypes.func,

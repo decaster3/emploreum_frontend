@@ -20,6 +20,7 @@ import {
   DELETE_SPECIFICATION_FROM_CHOOSEN,
   DELETE_SKILL_FROM_SPECIFICATION,
   CHANGE_SUBMIT_VACANCY_BUTTON_STATUS,
+  VACANCY_CREATED,
 } from './constants';
 // imitation server
 import {
@@ -27,13 +28,27 @@ import {
   getSkillsFromSpecificationAPI,
 } from '../../../services/api/SkillsSpecifications';
 
+import {
+  submitVacancyAPI,
+} from '../../../services/api/Vacancy';
 export const changeSubmitSpecificationButtonState = () => ({ type: CHANGE_SUBMIT_VACANCY_BUTTON_STATUS });
 
 export const createVacancy = (values) => (
-  (dispatch) => {
-    console.log(values);
+  (dispatch, getState) => {
+    const arrOfChoosenSpecificationsSkills = getState().get('vacancyCreation')
+      .get('choosenSpecifications').get('items');
+    console.log(arrOfChoosenSpecificationsSkills.toJS());
+    
+    return submitVacancyAPI(arrOfChoosenSpecificationsSkills, values,
+      () => {
+        dispatch(vacancyCreated());
+      },
+      (err) => {
+        console.log(err);
+      }, dispatch);
   }
 );
+export const vacancyCreated = () => ({ type: VACANCY_CREATED });
 
 export const getSpecification = () => (
   (dispatch) => {

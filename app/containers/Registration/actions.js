@@ -36,8 +36,6 @@ export const submitEmail = (values) => (
         dispatch(changeSubmitEmailButtonState());
       },
       (err) => {
-        console.log(err.response.data);
-        
         dispatch(changeSubmitEmailButtonState());
         if (err.response.data) {
           throw new SubmissionError({ _error: err.response.data });
