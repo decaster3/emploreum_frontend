@@ -22,8 +22,9 @@ import {
 import {
   submitCompanySpecificationsSkillsAPI,
   submitCompanyAboutAPI,
-  getSpecificationsAPI,
- } from '../../services/api/register';
+ } from '../../services/api/Register';
+
+import { getSpecificationsAPI } from '../../services/api/SkillsSpecifications';
 
 import { updateRegistrationStep, completeRegistration } from '../UserSession/actions';
 

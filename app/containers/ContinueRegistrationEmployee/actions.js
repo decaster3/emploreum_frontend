@@ -27,9 +27,12 @@ import {
 import {
   submitEmployeeSpecificationsSkillsAPI,
   submitEmployeeAboutAPI,
+} from '../../services/api/Register';
+
+import {
   getSpecificationsAPI,
   getSkillsFromSpecificationAPI,
-} from '../../services/api/register';
+} from '../../services/api/SkillsSpecifications';
 
 import { updateRegistrationStep, completeRegistration } from '../UserSession/actions';
 

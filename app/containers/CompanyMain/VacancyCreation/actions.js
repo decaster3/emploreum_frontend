@@ -25,15 +25,13 @@ import {
 import {
   getSpecificationsAPI,
   getSkillsFromSpecificationAPI,
-} from '../../../services/api/register';
+} from '../../../services/api/SkillsSpecifications';
 
 export const changeSubmitSpecificationButtonState = () => ({ type: CHANGE_SUBMIT_VACANCY_BUTTON_STATUS });
 
 export const createVacancy = (values) => (
   (dispatch) => {
-    console.log(123);
-    
-    console.log(values);   
+    console.log(values);
   }
 );
 

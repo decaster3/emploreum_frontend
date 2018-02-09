@@ -14,7 +14,7 @@ import {
   COMPLETE_REGISTRATION,
 } from './constants';
 
-import { loginAPI } from '../../services/api/register';
+import { loginAPI } from '../../services/api/Register';
 
 
 export const login = (values) => (

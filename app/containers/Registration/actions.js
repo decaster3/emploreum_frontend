@@ -13,7 +13,7 @@ import {
   CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE,
 } from './constants';
 
-import { registerAPI, sendVerificationCodeAPI } from '../../services/api/register';
+import { registerAPI, sendVerificationCodeAPI } from '../../services/api/Register';
 import { loginAfterRegistration } from '../UserSession/actions';
 export const changeRole = (role) => ({
   type: CHANGE_ROLE,
