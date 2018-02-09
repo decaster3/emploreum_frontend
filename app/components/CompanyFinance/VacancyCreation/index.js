@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpecificationSkills from './SpecificationSkills/Loadable';
-
+import FormCreationVacancy from './Form';
 // import styled from 'styled-components';
 
 class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -29,19 +29,10 @@ class VacancyCreation extends React.Component { // eslint-disable-line react/pre
             choosenSpecifications={this.props.choosenSpecifications}
             specificationListStatus={this.props.specificationListStatus}
           />
-          <label htmlFor="vacancy-name" className="small">Название должности</label>
-          <input type="text" placeholder="название" id="vacancy-name" className="form-control" />
-
-          <label htmlFor="vacancy-eth" className="small">Плата в неделю</label>
-          <input type="text" placeholder="палата" id="vacancy-eth" className="form-control" />
-
-          <label htmlFor="vacancy-eth" className="small">Продолжительность (в месяцах)</label>
-          <input type="text" placeholder="продолжительность" id="vacancy-dur" className="form-control" />
         </div>
-        <div className="modal-footer">
-          <button type="button" className="btn btn-default" data-dismiss="modal">Закрыть</button>
-          <button type="button" className="btn btn-primary">Сохранить</button>
-        </div>
+        <FormCreationVacancy
+          createVacancy={this.props.createVacancy}
+        />
       </div>
     );
   }
@@ -54,6 +45,7 @@ VacancyCreation.propTypes = {
   addSpecificationWithSkills: PropTypes.func,
   addSkill: PropTypes.func,
   deleteSkillFromSpecification: PropTypes.func,
+  createVacancy: PropTypes.func,
   specificationListStatus: PropTypes.string,
   choosenSpecifications: PropTypes.object,
 };

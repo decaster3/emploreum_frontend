@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FinanceHeader, CompanyInfo } from '../FinanceHeader';
-import { WorkingEmployees } from './WorkingEmployees';
-import { RecentPayments } from './RecentPayments';
-import { Vacations } from './Vacations';
+import { WorkingEmployees } from './Employees/WorkingEmployees';
+import { RecentPayments } from './Payments/RecentPayments';
+import { Vacations } from './Vacancys/Vacations';
 
 export const CompanyFinance = (props) => {
   const { address, balance, spending, employee, workingEmployee, recentPaments, vacations } = props;

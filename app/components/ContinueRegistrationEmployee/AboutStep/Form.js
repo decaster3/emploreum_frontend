@@ -10,7 +10,6 @@ import { required } from '../../../forms/validation/RequiredValidation';
 const FormRegistrationFourthStep = (props) => {
   const { handleSubmit, submitAboutStep, submittingAbout } = props;
   console.log(submittingAbout);
-  
   return (
     <form onSubmit={handleSubmit(submitAboutStep)}>
       <Field

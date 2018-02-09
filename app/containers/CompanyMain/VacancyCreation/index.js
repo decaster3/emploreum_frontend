@@ -24,6 +24,7 @@ import {
   addSpecificationWithSkills,
   deleteSpecificationFromChoosen,
   deleteSkillFromSpecification,
+  createVacancy,
 } from './actions';
 
 export class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -47,6 +48,7 @@ export class VacancyCreation extends React.Component { // eslint-disable-line re
             deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
             submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
             submittingSpecification={this.props.submittingSpecification}
+            createVacancy={this.props.createVacancy}
           />
         </div>
       </div>
@@ -70,6 +72,7 @@ function mapDispatchToProps(dispatch) {
     deleteSkillFromSpecification: (evt, ev) => dispatch(deleteSkillFromSpecification(evt, ev)),
     addSpecificationWithSkills: (evt) => dispatch(addSpecificationWithSkills(evt)),
     deleteSpecificationFromChoosen: (evt) => dispatch(deleteSpecificationFromChoosen(evt)),
+    createVacancy: (evt) => dispatch(createVacancy(evt)),
   };
 }
 
@@ -79,7 +82,6 @@ const withReducer = injectReducer({ key: 'vacancyCreation', reducer });
 VacancyCreation.propTypes = {
   getSpecification: PropTypes.func,
   getSkills: PropTypes.func,
-  getRegistrationStep: PropTypes.func,
   specificationListStatus: PropTypes.string,
   skillsListStatus: PropTypes.string,
   skillsList: PropTypes.object,
@@ -89,6 +91,7 @@ VacancyCreation.propTypes = {
   deleteSpecificationFromChoosen: PropTypes.func,
   deleteSkillFromSpecification: PropTypes.func,
   submitSpecificationSkillsStep: PropTypes.func,
+  createVacancy: PropTypes.func,
   submittingSpecification: PropTypes.bool,
   choosenSpecifications: PropTypes.object,
 };

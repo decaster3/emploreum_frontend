@@ -8,11 +8,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import injectReducer from 'utils/injectReducer';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import VacancyCreation from '../VacancyCreation/Loadable';
-import injectReducer from 'utils/injectReducer';
 import makeSelectCompanyFinanceContainer from './selectors';
 import reducer from './reducer';
 import { CompanyFinance, WorkingEmployee, Payment, Vacation } from '../../../components/CompanyFinance';
