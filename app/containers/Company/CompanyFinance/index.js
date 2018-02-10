@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import injectReducer from 'utils/injectReducer';
 import { compose } from 'redux';
+import { PulseLoader } from 'react-spinners';
 
 import VacancyCreation from '../VacancyCreation/Loadable';
 
@@ -37,7 +38,7 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
 
   renderWorkingEmployees() {
     if (this.props.employeesStatus === 'LOADING') {
-      return (<div> Loading </div>);
+      return (<PulseLoader color={'#0081c2'} size={20} />);
     }
     return this.props.employeesItems.map((employee) =>
       (<WorkingEmployee
@@ -52,7 +53,7 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
 
   renderPayment() {
     if (this.props.recentPaymentsStatus === 'LOADING') {
-      return (<div> Loading </div>);
+      return (<PulseLoader color={'#0081c2'} size={20} />);
     }
     return this.props.recentPaymentsItems.map((payment) =>
       (<Payment
@@ -67,7 +68,7 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
 
   renderVacancies() {
     if (this.props.openVacanciesStatus === 'LOADING') {
-      return (<div> Loading </div>);
+      return (<PulseLoader color={'#0081c2'} size={20} />);
     }
     return this.props.openVacanciesItems.map((vacation) =>
       (<Vacancy
