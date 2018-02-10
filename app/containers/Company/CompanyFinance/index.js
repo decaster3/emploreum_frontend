@@ -22,12 +22,11 @@ import {
   selectEmployeeStatus,
 } from './selectors';
 import reducer from './reducer';
-import {
-  CompanyFinanceComponent,
-  WorkingEmployee,
-  Payment,
-  Vacation,
- } from '../../../components/Company/CompanyFinanceComponents';
+
+import CompanyFinanceComponent from '../../../components/Company/CompanyFinanceComponents/CompanyFinanceMainComponent/Loadable';
+import WorkingEmployee from '../../../components/Company/CompanyFinanceComponents/Employees/WorkingEmployee/Loadable';
+import Payment from '../../../components/Company/CompanyFinanceComponents/Payments/RecentPayment/Loadable';
+import Vacancy from '../../../components/Company/CompanyFinanceComponents/Vacancies/Vacancy/Loadable';
 
 import { getAllFinance } from './actions';
 
@@ -66,12 +65,12 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
     );
   }
 
-  renderVacations() {
+  renderVacancies() {
     if (this.props.openVacanciesStatus === 'LOADING') {
       return (<div> Loading </div>);
     }
     return this.props.openVacanciesItems.map((vacation) =>
-      (<Vacation
+      (<Vacancy
         key={vacation.position}
         position={vacation.position}
         hoursPerWeek={vacation.hoursPerWeek}
@@ -87,7 +86,7 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
     const employee = 37;
     const workingEmployee = this.renderWorkingEmployees();
     const recentPaments = this.renderPayment();
-    const vacations = this.renderVacations();
+    const vacancies = this.renderVacancies();
 
     return (
       <div>
@@ -102,7 +101,7 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
           employee={employee}
           workingEmployee={workingEmployee}
           recentPaments={recentPaments}
-          vacations={vacations}
+          vacancies={vacancies}
         />
         <VacancyCreation />
       </div>

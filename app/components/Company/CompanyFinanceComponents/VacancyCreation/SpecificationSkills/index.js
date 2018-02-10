@@ -5,40 +5,51 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { LOADED } from '../../../../../containers/Registration/constants';
-import AutoComplete from './AutoComplete';
-import ChoosenSpecifications from './ChoosenSpecifications';
 
-class SpecificationSkills extends React.Component { // eslint-disable-line react/prefer-stateless-function
+import { LOADED } from '../../../../../containers/Registration/constants';
+import AutoComplete from './AutoComplete/Loadable';
+import ChoosenSpecification from './ChoosenSpecification/Loadable';
+import ChoosenSpecifications from './ChoosenSpecifications/Loadable';
+import Wrapper from './SpecificationWrapper/Loadable';
+
+class SpecificationSkillsStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getSpecification();
   }
+  renderChoosenSpecification() {
+    if (this.props.choosenSpecifications.toJS().length < 0) {
+      return (<div>Choose specification please</div>);
+    }
+    return this.props.choosenSpecifications.toJS().map((item) =>
+    (<ChoosenSpecification
+      key={item.specification}
+      specification={item.specification}
+      deleteSpecification={this.props.deleteSpecificationFromChoosen}
+      addSkill={this.props.addSkill}
+      skills={item.items}
+      possibleSkills={item.possibleSkills}
+      deleteSkill={this.props.deleteSkillFromSpecification}
+    />));
+  }
+
   render() {
+    const specifications = this.renderChoosenSpecification();
     switch (this.props.specificationListStatus) {
       case LOADED:
         return (
-          <div id="wrapper">
-            <div className="main">
-              <div className="panel panel-headline col-md-8 col-md-offset-1">
-                <h4 className="heading">Add specification</h4>
-                <hr />
-                <AutoComplete
-                  addItem={this.props.addSpecificationWithSkills}
-                  list={this.props.specificationList}
-                  whatToAdd={'specification'}
-                />
-                <hr />
-                <ChoosenSpecifications
-                  choosenSpecifications={this.props.choosenSpecifications}
-                  addSkill={this.props.addSkill}
-                  deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
-                  deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
-                />
-              </div>
-            </div>
-          </div>
+          <Wrapper>
+            <AutoComplete
+              addItem={this.props.addSpecificationWithSkills}
+              list={this.props.specificationList}
+              whatToAdd={'specification'}
+            />
+            <hr />
+            <ChoosenSpecifications>
+              {specifications}
+            </ChoosenSpecifications>
+
+          </Wrapper>
         );
       default:
         return (
@@ -50,7 +61,7 @@ class SpecificationSkills extends React.Component { // eslint-disable-line react
   }
 }
 
-SpecificationSkills.propTypes = {
+SpecificationSkillsStep.propTypes = {
   specificationList: PropTypes.object,
   getSpecification: PropTypes.func,
   deleteSpecificationFromChoosen: PropTypes.func,
@@ -61,4 +72,4 @@ SpecificationSkills.propTypes = {
   choosenSpecifications: PropTypes.object,
 };
 
-export default SpecificationSkills;
+export default SpecificationSkillsStep;

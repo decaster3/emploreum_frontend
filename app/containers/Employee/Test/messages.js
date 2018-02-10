@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.Test.header',
-    defaultMessage: 'Profile !',
+    defaultMessage: 'This is Test container !',
   },
 });

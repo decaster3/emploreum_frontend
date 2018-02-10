@@ -8,7 +8,7 @@ const ButtonSubmit = (props) => {
     submit,
   } = props;
   return (
-    <div className="col-md-12 text-right">
+    <div className="col-md-12 text-right no-padding padding-top-30 padding-bottom-30">
       <button
         onClick={() => submit()}
         className="btn btn-success"

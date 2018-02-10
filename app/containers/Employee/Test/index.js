@@ -13,31 +13,26 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
-import {makeSelectTest} from './selectors';
+import makeSelectTest from './selectors';
 import reducer from './reducer';
 import messages from './messages';
-import {
-  defaultAction
-} from './actions';
 
 export class Test extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         <Helmet>
-          <title>Employee Profile</title>
-          <meta name="description" content="Employee Profile" />
+          <title>Test</title>
+          <meta name="description" content="Description of Test" />
         </Helmet>
         <FormattedMessage {...messages.header} />
-        <p onClick={() => this.props.defaultAction()}> counter {this.props.test.counter}
-        </p>
       </div>
     );
   }
 }
 
 Test.propTypes = {
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -46,7 +41,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    defaultAction: () => dispatch(defaultAction()),
+    dispatch,
   };
 }
 

@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'dfs';
+export const DEFAULT_ACTION = 'app/Test/DEFAULT_ACTION';

@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpecificationSkills from './SpecificationSkills/Loadable';
-import FormCreationVacancy from './Form';
+import FormCreationVacancy from './Form/Loadable';
 // import styled from 'styled-components';
 
 class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -29,10 +29,10 @@ class VacancyCreation extends React.Component { // eslint-disable-line react/pre
             choosenSpecifications={this.props.choosenSpecifications}
             specificationListStatus={this.props.specificationListStatus}
           />
+          <FormCreationVacancy
+            createVacancy={this.props.createVacancy}
+          />
         </div>
-        <FormCreationVacancy
-          createVacancy={this.props.createVacancy}
-        />
       </div>
     );
   }

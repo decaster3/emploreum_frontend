@@ -28,8 +28,6 @@ import {
 } from './actions';
 
 export class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  componentDidMount() {
-  }
   render() {
     return (
       <div className="modal fade" id="modal-vacancy" tabIndex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">

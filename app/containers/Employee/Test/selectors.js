@@ -16,10 +16,10 @@ const selectTestDomain = (state) => state.get('test');
 
 const makeSelectTest = () => createSelector(
   selectTestDomain,
-  (substate) => substate.toJS()
+  (test) => test.toJS('test')
 );
 
+export default makeSelectTest;
 export {
-  makeSelectTest,
   selectTestDomain,
 };

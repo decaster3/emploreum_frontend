@@ -7,8 +7,9 @@ import { Helmet } from 'react-helmet';
 import injectReducer from 'utils/injectReducer';
 // import makeSelectEmployeeMain from './selectors';
 import reducer from './reducer';
-import { EmployeeFinance, TableRow } from '../../../components/EmployeeFinance';
 
+import EmployeeFinance from '../../../components/Employee/EmployeeFinanceComponents/EmployeeFinance/Loadable';
+import TableRow from '../../../components/Employee/EmployeeFinanceComponents/TableRow/Loadable';
 
 class EmployeeFinanceContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -41,7 +42,8 @@ class EmployeeFinanceContainer extends React.Component { // eslint-disable-line 
 
     const currentContractsRows = this.renderContracts(currentContracts);
     const endedContractsRow = this.renderContracts(endedContracts);
-
+    console.log(EmployeeFinance);
+    
     return (
       <div>
         <Helmet>

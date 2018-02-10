@@ -9,13 +9,14 @@ import {
   DEFAULT_ACTION,
 } from './constants';
 
-const initialState = fromJS({counter: 0});
+const initialState = fromJS({
+  test: 'test',
+});
 
 function testReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
-      return state
-        .set('counter', state.get('counter') + 1)
+      return state;
     default:
       return state;
   }
