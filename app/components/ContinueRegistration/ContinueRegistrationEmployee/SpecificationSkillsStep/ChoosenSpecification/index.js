@@ -11,8 +11,9 @@ class ChoosenSpecification extends React.Component {
     if (this.props.skills && this.props.skills.length > 0) {
       return this.props.skills.map((item) =>
         (<ChoosenSkill
-          key={item}
-          skillName={item}
+          key={item.name}
+          skillName={item.name}
+          skill={item}
           specification={this.props.specification}
           deleteSkill={this.props.deleteSkill}
         />));
@@ -25,7 +26,7 @@ class ChoosenSpecification extends React.Component {
       <div>
         <div className="form-inline">
           <div className="form-group">
-            <h4 className="heading">{this.props.specification}</h4>
+            <h4 className="heading">{this.props.specification.name}</h4>
           </div>
           <div className="form-group" style={{ marginLeft: 20 }}>
             <button
@@ -46,13 +47,14 @@ class ChoosenSpecification extends React.Component {
         <ChoosenSkills>
           {skills}
         </ChoosenSkills>
+        <div className="clearfix" />
       </div>
     );
   }
 }
 
 ChoosenSpecification.propTypes = {
-  specification: PropTypes.string,
+  specification: PropTypes.object,
   deleteSpecification: PropTypes.func,
   addSkill: PropTypes.func,
   possibleSkills: PropTypes.array,

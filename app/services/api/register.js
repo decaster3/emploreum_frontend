@@ -17,12 +17,16 @@ export const submitCompanyAboutAPI = (credentails, successCallBack, errorCallBac
   AxiosService.post(`${BASEURL}/auth/signup/4`, credentails, successCallBack, errorCallBack, dispatch);
 
 export const submitEmployeeSpecificationsSkillsAPI = (credentails, successCallBack, errorCallBack, dispatch) => {
-  const obj = {};
+  const profiles = [];
+  let profile = {};
   credentails.toJS().forEach((element) => {
-    const specification = element.specification;
-    obj[specification] = element.items;
+    profile.id = element.specification.id;
+    profile.name = element.specification.name;
+    profile.skills = element.items;
+    profiles.push(profile);
+    profile = {};
   });
-  return AxiosService.post(`${BASEURL}/auth/signup/3`, obj, successCallBack, errorCallBack, dispatch);
+  return AxiosService.post(`${BASEURL}/auth/signup/3`, { profiles }, successCallBack, errorCallBack, dispatch);
 };
 // не тестил
 export const submitCompanySpecificationsSkillsAPI = (credentails, successCallBack, errorCallBack, dispatch) => {

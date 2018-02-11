@@ -24,7 +24,7 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
     }
     return this.props.choosenSpecifications.toJS().map((item) =>
     (<ChoosenSpecification
-      key={item.specification}
+      key={item.specification.name}
       specification={item.specification}
       deleteSpecification={this.props.deleteSpecificationFromChoosen}
       addSkill={this.props.addSkill}
