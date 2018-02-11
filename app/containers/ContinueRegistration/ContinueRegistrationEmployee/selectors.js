@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import { fromJS } from 'immutable';
 
 const selectRegistrationEmployeeDomain = (state) => state.get('continueRegistrationEmployee');
+const selectRegistrationEmployeeSpecsSkills = (state) => state.get('specificationsSkills');
 
 const selectRegistrationStep = createSelector(
    selectRegistrationEmployeeDomain,
@@ -14,17 +15,17 @@ const selectRegistrationStepStatus = createSelector(
   );
 
 const selectSpecificationList = createSelector(
-    selectRegistrationEmployeeDomain,
+    selectRegistrationEmployeeSpecsSkills,
     (specificationList) => specificationList.get('specificationList').get('list')
 );
 
 const selectSpecificationListStatus = createSelector(
-    selectRegistrationEmployeeDomain,
+    selectRegistrationEmployeeSpecsSkills,
     (specificationList) => specificationList.get('specificationList').get('specificationListStatus')
 );
 
 const selectChoosenSpecifications = createSelector(
-    selectRegistrationEmployeeDomain,
+    selectRegistrationEmployeeSpecsSkills,
     (choosenSpecifications) => choosenSpecifications.get('choosenSpecifications').get('items')
 );
 

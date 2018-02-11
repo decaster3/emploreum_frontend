@@ -4,4 +4,4 @@ export const ENABLED = 'ENABLED';
 
 // server
 
-export const BASEURL = 'http://emploreum.herokuapp.com';
+export const BASEURL = 'http://192.168.0.104:3000';

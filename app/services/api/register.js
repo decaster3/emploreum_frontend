@@ -30,12 +30,12 @@ export const submitEmployeeSpecificationsSkillsAPI = (credentails, successCallBa
 };
 // не тестил
 export const submitCompanySpecificationsSkillsAPI = (credentails, successCallBack, errorCallBack, dispatch) => {
-  const specs = [];
+  const profiles = [];
   credentails.toJS().forEach((element) => {
     const specification = element.specification;
-    specs.push(specification);
+    profiles.push(specification);
   });
-  return AxiosService.post(`${BASEURL}/auth/signup/3`, specs, successCallBack, errorCallBack, dispatch);
+  return AxiosService.post(`${BASEURL}/auth/signup/3`, { profiles }, successCallBack, errorCallBack, dispatch);
 };
 
 export const logoutTestAPI = (credentails, successCallBack, errorCallBack, dispatch) =>

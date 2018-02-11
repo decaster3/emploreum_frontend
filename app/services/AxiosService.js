@@ -3,7 +3,6 @@ import { push } from 'react-router-redux';
 import {
   CHANGE_USER_STATE,
   ANONYMOUS,
-  UNAUTHORIZED,
 } from '../containers/UserSession/constants';
 
 const AxiosService = {
@@ -17,7 +16,7 @@ function get(url, successCallBack, errorCallBack, dispatch) {
     new Promise((resolve) => resolve(successCallBack(response.data)))
   ).catch((err) => {
     errorCallBack(err);
-    if (err.response.data.error === UNAUTHORIZED) {
+    if (err.response.status && err.response.status === 401) {
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -33,7 +32,7 @@ function get(url, successCallBack, errorCallBack, dispatch) {
 function post(url, obj, successCallBack, errorCallBack, dispatch) {
   return axios.post(url, obj, { withCredentials: true })
     .then((response) =>
-       new Promise((resolve) => resolve(successCallBack(response.data)))
+      new Promise((resolve) => resolve(successCallBack(response.data)))
     ).catch((err) => {
       if (err.response.status && err.response.status === 401) {
         dispatch({

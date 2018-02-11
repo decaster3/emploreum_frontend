@@ -15,7 +15,7 @@ import {
   selectSpecificationListStatus,
   selectChoosenSpecifications,
 } from './selectors';
-import reducer from './reducer';
+import reducer from '../../SpecificationsSkills/reducer';
 import VacancyCreationModal from '../../../components/Company/CompanyFinanceComponents/VacancyCreation/Loadable';
 import {
   addSkill,
@@ -24,8 +24,8 @@ import {
   addSpecificationWithSkills,
   deleteSpecificationFromChoosen,
   deleteSkillFromSpecification,
-  createVacancy,
-} from './actions';
+} from '../../SpecificationsSkills/actions';
+import { createVacancy } from './actions';
 
 export class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

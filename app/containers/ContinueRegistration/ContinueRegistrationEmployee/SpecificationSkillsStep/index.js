@@ -8,7 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-
+import injectReducer from 'utils/injectReducer';
+import reducer from '../../../SpecificationsSkills/reducer';
 import {
   selectSpecificationList,
   selectSpecificationListStatus,
@@ -16,16 +17,18 @@ import {
   selectSubmitSpecificationButtonState,
 } from '../selectors';
 
-import SpecificationSkillsStep from '../../../../components/ContinueRegistration/ContinueRegistrationEmployee/SpecificationSkillsStep/Loadable';
+import SpecificationSkillsStep from '../../../../components/SpecificationsSkills/Loadable';
+import {
+  submitSpecificationSkillsStep,
+} from '../actions';
 import {
   addSkill,
-  submitSpecificationSkillsStep,
   getSpecification,
   getSkills,
   addSpecificationWithSkills,
   deleteSpecificationFromChoosen,
   deleteSkillFromSpecification,
-} from '../actions';
+} from '../../../SpecificationsSkills/actions';
 
 export class SpecificationSkills extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -72,6 +75,10 @@ function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
+const withReducer = injectReducer(
+  { key: 'specificationsSkills', reducer },
+);
+
 SpecificationSkills.propTypes = {
   getSpecification: PropTypes.func,
   getSkills: PropTypes.func,
@@ -90,5 +97,6 @@ SpecificationSkills.propTypes = {
 
 
 export default compose(
+  withReducer,
   withConnect,
 )(SpecificationSkills);

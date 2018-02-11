@@ -7,6 +7,7 @@ class AutoComplete extends React.Component {
     super(props);
     this.state = {
       value: '',
+      valueString: '',
       isButton: false,
     };
     this.unlockButton = this.unlockButton.bind(this);
@@ -25,6 +26,7 @@ class AutoComplete extends React.Component {
     }
     this.setState({
       value: '',
+      valueString: '',
       isButton: false,
     });
   }
@@ -36,18 +38,23 @@ class AutoComplete extends React.Component {
           inputProps={{ className: 'form-control' }}
           menuStyle={{ className: 'autocomplete' }}
           items={this.props.list.toJS()}
-          shouldItemRender={(item, value) => item.toLowerCase().indexOf(value.toLowerCase()) > -1}
-          getItemValue={(item) => item}
+          shouldItemRender={(item, valueString) => item.name.toLowerCase().indexOf(valueString.toLowerCase()) > -1}
+          getItemValue={(item) => item.name}
           renderItem={(item) => (
-            <div key={item}>
-              {item}
+            <div key={item.name}>
+              {item.name}
             </div>
           )}
-          value={this.state.value}
-          onChange={(e) => this.setState({ value: e.target.value })}
+          value={this.state.valueString}
+          onChange={(e) => this.setState({ valueString: e.target.value })}
           onSelect={(value) => {
-            this.setState({ value });
-            this.unlockButton();
+            this.props.list.toJS().forEach((el) => {
+              if (el.name === value) {
+                this.setState({ value: el });
+                this.setState({ valueString: value });
+                this.unlockButton();
+              }
+            });
           }}
         />
         <span className="input-group-btn">
@@ -68,7 +75,7 @@ class AutoComplete extends React.Component {
 }
 
 AutoComplete.propTypes = {
-  specification: PropTypes.string,
+  specification: PropTypes.object,
   list: PropTypes.object,
   addItem: PropTypes.func,
 };

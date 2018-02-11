@@ -9,19 +9,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
+import injectReducer from 'utils/injectReducer';
+import reducer from '../../../Specifications/reducer';
+
 import {
   selectSpecificationList,
   selectSpecificationListStatus,
   selectChoosenSpecifications,
   selectSubmitSpecificationButtonState,
 } from '.././selectors';
-import SpecificationSkillsStep from '../../../../components/ContinueRegistration/ContinueRegistrationCompany/SpecificationSkillsStep/Loadable';
+
+import SpecificationSkillsStep from '../../../../components/Specifications/Loadable';
 import {
   getSpecification,
   addSpecificationWithSkills,
   deleteSpecificationFromChoosen,
-  submitSpecificationSkillsStep,
-} from '.././actions';
+} from '../../../Specifications/actions';
+
+import { submitSpecificationSkillsStep } from '../actions';
 
 export class SpecificationStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -60,6 +65,11 @@ function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
+const withReducer = injectReducer(
+  { key: 'specificationSkillsCompanyRegistration', reducer },
+);
+
+
 SpecificationStep.propTypes = {
   getSpecification: PropTypes.func,
   specificationListStatus: PropTypes.string,
@@ -72,5 +82,6 @@ SpecificationStep.propTypes = {
 };
 
 export default compose(
+  withReducer,
   withConnect,
 )(SpecificationStep);

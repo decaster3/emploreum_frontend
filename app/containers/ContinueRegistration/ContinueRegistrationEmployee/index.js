@@ -15,7 +15,6 @@ import {
   selectRegistrationStepStatus,
 } from './selectors';
 import reducer from './reducer';
-
 import {
   getRegistrationStep,
 } from './actions';
@@ -81,7 +80,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
-const withReducer = injectReducer({ key: 'continueRegistrationEmployee', reducer });
+const withReducer = injectReducer(
+  { key: 'continueRegistrationEmployee', reducer },
+);
 
 ContinueRegistrationEmployee.propTypes = {
   registrationStep: PropTypes.number,

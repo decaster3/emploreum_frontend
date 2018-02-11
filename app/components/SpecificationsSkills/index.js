@@ -7,11 +7,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { LOADED } from '../../../../../containers/Registration/constants';
-import AutoComplete from './AutoComplete/Loadable';
+import { LOADED } from '../../containers/Registration/constants';
+import AutoComplete from '../AutoComplete/Loadable';
 import ChoosenSpecification from './ChoosenSpecification/Loadable';
 import ChoosenSpecifications from './ChoosenSpecifications/Loadable';
 import Wrapper from './SpecificationWrapper/Loadable';
+import ButtonSubmit from './ButtonSubmit/Loadable';
 
 class SpecificationSkillsStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -23,7 +24,7 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
     }
     return this.props.choosenSpecifications.toJS().map((item) =>
     (<ChoosenSpecification
-      key={item.specification}
+      key={item.specification.name}
       specification={item.specification}
       deleteSpecification={this.props.deleteSpecificationFromChoosen}
       addSkill={this.props.addSkill}
@@ -48,7 +49,10 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
             <ChoosenSpecifications>
               {specifications}
             </ChoosenSpecifications>
-
+            <ButtonSubmit
+              submitting={this.props.submittingSpecification}
+              submit={this.props.submitSpecificationSkillsStep}
+            />
           </Wrapper>
         );
       default:
@@ -64,12 +68,14 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
 SpecificationSkillsStep.propTypes = {
   specificationList: PropTypes.object,
   getSpecification: PropTypes.func,
+  submitSpecificationSkillsStep: PropTypes.func,
   deleteSpecificationFromChoosen: PropTypes.func,
   addSpecificationWithSkills: PropTypes.func,
   addSkill: PropTypes.func,
   deleteSkillFromSpecification: PropTypes.func,
   specificationListStatus: PropTypes.string,
   choosenSpecifications: PropTypes.object,
+  submittingSpecification: PropTypes.bool,
 };
 
 export default SpecificationSkillsStep;

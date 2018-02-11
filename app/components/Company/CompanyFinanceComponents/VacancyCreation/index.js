@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SpecificationSkills from './SpecificationSkills/Loadable';
+import SpecificationSkills from '../../../SpecificationsSkills/Loadable';
 import FormCreationVacancy from './Form/Loadable';
 // import styled from 'styled-components';
 
