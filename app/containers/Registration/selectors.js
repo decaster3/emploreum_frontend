@@ -19,6 +19,16 @@ export const selectRegistrationStep = createSelector(
   (registrationStep) => registrationStep.get('registrationStep')
 );
 
+export const selectSubmitEmailButtonState = createSelector(
+  selectContinueRegistrationDomain,
+  (submittingEmail) => submittingEmail.get('submittingEmail')
+);
+
+export const selectSubmitEmailVerificationButtonState = createSelector(
+  selectContinueRegistrationDomain,
+  (submittingEmailVerification) => submittingEmailVerification.get('submittingEmailVerification')
+);
+
 export const selectRole = createSelector(
   selectContinueRegistrationDomain,
   (registrationStep) => registrationStep.get('role')

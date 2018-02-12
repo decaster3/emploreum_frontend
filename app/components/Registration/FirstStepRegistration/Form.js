@@ -1,18 +1,19 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { SyncLoader } from 'react-spinners';
 
 import { renderField } from '../../../forms/fields/FormRegisterField';
 import { passwordValidation, passwordMatch } from '../../../forms/validation/PasswordValidation';
-import { asyncValidate, emailValidation } from '../../../forms/validation/EmailValidation';
+import { emailValidation } from '../../../forms/validation/EmailValidation';
 import { required } from '../../../forms/validation/RequiredValidation';
 
 
 const FormRegisterFirstStep = (props) => {
-  const { role, handleSubmit, submitEmail, submitting } = props;
+  const { handleSubmit, submitEmail, submittingButton, error } = props;
   return (
-    <form onSubmit={handleSubmit(submitEmail)}>
-      <h3>{role}</h3>
+    <form className="form-auth-small" onSubmit={handleSubmit(submitEmail)}>
       <Field
         name="email"
         component={renderField}
@@ -33,7 +34,18 @@ const FormRegisterFirstStep = (props) => {
         validate={[required, passwordValidation]}
         label="Confirm password"
       />
-      <button type="submit" disabled={submitting}>Submit</button>
+      {error && <strong>{error}</strong>}
+      <button
+        className="btn btn-primary btn-sm btn-block"
+        type="submit"
+        disabled={submittingButton}
+      >
+        { submittingButton
+            ? <SyncLoader color={'#ffffff'} size={5} />
+            : <span>Submit</span>
+        }
+      </button>
+      <Link to="/" className="btn btn-default btn-xs btn-block">Login</Link>
     </form>
   );
 };
@@ -41,8 +53,8 @@ const FormRegisterFirstStep = (props) => {
 export default reduxForm({
   form: 'FormRegisterFirstStep',
   validate: passwordMatch,
-  asyncValidate,
-  asyncBlurFields: ['email'],
+  // asyncValidate,
+  // asyncBlurFields: ['email'],
 })(FormRegisterFirstStep);
 
 // const selector = formValueSelector('FormRegisterFirstStep');
@@ -56,8 +68,8 @@ export default reduxForm({
 // )(FormRegisterFirstStep);
 
 FormRegisterFirstStep.propTypes = {
-  role: PropTypes.string,
   handleSubmit: PropTypes.func,
   submitEmail: PropTypes.func,
-  submitting: PropTypes.func,
+  submittingButton: PropTypes.bool,
+  error: PropTypes.string,
 };

@@ -1,5 +1,5 @@
-import { EmployeeMain } from '../../EmployeeMain';
+import EmployeeMain from '../../Employee/';
 
 export default [
-   { path: '/', component: EmployeeMain },
+   { path: '/employee', component: EmployeeMain, exact: false },
 ];

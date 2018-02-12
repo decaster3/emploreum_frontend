@@ -13,10 +13,31 @@ class FirstStepRegistration extends React.Component { // eslint-disable-line rea
   render() {
     return (
       <div>
-        <FormRegisterFirstStep
-          submitEmail={this.props.submitEmail}
-          role={this.props.role}
-        />
+        <div className="vertical-align-wrap">
+          <div className="vertical-align-middle">
+            <div className="auth-box">
+              <div className="left">
+                <div className="content">
+                  <div className="header">
+                    <p className="lead">Creation {this.props.role} account </p>
+                  </div>
+                  <FormRegisterFirstStep
+                    submitEmail={this.props.submitEmail}
+                    role={this.props.role}
+                    submittingButton={this.props.submittingEmail}
+                  />
+                </div>
+              </div>
+              <div className="right">
+                <div className="overlay"></div>
+                <div className="content text">
+                  <h1 className="heading">Присоединить к одной из 112344 успешной компании</h1>
+                  <p>Расти и зарабатывай больше</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -24,6 +45,7 @@ class FirstStepRegistration extends React.Component { // eslint-disable-line rea
 FirstStepRegistration.propTypes = {
   submitEmail: PropTypes.func,
   role: PropTypes.string,
+  submittingEmail: PropTypes.bool,
 };
 
 export default FirstStepRegistration;

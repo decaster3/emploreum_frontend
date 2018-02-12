@@ -3,6 +3,7 @@
  * User actions
  *
  */
+import { SubmissionError } from 'redux-form/immutable';
 import { push } from 'react-router-redux';
 import {
   LOGGING_IN,
@@ -10,9 +11,12 @@ import {
   CHANGE_USER_STATE,
   ANONYMOUS,
   UPDATE_REGISTRATION_STEP,
+  COMPLETE_REGISTRATION,
 } from './constants';
 
-import { loginAPI } from '../../services/api/register';
+import { loginAPI } from '../../services/api/Register';
+
+
 export const login = (values) => (
   (dispatch) => {
     const { email, password } = values.toJS();
@@ -23,7 +27,7 @@ export const login = (values) => (
         userInformation: {},
       },
     });
-    loginAPI({ email, password }, (data) => {
+    return loginAPI({ email, password }, (data) => {
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -36,7 +40,10 @@ export const login = (values) => (
       });
       dispatch(push('/'));
     }, (err) => {
-      console.log(err.response.data);
+      dispatch(serverLogout());
+      if (err.response.status && err.response.status === 401) {
+        throw new SubmissionError({ _error: 'Wrong email address or password!' });
+      }
     }, dispatch);
   }
 );
@@ -65,7 +72,15 @@ export const updateRegistrationStep = (step) => (
   }
 );
 
-export const sererLogout = () => (
+export const completeRegistration = () => (
+  (dispatch) => {
+    dispatch({
+      type: COMPLETE_REGISTRATION,
+    });
+  }
+);
+
+export const serverLogout = () => (
   (dispatch) => {
     dispatch({
       type: CHANGE_USER_STATE,

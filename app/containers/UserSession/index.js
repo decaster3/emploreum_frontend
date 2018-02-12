@@ -9,19 +9,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
-import { Redirect } from 'react-router-dom';
-import { selectUserAuth } from './selectors';
+import { selectUserStatus } from './selectors';
 import Login from '../../components/Login/Loadable';
 import { login } from './actions';
-import { ANONYMOUS } from './constants';
 
 export class UserSession extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
   }
   render() {
-    if (this.props.userAuth.get('userState') !== ANONYMOUS) {
-      return <Redirect to="/" />;
-    }
     return (
       <div>
         <Helmet>
@@ -30,6 +25,7 @@ export class UserSession extends React.Component { // eslint-disable-line react/
         </Helmet>
         <Login
           login={this.props.login}
+          userStatus={this.props.userStatus}
         />
       </div>
     );
@@ -38,12 +34,12 @@ export class UserSession extends React.Component { // eslint-disable-line react/
 
 UserSession.propTypes = {
   login: PropTypes.func,
-  userAuth: PropTypes.object,
+  userStatus: PropTypes.string,
 };
 
 function mapStateToProps(state) {
   return {
-    userAuth: selectUserAuth(state),
+    userStatus: selectUserStatus(state),
   };
 }
 

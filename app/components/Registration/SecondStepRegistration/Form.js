@@ -1,36 +1,53 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
-
+import { SyncLoader } from 'react-spinners';
 import { renderField } from '../../../forms/fields/FormRegisterField';
 import { required } from '../../../forms/validation/RequiredValidation';
+import { verificationEmailCodeValidation } from '../../../forms/validation/VerificationEmailCode';
 
 const FormRegisterSecondStep = (props) => {
-  const { handleSubmit, submitEmailVerification, submitting } = props;
+  const { handleSubmit,
+    submitEmailVerification,
+    submittingEmailVerification,
+    downRegistrationStep,
+    role,
+    error, } = props;
   return (
     <form onSubmit={handleSubmit(submitEmailVerification)}>
-      <h3>Employee</h3>
+      <h3>{role}</h3>
       <Field
         name="code"
         component={renderField}
-        validate={required}
+        validate={[required, verificationEmailCodeValidation]}
         label="Verification Email Code"
       />
-      <button type="submit" disabled={submitting}>Submit</button>
+      <button
+        className="btn btn-primary btn-sm btn-block"
+        type="submit"
+        disabled={submittingEmailVerification}
+      >
+        {error && <strong>{error}</strong>}
+        { submittingEmailVerification
+            ? <SyncLoader color={'#ffffff'} size={5} />
+            : <span>Submit</span>
+        }
+      </button>
+      <button onClick={() => downRegistrationStep()} className="btn btn-default btn-xs btn-block">Back</button>
     </form>
   );
 };
 
 export default reduxForm({
   form: 'FormRegisterSecondStep',
-  // asyncValidate,
-  // asyncBlurFields: ['code'],
 })(FormRegisterSecondStep);
 
 FormRegisterSecondStep.propTypes = {
   handleSubmit: PropTypes.func,
   submitEmailVerification: PropTypes.func,
-  submitting: PropTypes.func,
+  downRegistrationStep: PropTypes.func,
+  submittingEmailVerification: PropTypes.bool,
+  role: PropTypes.string,
 };
 
 // const selector = formValueSelector('FormRegisterSecondStep');

@@ -151,6 +151,10 @@ label {
 .tooltip-inner{
     background-color: rgba(0, 0, 0, 0.64);
 }
+.hexagon img {
+    position: relative;
+    height: 100%;
+}
 @media screen and (min-width: 768px) {
     .modal:before {
         display: inline-block;
@@ -203,6 +207,10 @@ label {
         width: 100%;
     }
 }
+.autocomplete {
+    position: absolute;
+    z-index: 100000!important;
+}
 
 @media screen and (max-width: 767px) {
     #mini-navbar .navbar-form .input-group {
@@ -212,4 +220,17 @@ label {
     #mini-navbar .navbar-form input[type="text"] {
         min-width: 100px;
     }
+}
+
+#modal-vacancy {
+  display: none;
+}
+
+.modal-content {
+  overflow: hidden;
+}
+
+.modal-body {
+  max-height: 435px;
+  overflow-y: auto;
 }

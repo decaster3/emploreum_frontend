@@ -1,4 +1,4 @@
-import ContinueRegistrationCompany from '../../ContinueRegistrationCompany/Loadable';
+import ContinueRegistrationCompany from '../../ContinueRegistration/ContinueRegistrationCompany/Loadable';
 
 export default [
    { path: '/', component: ContinueRegistrationCompany },
