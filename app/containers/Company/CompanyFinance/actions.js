@@ -15,38 +15,36 @@ import {
   GET_PAYMENTS,
 } from './constants';
 
+import { getOpenVacanciesAPI } from '../../../services/api/Vacancy';
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const mockVacations = [{
-  position: 'Java junior develober',
-  hoursPerWeek: '25 - 40 hours/week',
-  payment: '1 eth >',
-}, {
-  position: 'Java middle develober',
-  hoursPerWeek: '35 - 40 hours/week',
-  payment: '1.5 eth >',
-}, {
-  position: 'Phyton develober',
-  hoursPerWeek: '25 - 40 hours/week',
-  payment: '1 eth >',
-}, {
-  position: 'React JS develober',
-  hoursPerWeek: '25 - 40 hours/week',
-  payment: '1.5 eth >',
-}];
 export const loadingOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, payload: LOADING });
 export const loadedOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, payload: LOADED });
 
 export const getOpenVacancies = () => (
   (dispatch) => {
     dispatch(loadingOpenVacancies());
-    return sleep(1000).then(() => {
+    return getOpenVacanciesAPI((data) => {
+      const newData = data.map((el) => {
+        let position = '';
+        el.profiles.map((prof) => {
+          position = `${position} ${prof.name}`;
+        });
+        return {
+          position: `${position} developer`,
+          hoursPerWeek: `${el.duration} month(s)`,
+          payment: `${el.pricePerWeek} eth`,
+        };
+      });
       dispatch({
         type: GET_OPEN_VACANCIES,
-        payload: mockVacations,
+        payload: newData,
       });
       dispatch(loadedOpenVacancies());
-    });
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
   }
 );
 

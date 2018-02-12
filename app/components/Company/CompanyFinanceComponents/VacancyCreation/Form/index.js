@@ -27,6 +27,7 @@ const FormCreationVacancy = (props) => {
       </div>
       <div className="modal-footer">
         <button
+          data-dismiss="modal"
           type="submit"
           className="btn btn-primary"
           disabled={submitting}

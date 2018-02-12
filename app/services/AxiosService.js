@@ -16,7 +16,7 @@ function get(url, successCallBack, errorCallBack, dispatch) {
     new Promise((resolve) => resolve(successCallBack(response.data)))
   ).catch((err) => {
     errorCallBack(err);
-    if (err.response.status && err.response.status === 401) {
+    if (err.response.status && (err.response.status === 401 || err.response.status === 403)) {
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -34,7 +34,7 @@ function post(url, obj, successCallBack, errorCallBack, dispatch) {
     .then((response) =>
       new Promise((resolve) => resolve(successCallBack(response.data)))
     ).catch((err) => {
-      if (err.response.status && err.response.status === 401) {
+      if (err.response.status && (err.response.status === 401 || err.response.status === 403)) {
         dispatch({
           type: CHANGE_USER_STATE,
           payload: {

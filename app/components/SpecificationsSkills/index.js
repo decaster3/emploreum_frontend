@@ -39,7 +39,9 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
     switch (this.props.specificationListStatus) {
       case LOADED:
         return (
-          <Wrapper>
+          <Wrapper
+            modal={this.props.modal}
+          >
             <AutoComplete
               addItem={this.props.addSpecificationWithSkills}
               list={this.props.specificationList}
@@ -49,10 +51,13 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
             <ChoosenSpecifications>
               {specifications}
             </ChoosenSpecifications>
-            <ButtonSubmit
+            {!this.props.modal
+            ? <ButtonSubmit
               submitting={this.props.submittingSpecification}
               submit={this.props.submitSpecificationSkillsStep}
             />
+              : <div />
+            }
           </Wrapper>
         );
       default:
@@ -76,6 +81,7 @@ SpecificationSkillsStep.propTypes = {
   specificationListStatus: PropTypes.string,
   choosenSpecifications: PropTypes.object,
   submittingSpecification: PropTypes.bool,
+  modal: PropTypes.bool,
 };
 
 export default SpecificationSkillsStep;

@@ -17,5 +17,5 @@ export const submitVacancyAPI = (specifications, other, successCallBack, errorCa
   AxiosService.post(`${BASEURL}/company/vacancy/create`, { profiles, pricePerWeek, duration }, successCallBack, errorCallBack, dispatch);
 };
 
-export const getOpenVacancys = (successCallBack, errorCallBack, dispatch) =>
-  AxiosService.get(`${BASEURL}/vacancy/get`, successCallBack, errorCallBack, dispatch);
+export const getOpenVacanciesAPI = (successCallBack, errorCallBack, dispatch) =>
+  AxiosService.get(`${BASEURL}/company/vacancy`, successCallBack, errorCallBack, dispatch);

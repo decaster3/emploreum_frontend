@@ -28,6 +28,7 @@ class VacancyCreation extends React.Component { // eslint-disable-line react/pre
             deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
             choosenSpecifications={this.props.choosenSpecifications}
             specificationListStatus={this.props.specificationListStatus}
+            modal
           />
           <FormCreationVacancy
             createVacancy={this.props.createVacancy}

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
 
 import { renderField } from '../../forms/fields/FormRegisterField';
-import { passwordValidation } from '../../forms/validation/PasswordValidation';
 import { emailValidation } from '../../forms/validation/EmailValidation';
 import { required } from '../../forms/validation/RequiredValidation';
 import { LOGGING_IN } from '../../containers/UserSession/constants';
@@ -26,7 +25,7 @@ const FormLogin = (props) => {
         name="password"
         type="password"
         component={renderField}
-        validate={[required, passwordValidation]}
+        validate={required}
         label="Password"
       />
       {error && <strong>{error}</strong>}
