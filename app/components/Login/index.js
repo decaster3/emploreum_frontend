@@ -23,6 +23,7 @@ class Login extends React.Component { // eslint-disable-line react/prefer-statel
                   <div>
                     <FormLogin
                       login={this.props.login}
+                      userStatus={this.props.userStatus}
                     />
                   </div>
                 </div>
@@ -44,6 +45,7 @@ class Login extends React.Component { // eslint-disable-line react/prefer-statel
 
 Login.propTypes = {
   login: PropTypes.func,
+  userStatus: PropTypes.string,
 };
 
 export default Login;

@@ -18,7 +18,7 @@ const initialState = fromJS({
     userInformation: {},
   },
 });
-// не проверял registrationStep
+
 function userReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_REGISTRATION_STEP: {

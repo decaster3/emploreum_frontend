@@ -207,6 +207,10 @@ label {
         width: 100%;
     }
 }
+.autocomplete {
+    position: absolute;
+    z-index: 100000!important;
+}
 
 @media screen and (max-width: 767px) {
     #mini-navbar .navbar-form .input-group {

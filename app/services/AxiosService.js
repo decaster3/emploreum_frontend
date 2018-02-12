@@ -3,7 +3,6 @@ import { push } from 'react-router-redux';
 import {
   CHANGE_USER_STATE,
   ANONYMOUS,
-  UNAUTHORIZED,
 } from '../containers/UserSession/constants';
 
 const AxiosService = {
@@ -16,8 +15,8 @@ function get(url, successCallBack, errorCallBack, dispatch) {
   .then((response) =>
     new Promise((resolve) => resolve(successCallBack(response.data)))
   ).catch((err) => {
-    console.log(err.response.data.error);
-    if (err.response.data.error === UNAUTHORIZED) {
+    errorCallBack(err);
+    if (err.response.status && (err.response.status === 401 || err.response.status === 403)) {
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -25,9 +24,7 @@ function get(url, successCallBack, errorCallBack, dispatch) {
           userInformation: {},
         },
       });
-      dispatch(push('/login'));
-    } else {
-      errorCallBack(err);
+      dispatch(push('/'));
     }
   });
 }
@@ -35,10 +32,9 @@ function get(url, successCallBack, errorCallBack, dispatch) {
 function post(url, obj, successCallBack, errorCallBack, dispatch) {
   return axios.post(url, obj, { withCredentials: true })
     .then((response) =>
-       new Promise((resolve) => resolve(successCallBack(response.data)))
+      new Promise((resolve) => resolve(successCallBack(response.data)))
     ).catch((err) => {
-      console.log(err);
-      if (err.response.data.error === UNAUTHORIZED) {
+      if (err.response.status && (err.response.status === 401 || err.response.status === 403)) {
         dispatch({
           type: CHANGE_USER_STATE,
           payload: {
@@ -46,10 +42,9 @@ function post(url, obj, successCallBack, errorCallBack, dispatch) {
             userInformation: {},
           },
         });
-        dispatch(push('/login'));
-      } else {
-        errorCallBack(err);
+        dispatch(push('/'));
       }
+      return new Promise((resolve) => resolve(errorCallBack(err)));
     });
 }
 

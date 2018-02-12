@@ -1,0 +1,11 @@
+import AxiosService from '../AxiosService';
+import { BASEURL } from '../../global-constants';
+
+export const getSpecificationsAPI = (successCallBack, errorCallBack, dispatch) => {
+  AxiosService.get(`${BASEURL}/specialisation/profiles`, successCallBack, errorCallBack, dispatch);
+};
+
+export const getSkillsFromSpecificationAPI = (credentails, successCallBack, errorCallBack, dispatch) => {
+  console.log(credentails);
+  AxiosService.get(`${BASEURL}/specialisation/skills/${credentails.id}`, successCallBack, errorCallBack, dispatch);
+};

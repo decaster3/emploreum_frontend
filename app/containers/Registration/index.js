@@ -13,6 +13,8 @@ import injectReducer from 'utils/injectReducer';
 import {
   selectRole,
   selectRegistrationStep,
+  selectSubmitEmailButtonState,
+  selectSubmitEmailVerificationButtonState,
 } from './selectors';
 import reducer from './reducer';
 import FirstStep from '../../components/Registration/FirstStepRegistration/Loadable';
@@ -22,12 +24,11 @@ import {
   submitEmail,
   submitEmailVerification,
   changeRole,
+  downRegistrationStep,
 } from './actions';
 
 export class Registration extends React.PureComponent {
   render() {
-    // if (this.props.userAuth.get('userState') !== ANONYMOUS)
-    //   return <Redirect to='/'/>;
     if (!this.props.role) {
       return (
         <RoleSelectionRegistration
@@ -42,6 +43,7 @@ export class Registration extends React.PureComponent {
             <FirstStep
               submitEmail={this.props.submitEmail}
               role={this.props.role}
+              submittingEmail={this.props.submittingEmail}
             />
           </div>
         );
@@ -51,6 +53,8 @@ export class Registration extends React.PureComponent {
             <SecondStep
               submitEmailVerification={this.props.submitEmailVerification}
               role={this.props.role}
+              submittingEmailVerification={this.props.submittingEmailVerification}
+              downRegistrationStep={this.props.downRegistrationStep}
             />
           </div>
         );
@@ -68,6 +72,8 @@ function mapStateToProps(state) {
   return {
     role: selectRole(state),
     registrationStep: selectRegistrationStep(state),
+    submittingEmail: selectSubmitEmailButtonState(state),
+    submittingEmailVerification: selectSubmitEmailVerificationButtonState(state),
   };
 }
 
@@ -76,6 +82,7 @@ function mapDispatchToProps(dispatch) {
     changeRole: (evt) => dispatch(changeRole(evt)),
     submitEmail: (evt) => dispatch(submitEmail(evt)),
     submitEmailVerification: (evt) => dispatch(submitEmailVerification(evt)),
+    downRegistrationStep: () => dispatch(downRegistrationStep()),
   };
 }
 
@@ -86,7 +93,10 @@ Registration.propTypes = {
   role: PropTypes.string,
   submitEmail: PropTypes.func,
   submitEmailVerification: PropTypes.func,
+  submittingEmail: PropTypes.bool,
+  submittingEmailVerification: PropTypes.bool,
   changeRole: PropTypes.func,
+  downRegistrationStep: PropTypes.func,
   registrationStep: PropTypes.number,
 };
 

@@ -26,7 +26,7 @@ import {
 
 const App = (props) => (
   <Switch>
-    {RolesRoutesSelector(props).map((r) => <Route exact={!r.notExact} path={r.path} component={r.component} key={r.path} />)}
+    {RolesRoutesSelector(props).map((r) => <Route exact={r.exact} path={r.path} component={r.component} key={r.path} />)}
     <Route component={NotFoundPage} />
   </Switch>
 );

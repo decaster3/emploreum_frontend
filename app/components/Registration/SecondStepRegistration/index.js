@@ -5,14 +5,20 @@
 */
 
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import FormRegisterSecondStep from './Form';
 
 class SecondStepRegistration extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    toast('Email was sent!', { autoClose: 3000, type: toast.TYPE.INFO });
+  }
+
   render() {
     return (
       <div>
+        <ToastContainer />
         <div className="vertical-align-wrap">
           <div className="vertical-align-middle">
             <div className="auth-box">
@@ -23,6 +29,9 @@ class SecondStepRegistration extends React.Component { // eslint-disable-line re
                   </div>
                   <FormRegisterSecondStep
                     submitEmailVerification={this.props.submitEmailVerification}
+                    submittingEmailVerification={this.props.submittingEmailVerification}
+                    downRegistrationStep={this.props.downRegistrationStep}
+                    role={this.props.role}
                   />
                 </div>
               </div>
@@ -43,6 +52,9 @@ class SecondStepRegistration extends React.Component { // eslint-disable-line re
 
 SecondStepRegistration.propTypes = {
   submitEmailVerification: PropTypes.func,
+  submittingEmailVerification: PropTypes.bool,
+  downRegistrationStep: PropTypes.func,
+  role: PropTypes.string,
 };
 
 export default SecondStepRegistration;
