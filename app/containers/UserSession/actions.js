@@ -14,7 +14,7 @@ import {
   COMPLETE_REGISTRATION,
 } from './constants';
 
-import { loginAPI } from '../../services/api/Register';
+import { loginAPI, logoutAPI } from '../../services/api/Register';
 
 
 export const login = (values) => (
@@ -82,12 +82,16 @@ export const completeRegistration = () => (
 
 export const serverLogout = () => (
   (dispatch) => {
-    dispatch({
-      type: CHANGE_USER_STATE,
-      payload: {
-        userState: ANONYMOUS,
-        userInformation: {},
-      },
-    });
+    logoutAPI(() => {
+      dispatch({
+        type: CHANGE_USER_STATE,
+        payload: {
+          userState: ANONYMOUS,
+          userInformation: {},
+        },
+      });
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
   }
 );

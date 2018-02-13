@@ -38,5 +38,8 @@ export const submitCompanySpecificationsSkillsAPI = (credentails, successCallBac
   return AxiosService.post(`${BASEURL}/auth/signup/3`, { profiles }, successCallBack, errorCallBack, dispatch);
 };
 
+export const logoutAPI = (successCallBack, errorCallBack, dispatch) =>
+  AxiosService.get(`${BASEURL}/auth/logout`, successCallBack, errorCallBack, dispatch);
+
 export const logoutTestAPI = (credentails, successCallBack, errorCallBack, dispatch) =>
   AxiosService.get(`${BASEURL}/test/1`, successCallBack, errorCallBack, dispatch);

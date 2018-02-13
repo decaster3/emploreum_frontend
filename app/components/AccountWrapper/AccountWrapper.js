@@ -6,7 +6,9 @@ import NavifationBar from './NavigationBar/Loadable';
 
 export const AccountWrapper = (props) => (
   <div id="wrapper">
-    <Header />
+    <Header
+      logout={props.serverLogout}
+    />
     <NavifationBar
       url={props.url}
       view={props.view}
@@ -28,4 +30,5 @@ AccountWrapper.propTypes = {
   url: PropTypes.string.isRequired,
   view: PropTypes.string.isRequired,
   changeView: PropTypes.func.isRequired,
+  serverLogout: PropTypes.func.isRequired,
 };

@@ -7,7 +7,7 @@ const ChoosenSkill = (props) => {
     <div className="col-md-3 col-sm-6">
       <div className="award-item">
         <div className="hexagon">
-          <img src="/java.png" />
+          <img src="/java.png" alt="Skill" />
         </div>
         <span>{skillName}</span>
         <button onClick={() => deleteSkill(specification, skill)}>
