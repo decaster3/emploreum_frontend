@@ -22,7 +22,7 @@ export const getVacancies = () => (
       const newData = data.map((element) => ({
         id: element.id,
         companyId: element.company_id,
-        profile: element.name,
+        profile: 'Awesome vacancy',
         weekPaymeent: `${element.pricePerWeek} ETH/month`,
         companyName: `${element.companyName}`,
         acceptableCurrencies: ['eth', 'btc', '$'],

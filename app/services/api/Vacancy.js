@@ -14,6 +14,7 @@ export const submitVacancyAPI = (specifications, other, successCallBack, errorCa
     profiles.push(profile);
     profile = {};
   });
+  console.log({ profiles, pricePerWeek, duration });
   AxiosService.post(`${BASEURL}/company/vacancy/create`, { profiles, pricePerWeek, duration }, successCallBack, errorCallBack, dispatch);
 };
 

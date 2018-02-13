@@ -5,10 +5,10 @@ import FinanceHeader from '../../../FinanceHeader/FinanceHeader/Loadable';
 import EmployeeContractTable from '../EmployeeContractTable/Loadable';
 
 export const EmployeeFinance = (props) => {
-  const { address, balance, income, currentContracts, endedContracts } = props;
+  const { address, addressStatus, balance, income, currentContracts, endedContracts } = props;
   return (
     <div className="container-fluid">
-      <FinanceHeader address={address}>
+      <FinanceHeader address={address} addressStatus={addressStatus}>
         <EmployeeInfo balance={balance} income={income} />
       </FinanceHeader>
       <EmployeeContractTable tableName="Current contracts">
@@ -24,6 +24,7 @@ export const EmployeeFinance = (props) => {
 
 EmployeeFinance.propTypes = {
   address: PropTypes.string.isRequired,
+  addressStatus: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
   income: PropTypes.number.isRequired,
   currentContracts: PropTypes.oneOfType([

@@ -13,6 +13,8 @@ import {
   selectEndedContractsItems,
   selectEndedContractsStatus,
   selectCurrentContractsStatus,
+  selectAddressName,
+  selectAddressStatus,
 } from './selectors';
 import { getAllFinance } from './actions';
 
@@ -56,10 +58,8 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
   }
 
   render() {
-    const address = '0x05b89ad8ef43fcf3d3f6b2e5fdac4cd4719bafa0';
     const balance = 2;
     const income = 0.5;
-
     const currentContractsRows = this.renderCurrentContracts();
     const endedContractsRow = this.renderEndedContracts();
     return (
@@ -69,7 +69,8 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
           <meta name="description" content="Profile of Employee" />
         </Helmet>
         <EmployeeFinanceComponent
-          address={address}
+          address={this.props.addressName}
+          addressStatus={this.props.addressStatus}
           balance={balance}
           income={income}
           currentContracts={currentContractsRows}
@@ -86,6 +87,8 @@ EmployeeFinance.propTypes = {
   endedContractsItems: PropTypes.array,
   endedContractsStatus: PropTypes.string,
   currentContractsStatus: PropTypes.string,
+  addressStatus: PropTypes.string,
+  addressName: PropTypes.string,
 };
 
 function mapStateToProps(state) {
@@ -94,6 +97,8 @@ function mapStateToProps(state) {
     endedContractsItems: selectEndedContractsItems(state),
     endedContractsStatus: selectEndedContractsStatus(state),
     currentContractsStatus: selectCurrentContractsStatus(state),
+    addressName: selectAddressName(state),
+    addressStatus: selectAddressStatus(state),
   };
 }
 
