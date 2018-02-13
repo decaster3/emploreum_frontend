@@ -15,7 +15,10 @@ export const Vacancy = (props) => {
     companyName,
     acceptableCurrencies,
     description,
-    contractDuration } = props;
+    contractDuration,
+    submitVacancy,
+    id,
+    companyId } = props;
 
   const currencies = acceptableCurrencies.map((currency) =>
     (<Currency
@@ -38,7 +41,7 @@ export const Vacancy = (props) => {
       <div className="vacancy-desc">
         <p> { description } </p>
         <div className="vacancy-add">
-          <a href="">Go!</a>
+          <button onClick={() => submitVacancy(id, companyId)}>Go!</button>
         </div>
         <div className="vacancy-contact">
           <a href="">Contacts</a>
@@ -58,6 +61,9 @@ Vacancy.propTypes = {
   description: PropTypes.string,
   companyName: PropTypes.string,
   acceptableCurrencies: PropTypes.array,
+  submitVacancy: PropTypes.func,
+  id: PropTypes.string,
+  companyId: PropTypes.string,
 };
 
 export default Vacancy;

@@ -28,7 +28,7 @@ export const getOpenVacancies = () => (
     return getOpenVacanciesAPI((data) => {
       const newData = data.map((el) => {
         let position = '';
-        el.profiles.map((prof) => {
+        el.profiles.forEach((prof) => {
           position = `${position} ${prof.name}`;
         });
         return {

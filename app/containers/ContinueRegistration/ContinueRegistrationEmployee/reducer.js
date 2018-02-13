@@ -8,7 +8,6 @@ import { fromJS } from 'immutable';
 import {
   GET_EMPLOYEE_REGISTRATION_STEP,
   NOT_LOADED,
-  NOT_CHOOSEN,
   CHANGE_SUBMIT_SPECIFICATION_BUTTON_STATUS,
   CHANGE_SUBMIT_ABOUT_BUTTON_STATUS,
 } from './constants';
@@ -17,14 +16,6 @@ const initialState = fromJS({
   registrationStep: {
     registrationStepStatus: NOT_LOADED,
     step: 0,
-  },
-  specificationList: {
-    specificationListStatus: NOT_LOADED,
-    list: [],
-  },
-  choosenSpecifications: {
-    choosenSpecificationStatus: NOT_CHOOSEN,
-    items: [],
   },
   submittingSpecification: false,
   submittingAbout: false,

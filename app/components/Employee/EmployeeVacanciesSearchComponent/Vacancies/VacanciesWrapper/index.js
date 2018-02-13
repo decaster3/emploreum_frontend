@@ -12,7 +12,7 @@ const VacanciesWrapper = (props) => {
   return (
     <div className="panel panel-headline">
       <div className="panel-body">
-        <div className="form-inline" style={{ 'margin-bottom': '20px' }}>
+        <div className="form-inline" style={{ marginBottom: '20px' }}>
           <div className="form-group">
             Sort by
           </div>
