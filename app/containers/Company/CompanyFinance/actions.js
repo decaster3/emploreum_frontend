@@ -26,6 +26,7 @@ export const getOpenVacancies = () => (
   (dispatch) => {
     dispatch(loadingOpenVacancies());
     return getOpenVacanciesAPI((data) => {
+      console.log(data);
       const newData = data.map((el) => {
         let position = '';
         el.profiles.forEach((prof) => {
@@ -34,7 +35,7 @@ export const getOpenVacancies = () => (
         return {
           position: `${position} developer`,
           hoursPerWeek: `${el.duration} month(s)`,
-          payment: `${el.pricePerWeek} eth`,
+          payment: `${el.week_payment} eth`,
         };
       });
       dispatch({

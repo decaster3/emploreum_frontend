@@ -13,10 +13,10 @@ const FormCreationVacancy = (props) => {
     <form onSubmit={handleSubmit(createVacancy)}>
       <div className="modal-body" >
         <Field
-          name="payment"
+          name="weekPayment"
           component={renderField}
           validate={required}
-          label="Payment"
+          label="Week Payment"
         />
         <Field
           name="duration"

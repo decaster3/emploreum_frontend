@@ -1,21 +1,18 @@
 import AxiosService from '../AxiosService';
 import { BASEURL } from '../../global-constants';
 
-export const submitVacancyAPI = (specifications, other, successCallBack, errorCallBack, dispatch) => {
-  const { payment, duration } = other.toJS();
-  // исправить
-  const pricePerWeek = payment;
-  const profiles = [];
-  let profile = {};
-  specifications.toJS().forEach((element) => {
-    profile.id = element.specification.id;
-    profile.name = element.specification.name;
-    profile.skills = element.items;
-    profiles.push(profile);
-    profile = {};
+export const submitVacancyAPI = (specs, other, successCallBack, errorCallBack, dispatch) => {
+  const { weekPayment, duration } = other;
+  const specifications = [];
+  let specification = {};
+  specs.toJS().forEach((element) => {
+    specification.id = element.specification.id;
+    specification.name = element.specification.name;
+    specification.skills = element.items;
+    specifications.push(specification);
+    specification = {};
   });
-  console.log({ profiles, pricePerWeek, duration });
-  AxiosService.post(`${BASEURL}/company/vacancy/create`, { profiles, pricePerWeek, duration }, successCallBack, errorCallBack, dispatch);
+  AxiosService.post(`${BASEURL}/company/vacancy/create`, { specifications, weekPayment, duration }, successCallBack, errorCallBack, dispatch);
 };
 
 export const getOpenVacanciesAPI = (successCallBack, errorCallBack, dispatch) =>

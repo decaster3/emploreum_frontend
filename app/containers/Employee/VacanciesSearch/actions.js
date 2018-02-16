@@ -10,6 +10,7 @@ import {
   LOADED,
   GET_VACANCIES,
 } from './constants';
+// import socket from '../../../services/socket';
 import { getEmployeeRecomendedVacanciesAPI, submitVacancyAPI } from '../../../services/api/VacanciesSearch';
 
 export const loadingVacancies = () => ({ type: CHANGE_STATE_VACANCIES, payload: LOADING });
@@ -42,7 +43,11 @@ export const getVacancies = () => (
 
 export const submitVacancy = (id, companyId) => (
   (dispatch) =>
-    submitVacancyAPI({ id, companyId }, () => {},
+    submitVacancyAPI({ id, companyId }, () => {
+      // const userId = getState().get('userSession')
+      // .get('userAuth').get('userInformation').get('id');
+      // socket.emit('message', { companyId, userId });
+    },
     (err) => {
       console.log(err);
     }, dispatch)

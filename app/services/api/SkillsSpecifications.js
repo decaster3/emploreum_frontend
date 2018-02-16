@@ -5,6 +5,6 @@ export const getSpecificationsAPI = (successCallBack, errorCallBack, dispatch) =
   AxiosService.get(`${BASEURL}/specialisation/profiles`, successCallBack, errorCallBack, dispatch);
 };
 
-export const getSkillsFromSpecificationAPI = (credentails, successCallBack, errorCallBack, dispatch) => {
-  AxiosService.get(`${BASEURL}/specialisation/skills/${credentails.id}`, successCallBack, errorCallBack, dispatch);
+export const getSkillsFromSpecificationAPI = (specification, successCallBack, errorCallBack, dispatch) => {
+  AxiosService.get(`${BASEURL}/specialisation/skills/${specification.id}`, successCallBack, errorCallBack, dispatch);
 };

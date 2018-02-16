@@ -16,7 +16,6 @@ import {
 
 import { loginAPI, logoutAPI } from '../../services/api/Register';
 
-
 export const login = (values) => (
   (dispatch) => {
     const { email, password } = values.toJS();
@@ -28,6 +27,7 @@ export const login = (values) => (
       },
     });
     return loginAPI({ email, password }, (data) => {
+      console.log(data);
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -35,6 +35,7 @@ export const login = (values) => (
           userInformation: {
             registrationStep: data.registrationStep,
             role: data.role,
+            id: data.userId,
           },
         },
       });
@@ -57,6 +58,7 @@ export const loginAfterRegistration = (data) => (
         userInformation: {
           registrationStep: data.registrationStep,
           role: data.role,
+          id: data.userId,
         },
       },
     });
@@ -90,6 +92,7 @@ export const serverLogout = () => (
           userInformation: {},
         },
       });
+      dispatch(push('/'));
     }, (err) => {
       console.log(err);
     }, dispatch);

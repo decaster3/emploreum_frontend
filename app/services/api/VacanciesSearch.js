@@ -6,8 +6,8 @@ export const getEmployeeRecomendedVacanciesAPI = (successCallBack, errorCallBack
 };
 
 export const submitVacancyAPI = (payload, successCallBack, errorCallBack, dispatch) => {
-  const { id, companyId } = payload;
-  AxiosService.post(`${BASEURL}/employee/vacancy/${id}/add`, { companyId }, successCallBack, errorCallBack, dispatch);
+  const { id } = payload;
+  AxiosService.get(`${BASEURL}/employee/vacancy/${id}/add`, successCallBack, errorCallBack, dispatch);
 };
 
 // /vacancy/recommended
