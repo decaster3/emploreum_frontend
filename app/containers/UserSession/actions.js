@@ -14,8 +14,7 @@ import {
   COMPLETE_REGISTRATION,
 } from './constants';
 
-import { loginAPI } from '../../services/api/Register';
-
+import { loginAPI, logoutAPI } from '../../services/api/Register';
 
 export const login = (values) => (
   (dispatch) => {
@@ -28,6 +27,7 @@ export const login = (values) => (
       },
     });
     return loginAPI({ email, password }, (data) => {
+      console.log(data);
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -35,6 +35,7 @@ export const login = (values) => (
           userInformation: {
             registrationStep: data.registrationStep,
             role: data.role,
+            id: data.userId,
           },
         },
       });
@@ -57,6 +58,7 @@ export const loginAfterRegistration = (data) => (
         userInformation: {
           registrationStep: data.registrationStep,
           role: data.role,
+          id: data.userId,
         },
       },
     });
@@ -82,12 +84,17 @@ export const completeRegistration = () => (
 
 export const serverLogout = () => (
   (dispatch) => {
-    dispatch({
-      type: CHANGE_USER_STATE,
-      payload: {
-        userState: ANONYMOUS,
-        userInformation: {},
-      },
-    });
+    logoutAPI(() => {
+      dispatch({
+        type: CHANGE_USER_STATE,
+        payload: {
+          userState: ANONYMOUS,
+          userInformation: {},
+        },
+      });
+      dispatch(push('/'));
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
   }
 );

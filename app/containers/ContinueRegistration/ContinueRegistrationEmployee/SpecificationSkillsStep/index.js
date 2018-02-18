@@ -33,21 +33,25 @@ import {
 export class SpecificationSkills extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <SpecificationSkillsStep
-        getSpecification={this.props.getSpecification}
-        getSkills={this.props.getSkills}
-        specificationListStatus={this.props.specificationListStatus}
-        skillsListStatus={this.props.skillsListStatus}
-        specificationList={this.props.specificationList}
-        skillsList={this.props.skillsList}
-        addSkill={this.props.addSkill}
-        addSpecificationWithSkills={this.props.addSpecificationWithSkills}
-        choosenSpecifications={this.props.choosenSpecifications}
-        deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
-        deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
-        submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
-        submittingSpecification={this.props.submittingSpecification}
-      />
+      <div className="panel panel-headline col-md-6 col-md-offset-3">
+        <div className="panel-body">
+          <SpecificationSkillsStep
+            getSpecification={this.props.getSpecification}
+            getSkills={this.props.getSkills}
+            specificationListStatus={this.props.specificationListStatus}
+            skillsListStatus={this.props.skillsListStatus}
+            specificationList={this.props.specificationList}
+            skillsList={this.props.skillsList}
+            addSkill={this.props.addSkill}
+            addSpecificationWithSkills={this.props.addSpecificationWithSkills}
+            choosenSpecifications={this.props.choosenSpecifications}
+            deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
+            deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
+            submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
+            submittingSpecification={this.props.submittingSpecification}
+          />
+        </div>
+      </div>
     );
   }
 }

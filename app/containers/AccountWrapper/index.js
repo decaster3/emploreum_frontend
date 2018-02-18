@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
-import reducer from './reducer';
-import { AccountWrapper } from '../../components/AccountWrapper';
+import AccountWrapper from '../../components/AccountWrapper/Loadable';
+import Header from '../Header/Loadable';
 import {
   selectView,
 } from './selectors';
@@ -13,13 +13,23 @@ import {
   changeView,
 } from './actions';
 
+
+import reducer from './reducer';
+
 export class AccountWrapperContainer extends React.PureComponent {
 // TODO component DID mount check path
   render() {
     return (
-      <AccountWrapper changeView={this.props.changeView} view={this.props.view} url={this.props.url}>
-        {this.props.children}
-      </AccountWrapper>
+      <div id="wrapper">
+        <Header />
+        <AccountWrapper
+          changeView={this.props.changeView}
+          view={this.props.view}
+          url={this.props.url}
+        >
+          {this.props.children}
+        </AccountWrapper>
+      </div>
     );
   }
 }

@@ -12,8 +12,6 @@ import injectReducer from 'utils/injectReducer';
 import { compose } from 'redux';
 import { PulseLoader } from 'react-spinners';
 
-import VacancyCreation from '../VacancyCreation/Loadable';
-
 import {
   selectEmployeesItems,
   selectRecentPaymentsItems,
@@ -70,12 +68,13 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
     if (this.props.openVacanciesStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
     }
-    return this.props.openVacanciesItems.map((vacation) =>
+    return this.props.openVacanciesItems.map((vacancy) =>
       (<Vacancy
-        key={vacation.position}
-        position={vacation.position}
-        hoursPerWeek={vacation.hoursPerWeek}
-        payment={vacation.payment}
+        id={vacancy.id}
+        key={vacancy.position}
+        position={vacancy.position}
+        hoursPerWeek={vacancy.hoursPerWeek}
+        payment={vacancy.payment}
       />)
     );
   }
@@ -104,7 +103,6 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
           recentPaments={recentPaments}
           vacancies={vacancies}
         />
-        <VacancyCreation />
       </div>
     );
   }

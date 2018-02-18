@@ -6,7 +6,7 @@ const ChoosenSpecifications = (props) => {
     children,
   } = props;
   return (
-    <div>
+    <div style={{ marginTop: 20 }}>
       {children}
     </div>
   );

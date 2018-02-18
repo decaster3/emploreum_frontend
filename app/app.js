@@ -47,6 +47,7 @@ import '!!style-loader!css-loader!./assets/vendor/dropzone/css/dropzone.css';
 // MAIN CSS
 import '!!style-loader!css-loader!./assets/css/klorofil.css';
 import '!!style-loader!css-loader!./assets/css/style.css';
+import '!!style-loader!css-loader!./assets/css/profile.css';
 import '!!style-loader!css-loader!./assets/css/search.css';
 
 

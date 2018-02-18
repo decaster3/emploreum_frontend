@@ -16,7 +16,7 @@ import {
   selectChoosenSpecifications,
 } from './selectors';
 import reducer from '../../SpecificationsSkills/reducer';
-import VacancyCreationModal from '../../../components/Company/CompanyFinanceComponents/VacancyCreation/Loadable';
+import VacancyCreationForm from '../../../components/Company/CompanyFinanceComponents/VacancyCreation/Loadable';
 import {
   addSkill,
   getSpecification,
@@ -30,25 +30,23 @@ import { createVacancy } from './actions';
 export class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="modal fade" id="modal-vacancy" tabIndex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-        <div className="modal-dialog modal">
-          <VacancyCreationModal
-            getSpecification={this.props.getSpecification}
-            getSkills={this.props.getSkills}
-            specificationListStatus={this.props.specificationListStatus}
-            skillsListStatus={this.props.skillsListStatus}
-            specificationList={this.props.specificationList}
-            skillsList={this.props.skillsList}
-            addSkill={this.props.addSkill}
-            addSpecificationWithSkills={this.props.addSpecificationWithSkills}
-            choosenSpecifications={this.props.choosenSpecifications}
-            deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
-            deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
-            submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
-            submittingSpecification={this.props.submittingSpecification}
-            createVacancy={this.props.createVacancy}
-          />
-        </div>
+      <div>
+        <VacancyCreationForm
+          getSpecification={this.props.getSpecification}
+          getSkills={this.props.getSkills}
+          specificationListStatus={this.props.specificationListStatus}
+          skillsListStatus={this.props.skillsListStatus}
+          specificationList={this.props.specificationList}
+          skillsList={this.props.skillsList}
+          addSkill={this.props.addSkill}
+          addSpecificationWithSkills={this.props.addSpecificationWithSkills}
+          choosenSpecifications={this.props.choosenSpecifications}
+          deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
+          deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
+          submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
+          submittingSpecification={this.props.submittingSpecification}
+          createVacancy={this.props.createVacancy}
+        />
       </div>
     );
   }

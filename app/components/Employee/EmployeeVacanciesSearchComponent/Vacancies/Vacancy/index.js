@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Currency from '../Currency/Loadable';
 // import styled from 'styled-components';
 export const Vacancy = (props) => {
@@ -15,7 +16,8 @@ export const Vacancy = (props) => {
     companyName,
     acceptableCurrencies,
     description,
-    contractDuration } = props;
+    contractDuration,
+    id } = props;
 
   const currencies = acceptableCurrencies.map((currency) =>
     (<Currency
@@ -23,6 +25,7 @@ export const Vacancy = (props) => {
       name={currency}
     />)
   );
+  const url = `vacancy/${id}`;
   return (
     <div className="vacancy">
       <div className="vacancy-name">
@@ -38,7 +41,7 @@ export const Vacancy = (props) => {
       <div className="vacancy-desc">
         <p> { description } </p>
         <div className="vacancy-add">
-          <a href="">Go!</a>
+          <Link to={url}>Details</Link>
         </div>
         <div className="vacancy-contact">
           <a href="">Contacts</a>
@@ -50,7 +53,7 @@ export const Vacancy = (props) => {
     </div>
   );
 };
-
+//
 Vacancy.propTypes = {
   contractDuration: PropTypes.string,
   weekPaymeent: PropTypes.string,
@@ -58,6 +61,7 @@ Vacancy.propTypes = {
   description: PropTypes.string,
   companyName: PropTypes.string,
   acceptableCurrencies: PropTypes.array,
+  id: PropTypes.string,
 };
 
 export default Vacancy;

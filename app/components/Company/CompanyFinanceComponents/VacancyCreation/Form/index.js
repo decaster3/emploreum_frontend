@@ -13,10 +13,10 @@ const FormCreationVacancy = (props) => {
     <form onSubmit={handleSubmit(createVacancy)}>
       <div className="modal-body" >
         <Field
-          name="payment"
+          name="weekPayment"
           component={renderField}
           validate={required}
-          label="Payment"
+          label="Week Payment"
         />
         <Field
           name="duration"
@@ -24,20 +24,20 @@ const FormCreationVacancy = (props) => {
           validate={required}
           label="Duration"
         />
-      </div>
-      <div className="modal-footer">
-        <button
-          data-dismiss="modal"
-          type="submit"
-          className="btn btn-primary"
-          disabled={submitting}
-        >
-          { submitting
-            ? <SyncLoader color={'#ffffff'} size={5} />
-            : <span>Submit</span>
-          }
-        </button>
-        <button type="button" className="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <div className="col-xs-12 no-padding text-right padding-top-30">
+          <button
+            type="submit"
+            style={{ marginRight: 10 }}
+            className="btn btn-primary"
+            disabled={submitting}
+          >
+            { submitting
+              ? <SyncLoader color={'#ffffff'} size={5} />
+              : <span>Submit</span>
+            }
+          </button>
+          <button type="button" className="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
       </div>
     </form>
   );

@@ -13,27 +13,26 @@ import FormCreationVacancy from './Form/Loadable';
 class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="modal-content">
-        <div className="modal-header">
-          Create vacation
-          <button type="button" className="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <div className="panel panel-headline col-md-8 col-md-offset-2">
+        <div className="panel-heading">
+          <h3 className="panel-title">
+            Create vacancy
+          </h3>
         </div>
-        <div className="modal-body" >
-          <SpecificationSkills
-            specificationList={this.props.specificationList}
-            getSpecification={this.props.getSpecification}
-            deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
-            addSpecificationWithSkills={this.props.addSpecificationWithSkills}
-            addSkill={this.props.addSkill}
-            deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
-            choosenSpecifications={this.props.choosenSpecifications}
-            specificationListStatus={this.props.specificationListStatus}
-            modal
-          />
-          <FormCreationVacancy
-            createVacancy={this.props.createVacancy}
-          />
-        </div>
+        <SpecificationSkills
+          specificationList={this.props.specificationList}
+          getSpecification={this.props.getSpecification}
+          deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
+          addSpecificationWithSkills={this.props.addSpecificationWithSkills}
+          addSkill={this.props.addSkill}
+          deleteSkillFromSpecification={this.props.deleteSkillFromSpecification}
+          choosenSpecifications={this.props.choosenSpecifications}
+          specificationListStatus={this.props.specificationListStatus}
+          modal
+        />
+        <FormCreationVacancy
+          createVacancy={this.props.createVacancy}
+        />
       </div>
     );
   }

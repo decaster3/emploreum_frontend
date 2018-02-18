@@ -36,7 +36,9 @@ export class VacanciesSearch extends React.Component { // eslint-disable-line re
     return this.props.vacanciesItems.map((vacancy) =>
       (<Vacancy
         key={vacancy.id}
+        id={vacancy.id}
         profile={vacancy.profile}
+        weekPaymeent={vacancy.weekPaymeent}
         companyName={vacancy.companyName}
         acceptableCurrencies={vacancy.acceptableCurrencies}
         description={vacancy.description}

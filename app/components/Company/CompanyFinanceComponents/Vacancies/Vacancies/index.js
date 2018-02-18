@@ -1,7 +1,7 @@
 /* eslint no-script-url: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 export const Vacancies = (props) => {
   const { children } = props;
 
@@ -22,7 +22,7 @@ export const Vacancies = (props) => {
         <div className="panel-footer">
           <div className="row">
             <div className="col-md-12 text-right">
-              <a href="javascript:void(0)" className="btn btn-success" data-toggle="modal" data-target="#modal-vacancy">New vacation</a>
+              <Link to="vacancy/create" className="btn btn-success">New vacation</Link>
             </div>
           </div>
         </div>

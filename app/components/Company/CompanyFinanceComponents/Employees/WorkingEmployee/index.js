@@ -9,7 +9,7 @@ export const WorkingEmployee = (props) => {
   return (
     <li>
       <img src={avatar} alt="Avatar" className="img-circle pull-left avatar" />
-      <p>
+      <div>
         <a href="javascript:void(0)">{name}</a>
         <p>
           <a href="javascript:void(0)">{position}</a>
@@ -17,7 +17,7 @@ export const WorkingEmployee = (props) => {
         <p>
           <span className="timestamp">{workedTime}</span>
         </p>
-      </p>
+      </div>
     </li>
   );
 };
