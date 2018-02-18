@@ -32,18 +32,17 @@ export class Header extends React.Component { // eslint-disable-line react/prefe
           <meta name="description" content="Description of Header" />
         </Helmet>
         <HeaderComponent
-          blockchainStatus={blockchainStatus}
-          notifications={notifications}
-          notificationsCount={this.props.notificationsCount}
           serverLogout={this.props.serverLogout}
-        />
+        >
+          {notifications}
+          {blockchainStatus}
+        </HeaderComponent>
       </div>
     );
   }
 }
 
 Header.propTypes = {
-  notificationsCount: PropTypes.number,
   serverLogout: PropTypes.func,
 };
 

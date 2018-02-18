@@ -1,6 +1,8 @@
 import {
   CHANGE_STATE_ENDED_CONTRACTS,
   CHANGE_STATE_CURRENT_CONTRACTS,
+  CHANGE_STATE_AWAITED_CONTRACTS,
+  GET_AWAITED_CONTRACTS,
   LOADING,
   LOADED,
   GET_ENDED_CONTRACTS,
@@ -10,7 +12,7 @@ import {
 } from './constants';
 
 import { getEmployeeAddressAPI } from '../../../services/api/Addresses';
-import { getCurrentContractsAPI } from '../../../services/api/Contracts';
+import { getCurrentContractsAPI, getAwaitedContractsAPI } from '../../../services/api/Contracts';
 
 const mockContractss = [{
   address: '0xaaa89ad8ef43fcf3d3f6b2e5fdac4cd4719bafbb',
@@ -48,7 +50,7 @@ export const getCurrentContracts = () => (
       const newData = data.map((el) => ({
         address: '0xaaa89ad8ef43fcf3d3f6b2e5fdac4cd4719bafbb',
         company: 'ООО Компания 1',
-        salary: 2,
+        salary: el.week_payment,
         startDay: el.begin_date,
         endDay: el.end_date,
       }));
@@ -62,6 +64,30 @@ export const getCurrentContracts = () => (
     }, dispatch);
   }
 );
+
+export const loadingAwaitedContracts = () => ({ type: CHANGE_STATE_AWAITED_CONTRACTS, payload: LOADING });
+export const loadedAwaitedContracts = () => ({ type: CHANGE_STATE_AWAITED_CONTRACTS, payload: LOADED });
+
+export const getAwaitedContracts = () => (
+  (dispatch) => {
+    dispatch(loadingAwaitedContracts());
+    return getAwaitedContractsAPI((data) => {
+      const newData = data.map((el) => ({
+        duration: el.duration,
+        company: el.company.name,
+        salary: el.week_payment,
+      }));
+      dispatch({
+        type: GET_AWAITED_CONTRACTS,
+        payload: newData,
+      });
+      dispatch(loadedAwaitedContracts());
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
+  }
+);
+
 
 export const loadingAddress = () => ({ type: CHANGE_STATE_ADDRESS, payload: LOADING });
 export const loadedAddress = () => ({ type: CHANGE_STATE_ADDRESS, payload: LOADED });
@@ -87,5 +113,6 @@ export const getAllFinance = () => (
     dispatch(getAddress());
     dispatch(getEndedContracts());
     dispatch(getCurrentContracts());
+    dispatch(getAwaitedContracts());
   }
 );

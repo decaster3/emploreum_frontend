@@ -7,13 +7,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
-import PropType from 'prop-types';
+import PropTypes from 'prop-types';
 import Search from './Search/Loadable';
 import Navigation from './Navigation/Loadable';
 import Language from './Language/Loadable';
 
 export const Header = (props) => {
-  const { notifications, serverLogout, blockchainStatus } = props;
+  const { serverLogout, children } = props;
   return (
     <nav id="max-navbar" className="navbar navbar-default navbar-fixed-top">
       <div className="brand">
@@ -26,8 +26,7 @@ export const Header = (props) => {
         <Search />
         <div id="navbar-menu">
           <ul className="nav navbar-nav navbar-right">
-            {blockchainStatus}
-            {notifications}
+            {children}
             <Navigation
               serverLogout={serverLogout}
             />
@@ -40,9 +39,11 @@ export const Header = (props) => {
 };
 
 Header.propTypes = {
-  blockchainStatus: PropType.object,
-  notifications: PropType.object,
-  serverLogout: PropType.func,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+  serverLogout: PropTypes.func,
 };
 
 export default Header;

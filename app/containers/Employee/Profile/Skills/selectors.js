@@ -9,7 +9,21 @@ const selectSkillsDomain = (state) => state.get('skills').get('specificationsSki
  * Other specific selectors
  */
 
-
+// {
+//   specifications:
+//   [
+//     {
+//       name: 'qwe',
+//       skills:
+//       [
+//         {
+//           name: 'eqw',
+//           photoUrl: 'ddd',
+//         }
+//       ]
+//     }
+//   ]
+// }
 /**
  * Default selector used by Skills
  */
@@ -21,5 +35,17 @@ export const selectSpecificationsSkillsStatus = createSelector(
 
 export const selectSpecificationsSkills = createSelector(
   selectSkillsDomain,
-  (specificationsSkills) => specificationsSkills.get('items').toJS()
+  (specificationsSkills) => {
+    const specifications =
+      specificationsSkills.get('items').toJS().map((el) => ({
+        name: el.profile.name,
+        id: el.id,
+        skills: el.skills.map((skill) => ({
+          id: skill.id,
+          name: skill.name,
+          photoUrl: skill.photo_path,
+        })),
+      }));
+    return specifications;
+  }
 );

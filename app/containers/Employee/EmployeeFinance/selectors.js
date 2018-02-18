@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
  */
 const selectCurrentContracts = (state) => state.get('employeeFinance').get('currentContracts');
 const selectEndedContracts = (state) => state.get('employeeFinance').get('endedContracts');
+const selectAwaitedContracts = (state) => state.get('employeeFinance').get('awaitedContracts');
 const selectAddress = (state) => state.get('employeeFinance').get('address');
 
 export const selectCurrentContractsStatus = createSelector(
@@ -27,6 +28,16 @@ export const selectCurrentContractsItems = createSelector(
   (currentContractsItems) => currentContractsItems.get('items').toJS()
 );
 
+export const selectAwaitedContractsItems = createSelector(
+  selectAwaitedContracts,
+  (currentContractsItems) => currentContractsItems.get('items').toJS()
+);
+
+export const selectAwaitedContractsStatus = createSelector(
+  selectAwaitedContracts,
+  (currentContractsStatus) => currentContractsStatus.get('status')
+);
+
 export const selectAddressName = createSelector(
   selectAddress,
   (addressName) => addressName.get('name')
@@ -34,5 +45,5 @@ export const selectAddressName = createSelector(
 
 export const selectAddressStatus = createSelector(
   selectAddress,
-  (addressStatus) => addressStatus.get('status')
+  () => 'qweasdqwdwfewqefwef'
 );

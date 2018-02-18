@@ -31,16 +31,20 @@ import { submitSpecificationSkillsStep } from '../actions';
 export class SpecificationStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <SpecificationSkillsStep
-        getSpecification={this.props.getSpecification}
-        specificationListStatus={this.props.specificationListStatus}
-        specificationList={this.props.specificationList}
-        addSpecificationWithSkills={this.props.addSpecificationWithSkills}
-        choosenSpecifications={this.props.choosenSpecifications}
-        deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
-        submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
-        submittingSpecification={this.props.submittingSpecification}
-      />
+      <div className="panel panel-headline col-md-6 col-md-offset-3">
+        <div className="panel-body">
+          <SpecificationSkillsStep
+            getSpecification={this.props.getSpecification}
+            specificationListStatus={this.props.specificationListStatus}
+            specificationList={this.props.specificationList}
+            addSpecificationWithSkills={this.props.addSpecificationWithSkills}
+            choosenSpecifications={this.props.choosenSpecifications}
+            deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
+            submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
+            submittingSpecification={this.props.submittingSpecification}
+          />
+        </div>
+      </div>
     );
   }
 }

@@ -36,6 +36,7 @@ export const getOpenVacancies = () => (
           position: `${position} developer`,
           hoursPerWeek: `${el.duration} month(s)`,
           payment: `${el.week_payment} eth`,
+          id: el.id,
         };
       });
       dispatch({

@@ -15,6 +15,8 @@ import {
   selectCurrentContractsStatus,
   selectAddressName,
   selectAddressStatus,
+  selectAwaitedContractsStatus,
+  selectAwaitedContractsItems,
 } from './selectors';
 import { getAllFinance } from './actions';
 
@@ -32,11 +34,27 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
     return this.props.endedContractsItems.map((contract) =>
       (<TableRow
         key={contract.startDay}
-        address={contract.address}
-        company={contract.company}
-        salary={contract.salary}
-        startDay={contract.startDay}
-        endDay={contract.endDay}
+        rows={[contract.address,
+          contract.company,
+          contract.salary,
+          contract.startDay,
+          contract.endDay,
+        ]}
+      />)
+    );
+  }
+
+  renderAwaitedContracts() {
+    if (this.props.awaitedContractsStatus === 'LOADING') {
+      return (<PulseLoader color={'#0081c2'} size={20} />);
+    }
+    return this.props.awaitedContractsItems.map((contract) =>
+      (<TableRow
+        key={contract.startDay}
+        rows={[contract.duration,
+          contract.company,
+          contract.salary,
+        ]}
       />)
     );
   }
@@ -48,11 +66,12 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
     return this.props.currentContractsItems.map((contract) =>
       (<TableRow
         key={contract.startDay}
-        address={contract.address}
-        company={contract.company}
-        salary={contract.salary}
-        startDay={contract.startDay}
-        endDay={contract.endDay}
+        rows={[contract.address,
+          contract.company,
+          contract.salary,
+          contract.startDay,
+          contract.endDay,
+        ]}
       />)
     );
   }
@@ -62,6 +81,7 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
     const income = 0.5;
     const currentContractsRows = this.renderCurrentContracts();
     const endedContractsRow = this.renderEndedContracts();
+    const awaitedContracts = this.renderAwaitedContracts();
     return (
       <div>
         <Helmet>
@@ -75,6 +95,7 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
           income={income}
           currentContracts={currentContractsRows}
           endedContracts={endedContractsRow}
+          awaitedContracts={awaitedContracts}
         />
       </div>
     );
@@ -85,8 +106,10 @@ EmployeeFinance.propTypes = {
   getAllFinance: PropTypes.func.isRequired,
   currentContractsItems: PropTypes.array,
   endedContractsItems: PropTypes.array,
+  awaitedContractsItems: PropTypes.array,
   endedContractsStatus: PropTypes.string,
   currentContractsStatus: PropTypes.string,
+  awaitedContractsStatus: PropTypes.string,
   addressStatus: PropTypes.string,
   addressName: PropTypes.string,
 };
@@ -94,8 +117,10 @@ EmployeeFinance.propTypes = {
 function mapStateToProps(state) {
   return {
     currentContractsItems: selectCurrentContractsItems(state),
+    awaitedContractsItems: selectAwaitedContractsItems(state),
     endedContractsItems: selectEndedContractsItems(state),
     endedContractsStatus: selectEndedContractsStatus(state),
+    awaitedContractsStatus: selectAwaitedContractsStatus(state),
     currentContractsStatus: selectCurrentContractsStatus(state),
     addressName: selectAddressName(state),
     addressStatus: selectAddressStatus(state),

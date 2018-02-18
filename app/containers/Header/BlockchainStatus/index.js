@@ -36,7 +36,7 @@ export class BlockchainStatus extends React.Component { // eslint-disable-line r
 
 BlockchainStatus.propTypes = {
   getBlockchainAsynkActions: PropTypes.func.isRequired,
-  asyncBlockchainMessage: PropTypes.array,
+  asyncBlockchainMessage: PropTypes.string,
   asyncBlockchainActionsCount: PropTypes.number,
 };
 

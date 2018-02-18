@@ -18,6 +18,8 @@ import { selectSpecificationsSkillsStatus, selectSpecificationsSkills } from './
 import Skill from '../../../../components/Employee/EmployeeProfileComponents/Skills/Skill/Loadable';
 import SkillWrapper from '../../../../components/Employee/EmployeeProfileComponents/Skills/SkillsWrapper/Loadable';
 
+import { BASEURL } from '../../../../global-constants';
+
 export class Skills extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getSpecificationsSkills();
@@ -26,13 +28,24 @@ export class Skills extends React.Component { // eslint-disable-line react/prefe
     if (this.props.specificationsSkillsStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
     }
-    return this.props.specificationsSkills.map((skill) => (
-      <Skill
-        name={skill.name}
-        raiting={skill.raiting}
-        imgUrl={skill.photo_path}
-      />
-    ));
+    return this.props.specificationsSkills.map((specification) => {
+      const skills = specification.skills.map((skill) =>
+      (
+        <Skill
+          key={skill.id}
+          name={skill.name}
+          raiting={5}
+          imgUrl={`${BASEURL}${skill.photoUrl}`}
+        />
+      )
+    );
+      return (
+        <div key={specification.id} className="col-lg-12">
+          <h4 className="text-left">{specification.name}</h4>
+          {skills}
+        </div>
+      );
+    });
   }
   render() {
     const skills = this.renderSkills();

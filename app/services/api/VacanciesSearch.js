@@ -5,9 +5,22 @@ export const getEmployeeRecomendedVacanciesAPI = (successCallBack, errorCallBack
   AxiosService.get(`${BASEURL}/employee/vacancy/recommended`, successCallBack, errorCallBack, dispatch);
 };
 
-export const submitVacancyAPI = (payload, successCallBack, errorCallBack, dispatch) => {
+export const enrollVacancyAPI = (payload, successCallBack, errorCallBack, dispatch) => {
   const { id } = payload;
-  AxiosService.get(`${BASEURL}/employee/vacancy/${id}/add`, successCallBack, errorCallBack, dispatch);
+  AxiosService.get(`${BASEURL}/employee/vacancy/enroll/${id}`, successCallBack, errorCallBack, dispatch);
 };
 
-// /vacancy/recommended
+export const getCompanyInfoAPI = (payload, successCallBack, errorCallBack, dispatch) => {
+  const { id } = payload;
+  AxiosService.get(`${BASEURL}/company/info/vacancy/${id}`, successCallBack, errorCallBack, dispatch);
+};
+
+export const getVacancyInfoAPI = (payload, successCallBack, errorCallBack, dispatch) => {
+  const { id } = payload;
+  AxiosService.get(`${BASEURL}/company/vacancy/info/${id}`, successCallBack, errorCallBack, dispatch);
+};
+
+export const getSpecificationsSkillsVacancyInfoAPI = (payload, successCallBack, errorCallBack, dispatch) => {
+  const { id } = payload;
+  AxiosService.get(`${BASEURL}/company/vacancy/${id}/specification`, successCallBack, errorCallBack, dispatch);
+};

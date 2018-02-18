@@ -9,6 +9,8 @@ import {
   NOT_LOADED,
   GET_CURRENT_CONTRACTS,
   GET_ENDED_CONTRACTS,
+  CHANGE_STATE_AWAITED_CONTRACTS,
+  GET_AWAITED_CONTRACTS,
   CHANGE_STATE_CURRENT_CONTRACTS,
   CHANGE_STATE_ENDED_CONTRACTS,
   CHANGE_STATE_ADDRESS,
@@ -16,6 +18,10 @@ import {
 } from './constants';
 
 const initialState = fromJS({
+  awaitedContracts: {
+    items: [],
+    status: NOT_LOADED,
+  },
   currentContracts: {
     items: [],
     status: NOT_LOADED,
@@ -36,6 +42,16 @@ function employeeFinanceReducer(state = initialState, action) {
       return state.set('currentContracts', fromJS({
         status: state.get('currentContracts').get('status'),
         items: action.payload,
+      }));
+    case GET_AWAITED_CONTRACTS:
+      return state.set('awaitedContracts', fromJS({
+        status: state.get('awaitedContracts').get('status'),
+        items: action.payload,
+      }));
+    case CHANGE_STATE_AWAITED_CONTRACTS:
+      return state.set('awaitedContracts', fromJS({
+        status: action.payload,
+        items: state.get('awaitedContracts').get('items'),
       }));
     case GET_ENDED_CONTRACTS:
       return state.set('endedContracts', fromJS({

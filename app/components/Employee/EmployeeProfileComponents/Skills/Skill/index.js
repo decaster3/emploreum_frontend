@@ -25,7 +25,7 @@ export const Skill = (props) => {
 
 Skill.propTypes = {
   name: PropTypes.string,
-  raiting: PropTypes.string,
+  raiting: PropTypes.number,
   imgUrl: PropTypes.string,
 };
 

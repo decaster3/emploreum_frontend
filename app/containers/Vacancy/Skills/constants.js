@@ -1,0 +1,11 @@
+/*
+ *
+ * Skills constants
+ *
+ */
+
+export const CHANGE_STATE_SPECIFICATIONS_SKILLS = 'CHANGE_STATE_SPECIFICATIONS_SKILLS';
+export const LOADING = 'LOADING';
+export const NOT_LOADED = 'NOT_LOADED';
+export const LOADED = 'LOADED';
+export const GET_SPECIFICATIONS_SKILLS = 'GET_SPECIFICATIONS_SKILLS';

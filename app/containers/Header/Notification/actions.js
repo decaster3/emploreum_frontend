@@ -21,8 +21,7 @@ export const listenNotifications = () => (
   (dispatch, getState) => {
     const userId = getState().get('userSession')
       .get('userAuth').get('userInformation').get('id');
-    socket.on(userId, (msg) => {
-      console.log(msg);
+    socket.on(userId, () => {
       dispatch(getNotifications());
     });
   }
@@ -32,7 +31,6 @@ export const getNotifications = () => (
   (dispatch) => {
     dispatch(loadingNotifications());
     getNotificationsAPI((data) => {
-      console.log(data);
       dispatch({
         type: GET_NOTIFICATIONS,
         payload: data,

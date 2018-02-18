@@ -39,15 +39,12 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
     switch (this.props.specificationListStatus) {
       case LOADED:
         return (
-          <Wrapper
-            modal={this.props.modal}
-          >
+          <Wrapper>
             <AutoComplete
               addItem={this.props.addSpecificationWithSkills}
               list={this.props.specificationList}
               whatToAdd={'specification'}
             />
-            <hr />
             <ChoosenSpecifications>
               {specifications}
             </ChoosenSpecifications>
