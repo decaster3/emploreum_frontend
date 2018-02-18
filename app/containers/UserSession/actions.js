@@ -16,8 +16,16 @@ import {
 
 import { loginAPI, logoutAPI } from '../../services/api/Register';
 
+export const redirect = (role, dispatch) => {
+  if (role === 'COMPANY') {
+    dispatch(push('/company'));
+  } else {
+    dispatch(push('/employee'));
+  }
+};
+
 export const login = (values) => (
-  (dispatch) => {
+  (dispatch, getState) => {
     const { email, password } = values.toJS();
     dispatch({
       type: CHANGE_USER_STATE,
@@ -27,7 +35,6 @@ export const login = (values) => (
       },
     });
     return loginAPI({ email, password }, (data) => {
-      console.log(data);
       dispatch({
         type: CHANGE_USER_STATE,
         payload: {
@@ -39,7 +46,8 @@ export const login = (values) => (
           },
         },
       });
-      dispatch(push('/'));
+      dispatch(redirect(getState().get('userSession')
+        .get('userAuth').get('userInformation').get('role'), dispatch));
     }, (err) => {
       dispatch(serverLogout());
       if (err.response.status && err.response.status === 401) {

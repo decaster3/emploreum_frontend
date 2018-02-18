@@ -19,10 +19,8 @@ export const loadedVacancyMainInfo = () => ({ type: CHANGE_STATE_VACANCY_MAIN_IN
 
 export const getVacancyMainInfo = (id) => (
   (dispatch) => {
-    console.log(id);
     dispatch(loadingVacanyMainInfo());
     getCompanyInfoAPI({ id }, (data) => {
-      console.log(data);
       dispatch({
         type: GET_VACANCY_MAIN_INFO,
         payload: {
