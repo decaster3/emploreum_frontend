@@ -14,6 +14,7 @@ function ProfileHeaderMain(props) {
     <div className="profile-header">
       <div className="overlay" />
       <div className="profile-main">
+        <i className="fa text-avatar"></i>
         <h3 className="name">
           {mainInfoStatus === 'LOADED' ? mainInfo.name : ''}
         </h3>

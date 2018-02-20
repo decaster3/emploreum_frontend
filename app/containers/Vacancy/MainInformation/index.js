@@ -18,7 +18,6 @@ import {
 } from './selectors';
 
 import { getVacancyMainInfo } from './actions';
-import { enrollVacancy } from '../actions';
 
 import reducer from './reducer';
 import DetailVacancy from '../../../components/Vacancy/CompanyInfo/Detail/Loadable';
@@ -26,7 +25,6 @@ import MainCompany from '../../../components/Vacancy/CompanyInfo/Main/Loadable';
 
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    console.log(this.props.vacancyId);
     this.props.getVacancyMainInfo(this.props.vacancyId);
   }
   render() {
@@ -42,7 +40,6 @@ export class MainInformation extends React.Component { // eslint-disable-line re
         />
         <DetailVacancy
           mainInfo={this.props.mainInfo}
-          enrollVacancy={this.props.enrollVacancy}
           vacancyId={this.props.vacancyId}
           role={this.props.role}
         />
@@ -53,7 +50,6 @@ export class MainInformation extends React.Component { // eslint-disable-line re
 
 MainInformation.propTypes = {
   getVacancyMainInfo: PropTypes.func,
-  enrollVacancy: PropTypes.func,
   mainInfoStatus: PropTypes.string,
   mainInfo: PropTypes.object,
   vacancyId: PropTypes.string,
@@ -71,7 +67,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getVacancyMainInfo: (evt) => dispatch(getVacancyMainInfo(evt)),
-    enrollVacancy: (evt) => dispatch(enrollVacancy(evt)),
   };
 }
 

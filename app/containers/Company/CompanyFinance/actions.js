@@ -15,7 +15,7 @@ import {
   GET_PAYMENTS,
 } from './constants';
 
-import { getOpenVacanciesAPI } from '../../../services/api/Vacancy';
+import { getOpenVacanciesAPI, getCompanyWorkersAPI } from '../../../services/api/Vacancy';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -26,7 +26,6 @@ export const getOpenVacancies = () => (
   (dispatch) => {
     dispatch(loadingOpenVacancies());
     return getOpenVacanciesAPI((data) => {
-      console.log(data);
       const newData = data.map((el) => {
         let position = '';
         el.profiles.forEach((prof) => {
@@ -50,31 +49,28 @@ export const getOpenVacancies = () => (
   }
 );
 
-const mockEmployees = [{
-  avatar: '/avatar.jpeg',
-  name: 'Mickle',
-  position: 'Node js developer',
-  workedTime: 'working 5 years',
-}, {
-  avatar: '/avatar.jpeg',
-  name: 'Alex',
-  position: 'Java developer',
-  workedTime: 'working 3 month',
-}];
-
 export const loadingEmployees = () => ({ type: CHANGE_STATE_EMPLOYEES, payload: LOADING });
 export const loadedEmployees = () => ({ type: CHANGE_STATE_EMPLOYEES, payload: LOADED });
 
 export const getEmployees = () => (
   (dispatch) => {
     dispatch(loadingEmployees());
-    return sleep(1000).then(() => {
+    getCompanyWorkersAPI((data) => {
+      const newData = data.map((el) =>
+      ({
+        avatar: el.employee.photo_path,
+        name: el.employee.name,
+        employeeId: el.employee.user_id,
+        position: 'web developer',
+      }));
       dispatch({
         type: GET_EMPLOYEES,
-        payload: mockEmployees,
+        payload: newData,
       });
       dispatch(loadedEmployees());
-    });
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
   }
 );
 

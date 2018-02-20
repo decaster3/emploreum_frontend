@@ -12,7 +12,7 @@ import FormRegisterSecondStep from './Form';
 
 class SecondStepRegistration extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    toast('Email was sent!', { autoClose: 3000, type: toast.TYPE.INFO });
+    toast('Email was sent!', { hideProgressBar: true, autoClose: 3000, type: toast.TYPE.INFO });
   }
 
   render() {

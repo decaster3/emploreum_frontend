@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for StartPage
+ * Asynchronously loads the component for EnrolledEmployeesWrapper
  *
  */
 

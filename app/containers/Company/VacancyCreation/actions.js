@@ -4,6 +4,7 @@
  *
  */
 import { push } from 'react-router-redux';
+import { toast } from 'react-toastify';
 import {
   CHANGE_SUBMIT_VACANCY_BUTTON_STATUS,
 } from './constants';
@@ -15,6 +16,8 @@ import { clear } from '../../SpecificationsSkills/actions';
 
 export const changeSubmitSpecificationButtonState = () => ({ type: CHANGE_SUBMIT_VACANCY_BUTTON_STATUS });
 
+const notify = () => toast('Vacancy succesfully created!', { hideProgressBar: true, autoClose: 3000, type: toast.TYPE.INFO });
+
 export const createVacancy = (values) => (
   (dispatch, getState) => {
     const arrOfChoosenSpecificationsSkills = getState().get('vacancyCreation')
@@ -23,6 +26,7 @@ export const createVacancy = (values) => (
       () => {
         dispatch(clear());
         dispatch(push('/company/finance'));
+        notify();
       },
       (err) => {
         console.log(err);

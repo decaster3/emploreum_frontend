@@ -7,47 +7,76 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { PulseLoader } from 'react-spinners';
 
 import injectReducer from 'utils/injectReducer';
-import makeSelectCandidates from './selectors';
 import reducer from './reducer';
-import messages from './messages';
+
+import Candidate from '../../../components/Vacancy/Candidates/Candidate/Loadable';
+import CandidateWrapper from '../../../components/Vacancy/Candidates/CandidatesWrapper/Loadable';
+
+import { getCandidates, acceptCandidate, rejectCandidate } from './actions';
+import { selectCandidatesItems, selectCandidatesStatus } from './selectors';
 
 export class Candidates extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    this.props.getCandidates(this.props.vacancyId);
+  }
+
+  renderCandidates() {
+    if (this.props.candidatesStatus === 'LOADING') {
+      return (<PulseLoader color={'#0081c2'} size={20} />);
+    }
+    return this.props.candidates.map((candidate) =>
+      (<Candidate
+        acceptCandidate={this.props.acceptCandidate}
+        rejectCandidate={this.props.rejectCandidate}
+        name={candidate.name}
+        imgUrl={candidate.photo_path}
+        candidateId={candidate.user.id}
+        vacancyId={this.props.vacancyId}
+      />)
+    );
+  }
+
   render() {
+    const candidates = this.renderCandidates();
     return (
-      <div>
-        <Helmet>
-          <title>Candidates</title>
-          <meta name="description" content="Description of Candidates" />
-        </Helmet>
-        <FormattedMessage {...messages.header} />
-      </div>
+      <CandidateWrapper>
+        {candidates}
+      </CandidateWrapper>
     );
   }
 }
 
 Candidates.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  vacancyId: PropTypes.string,
+  getCandidates: PropTypes.func,
+  acceptCandidate: PropTypes.func,
+  rejectCandidate: PropTypes.func,
+  candidatesStatus: PropTypes.string,
+  candidates: PropTypes.array,
 };
 
-const mapStateToProps = createStructuredSelector({
-  candidates: makeSelectCandidates(),
-});
+function mapStateToProps(state) {
+  return {
+    candidatesStatus: selectCandidatesStatus(state),
+    candidates: selectCandidatesItems(state),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    getCandidates: (evt) => dispatch(getCandidates(evt)),
+    acceptCandidate: (evt, ev) => dispatch(acceptCandidate(evt, ev)),
+    rejectCandidate: (evt, ev) => dispatch(rejectCandidate(evt, ev)),
   };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'candidates', reducer });
+const withReducer = injectReducer({ key: 'vacancyCandidates', reducer });
 
 export default compose(
   withReducer,

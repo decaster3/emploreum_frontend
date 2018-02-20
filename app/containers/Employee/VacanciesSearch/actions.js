@@ -23,9 +23,9 @@ export const getVacancies = () => (
       const newData = data.map((element) => ({
         id: element.id,
         companyId: element.company_id,
-        profile: 'Awesome vacancy',
-        weekPaymeent: `${element.pricePerWeek} ETH/month`,
-        companyName: `${element.companyName}`,
+        profile: 'Web developer',
+        weekPaymeent: `${element.week_payment} ETH/month`,
+        companyName: `${element.name}`,
         acceptableCurrencies: ['eth', 'btc', '$'],
         description: element.info,
         contractDuration: `${element.duration} months`,

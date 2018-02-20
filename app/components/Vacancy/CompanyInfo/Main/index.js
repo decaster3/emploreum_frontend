@@ -7,13 +7,16 @@
 import React from 'react';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
+// import { BASEURL } from '../../../../global-constants';
 
 function ProfileHeaderMain(props) {
   const { mainInfo, mainInfoStatus } = props;
+  // const imgProfile = `${BASEURL}/${mainInfo.logo}`;
   return (
     <div className="profile-header">
       <div className="overlay" />
       <div className="profile-main">
+        <i className="fa text-avatar"></i>
         <h3 className="name">
           {mainInfoStatus === 'LOADED' ? mainInfo.name : ''}
         </h3>

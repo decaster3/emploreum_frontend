@@ -17,3 +17,23 @@ export const submitVacancyAPI = (specs, other, successCallBack, errorCallBack, d
 
 export const getOpenVacanciesAPI = (successCallBack, errorCallBack, dispatch) =>
   AxiosService.get(`${BASEURL}/company/vacancy`, successCallBack, errorCallBack, dispatch);
+
+export const getCompanyWorkersAPI = (successCallBack, errorCallBack, dispatch) => {
+  AxiosService.get(`${BASEURL}/company/employees`, successCallBack, errorCallBack, dispatch);
+};
+
+export const getCandidatesFromVacancyAPI = (vacancyId, successCallBack, errorCallBack, dispatch) => {
+  AxiosService.get(`${BASEURL}/company/vacancy/${vacancyId}/candidates`, successCallBack, errorCallBack, dispatch);
+};
+
+export const acceptCandidateAPI = (payload, successCallBack, errorCallBack, dispatch) => {
+  const { vacancyId, candidateId } = payload;
+  const userId = candidateId;
+  AxiosService.post(`${BASEURL}/work/approve`, { vacancyId, userId }, successCallBack, errorCallBack, dispatch);
+};
+
+export const rejectCandidateAPI = (payload, successCallBack, errorCallBack, dispatch) => {
+  const { vacancyId, candidateId } = payload;
+  AxiosService.post(`${BASEURL}/company/vacancy/${vacancyId}/candidate/${candidateId}/reject`, null, successCallBack, errorCallBack, dispatch);
+};
+

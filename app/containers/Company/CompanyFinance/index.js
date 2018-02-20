@@ -44,7 +44,8 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
         avatar={employee.avatar}
         name={employee.name}
         position={employee.position}
-        workedTime={employee.workedTime}
+        contract={employee.contract}
+        employeeId={employee.employeeId}
       />)
     );
   }

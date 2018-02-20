@@ -3,23 +3,14 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the candidates state domain
  */
-const selectCandidatesDomain = (state) => state.get('candidates');
+const selectCandidatesDomain = (state) => state.get('vacancyCandidates').get('candidates');
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by Candidates
- */
-
-const makeSelectCandidates = () => createSelector(
+export const selectCandidatesStatus = createSelector(
   selectCandidatesDomain,
-  (substate) => substate.toJS()
+  (candidatesStatus) => candidatesStatus.get('status')
 );
 
-export default makeSelectCandidates;
-export {
+export const selectCandidatesItems = createSelector(
   selectCandidatesDomain,
-};
+  (candidatesItems) => candidatesItems.get('items').toJS()
+);

@@ -45,5 +45,5 @@ export const selectAddressName = createSelector(
 
 export const selectAddressStatus = createSelector(
   selectAddress,
-  () => 'qweasdqwdwfewqefwef'
+  (addressStatus) => addressStatus.get('status')
 );

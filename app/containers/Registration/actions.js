@@ -15,6 +15,15 @@ import {
 
 import { registerAPI, sendVerificationCodeAPI } from '../../services/api/Register';
 import { loginAfterRegistration } from '../UserSession/actions';
+
+export const redirect = (role, dispatch) => {
+  if (role === 'COMPANY') {
+    dispatch(push('/company'));
+  } else {
+    dispatch(push('/employee'));
+  }
+};
+
 export const changeRole = (role) => ({
   type: CHANGE_ROLE,
   payload: role,
@@ -45,7 +54,7 @@ export const submitEmail = (values) => (
 );
 
 export const submitEmailVerification = (values) => (
-  (dispatch) => {
+  (dispatch, getState) => {
     dispatch(changeSubmitEmailVerificationButtonState());
     const { code } = values.toJS();
     const verifyCode = code;
@@ -53,7 +62,8 @@ export const submitEmailVerification = (values) => (
       (data) => {
         dispatch(loginAfterRegistration(data));
         dispatch(changeSubmitEmailVerificationButtonState());
-        dispatch(push('/'));
+        dispatch(redirect(getState().get('userSession')
+        .get('userAuth').get('userInformation').get('role'), dispatch));
       },
       (err) => {
         if (err.r) {

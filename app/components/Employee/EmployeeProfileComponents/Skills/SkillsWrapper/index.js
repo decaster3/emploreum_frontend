@@ -19,7 +19,6 @@ export const SkillsWrapper = (props) => {
         </div>
         <div className="text-center padding-top-30">
           <a href="" className="btn btn-default">Просмотреть все</a>
-          <a href="" className="btn btn-success" data-toggle="modal" data-target="#modal">Изменить</a>
         </div>
       </div>
     </div>
