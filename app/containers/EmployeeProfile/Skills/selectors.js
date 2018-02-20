@@ -3,29 +3,10 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the skills state domain
  */
-const selectSkillsDomain = (state) => state.get('skills').get('specificationsSkills');
+const selectSkillsDomain = (state) => state.get('employeeProfileSpecificationsSkills').get('specificationsSkills');
 
 /**
  * Other specific selectors
- */
-
-// {
-//   specifications:
-//   [
-//     {
-//       name: 'qwe',
-//       skills:
-//       [
-//         {
-//           name: 'eqw',
-//           photoUrl: 'ddd',
-//         }
-//       ]
-//     }
-//   ]
-// }
-/**
- * Default selector used by Skills
  */
 
 export const selectSpecificationsSkillsStatus = createSelector(

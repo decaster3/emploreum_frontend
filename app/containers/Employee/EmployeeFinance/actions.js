@@ -47,10 +47,11 @@ export const getCurrentContracts = () => (
   (dispatch) => {
     dispatch(loadingCurrentContracts());
     return getCurrentContractsAPI((data) => {
+      console.log(data);
       const newData = data.map((el) => ({
-        address: '0xaaa89ad8ef43fcf3d3f6b2e5fdac4cd4719bafbb',
-        company: 'ООО Компания 1',
-        salary: el.week_payment,
+        address: el.contract,
+        company: el.company.name,
+        salary: el.vacancy.week_payment,
         startDay: el.begin_date,
         endDay: el.end_date,
       }));

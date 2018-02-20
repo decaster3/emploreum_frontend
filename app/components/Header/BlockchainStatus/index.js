@@ -30,7 +30,7 @@ class BlockchainStatus extends React.Component {
       );
     }
     return (
-      <div />
+      <li />
     );
   }
 }

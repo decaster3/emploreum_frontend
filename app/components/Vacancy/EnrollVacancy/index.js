@@ -6,20 +6,23 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SyncLoader } from 'react-spinners';
 // import styled from 'styled-components';
 
 
 export const EnrollVacancy = (props) => {
-  const { vacancyId, enrollVacancy } = props;
+  const { vacancyId, enrollVacancy, loading } = props;
   return (
     <div className="text-center padding-top-30">
       <button
         onClick={() => enrollVacancy(vacancyId)}
         className="btn btn-success"
-        data-toggle="modal"
-        data-target="#profile-settings"
+        disabled={loading}
       >
-        Откликнуться
+        { loading
+            ? <SyncLoader color={'#ffffff'} size={5} />
+            : <span>Откликнуться</span>
+        }
       </button>
     </div>
   );
@@ -28,6 +31,7 @@ export const EnrollVacancy = (props) => {
 EnrollVacancy.propTypes = {
   vacancyId: PropTypes.string,
   enrollVacancy: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 

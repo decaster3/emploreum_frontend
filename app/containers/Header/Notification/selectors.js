@@ -10,13 +10,17 @@ export const selectNotificationsStatus = createSelector(
   selectNotifications,
   (notificationsStatus) => notificationsStatus.get('status')
 );
-
+// KOSTILLL!!!!!
 export const selectNotificationsItems = createSelector(
   selectNotifications,
   (notificationsItems) => {
     if (notificationsItems.get('items').toJS().length > 0) {
-      return notificationsItems.get('items').toJS().map((el) =>
-      `You have new message from ${el.employee.name}`);
+      return notificationsItems.get('items').toJS().map((el) => {
+        if (el.employee) {
+          return (`You have new message from ${el.employee.name}`);
+        }
+        return (`You have new message from ${el.company.name}`);
+      });
     }
     return ['You haven\'t got new notifications'];
   }

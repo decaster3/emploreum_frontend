@@ -18,14 +18,6 @@ function ProfileHeaderSocial() {
         </li>
         <li><a href="" className="github-bg"><i className="fa fa-github"></i></a></li>
       </ul>
-      <div className="text-center padding-top-30">
-        <a
-          href=""
-          className="btn btn-primary"
-          data-toggle="modal"
-          data-target="#profile-settings"
-        >Изменить профиль</a>
-      </div>
     </div>
   );
 }

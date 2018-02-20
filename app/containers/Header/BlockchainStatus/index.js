@@ -11,7 +11,7 @@ import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
 
-import { getBlockchainAsynkActions } from './actions';
+import { getBlockchainAsynkActions, listenAsyncActions } from './actions';
 import {
   selectAsyncBlockchainMessage,
   selectAsyncBlockchainActionsCount,
@@ -22,7 +22,7 @@ import BlockchainStatusBar from '../../../components/Header/BlockchainStatus/Loa
 
 export class BlockchainStatus extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getBlockchainAsynkActions();
+    this.props.listenAsyncActions();
   }
   render() {
     return (
@@ -35,7 +35,7 @@ export class BlockchainStatus extends React.Component { // eslint-disable-line r
 }
 
 BlockchainStatus.propTypes = {
-  getBlockchainAsynkActions: PropTypes.func.isRequired,
+  listenAsyncActions: PropTypes.func.isRequired,
   asyncBlockchainMessage: PropTypes.string,
   asyncBlockchainActionsCount: PropTypes.number,
 };
@@ -50,6 +50,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getBlockchainAsynkActions: () => dispatch(getBlockchainAsynkActions()),
+    listenAsyncActions: () => dispatch(listenAsyncActions()),
   };
 }
 

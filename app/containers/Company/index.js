@@ -5,7 +5,9 @@ import AccountWrapperContainer from '../AccountWrapper';
 import CompanyProfileContainer from './CompanyProfileContainer';
 import CompanyFinance from './CompanyFinance';
 import VacancyCreation from './VacancyCreation/Loadable';
-import Vacancy from '../Vacancy/Loadable';
+import Vacancy from '../Vacancy/Roles/CompanyView/Loadable';
+import EmployeeProfile from '../EmployeeProfile/Roles/CompanyView/Loadable';
+
 export const CompanyMain = () => (
   <AccountWrapperContainer url={'/company'}>
     <ToastContainer />
@@ -14,6 +16,7 @@ export const CompanyMain = () => (
       <Route path="/company/finance" component={CompanyFinance} />
       <Route path="/company/vacancy/create" component={VacancyCreation} />
       <Route path="/company/vacancy/:id" component={Vacancy} />
+      <Route exact path="/company/employee/:id" component={EmployeeProfile} />
     </Switch>
   </AccountWrapperContainer>
 );

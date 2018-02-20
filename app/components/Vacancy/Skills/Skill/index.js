@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Skill = (props) => {
-  const { name, raiting, raitingUp, imgUrl } = props;
+  const { name, raiting, imgUrl } = props;
   return (
     <div className="col-md-3 col-sm-6">
       <div className="award-item">
@@ -19,7 +19,7 @@ export const Skill = (props) => {
         <span>{name}</span>
         <div className="clearfix" />
         <span className="badge badge-bg">{raiting}</span>
-        <span className="label label-success">{raitingUp}</span>
+        <span className="label label-success badge-bg">5</span>
       </div>
     </div>
   );
@@ -28,7 +28,6 @@ export const Skill = (props) => {
 Skill.propTypes = {
   name: PropTypes.string,
   raiting: PropTypes.number,
-  raitingUp: PropTypes.number,
   imgUrl: PropTypes.string,
 };
 

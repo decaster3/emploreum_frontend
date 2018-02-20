@@ -7,10 +7,9 @@
 import React from 'react';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import EnrollVacancy from '../../EnrollVacancy/Loadable';
 
 export const Detail = (props) => {
-  const { vacancyId, role, enrollVacancy, mainInfo } = props;
+  const { mainInfo } = props;
   return (
     <div className="profile-detail" id="sticky-social">
       <div className="profile-info">
@@ -29,22 +28,12 @@ export const Detail = (props) => {
           {mainInfo.info}
           <a href="">подробнее</a>
         </div>
-        {role === 'EMPLOYEE'
-          ? <EnrollVacancy
-            vacancyId={vacancyId}
-            enrollVacancy={enrollVacancy}
-          />
-          : <div />
-        }
       </div>
     </div>
   );
 };
 
 Detail.propTypes = {
-  role: PropTypes.string,
-  vacancyId: PropTypes.string,
-  enrollVacancy: PropTypes.func,
   mainInfo: PropTypes.object,
 };
 
