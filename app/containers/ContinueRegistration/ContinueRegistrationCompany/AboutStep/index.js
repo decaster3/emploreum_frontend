@@ -10,8 +10,10 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {
   selectSubmitAboutButtonState,
-} from '.././selectors';
+} from './selectors';
 import AboutStep from '../../../../components/ContinueRegistration/ContinueRegistrationCompany/AboutStep/Loadable';
+import LanguageSelector from './LanguageSelector/Loadable';
+
 import {
   submitAboutStep,
 } from '.././actions';
@@ -19,10 +21,13 @@ import {
 export class AboutStepContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <AboutStep
-        submitAboutStep={this.props.submitAboutStep}
-        submittingAbout={this.props.submittingAbout}
-      />
+      <div>
+        <AboutStep
+          submitAboutStep={this.props.submitAboutStep}
+          submittingAbout={this.props.submittingAbout}
+        />
+        <LanguageSelector />
+      </div>
     );
   }
 }

@@ -8,6 +8,7 @@ import React from 'react';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import FormRegistrationFourthStep from './Form/Loadable';
+import AvatarEditor from '../../../AvatarEditor/Loadable';
 
 class AboutStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -17,6 +18,7 @@ class AboutStep extends React.Component { // eslint-disable-line react/prefer-st
           <div className="panel-body padding-bottom-30">
             <h4 className="heading">BIO</h4>
             <hr />
+            <AvatarEditor />
             <FormRegistrationFourthStep
               submitAboutStep={this.props.submitAboutStep}
               submittingAbout={this.props.submittingAbout}
