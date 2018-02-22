@@ -17,12 +17,10 @@ import {
   rejectCandidateAPI,
 } from '../../../services/api/Vacancy';
 
-const notify = () => toast('Contracts are creating! Vacancy closed!', { hideProgressBar: true, autoClose: 3000, type: toast.TYPE.INFO });
+const notify = () => toast('Contracts are created! Vacancy closed!', { hideProgressBar: true, autoClose: 3000, type: toast.TYPE.INFO });
 
 export const loadingCandidates = () => ({ type: CHANGE_STATE_CANDIDATES, payload: LOADING });
 export const loadedCandidates = () => ({ type: CHANGE_STATE_CANDIDATES, payload: LOADED });
-
-export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const getCandidates = (id) => (
   (dispatch) => {

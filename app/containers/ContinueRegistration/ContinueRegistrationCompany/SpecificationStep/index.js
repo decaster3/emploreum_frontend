@@ -17,7 +17,7 @@ import {
   selectSpecificationListStatus,
   selectChoosenSpecifications,
   selectSubmitSpecificationButtonState,
-} from '.././selectors';
+} from './selectors';
 
 import SpecificationSkillsStep from '../../../../components/Specifications/Loadable';
 import {

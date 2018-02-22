@@ -24,7 +24,6 @@ export const listenAsyncActions = () => (
     const userId = getState().get('userSession')
       .get('userAuth').get('userInformation').get('id');
     socket.on(`${userId}:blockchain`, (data) => {
-      console.log(data);
       if (!data.success) {
         const keys = Object.keys(data.contracts);
         const asyncActions = [];
