@@ -8,6 +8,11 @@ import EmployeesSearch from './EmployeesSearch';
 import VacancyCreation from './VacancyCreation/Loadable';
 import Vacancy from '../Vacancy/Roles/CompanyView/Loadable';
 import EmployeeProfile from '../EmployeeProfile/Roles/CompanyView/Loadable';
+import Tests from '../Company/Test/Tests/Loadable';
+import TestCreation from '../Company/Test/TestCreation/Loadable';
+import TestEdit from '../Company/Test/TestEdit/Loadable';
+import TestInputQuestionCreation from '../Company/Test/InputQuestionCreation/Loadable';
+import TestMultipleQuestionCreation from '../Company/Test/MultipleChoiceQuestionCreation/Loadable';
 
 function renderMenu() {
   return [{
@@ -38,7 +43,12 @@ export const CompanyMain = () => (
       <Route path="/company/finance" component={CompanyFinance} />
       <Route path="/company/vacancy/create" component={VacancyCreation} />
       <Route path="/company/vacancy/:id" component={Vacancy} />
-      <Route exact path="/company/employee/:id" component={EmployeeProfile} />
+      <Route path="/company/employee/:id" component={EmployeeProfile} />
+      <Route exact path="/company/tests" component={Tests} />
+      <Route path="/company/tests/new" component={TestCreation} />
+      <Route exact path="/company/tests/:id" component={TestEdit} />
+      <Route path="/company/tests/:id/question/new/inputtype" component={TestInputQuestionCreation} />
+      <Route path="/company/tests/:id/question/new/multiple" component={TestMultipleQuestionCreation} />
     </Switch>
   </AccountWrapperContainer>
 );

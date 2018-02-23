@@ -1,0 +1,7 @@
+/*
+ *
+ * MultipleChoiceQuestionCreation constants
+ *
+ */
+
+export const CHANGE_SUBMIT_CREATION_MULTIPLE_QUESTION_BUTTON_STATUS = 'CHANGE_SUBMIT_CREATION_MULTIPLE_QUESTION_BUTTON_STATUS';
