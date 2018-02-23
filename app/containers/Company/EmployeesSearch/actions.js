@@ -5,50 +5,35 @@
  */
 
 import {
-  CHANGE_STATE_VACANCIES,
+  SET_EMPLOYEES,
+  CHANGE_LOADING_STATE,
   LOADING,
   LOADED,
-  GET_VACANCIES,
+  ERROR,
 } from './constants';
+
 // import socket from '../../../services/socket';
-import { getEmployeeRecomendedVacanciesAPI, submitVacancyAPI } from '../../../services/api/VacanciesSearch';
 
-export const loadingVacancies = () => ({ type: CHANGE_STATE_VACANCIES, payload: LOADING });
-export const loadedVacancies = () => ({ type: CHANGE_STATE_VACANCIES, payload: LOADED });
+import { getAllEmployeesAPI } from '../../../services/api/EmployeesSearch';
 
-export const getVacancies = () => (
+export const setEmployeeLoadingState = (status) => ({ type: CHANGE_LOADING_STATE, status });
+export const setEmployees = (employees) => ({ type: SET_EMPLOYEES, employees });
+
+export const getEmployees = () => (
   (dispatch) => {
-    dispatch(loadingVacancies());
-    return getEmployeeRecomendedVacanciesAPI((data) => {
-      const newData = data.map((element) => ({
-        id: element.id,
-        companyId: element.company_id,
-        profile: 'Web developer',
-        weekPaymeent: `${element.week_payment} ETH/month`,
-        companyName: `${element.name}`,
-        acceptableCurrencies: ['eth', 'btc', '$'],
-        description: element.info,
-        contractDuration: `${element.duration} months`,
+    dispatch(setEmployeeLoadingState(LOADING));
+    return getAllEmployeesAPI((data) => {
+      const employees = data.map((employee) => ({
+        id: employee.id,
+        name: employee.name,
+        profile: employee.profile,
       }));
-      dispatch({
-        type: GET_VACANCIES,
-        payload: newData,
-      });
-      dispatch(loadedVacancies());
+      console.log(employees);
+      dispatch(setEmployees(employees));
+      dispatch(setEmployeeLoadingState(LOADED));
     }, (err) => {
       console.log(err);
+      dispatch(setEmployeeLoadingState(ERROR, []));
     }, dispatch);
   }
-);
-
-export const submitVacancy = (id, companyId) => (
-  (dispatch) =>
-    submitVacancyAPI({ id, companyId }, () => {
-      // const userId = getState().get('userSession')
-      // .get('userAuth').get('userInformation').get('id');
-      // socket.emit('message', { companyId, userId });
-    },
-    (err) => {
-      console.log(err);
-    }, dispatch)
 );

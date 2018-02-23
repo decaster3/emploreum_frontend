@@ -3,42 +3,35 @@
  * VacanciesSearch
  *
  */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { PulseLoader } from 'react-spinners';
-
 import injectReducer from 'utils/injectReducer';
-import {
-  selectVacanciesStatus,
-  selectVacanciesItems,
- } from './selectors';
-
+import { selectEmployees, selectEmployeesLoadStatus } from './selectors';
 import reducer from './reducer';
+import { getEmployees } from './actions';
 
-import { getVacancies } from './actions';
-
-import Vacancy from '../../../components/Employee/EmployeeVacanciesSearchComponent/Vacancies/Vacancy/Loadable';
-import VacancyWrapper from '../../../components/Employee/EmployeeVacanciesSearchComponent/Vacancies/VacanciesWrapper/Loadable';
+import Employee from '../../../components/Company/EmployeesSearch/Employees/Employee/Loadable';
+import EmployeesList from '../../../components/Company/EmployeesSearch/Employees/EmployeesList/Loadable';
 
 export class EmployeesSearch extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getVacancies();
+    this.props.getEmployees();
   }
 
   renderVacancies() {
-    if (this.props.vacanciesStatus === 'LOADING') {
+    if (this.props.loadingStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
     }
-    return this.props.vacanciesItems.map((vacancy) =>
-      (<Vacancy
+    return this.props.employees.map((vacancy) =>
+      (<Employee
         key={vacancy.id}
         id={vacancy.id}
         profile={vacancy.profile}
-        weekPaymeent={vacancy.weekPaymeent}
+        name={vacancy.name}
         companyName={vacancy.companyName}
         acceptableCurrencies={vacancy.acceptableCurrencies}
         description={vacancy.description}
@@ -52,39 +45,39 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
     return (
       <div>
         <Helmet>
-          <title>EmployeesSearch</title>
+          <title>Employees search</title>
           <meta name="description" content="Description of EmployeesSearch" />
         </Helmet>
-        <VacancyWrapper>
+        <EmployeesList>
           { vacancies }
-        </VacancyWrapper>
+        </EmployeesList>
       </div>
     );
   }
 }
 
 EmployeesSearch.propTypes = {
-  getVacancies: PropTypes.func,
-  vacanciesStatus: PropTypes.string,
-  vacanciesItems: PropTypes.array,
+  getEmployees: PropTypes.func,
+  loadingStatus: PropTypes.string,
+  employees: PropTypes.array,
 };
 
 function mapStateToProps(state) {
   return {
-    vacanciesStatus: selectVacanciesStatus(state),
-    vacanciesItems: selectVacanciesItems(state),
+    loadingStatus: selectEmployeesLoadStatus(state),
+    employees: selectEmployees(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getVacancies: () => dispatch(getVacancies()),
+    getEmployees: () => dispatch(getEmployees()),
   };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'vacanciesSearch', reducer });
+const withReducer = injectReducer({ key: 'employeesSearch', reducer });
 
 export default compose(
   withReducer,

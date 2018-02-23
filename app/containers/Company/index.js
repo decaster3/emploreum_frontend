@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import AccountWrapperContainer from '../AccountWrapper';
 import CompanyProfileContainer from './CompanyProfileContainer';
 import CompanyFinance from './CompanyFinance';
+import EmployeesSearch from './EmployeesSearch';
 import VacancyCreation from './VacancyCreation/Loadable';
 import Vacancy from '../Vacancy/Roles/CompanyView/Loadable';
 import EmployeeProfile from '../EmployeeProfile/Roles/CompanyView/Loadable';
@@ -15,7 +16,7 @@ function renderMenu() {
     icon: 'fa-user',
   }, {
     name: 'Employees',
-    url: '/company/',
+    url: '/company/employee/search',
     icon: 'fa-address-book',
   }, {
     name: 'Finance',
@@ -29,6 +30,7 @@ export const CompanyMain = () => (
     <ToastContainer />
     <Switch>
       <Route exact path="/company" component={CompanyProfileContainer} />
+      <Route path="/company/employee/search" component={EmployeesSearch} />
       <Route path="/company/finance" component={CompanyFinance} />
       <Route path="/company/vacancy/create" component={VacancyCreation} />
       <Route path="/company/vacancy/:id" component={Vacancy} />
