@@ -26,16 +26,15 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
     if (this.props.loadingStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
     }
-    return this.props.employees.map((vacancy) =>
+    return this.props.employees.map((employee) =>
       (<Employee
-        key={vacancy.id}
-        id={vacancy.id}
-        profile={vacancy.profile}
-        name={vacancy.name}
-        companyName={vacancy.companyName}
-        acceptableCurrencies={vacancy.acceptableCurrencies}
-        description={vacancy.description}
-        contractDuration={vacancy.contractDuration}
+        key={employee.id}
+        id={employee.id}
+        specifications={employee.specifications}
+        skills={employee.skills}
+        name={employee.name}
+        image={employee.image}
+        lastWork={employee.lastWork}
       />)
     );
   }

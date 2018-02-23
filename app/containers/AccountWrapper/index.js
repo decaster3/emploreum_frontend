@@ -19,20 +19,32 @@ import {
 import reducer from './reducer';
 
 
-function renderMenu(menu, view, onClick) {
-  return menu.map((item) =>
-    <MenuItem name={item.name} url={item.url} view={view} icon={item.icon} changeView={onClick} key={item.name} />
-  );
-}
-
 export class AccountWrapperContainer extends React.PureComponent {
-// TODO component DID mount check path
+  componentWillMount() {
+    const path = window.location.href;
+    this.props.menu.forEach((menuItem) => {
+      if (menuItem.name !== 'Profile' && path.includes(menuItem.url)) {
+        this.props.changeView(menuItem.name);
+      }
+    });
+  }
+
   render() {
     const { menu, view, changeView } = this.props;
+    const menuItems = menu.map((item) => (
+      <MenuItem
+        name={item.name}
+        url={item.url}
+        view={view}
+        icon={item.icon}
+        changeView={changeView}
+        key={item.name}
+      />));
+
     return (
       <div id="wrapper">
         <Header />
-        <AccountWrapper menu={renderMenu(menu, view, changeView)}>
+        <AccountWrapper menu={menuItems}>
           {this.props.children}
         </AccountWrapper>
       </div>
@@ -42,6 +54,7 @@ export class AccountWrapperContainer extends React.PureComponent {
 
 AccountWrapperContainer.propTypes = {
   view: PropTypes.string,
+  path: PropTypes.string,
   changeView: PropTypes.func,
   menu: PropTypes.array,
   children: PropTypes.oneOfType([

@@ -1,8 +1,12 @@
+.fix-width {
+  width: 120px;
+}
 .vacancy{
     position: relative;
     width: 100%;
     border: 1px solid #dddddd;
     padding: 10px;
+  margin: 8px;
 }
 .vacancy .vacancy-name {
     margin-bottom: 10px;

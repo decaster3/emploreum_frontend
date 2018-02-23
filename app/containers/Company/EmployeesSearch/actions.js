@@ -12,8 +12,6 @@ import {
   ERROR,
 } from './constants';
 
-// import socket from '../../../services/socket';
-
 import { getAllEmployeesAPI } from '../../../services/api/EmployeesSearch';
 
 export const setEmployeeLoadingState = (status) => ({ type: CHANGE_LOADING_STATE, status });
@@ -24,11 +22,14 @@ export const getEmployees = () => (
     dispatch(setEmployeeLoadingState(LOADING));
     return getAllEmployeesAPI((data) => {
       const employees = data.map((employee) => ({
-        id: employee.id,
+        id: employee.user_id,
         name: employee.name,
-        profile: employee.profile,
+        specifications: employee.specifications.slice(0, 5).join(', '),
+        skills: employee.skills.slice(0, 5).join(', '),
+        image: employee.photo_path,
+        lastWork: employee.lastWork,
       }));
-      console.log(employees);
+
       dispatch(setEmployees(employees));
       dispatch(setEmployeeLoadingState(LOADED));
     }, (err) => {
