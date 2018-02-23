@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for QuestionCreation
+ * Asynchronously loads the component for FourthStepRegistration
  *
  */
 

@@ -60,7 +60,7 @@ const mockQuestions = [
 
 export const getQuestions = (id) => (
   (dispatch) => {
-    console.log(id);
+    // console.log(id);
     dispatch(loadingQuestions());
     return sleep(1000).then(() => {
       dispatch({
@@ -74,7 +74,7 @@ export const getQuestions = (id) => (
 
 export const getTestInfo = (id) => (
   (dispatch) => {
-    console.log(id);
+    // console.log(id);
     dispatch(loadingTestInfo());
     return sleep(1000).then(() => {
       dispatch({

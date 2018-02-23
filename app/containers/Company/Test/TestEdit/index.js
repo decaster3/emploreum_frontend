@@ -43,6 +43,7 @@ export class TestEdit extends React.Component { // eslint-disable-line react/pre
       <TextEditMain
         questions={questions}
         testInfo={this.props.testInfo}
+        testId={this.props.match.params.id}
       />
     );
   }

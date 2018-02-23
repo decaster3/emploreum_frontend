@@ -11,7 +11,7 @@ import TestEditWrapper from './TestEditWrapper/Loadable';
 class TestEditMain extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <TestEditWrapper name={this.props.testInfo.name}>
+      <TestEditWrapper name={this.props.testInfo.name} testId={this.props.testId}>
         { this.props.questions }
       </TestEditWrapper>
     );
@@ -19,7 +19,11 @@ class TestEditMain extends React.Component { // eslint-disable-line react/prefer
 }
 
 TestEditMain.propTypes = {
-  questions: PropTypes.array,
+  testId: PropTypes.string,
+  questions: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   testInfo: PropTypes.object,
 };
 

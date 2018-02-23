@@ -9,9 +9,8 @@ import PropTypes from 'prop-types';
 
 export const MultipleChoiceQuestion = (props) => {
   const { answers } = props;
-  console.log(answers);
   const answersView = answers.map((answer) => (
-    <div>
+    <div key={answer.id}>
       answer: {answer.answer}
       {String(answer.isTrue)}
     </div>

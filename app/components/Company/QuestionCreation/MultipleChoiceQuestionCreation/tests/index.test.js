@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import { QuestionCreation } from '../index';
+// import MultipleChoiceQuestionCreation from '../index';
 
-describe('<QuestionCreation />', () => {
+describe('<MultipleChoiceQuestionCreation />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
