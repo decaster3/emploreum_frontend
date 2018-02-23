@@ -1,0 +1,7 @@
+/*
+ *
+ * TestCreation constants
+ *
+ */
+
+export const CHANGE_SUBMIT_CREATION_TEST_BUTTON_STATUS = 'CHANGE_SUBMIT_CREATION_TEST_BUTTON_STATUS';
