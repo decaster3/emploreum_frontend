@@ -9,7 +9,7 @@ import {
   CHANGE_VIEW,
 } from './constants';
 
-const initialState = fromJS({ view: 'profile' });
+const initialState = fromJS({ view: 'Profile' });
 
 function accountWrapperReducer(state = initialState, action) {
   switch (action.type) {

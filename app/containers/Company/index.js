@@ -8,8 +8,24 @@ import VacancyCreation from './VacancyCreation/Loadable';
 import Vacancy from '../Vacancy/Roles/CompanyView/Loadable';
 import EmployeeProfile from '../EmployeeProfile/Roles/CompanyView/Loadable';
 
+function renderMenu() {
+  return [{
+    name: 'Profile',
+    url: '/company',
+    icon: 'fa-user',
+  }, {
+    name: 'Employees',
+    url: '/company/',
+    icon: 'fa-address-book',
+  }, {
+    name: 'Finance',
+    url: '/company/finance',
+    icon: 'fa-dollar',
+  }];
+}
+
 export const CompanyMain = () => (
-  <AccountWrapperContainer url={'/company'}>
+  <AccountWrapperContainer menu={renderMenu()}>
     <ToastContainer />
     <Switch>
       <Route exact path="/company" component={CompanyProfileContainer} />

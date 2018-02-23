@@ -7,8 +7,24 @@ import EmployeeVacancies from './VacanciesSearch/Loadable';
 import EmployeeProfile from '../EmployeeProfile/Roles/SelfView/Loadable';
 import Vacancy from '../Vacancy/Roles/EmployeeView/Loadable';
 
+function renderMenu() {
+  return [{
+    name: 'Profile',
+    url: '/employee',
+    icon: 'fa-user',
+  }, {
+    name: 'Vacancies',
+    url: '/employee/vacancies',
+    icon: 'fa-address-book',
+  }, {
+    name: 'Finance',
+    url: '/employee/finance',
+    icon: 'fa-dollar',
+  }];
+}
+
 export const EmployeeMain = () => (
-  <AccountWrapperContainer url={'/employee'}>
+  <AccountWrapperContainer menu={renderMenu()}>
     <ToastContainer />
     <Switch>
       <Route exact path="/employee" component={EmployeeProfile} />
