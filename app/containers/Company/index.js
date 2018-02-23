@@ -22,6 +22,10 @@ function renderMenu() {
     name: 'Finance',
     url: '/company/finance',
     icon: 'fa-dollar',
+  }, {
+    name: 'Tests',
+    url: '/company/tests',
+    icon: 'fa-edit',
   }];
 }
 
