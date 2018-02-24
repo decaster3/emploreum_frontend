@@ -33,7 +33,7 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
     }
     return this.props.endedContractsItems.map((contract) =>
       (<TableRow
-        key={contract.startDay}
+        key={contract.address}
         rows={[contract.address,
           contract.company,
           contract.salary,
@@ -48,9 +48,9 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
     if (this.props.awaitedContractsStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
     }
-    return this.props.awaitedContractsItems.map((contract) =>
+    return this.props.awaitedContractsItems.map((contract, index) =>
       (<TableRow
-        key={contract.startDay}
+        key={`awaited ${index}`}
         rows={[contract.duration,
           contract.company,
           contract.salary,
@@ -65,7 +65,7 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
     }
     return this.props.currentContractsItems.map((contract) =>
       (<TableRow
-        key={contract.startDay}
+        key={contract.address}
         rows={[contract.address,
           contract.company,
           contract.salary,

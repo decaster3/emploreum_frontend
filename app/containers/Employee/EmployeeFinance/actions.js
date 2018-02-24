@@ -47,7 +47,6 @@ export const getCurrentContracts = () => (
   (dispatch) => {
     dispatch(loadingCurrentContracts());
     return getCurrentContractsAPI((data) => {
-      console.log(data);
       const newData = data.map((el) => ({
         address: el.contract,
         company: el.company.name,

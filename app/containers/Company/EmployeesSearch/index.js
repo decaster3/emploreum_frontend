@@ -14,8 +14,8 @@ import { selectEmployees, selectEmployeesLoadStatus } from './selectors';
 import reducer from './reducer';
 import { getEmployees } from './actions';
 
-import Employee from '../../../components/Company/EmployeesSearch/Employees/Employee/Loadable';
-import EmployeesList from '../../../components/Company/EmployeesSearch/Employees/EmployeesList/Loadable';
+import Employee from '../../../components/Company/EmployeesSearch/Employee/Loadable';
+import EmployeesList from '../../../components/Company/EmployeesSearch/EmployeesList/Loadable';
 
 export class EmployeesSearch extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

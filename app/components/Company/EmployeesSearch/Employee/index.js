@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { BASEURL } from '../../../../../global-constants';
+import { BASEURL } from '../../../../global-constants';
 
 export const Employee = (props) => {
   const {

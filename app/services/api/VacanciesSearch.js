@@ -28,3 +28,10 @@ export const getSpecificationsSkillsVacancyInfoAPI = (payload, successCallBack, 
 export const checkEnrollAvailabilityAPI = (vacancyId, successCallBack, errorCallBack, dispatch) => {
   AxiosService.get(`${BASEURL}/company/vacancy/${vacancyId}/available`, successCallBack, errorCallBack, dispatch);
 };
+
+export const submitVacancyAPI = (data, successCallBack, errorCallBack, dispatch) => {
+  dispatch();
+  setTimeout(1000, () => {
+    successCallBack();
+  });
+};
