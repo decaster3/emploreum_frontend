@@ -89,7 +89,7 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
           <meta name="description" content="Profile of Employee" />
         </Helmet>
         <EmployeeFinanceComponent
-          address={this.props.addressName}
+          address={this.props.address}
           addressStatus={this.props.addressStatus}
           balance={balance}
           income={income}
@@ -111,7 +111,7 @@ EmployeeFinance.propTypes = {
   currentContractsStatus: PropTypes.string,
   awaitedContractsStatus: PropTypes.string,
   addressStatus: PropTypes.string,
-  addressName: PropTypes.string,
+  address: PropTypes.string,
 };
 
 function mapStateToProps(state) {
@@ -122,7 +122,7 @@ function mapStateToProps(state) {
     endedContractsStatus: selectEndedContractsStatus(state),
     awaitedContractsStatus: selectAwaitedContractsStatus(state),
     currentContractsStatus: selectCurrentContractsStatus(state),
-    addressName: selectAddressName(state),
+    address: selectAddressName(state),
     addressStatus: selectAddressStatus(state),
   };
 }

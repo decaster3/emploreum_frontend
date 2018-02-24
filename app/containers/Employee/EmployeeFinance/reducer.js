@@ -14,7 +14,8 @@ import {
   CHANGE_STATE_CURRENT_CONTRACTS,
   CHANGE_STATE_ENDED_CONTRACTS,
   CHANGE_STATE_ADDRESS,
-  GET_ADDRESS,
+  LOADED,
+  GET_HEADER,
 } from './constants';
 
 const initialState = fromJS({
@@ -30,8 +31,12 @@ const initialState = fromJS({
     items: [],
     status: NOT_LOADED,
   },
-  address: {
-    name: '',
+  header: {
+    address: '',
+    balance: '',
+    income: '',
+    endedContractsCount: '',
+    currentContractsCount: '',
     status: NOT_LOADED,
   },
 });
@@ -73,10 +78,10 @@ function employeeFinanceReducer(state = initialState, action) {
         status: action.payload,
         name: state.get('address').get('name'),
       }));
-    case GET_ADDRESS:
-      return state.set('address', fromJS({
-        status: state.get('address').get('status'),
-        name: action.payload,
+    case GET_HEADER:
+      return state.set('header', fromJS({
+        status: LOADED,
+        address: action.address,
       }));
     default:
       return state;

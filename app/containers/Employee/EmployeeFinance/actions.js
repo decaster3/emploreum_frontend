@@ -8,7 +8,7 @@ import {
   GET_ENDED_CONTRACTS,
   GET_CURRENT_CONTRACTS,
   CHANGE_STATE_ADDRESS,
-  GET_ADDRESS,
+  GET_HEADER,
 } from './constants';
 
 import { getEmployeeAddressAPI } from '../../../services/api/Addresses';
@@ -93,12 +93,12 @@ export const loadingAddress = () => ({ type: CHANGE_STATE_ADDRESS, payload: LOAD
 export const loadedAddress = () => ({ type: CHANGE_STATE_ADDRESS, payload: LOADED });
 
 
-export const getAddress = () => (
+export const getHeaderInfo = () => (
   (dispatch) => {
     dispatch(loadingAddress());
     return getEmployeeAddressAPI((data) => {
       dispatch({
-        type: GET_ADDRESS,
+        type: GET_HEADER,
         payload: data,
       });
       dispatch(loadedAddress());
@@ -110,7 +110,7 @@ export const getAddress = () => (
 
 export const getAllFinance = () => (
   (dispatch) => {
-    dispatch(getAddress());
+    dispatch(getHeaderInfo());
     dispatch(getEndedContracts());
     dispatch(getCurrentContracts());
     dispatch(getAwaitedContracts());
