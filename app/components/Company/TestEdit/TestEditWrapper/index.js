@@ -8,11 +8,27 @@ const TestEditWrapper = (props) => {
   const { children, name, testId } = props;
 
   return (
-    <div>
-      {name}
+    <div className="panel panel-headline col-md-12 col-md-offset-0">
+      <div className="panel-heading">
+        <h3 className="panel-title">
+          {name}
+        </h3>
+      </div>
       {children}
-      <Link to={`${testId}/question/new/inputtype`}>New input question</Link>
-      <Link to={`${testId}/question/new/multiple`}>New multiple question</Link>
+      <div className="padding-bottom-30 col-lg-12 text-right">
+        <Link
+          to={`${testId}/question/new/inputtype`}
+          className="btn btn-success"
+        >
+          New input question
+        </Link>
+        <Link
+          to={`${testId}/question/new/multiple`}
+          className="btn btn-success"
+        >
+          New multiple question
+        </Link>
+      </div>
     </div>
   );
 };

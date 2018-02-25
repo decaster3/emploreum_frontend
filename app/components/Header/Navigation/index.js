@@ -15,7 +15,7 @@ export const Navigation = (props) => (
       <span>Магомедов Михаил</span>
       <i className="icon-submenu fa fa-angle-down"></i></a>
     <ul className="dropdown-menu">
-      <li><a onClick={() => props.serverLogout()} href="" ><i className="fa fa-sign-out"></i> <span>Выход</span></a></li>
+      <li><button onClick={() => props.serverLogout()} ><i className="fa fa-sign-out"></i> <span>Выход</span></button></li>
     </ul>
   </li>
 );

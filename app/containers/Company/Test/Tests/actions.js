@@ -10,91 +10,24 @@ import {
   LOADING,
   LOADED,
 } from './constants';
+import { getCompanyTestsAPI } from '../../../../services/api/CompanyTests';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const loadingTests = () => ({ type: CHANGE_STATE_TESTS, payload: LOADING });
 export const loadedTests = () => ({ type: CHANGE_STATE_TESTS, payload: LOADED });
 
-
-const mockTests = [{
-  id: 1,
-  name: 'JS',
-  questions: [
-    {
-      id: 1,
-      name: '1+1?',
-      type: 'multyAnswer',
-      answers: [
-        {
-          id: 1,
-          isTrue: true,
-          answer: 2,
-        },
-        {
-          id: 2,
-          isTrue: false,
-          aswer: 3,
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: '2-1?',
-      type: 'input',
-      answers:
-      {
-        id: 1,
-        isTrue: true,
-        aswer: 1,
-      },
-    },
-  ],
-},
-{
-  id: 2,
-  name: 'JS',
-  questions: [
-    {
-      id: 1,
-      name: '1+1?',
-      type: 'multyAnswer',
-      answers: [
-        {
-          id: 1,
-          isTrue: true,
-          answer: 2,
-        },
-        {
-          id: 2,
-          isTrue: false,
-          aswer: 3,
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: '2-1?',
-      type: 'input',
-      answers:
-      {
-        id: 1,
-        isTrue: true,
-        aswer: 1,
-      },
-    },
-  ],
-}];
-
 export const getTests = () => (
   (dispatch) => {
     dispatch(loadingTests());
-    return sleep(1000).then(() => {
+    getCompanyTestsAPI((data) => {
+      console.log(data);
       dispatch({
         type: GET_TESTS,
-        payload: mockTests,
+        payload: data,
       });
       dispatch(loadedTests());
+    }, (err) => {
+      console.log(err);
     });
   }
 );

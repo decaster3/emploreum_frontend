@@ -23,7 +23,10 @@ export const TestMain = (props) => {
 };
 
 TestMain.propTypes = {
-  testCards: PropTypes.object,
+  testCards: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };
 
 export default TestMain;

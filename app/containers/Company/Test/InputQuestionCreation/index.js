@@ -16,7 +16,6 @@ import { submitInputQuestion } from './actions';
 import InputQuestionCreationComponent from '../../../../components/Company/QuestionCreation/InputQuestionCreation/Loadable';
 export class InputQuestionCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    console.log(this.props.location.search)
     return (
       <InputQuestionCreationComponent
         submitInputQuestion={this.props.submitInputQuestion}

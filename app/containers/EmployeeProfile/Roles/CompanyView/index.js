@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 import MainInfromation from '../../MainInformation/Loadable';
 import Skills from '../../Skills/Loadable';
+import InviteEmployee from '../../InviteEmployee/Loadable';
 
 export const CompanyView = (props) => {
   const { match } = props;
@@ -19,6 +20,19 @@ export const CompanyView = (props) => {
           <MainInfromation
             employeeId={match.params.id}
           />
+          <InviteEmployee
+            employeeId={match.params.id}
+          />
+          <div className="col-md-12 text-right">
+            <a
+              href=""
+              className="btn btn-success"
+              data-toggle="modal"
+              data-target="#modal-vacancy"
+            >
+            Invite Employee
+          </a>
+          </div>
         </div>
         <div className="profile-right">
           <Skills

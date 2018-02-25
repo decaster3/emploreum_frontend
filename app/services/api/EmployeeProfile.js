@@ -8,3 +8,8 @@ export const getEmployeeProfileMainInfoAPI = (employeeId, successCallBack, error
 export const getEmployeeSpecificationsSkillsAPI = (employeeId, successCallBack, errorCallBack, dispatch) => {
   AxiosService.get(`${BASEURL}/employee/skills/${employeeId}`, successCallBack, errorCallBack, dispatch);
 };
+
+export const iviteEmployeeToVacancyAPI = (payload, successCallBack, errorCallBack, dispatch) => {
+  const { vacancyId, employeeId } = payload;
+  AxiosService.post(`${BASEURL}/company/vacancy/${vacancyId}/invite`, { employeeId }, successCallBack, errorCallBack, dispatch);
+};
