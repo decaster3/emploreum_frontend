@@ -19,7 +19,10 @@ export const Card = (props) => {
 };
 
 Card.propTypes = {
-  number: PropTypes.string.isRequired,
+  number: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
   title: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
 };

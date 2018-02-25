@@ -9,8 +9,10 @@ import {
   GET_CURRENT_CONTRACTS,
   CHANGE_HEADER_STATE,
   SET_HEADER,
+  CHANGE_BALANCE,
 } from './constants';
 
+import socket from '../../../services/socket';
 import { getEmployeeHeaderDataAPI } from '../../../services/api/FinanceHeaderData';
 import { getCurrentContractsAPI, getAwaitedContractsAPI } from '../../../services/api/Contracts';
 
@@ -21,6 +23,7 @@ const mockContractss = [{
   startDay: 'Oct 1, 2016',
   endDay: 'Oct 21, 2016',
 }];
+
 export const loadingEndedContracts = () => ({ type: CHANGE_STATE_ENDED_CONTRACTS, payload: LOADING });
 export const loadedEndedContracts = () => ({ type: CHANGE_STATE_ENDED_CONTRACTS, payload: LOADED });
 
@@ -91,20 +94,44 @@ export const getAwaitedContracts = () => (
 
 export const headerLoading = () => ({ type: CHANGE_HEADER_STATE, state: LOADING });
 
+export const changeBalance = (balance) => ({ type: CHANGE_BALANCE, balance });
+
+export const balanceChangeListener = () => (
+  (dispatch, getState) => {
+    const userId = getState().get('userSession')
+      .get('userAuth').get('userInformation').get('id');
+
+    socket.on(`${userId}:balance`, (data) => {
+      if (data.balance) {
+        dispatch(changeBalance(data.balance));
+      } else {
+        console.log('Connection error, balance doesn\'t been sent');
+      }
+    });
+  }
+);
+
+export const contractConfirmationListener = () => (
+  (dispatch, getState) => {
+    const userId = getState().get('userSession')
+      .get('userAuth').get('userInformation').get('id');
+
+    socket.on(`${userId}:vacancy`, (data) => {
+      if (data.type === 'DELETE') {
+        dispatch(getCurrentContracts());
+        dispatch(getAwaitedContracts());
+      }
+    });
+  }
+);
+
 export const getHeaderInfo = () => (
   (dispatch) => {
     dispatch(headerLoading());
     return getEmployeeHeaderDataAPI((data) => {
-      const mock = {
-        address: data,
-        balance: 1,
-        income: 0.33,
-        endedContractsCount: 2,
-        currentContractsCount: 1,
-      }
       dispatch({
         type: SET_HEADER,
-        payload: mock,
+        payload: data,
       });
     }, (err) => {
       console.log(err);
@@ -118,5 +145,7 @@ export const getAllFinance = () => (
     dispatch(getEndedContracts());
     dispatch(getCurrentContracts());
     dispatch(getAwaitedContracts());
+    dispatch(balanceChangeListener());
+    dispatch(contractConfirmationListener());
   }
 );

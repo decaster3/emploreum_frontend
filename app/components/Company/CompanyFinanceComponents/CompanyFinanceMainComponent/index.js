@@ -10,12 +10,12 @@ import RecentPayments from '../Payments/RecentPauments/Loadable';
 import Vacancies from '../Vacancies/Vacancies/Loadable';
 
 const CompanyFinanceComponent = (props) => {
-  const { address, balance, spending, employee, workingEmployee, recentPaments, vacancies } = props;
+  const { address, balance, spending, employee, workingEmployee, recentPaments, vacancies, status, canBePaid } = props;
 
   return (
     <div className="container-fluid">
-      <FinanceHeader address={address}>
-        <CompanyInfo balance={balance} spending={spending} employee={employee} />
+      <FinanceHeader address={address} addressStatus={status} >
+        <CompanyInfo balance={balance} spending={spending} employee={employee} canBePaid={canBePaid} />
       </FinanceHeader>
 
       <WorkingEmployees>
@@ -35,7 +35,9 @@ const CompanyFinanceComponent = (props) => {
 
 CompanyFinanceComponent.propTypes = {
   address: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
+  canBePaid: PropTypes.number.isRequired,
   spending: PropTypes.number.isRequired,
   employee: PropTypes.number.isRequired,
   workingEmployee: PropTypes.oneOfType([

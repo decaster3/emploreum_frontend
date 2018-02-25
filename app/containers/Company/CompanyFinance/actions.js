@@ -10,12 +10,14 @@ import {
   CHANGE_STATE_PAYMENTS,
   LOADING,
   LOADED,
+  CHANGE_BALANCE,
   CHANGE_HEADER_STATE,
   GET_OPEN_VACANCIES,
   GET_EMPLOYEES,
   GET_PAYMENTS,
   SET_HEADER,
 } from './constants';
+import socket from '../../../services/socket';
 
 import { getOpenVacanciesAPI, getCompanyWorkersAPI } from '../../../services/api/Vacancy';
 import { getCompanyAddressAPI } from '../../../services/api/FinanceHeaderData';
@@ -119,22 +121,32 @@ export const headerLoading = () => ({ type: CHANGE_HEADER_STATE, state: LOADING 
 export const getHeaderInfo = () => (
   (dispatch) => {
     dispatch(headerLoading());
-
     return getCompanyAddressAPI((data) => {
-      const mock = {
-        address: '0x05b89ad8ef43fcf3d3f6b2e5fdac4cd4719bafa0',
-        balance: 12,
-        spending: 1.5,
-        employeeCount: 37,
-      }
-
+      console.log(data)
       dispatch({
         type: SET_HEADER,
-        payload: mock,
+        payload: data,
       });
     }, (err) => {
       console.log(err);
     }, dispatch);
+  }
+);
+
+export const changeBalance = (balance) => ({ type: CHANGE_BALANCE, balance });
+
+export const balanceChangeListener = () => (
+  (dispatch, getState) => {
+    const userId = getState().get('userSession')
+      .get('userAuth').get('userInformation').get('id');
+
+    socket.on(`${userId}:balance`, (data) => {
+      if (data.balance) {
+        dispatch(changeBalance(data.balance));
+      } else {
+        console.log('Connection error, balance doesn\'t been sent');
+      }
+    });
   }
 );
 
@@ -144,5 +156,6 @@ export const getAllFinance = () => (
     dispatch(getOpenVacancies());
     dispatch(getEmployees());
     dispatch(getPayments());
+    dispatch(balanceChangeListener());
   }
 );

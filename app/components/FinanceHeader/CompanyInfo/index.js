@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Card from '../Card/Loadable';
 
 export const CompanyInfo = (props) => {
-  const { balance, spending, employee } = props;
-  const canBePaid = parseInt(balance / spending, 10);
+  const { balance, spending, employee, canBePaid } = props;
 
   return (
     <div className="row">
@@ -19,6 +18,7 @@ export const CompanyInfo = (props) => {
 
 CompanyInfo.propTypes = {
   balance: PropTypes.number.isRequired,
+  canBePaid: PropTypes.number.isRequired,
   spending: PropTypes.number.isRequired,
   employee: PropTypes.number.isRequired,
 };

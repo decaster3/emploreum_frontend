@@ -23,7 +23,7 @@ Vacancy.propTypes = {
   position: PropTypes.string.isRequired,
   hoursPerWeek: PropTypes.string.isRequired,
   payment: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Vacancy;

@@ -6,10 +6,10 @@ export const EmployeeInfo = (props) => {
   const { balance, income, endedContractsCount, currentContractsCount } = props;
   return (
     <div className="row">
-      { <Card number={`${balance || 0} ETH`} title={'Balance'} icon="fa-bank" /> }
-      { <Card number={`${income || 0} ETH`} title={'income per month'} icon="fa-money" /> }
-      { <Card number={endedContractsCount || 0} title={'ended contracts'} icon="fa-shopping-bag" /> }
-      { <Card number={currentContractsCount || 0} title={'current contracts'} icon="fa-pause" /> }
+      { <Card number={`${balance} ETH`} title={'Balance'} icon="fa-bank" /> }
+      { <Card number={`${income} ETH`} title={'income per month'} icon="fa-money" /> }
+      { <Card number={endedContractsCount} title={'ended contracts'} icon="fa-shopping-bag" /> }
+      { <Card number={currentContractsCount} title={'current contracts'} icon="fa-pause" /> }
     </div>
 
   );

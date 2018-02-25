@@ -73,7 +73,7 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
     return this.props.openVacanciesItems.map((vacancy) =>
       (<Vacancy
         id={vacancy.id}
-        key={vacancy.position}
+        key={vacancy.id}
         position={vacancy.position}
         hoursPerWeek={vacancy.hoursPerWeek}
         payment={vacancy.payment}
@@ -82,7 +82,7 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
   }
 
   render() {
-    const { address, balance, spending, employeeCount } = this.props.header;
+    const { address, balance, spending, employeeCount, status, canBePaid } = this.props.header;
 
     const workingEmployee = this.renderWorkingEmployees();
     const recentPaments = this.renderPayment();
@@ -96,6 +96,8 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
         </Helmet>
         <CompanyFinanceComponent
           address={address}
+          canBePaid={canBePaid}
+          status={status}
           balance={balance}
           spending={spending}
           employee={employeeCount}
@@ -120,6 +122,7 @@ CompanyFinance.propTypes = {
     address: PropTypes.string,
     status: PropTypes.string,
     balance: PropTypes.number,
+    canBePaid: PropTypes.number,
     spending: PropTypes.number,
     employeeCount: PropTypes.number,
   }),

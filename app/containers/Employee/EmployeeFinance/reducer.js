@@ -14,6 +14,7 @@ import {
   CHANGE_STATE_CURRENT_CONTRACTS,
   CHANGE_STATE_ENDED_CONTRACTS,
   CHANGE_HEADER_STATE,
+  CHANGE_BALANCE,
   LOADED,
   SET_HEADER,
 } from './constants';
@@ -33,10 +34,10 @@ const initialState = fromJS({
   },
   header: {
     address: '',
-    balance: '',
-    income: '',
-    endedContractsCount: '',
-    currentContractsCount: '',
+    balance: 0,
+    income: 0,
+    endedContractsCount: 0,
+    currentContractsCount: 0,
     status: NOT_LOADED,
   },
 });
@@ -75,6 +76,8 @@ function employeeFinanceReducer(state = initialState, action) {
       }));
     case CHANGE_HEADER_STATE:
       return state.setIn(['header', 'status'], action.state);
+    case CHANGE_BALANCE:
+      return state.setIn(['header', 'balance'], action.balance);
     case SET_HEADER:
       return state.set('header', fromJS({
         ...action.payload,

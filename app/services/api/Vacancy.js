@@ -29,7 +29,7 @@ export const getCandidatesFromVacancyAPI = (vacancyId, successCallBack, errorCal
 export const acceptCandidateAPI = (payload, successCallBack, errorCallBack, dispatch) => {
   const { vacancyId, candidateId } = payload;
   const userId = candidateId;
-  AxiosService.post(`${BASEURL}/work/approve`, { vacancyId, userId }, successCallBack, errorCallBack, dispatch);
+  AxiosService.post(`${BASEURL}/blockchain/approve`, { vacancyId, userId }, successCallBack, errorCallBack, dispatch);
 };
 
 export const rejectCandidateAPI = (payload, successCallBack, errorCallBack, dispatch) => {
