@@ -19,6 +19,7 @@ import {
   selectOpenVacanciesStatus,
   selectRecentPaymentsStatus,
   selectEmployeeStatus,
+  selectHeader,
 } from './selectors';
 import reducer from './reducer';
 
@@ -81,10 +82,8 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
   }
 
   render() {
-    const address = '0x05b89ad8ef43fcf3d3f6b2e5fdac4cd4719bafa0';
-    const balance = 12;
-    const spending = 1.5;
-    const employee = 37;
+    const { address, balance, spending, employeeCount } = this.props.header;
+
     const workingEmployee = this.renderWorkingEmployees();
     const recentPaments = this.renderPayment();
     const vacancies = this.renderVacancies();
@@ -99,7 +98,7 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
           address={address}
           balance={balance}
           spending={spending}
-          employee={employee}
+          employee={employeeCount}
           workingEmployee={workingEmployee}
           recentPaments={recentPaments}
           vacancies={vacancies}
@@ -117,6 +116,13 @@ CompanyFinance.propTypes = {
   openVacanciesStatus: PropTypes.string,
   recentPaymentsStatus: PropTypes.string,
   employeesStatus: PropTypes.string,
+  header: PropTypes.shape({
+    address: PropTypes.string,
+    status: PropTypes.string,
+    balance: PropTypes.number,
+    spending: PropTypes.number,
+    employeeCount: PropTypes.number,
+  }),
 };
 
 function mapStateToProps(state) {
@@ -127,6 +133,7 @@ function mapStateToProps(state) {
     openVacanciesStatus: selectOpenVacanciesStatus(state),
     recentPaymentsStatus: selectRecentPaymentsStatus(state),
     employeesStatus: selectEmployeeStatus(state),
+    header: selectHeader(state),
   };
 }
 

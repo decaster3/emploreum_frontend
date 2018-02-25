@@ -13,7 +13,7 @@ import {
   selectEndedContractsItems,
   selectEndedContractsStatus,
   selectCurrentContractsStatus,
-  selectAddressName,
+  selectHeader,
   selectAddressStatus,
   selectAwaitedContractsStatus,
   selectAwaitedContractsItems,
@@ -77,11 +77,11 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
   }
 
   render() {
-    const balance = 2;
-    const income = 0.5;
+    const { address, balance, income, endedContractsCount, currentContractsCount, status } = this.props.header;
     const currentContractsRows = this.renderCurrentContracts();
     const endedContractsRow = this.renderEndedContracts();
     const awaitedContracts = this.renderAwaitedContracts();
+
     return (
       <div>
         <Helmet>
@@ -89,8 +89,10 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
           <meta name="description" content="Profile of Employee" />
         </Helmet>
         <EmployeeFinanceComponent
-          address={this.props.address}
-          addressStatus={this.props.addressStatus}
+          address={address}
+          addressStatus={status}
+          endedContractsCount={endedContractsCount}
+          currentContractsCount={currentContractsCount}
           balance={balance}
           income={income}
           currentContracts={currentContractsRows}
@@ -110,8 +112,14 @@ EmployeeFinance.propTypes = {
   endedContractsStatus: PropTypes.string,
   currentContractsStatus: PropTypes.string,
   awaitedContractsStatus: PropTypes.string,
-  addressStatus: PropTypes.string,
-  address: PropTypes.string,
+  header: PropTypes.shape({
+    address: PropTypes.string,
+    status: PropTypes.string,
+    balance: PropTypes.number,
+    income: PropTypes.number,
+    endedContractsCount: PropTypes.number,
+    currentContractsCount: PropTypes.number,
+  }),
 };
 
 function mapStateToProps(state) {
@@ -122,7 +130,7 @@ function mapStateToProps(state) {
     endedContractsStatus: selectEndedContractsStatus(state),
     awaitedContractsStatus: selectAwaitedContractsStatus(state),
     currentContractsStatus: selectCurrentContractsStatus(state),
-    address: selectAddressName(state),
+    header: selectHeader(state),
     addressStatus: selectAddressStatus(state),
   };
 }

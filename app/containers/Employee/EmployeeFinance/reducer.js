@@ -13,9 +13,9 @@ import {
   GET_AWAITED_CONTRACTS,
   CHANGE_STATE_CURRENT_CONTRACTS,
   CHANGE_STATE_ENDED_CONTRACTS,
-  CHANGE_STATE_ADDRESS,
+  CHANGE_HEADER_STATE,
   LOADED,
-  GET_HEADER,
+  SET_HEADER,
 } from './constants';
 
 const initialState = fromJS({
@@ -73,15 +73,12 @@ function employeeFinanceReducer(state = initialState, action) {
         status: action.payload,
         items: state.get('endedContracts').get('items'),
       }));
-    case CHANGE_STATE_ADDRESS:
-      return state.set('address', fromJS({
-        status: action.payload,
-        name: state.get('address').get('name'),
-      }));
-    case GET_HEADER:
+    case CHANGE_HEADER_STATE:
+      return state.setIn(['header', 'status'], action.state);
+    case SET_HEADER:
       return state.set('header', fromJS({
+        ...action.payload,
         status: LOADED,
-        address: action.address,
       }));
     default:
       return state;

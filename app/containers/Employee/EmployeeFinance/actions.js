@@ -7,11 +7,11 @@ import {
   LOADED,
   GET_ENDED_CONTRACTS,
   GET_CURRENT_CONTRACTS,
-  CHANGE_STATE_ADDRESS,
-  GET_HEADER,
+  CHANGE_HEADER_STATE,
+  SET_HEADER,
 } from './constants';
 
-import { getEmployeeAddressAPI } from '../../../services/api/Addresses';
+import { getEmployeeHeaderDataAPI } from '../../../services/api/FinanceHeaderData';
 import { getCurrentContractsAPI, getAwaitedContractsAPI } from '../../../services/api/Contracts';
 
 const mockContractss = [{
@@ -89,19 +89,23 @@ export const getAwaitedContracts = () => (
 );
 
 
-export const loadingAddress = () => ({ type: CHANGE_STATE_ADDRESS, payload: LOADING });
-export const loadedAddress = () => ({ type: CHANGE_STATE_ADDRESS, payload: LOADED });
-
+export const headerLoading = () => ({ type: CHANGE_HEADER_STATE, state: LOADING });
 
 export const getHeaderInfo = () => (
   (dispatch) => {
-    dispatch(loadingAddress());
-    return getEmployeeAddressAPI((data) => {
+    dispatch(headerLoading());
+    return getEmployeeHeaderDataAPI((data) => {
+      const mock = {
+        address: data,
+        balance: 1,
+        income: 0.33,
+        endedContractsCount: 2,
+        currentContractsCount: 1,
+      }
       dispatch({
-        type: GET_HEADER,
-        payload: data,
+        type: SET_HEADER,
+        payload: mock,
       });
-      dispatch(loadedAddress());
     }, (err) => {
       console.log(err);
     }, dispatch);

@@ -7,12 +7,15 @@
 import { fromJS } from 'immutable';
 import {
   NOT_LOADED,
+  LOADED,
   GET_OPEN_VACANCIES,
   GET_EMPLOYEES,
   GET_PAYMENTS,
+  SET_HEADER,
   CHANGE_STATE_OPEN_VACANCIES,
   CHANGE_STATE_EMPLOYEES,
   CHANGE_STATE_PAYMENTS,
+  CHANGE_HEADER_STATE,
 } from './constants';
 
 const initialState = fromJS({
@@ -26,6 +29,13 @@ const initialState = fromJS({
   },
   employees: {
     items: [],
+    status: NOT_LOADED,
+  },
+  header: {
+    address: '',
+    balance: 0,
+    spending: 0,
+    employeeCount: 0,
     status: NOT_LOADED,
   },
 });
@@ -61,6 +71,13 @@ function companyFinanceContainerReducer(state = initialState, action) {
       return state.set('recentPayments', fromJS({
         status: action.payload,
         items: state.get('recentPayments').get('items'),
+      }));
+    case CHANGE_HEADER_STATE:
+      return state.setIn(['header', 'status'], action.state);
+    case SET_HEADER:
+      return state.set('header', fromJS({
+        ...action.payload,
+        status: LOADED,
       }));
     default:
       return state;

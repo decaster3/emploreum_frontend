@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CompanyInfo from '../../../FinanceHeader/EmployeeInfo/Loadable';
+import CompanyInfo from '../../../FinanceHeader/CompanyInfo/Loadable';
 
 import FinanceHeader from '../../../FinanceHeader/FinanceHeader/Loadable';
 

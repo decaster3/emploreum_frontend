@@ -6,6 +6,7 @@ import { createSelector } from 'reselect';
 const selectRecentPayments = (state) => state.get('companyFinance').get('recentPayments');
 const selectOpenVacancies = (state) => state.get('companyFinance').get('openVacancies');
 const selectEmployees = (state) => state.get('companyFinance').get('employees');
+const selectCompanyHeader = (state) => state.get('companyFinance');
 
 export const selectEmployeeStatus = createSelector(
   selectEmployees,
@@ -30,6 +31,11 @@ export const selectOpenVacanciesItems = createSelector(
 export const selectRecentPaymentsItems = createSelector(
   selectRecentPayments,
   (recentPaymentsItems) => recentPaymentsItems.get('items').toJS()
+);
+
+export const selectHeader = createSelector(
+  selectCompanyHeader,
+  (state) => state.get('header').toJS()
 );
 
 export const selectEmployeesItems = createSelector(

@@ -5,7 +5,7 @@ import FinanceHeader from '../../../FinanceHeader/FinanceHeader/Loadable';
 import TableCreator from '../TableCreator/Loadable';
 
 export const EmployeeFinance = (props) => {
-  const { address, addressStatus, balance, income, currentContracts, endedContracts, awaitedContracts } = props;
+  const { address, addressStatus, balance, income, currentContracts, endedContracts, awaitedContracts, endedContractsCount, currentContractsCount } = props;
   const tableVariantOne = ['Contract address',
     'Company',
     'Salary',
@@ -17,7 +17,12 @@ export const EmployeeFinance = (props) => {
     <div className="container-fluid">
 
       <FinanceHeader address={address} addressStatus={addressStatus}>
-        <EmployeeInfo balance={balance} income={income} />
+        <EmployeeInfo
+          balance={balance}
+          income={income}
+          endedContractsCount={endedContractsCount}
+          currentContractsCount={currentContractsCount}
+        />
       </FinanceHeader>
 
       <TableCreator
@@ -49,6 +54,8 @@ EmployeeFinance.propTypes = {
   addressStatus: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
   income: PropTypes.number.isRequired,
+  endedContractsCount: PropTypes.number.isRequired,
+  currentContractsCount: PropTypes.number.isRequired,
   currentContracts: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

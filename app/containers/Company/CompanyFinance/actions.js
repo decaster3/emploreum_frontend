@@ -10,12 +10,15 @@ import {
   CHANGE_STATE_PAYMENTS,
   LOADING,
   LOADED,
+  CHANGE_HEADER_STATE,
   GET_OPEN_VACANCIES,
   GET_EMPLOYEES,
   GET_PAYMENTS,
+  SET_HEADER,
 } from './constants';
 
 import { getOpenVacanciesAPI, getCompanyWorkersAPI } from '../../../services/api/Vacancy';
+import { getCompanyAddressAPI } from '../../../services/api/FinanceHeaderData';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -111,9 +114,33 @@ export const getPayments = () => (
     });
   }
 );
+export const headerLoading = () => ({ type: CHANGE_HEADER_STATE, state: LOADING });
+
+export const getHeaderInfo = () => (
+  (dispatch) => {
+    dispatch(headerLoading());
+
+    return getCompanyAddressAPI((data) => {
+      const mock = {
+        address: '0x05b89ad8ef43fcf3d3f6b2e5fdac4cd4719bafa0',
+        balance: 12,
+        spending: 1.5,
+        employeeCount: 37,
+      }
+
+      dispatch({
+        type: SET_HEADER,
+        payload: mock,
+      });
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
+  }
+);
 
 export const getAllFinance = () => (
   (dispatch) => {
+    dispatch(getHeaderInfo());
     dispatch(getOpenVacancies());
     dispatch(getEmployees());
     dispatch(getPayments());
