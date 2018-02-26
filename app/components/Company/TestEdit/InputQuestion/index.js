@@ -11,7 +11,7 @@ export const MultipleChoiceQuestion = (props) => {
   const { answer } = props;
   return (
     <div>
-      <i className="fa fa-check-square" style={{ color: 'green' }} aria-hidden="true" />
+      <i className="fa fa-check-square" style={{ color: 'green', marginRight: '6px' }} aria-hidden="true" />
       {answer.name}
     </div>
   );

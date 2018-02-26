@@ -6,7 +6,7 @@ const LanguageWrapper = (props) => {
     children,
   } = props;
   return (
-    <div className="col-lg-12">
+    <div>
       <h4 className="heading">Add Language</h4>
       <hr />
       {children}

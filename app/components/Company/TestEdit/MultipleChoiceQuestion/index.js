@@ -12,8 +12,8 @@ export const MultipleChoiceQuestion = (props) => {
   const answersView = answers.map((answer) => (
     <div key={answer.id}>
       { answer.is_true
-        ? <i className="fa fa-check-square" style={{ color: 'green' }} aria-hidden="true" />
-        : <i className="fa fa-minus-square" style={{ color: 'red' }} aria-hidden="true" />
+        ? <i className="fa fa-check-square" style={{ color: 'green', marginRight: '6px' }} aria-hidden="true" />
+        : <i className="fa fa-minus-square" style={{ color: 'red', marginRight: '6px' }} aria-hidden="true" />
       }
       {answer.name}
     </div>

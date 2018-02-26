@@ -26,7 +26,6 @@ export const getQuestions = (id) => (
     // console.log(id);
     dispatch(loadingQuestions());
     getEditTestQuestionAPI(id, (data) => {
-      console.log(data);
       dispatch({
         type: GET_QUESTIONS,
         payload: data,

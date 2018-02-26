@@ -6,6 +6,8 @@ import AutoComplete from '../../AutoComplete/Loadable';
 import ChoosenSkill from '../ChoosenSkill/Loadable';
 import ChoosenSkills from '../ChoosenSkills/Loadable';
 
+import { BASEURL } from '../../../global-constants';
+
 class ChoosenSpecification extends React.Component {
   renderChoosenSkills() {
     if (this.props.skills && this.props.skills.length > 0) {
@@ -14,6 +16,7 @@ class ChoosenSpecification extends React.Component {
           key={item.name}
           skillName={item.name}
           skill={item}
+          skillImgUrl={`${BASEURL}/${item.photo_path}`}
           specification={this.props.specification}
           deleteSkill={this.props.deleteSkill}
         />));

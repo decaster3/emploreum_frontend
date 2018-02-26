@@ -14,6 +14,7 @@ class AvatarEdit extends React.Component {
       avatar: null,
       choosenAvatar: null,
       preview: false,
+      buttonDispabled: true,
     };
     this.onClickSave = this.onClickSave.bind(this);
   }
@@ -54,7 +55,8 @@ class AvatarEdit extends React.Component {
                 URL.revokeObjectURL(url);
               };
               newImg.src = url;
-              document.body.appendChild(newImg);
+              newImg.className = 'circle-avatar';
+              document.getElementById('preview').appendChild(newImg);
             })}
         </div>
       );
@@ -68,8 +70,7 @@ class AvatarEdit extends React.Component {
         <AvatarEditor
           image={this.state.avatar}
           ref={this.setEditorRef}
-          width={250}
-          height={250}
+          style={{ width: '100%' }}
           border={30}
           borderRadius={150}
           scale={1.2}
@@ -77,10 +78,17 @@ class AvatarEdit extends React.Component {
             this.setState({
               avatar: img,
               imagePreviewUrl: img,
+              buttonDispabled: false,
             })
           }
         />
-        <button onClick={() => this.onClickSave()}> Save </button>
+        <button
+          className="btn btn-success"
+          disabled={this.state.buttonDispabled}
+          onClick={() => this.onClickSave()}
+        >
+          Preview
+        </button>
       </div>
     );
   }

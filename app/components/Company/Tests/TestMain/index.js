@@ -16,8 +16,8 @@ export const TestMain = (props) => {
     <div>
       <TestCardsWrapper>
         {testCards}
+        <AddTestButton />
       </TestCardsWrapper>
-      <AddTestButton />
     </div>
   );
 };

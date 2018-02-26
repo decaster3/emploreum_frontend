@@ -54,7 +54,6 @@ export class AccountWrapperContainer extends React.PureComponent {
 
 AccountWrapperContainer.propTypes = {
   view: PropTypes.string,
-  path: PropTypes.string,
   changeView: PropTypes.func,
   menu: PropTypes.array,
   children: PropTypes.oneOfType([

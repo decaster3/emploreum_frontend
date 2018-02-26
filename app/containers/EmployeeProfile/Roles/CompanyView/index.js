@@ -23,7 +23,7 @@ export const CompanyView = (props) => {
           <InviteEmployee
             employeeId={match.params.id}
           />
-          <div className="col-md-12 text-right">
+          <div className="col-md-12 text-center padding-bottom-30">
             <a
               href=""
               className="btn btn-success"

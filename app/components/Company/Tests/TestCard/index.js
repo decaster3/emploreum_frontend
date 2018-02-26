@@ -17,7 +17,7 @@ export const TestCard = (props) => {
         <div className="panel-heading">
           <h2 className="panel-title">{ name }</h2>
           <div className="right">
-            <Link type="button" className="btn-toggle-collapse" to={questionUrl}> Edit Test </Link>
+            <Link className="btn btn-default" to={questionUrl}> Edit Test </Link>
           </div>
         </div>
         <div className="panel-body">
