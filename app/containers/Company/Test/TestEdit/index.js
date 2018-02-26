@@ -31,14 +31,17 @@ export class TestEdit extends React.Component { // eslint-disable-line react/pre
       return (<PulseLoader color={'#0081c2'} size={20} />);
     }
     return this.props.testQuestions.map((question) =>
-      (<Question
-        key={question.id}
-        question={question}
-      />)
+      (<div>
+        <Question
+          key={question.id}
+          question={question}
+        />
+      </div>)
     );
   }
   render() {
     const questions = this.renderQuestions();
+    console.log(this.props.testInfo);
     return (
       <TextEditMain
         questions={questions}

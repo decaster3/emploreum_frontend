@@ -28,18 +28,16 @@ import {
 export class LanguageStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="panel panel-headline col-md-6 col-md-offset-3">
-        <div className="panel-body">
-          <LanguageSelector
-            getLanguage={this.props.getLanguage}
-            languageListStatus={this.props.languageListStatus}
-            languageList={this.props.languageList}
-            addLanguage={this.props.addLanguage}
-            choosenLanguages={this.props.choosenLanguages}
-            deleteLanguageFromChoosen={this.props.deleteLanguageFromChoosen}
-            submitLanguageSkillsStep={this.props.submitLanguageSkillsStep}
-          />
-        </div>
+      <div>
+        <LanguageSelector
+          getLanguage={this.props.getLanguage}
+          languageListStatus={this.props.languageListStatus}
+          languageList={this.props.languageList}
+          addLanguage={this.props.addLanguage}
+          choosenLanguages={this.props.choosenLanguages}
+          deleteLanguageFromChoosen={this.props.deleteLanguageFromChoosen}
+          submitLanguageSkillsStep={this.props.submitLanguageSkillsStep}
+        />
       </div>
     );
   }

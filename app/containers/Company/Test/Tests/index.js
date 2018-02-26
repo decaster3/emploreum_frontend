@@ -29,7 +29,7 @@ export class Tests extends React.Component { // eslint-disable-line react/prefer
         key={testCard.id}
         name={testCard.name}
         id={testCard.id}
-        questionsCount={testCard.questions.length}
+        questionsCount={5}
       />)
     );
   }

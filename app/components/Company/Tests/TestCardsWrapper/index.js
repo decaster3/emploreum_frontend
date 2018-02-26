@@ -5,9 +5,12 @@ import PropTypes from 'prop-types';
 
 const TestCardsWrapper = (props) => {
   const { children } = props;
-
   return (
     <div>
+      <h3>
+        My Tests
+      </h3>
+      <hr />
       {children}
     </div>
   );

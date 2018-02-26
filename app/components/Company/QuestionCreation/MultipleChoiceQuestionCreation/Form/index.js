@@ -64,8 +64,10 @@ class MultipleQuestionCreationForm extends React.Component {
           />
           { fakeAnswers }
           { trueAnswers }
-          <button className="btn btn-default" onClick={this.addFakeAnswer}>Add fake answer</button>
-          <button className="btn btn-default" onClick={this.addTrueAnswer}>Add true answer</button>
+          <div className="padding-top-30">
+            <button className="btn btn-default" onClick={this.addFakeAnswer}>Add fake answer</button>
+            <button className="btn btn-default" onClick={this.addTrueAnswer}>Add true answer</button>
+          </div>
           <div className="col-xs-12 no-padding text-right padding-top-30">
             <button
               type="submit"
