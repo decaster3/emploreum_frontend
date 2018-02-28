@@ -76,18 +76,18 @@ import './global-styles';
 // Create redux store with history
 const initialState = {};
 const history = createHistory();
-window.store = configureStore(initialState, history);
+const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
-window.store.subscribe(() => {
+store.subscribe(() => {
   saveState({
-    userSession: window.store.getState().get('userSession'),
+    userSession: store.getState().get('userSession'),
   });
 });
 
 const render = (messages) => {
   ReactDOM.render(
-    <Provider store={window.store}>
+    <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
           <App />
