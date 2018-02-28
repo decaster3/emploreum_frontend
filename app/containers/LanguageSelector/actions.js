@@ -13,12 +13,13 @@ import {
   ADD_LANGUAGE_TO_POSSIBLE,
   DELETE_LANGUAGE_FROM_CHOOSEN,
   GET_LANGUAGES,
+  CLEAR_LANGUAGE_SELECTOR,
 } from './constants';
 
 // import {
   // getLanguagesAPI,
 // } from '../../services/api/Languages';
-
+export const clearReducer = () => ({ type: CLEAR_LANGUAGE_SELECTOR });
 const mockLanguages = [{ name: 'lang1' }, { name: 'lang2' }];
 export const getLanguage = () => (
   (dispatch) => {

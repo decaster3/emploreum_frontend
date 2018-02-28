@@ -1,10 +1,10 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Switch, Route } from 'react-router-dom';
-import AccountWrapperContainer from '../AccountWrapper';
-import CompanyProfileContainer from './CompanyProfileContainer';
-import CompanyFinance from './CompanyFinance';
-import EmployeesSearch from './EmployeesSearch';
+import AccountWrapperContainer from '../AccountWrapper/Loadable';
+import CompanyProfileContainer from './CompanyProfileContainer/Loadable';
+import CompanyFinance from './CompanyFinance/Loadable';
+import EmployeesSearch from './EmployeesSearch/Loadable';
 import VacancyCreation from './VacancyCreation/Loadable';
 import Vacancy from '../Vacancy/Roles/CompanyView/Loadable';
 import EmployeeProfile from '../EmployeeProfile/Roles/CompanyView/Loadable';

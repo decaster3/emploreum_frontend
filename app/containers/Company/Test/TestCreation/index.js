@@ -14,8 +14,11 @@ import { selectSubmitTestCreationButtonState } from './selectors';
 import reducer from './reducer';
 import SpecificationsSkills from './SpecificationSkills/Loadable';
 import MainTestCreation from '../../../../components/Company/TestCreation/Loadable';
-import { createTest } from './actions';
+import { createTest, clearReducer } from './actions';
 export class TestCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
   renderSpecificationSkills() {
     return <SpecificationsSkills />;
   }
@@ -36,6 +39,7 @@ export class TestCreation extends React.Component { // eslint-disable-line react
 TestCreation.propTypes = {
   submittingTestCreationButtonState: PropTypes.bool,
   createTest: PropTypes.func,
+  clearReducer: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -47,6 +51,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     createTest: (evt) => dispatch(createTest(evt)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 

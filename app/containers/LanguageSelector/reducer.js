@@ -13,6 +13,7 @@ import {
   DELETE_LANGUAGE_FROM_POSSIBLE,
   ADD_LANGUAGE_TO_POSSIBLE,
   DELETE_LANGUAGE_FROM_CHOOSEN,
+  CLEAR_LANGUAGE_SELECTOR,
 } from './constants';
 
 const initialState = fromJS({
@@ -28,6 +29,8 @@ const initialState = fromJS({
 
 function languageSelectorReducer(state = initialState, action) {
   switch (action.type) {
+    case CLEAR_LANGUAGE_SELECTOR:
+      return fromJS(initialState);
     case GET_LANGUAGES:
       return state
         .set('languageList', fromJS(action.payload));

@@ -24,11 +24,15 @@ import {
   getSpecification,
   addSpecificationWithSkills,
   deleteSpecificationFromChoosen,
+  clearReducer,
 } from '../../../Specifications/actions';
 
 import { submitSpecificationSkillsStep } from '../actions';
 
 export class SpecificationStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
   render() {
     return (
       <div className="panel panel-headline col-md-6 col-md-offset-3">
@@ -64,6 +68,7 @@ function mapDispatchToProps(dispatch) {
     getSpecification: () => dispatch(getSpecification()),
     addSpecificationWithSkills: (evt) => dispatch(addSpecificationWithSkills(evt)),
     deleteSpecificationFromChoosen: (evt) => dispatch(deleteSpecificationFromChoosen(evt)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 
@@ -75,6 +80,7 @@ const withReducer = injectReducer(
 
 
 SpecificationStep.propTypes = {
+  clearReducer: PropTypes.func,
   getSpecification: PropTypes.func,
   specificationListStatus: PropTypes.string,
   specificationList: PropTypes.object,

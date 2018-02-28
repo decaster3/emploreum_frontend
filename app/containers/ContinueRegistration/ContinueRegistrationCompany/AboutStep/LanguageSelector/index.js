@@ -23,10 +23,14 @@ import {
   getLanguage,
   addLanguage,
   deleteLanguageFromChoosen,
+  clearReducer,
 } from '../../../../LanguageSelector/actions';
 
 export class LanguageStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
+  ender() {
     return (
       <div>
         <LanguageSelector
@@ -56,6 +60,7 @@ function mapDispatchToProps(dispatch) {
     getLanguage: () => dispatch(getLanguage()),
     addLanguage: (evt) => dispatch(addLanguage(evt)),
     deleteLanguageFromChoosen: (evt) => dispatch(deleteLanguageFromChoosen(evt)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 
@@ -68,6 +73,7 @@ const withReducer = injectReducer(
 
 LanguageStep.propTypes = {
   getLanguage: PropTypes.func,
+  clearReducer: PropTypes.func,
   languageListStatus: PropTypes.string,
   languageList: PropTypes.object,
   deleteLanguageFromChoosen: PropTypes.func,

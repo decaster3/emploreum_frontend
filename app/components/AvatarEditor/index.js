@@ -14,7 +14,7 @@ class AvatarEdit extends React.Component {
       avatar: null,
       choosenAvatar: null,
       preview: false,
-      buttonDispabled: true,
+      saveButtonDisables: true,
     };
     this.onClickSave = this.onClickSave.bind(this);
   }
@@ -78,13 +78,13 @@ class AvatarEdit extends React.Component {
             this.setState({
               avatar: img,
               imagePreviewUrl: img,
-              buttonDispabled: false,
+              saveButtonDisables: false,
             })
           }
         />
         <button
           className="btn btn-success"
-          disabled={this.state.buttonDispabled}
+          disabled={this.state.saveButtonDisables}
           onClick={() => this.onClickSave()}
         >
           Preview

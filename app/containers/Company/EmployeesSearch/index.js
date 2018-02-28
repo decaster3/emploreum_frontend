@@ -6,7 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { PulseLoader } from 'react-spinners';
 import injectReducer from 'utils/injectReducer';
@@ -22,7 +21,7 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
     this.props.getEmployees();
   }
 
-  renderVacancies() {
+  renderEmployees() {
     if (this.props.loadingStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
     }
@@ -40,17 +39,11 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
   }
 
   render() {
-    const vacancies = this.renderVacancies();
+    const vacancies = this.renderEmployees();
     return (
-      <div>
-        <Helmet>
-          <title>Employees search</title>
-          <meta name="description" content="Description of EmployeesSearch" />
-        </Helmet>
-        <EmployeesList>
-          { vacancies }
-        </EmployeesList>
-      </div>
+      <EmployeesList>
+        { vacancies }
+      </EmployeesList>
     );
   }
 }
