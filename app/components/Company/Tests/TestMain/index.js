@@ -16,14 +16,17 @@ export const TestMain = (props) => {
     <div>
       <TestCardsWrapper>
         {testCards}
+        <AddTestButton />
       </TestCardsWrapper>
-      <AddTestButton />
     </div>
   );
 };
 
 TestMain.propTypes = {
-  testCards: PropTypes.object,
+  testCards: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };
 
 export default TestMain;

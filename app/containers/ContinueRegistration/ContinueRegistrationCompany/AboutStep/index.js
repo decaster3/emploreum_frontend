@@ -25,8 +25,9 @@ export class AboutStepContainer extends React.Component { // eslint-disable-line
         <AboutStep
           submitAboutStep={this.props.submitAboutStep}
           submittingAbout={this.props.submittingAbout}
-        />
-        <LanguageSelector />
+        >
+          <LanguageSelector />
+        </AboutStep>
       </div>
     );
   }

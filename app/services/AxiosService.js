@@ -29,8 +29,9 @@ function get(url, successCallBack, errorCallBack, dispatch) {
   });
 }
 
-function post(url, obj, successCallBack, errorCallBack, dispatch) {
-  return axios.post(url, obj, { withCredentials: true })
+function post(url, obj, successCallBack, errorCallBack, dispatch, ...args) {
+  const timeout = args[0] || 1000;
+  return axios.post(url, obj, { withCredentials: true, timeout })
     .then((response) =>
       new Promise((resolve) => resolve(successCallBack(response.data)))
     ).catch((err) => {

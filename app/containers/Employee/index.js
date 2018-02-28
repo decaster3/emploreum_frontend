@@ -6,7 +6,7 @@ import EmployeeFinance from './EmployeeFinance/Loadable';
 import EmployeeVacancies from './VacanciesSearch/Loadable';
 import EmployeeProfile from '../EmployeeProfile/Roles/SelfView/Loadable';
 import Vacancy from '../Vacancy/Roles/EmployeeView/Loadable';
-
+import TestVacancyEmployeeMain from '../Vacancy/Test/Loadable';
 function renderMenu() {
   return [{
     name: 'Profile',
@@ -30,7 +30,8 @@ export const EmployeeMain = () => (
       <Route exact path="/employee" component={EmployeeProfile} />
       <Route path="/employee/finance" component={EmployeeFinance} />
       <Route path="/employee/vacancies" component={EmployeeVacancies} />
-      <Route path="/employee/vacancy/:id" component={Vacancy} />
+      <Route exact path="/employee/vacancy/:id" component={Vacancy} />
+      <Route path="/employee/vacancy/:id/test/:question?/" component={TestVacancyEmployeeMain} />
     </Switch>
   </AccountWrapperContainer>
 );

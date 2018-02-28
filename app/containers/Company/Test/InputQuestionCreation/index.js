@@ -12,11 +12,13 @@ import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { selectSubmitInputQuestionCreationButtonState } from './selectors';
 import reducer from './reducer';
-import { submitInputQuestion } from './actions';
+import { submitInputQuestion, clearReducer } from './actions';
 import InputQuestionCreationComponent from '../../../../components/Company/QuestionCreation/InputQuestionCreation/Loadable';
 export class InputQuestionCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
   render() {
-    console.log(this.props.location.search)
     return (
       <InputQuestionCreationComponent
         submitInputQuestion={this.props.submitInputQuestion}
@@ -28,6 +30,7 @@ export class InputQuestionCreation extends React.Component { // eslint-disable-l
 
 InputQuestionCreation.propTypes = {
   submitInputQuestion: PropTypes.func.isRequired,
+  clearReducer: PropTypes.func.isRequired,
   submittingInputQuestionCreationButtonState: PropTypes.bool.isRequired,
 };
 
@@ -40,6 +43,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     submitInputQuestion: (evt) => dispatch(submitInputQuestion(evt)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 

@@ -25,9 +25,13 @@ import {
   submitEmailVerification,
   changeRole,
   downRegistrationStep,
+  clearReducer,
 } from './actions';
 
 export class Registration extends React.PureComponent {
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
   render() {
     if (!this.props.role) {
       return (
@@ -83,6 +87,7 @@ function mapDispatchToProps(dispatch) {
     submitEmail: (evt) => dispatch(submitEmail(evt)),
     submitEmailVerification: (evt) => dispatch(submitEmailVerification(evt)),
     downRegistrationStep: () => dispatch(downRegistrationStep()),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 
@@ -97,6 +102,7 @@ Registration.propTypes = {
   submittingEmailVerification: PropTypes.bool,
   changeRole: PropTypes.func,
   downRegistrationStep: PropTypes.func,
+  clearReducer: PropTypes.func,
   registrationStep: PropTypes.number,
 };
 

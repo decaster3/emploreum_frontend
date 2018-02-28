@@ -23,23 +23,25 @@ import {
   getLanguage,
   addLanguage,
   deleteLanguageFromChoosen,
+  clearReducer,
 } from '../../../../LanguageSelector/actions';
 
 export class LanguageStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
+  ender() {
     return (
-      <div className="panel panel-headline col-md-6 col-md-offset-3">
-        <div className="panel-body">
-          <LanguageSelector
-            getLanguage={this.props.getLanguage}
-            languageListStatus={this.props.languageListStatus}
-            languageList={this.props.languageList}
-            addLanguage={this.props.addLanguage}
-            choosenLanguages={this.props.choosenLanguages}
-            deleteLanguageFromChoosen={this.props.deleteLanguageFromChoosen}
-            submitLanguageSkillsStep={this.props.submitLanguageSkillsStep}
-          />
-        </div>
+      <div>
+        <LanguageSelector
+          getLanguage={this.props.getLanguage}
+          languageListStatus={this.props.languageListStatus}
+          languageList={this.props.languageList}
+          addLanguage={this.props.addLanguage}
+          choosenLanguages={this.props.choosenLanguages}
+          deleteLanguageFromChoosen={this.props.deleteLanguageFromChoosen}
+          submitLanguageSkillsStep={this.props.submitLanguageSkillsStep}
+        />
       </div>
     );
   }
@@ -58,6 +60,7 @@ function mapDispatchToProps(dispatch) {
     getLanguage: () => dispatch(getLanguage()),
     addLanguage: (evt) => dispatch(addLanguage(evt)),
     deleteLanguageFromChoosen: (evt) => dispatch(deleteLanguageFromChoosen(evt)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 
@@ -70,6 +73,7 @@ const withReducer = injectReducer(
 
 LanguageStep.propTypes = {
   getLanguage: PropTypes.func,
+  clearReducer: PropTypes.func,
   languageListStatus: PropTypes.string,
   languageList: PropTypes.object,
   deleteLanguageFromChoosen: PropTypes.func,
