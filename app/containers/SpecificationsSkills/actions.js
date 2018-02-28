@@ -18,7 +18,7 @@ import {
   ADD_SKILL_TO_POSSIBLE,
   DELETE_SPECIFICATION_FROM_CHOOSEN,
   DELETE_SKILL_FROM_SPECIFICATION,
-  CLEAR,
+  CLEAR_SPECIFICATION_SKILLS,
 } from './constants';
 
 import {
@@ -26,7 +26,7 @@ import {
   getSkillsFromSpecificationAPI,
 } from '../../services/api/SkillsSpecifications';
 
-export const clear = () => ({ type: CLEAR });
+export const clearReducer = () => ({ type: CLEAR_SPECIFICATION_SKILLS });
 
 export const getSpecification = () => (
   (dispatch) => {

@@ -14,7 +14,7 @@ import {
   COMPLETE_REGISTRATION,
 } from './constants';
 
-import { loginAPI, logoutAPI } from '../../services/api/register';
+import { loginAPI, logoutAPI } from '../../services/api/Register';
 
 export const redirect = (role, dispatch) => {
   if (role === 'COMPANY') {

@@ -24,10 +24,14 @@ import {
   addSpecificationWithSkills,
   deleteSpecificationFromChoosen,
   deleteSkillFromSpecification,
+  clearReducer,
 } from '../../SpecificationsSkills/actions';
 import { createVacancy } from './actions';
 
 export class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
   render() {
     return (
       <div>
@@ -69,6 +73,7 @@ function mapDispatchToProps(dispatch) {
     addSpecificationWithSkills: (evt) => dispatch(addSpecificationWithSkills(evt)),
     deleteSpecificationFromChoosen: (evt) => dispatch(deleteSpecificationFromChoosen(evt)),
     createVacancy: (evt) => dispatch(createVacancy(evt)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 
@@ -77,6 +82,7 @@ const withReducer = injectReducer({ key: 'vacancyCreation', reducer });
 
 VacancyCreation.propTypes = {
   getSpecification: PropTypes.func,
+  clearReducer: PropTypes.func,
   getSkills: PropTypes.func,
   specificationListStatus: PropTypes.string,
   skillsListStatus: PropTypes.string,

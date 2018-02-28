@@ -13,6 +13,7 @@ import {
   DELETE_SPECIFICATION_FROM_POSSIBLE,
   ADD_SPECIFICATION_TO_POSSIBLE,
   DELETE_SPECIFICATION_FROM_CHOOSEN,
+  CLEAR_SPECIFICATIONS,
 } from './constants';
 
 const initialState = fromJS({
@@ -57,7 +58,6 @@ function registrationEmployeeReducer(state = initialState, action) {
           list: [...oldList, action.payload],
         }));
     }
-
     case DELETE_SPECIFICATION_FROM_CHOOSEN: {
       const getChoosenSpecifications = state.get('choosenSpecifications').toJS();
       const oldList = getChoosenSpecifications.items.find((obj) =>
@@ -65,6 +65,9 @@ function registrationEmployeeReducer(state = initialState, action) {
       const index = getChoosenSpecifications.items.indexOf(oldList);
       getChoosenSpecifications.items.splice(index, 1);
       return state.set('choosenSpecifications', fromJS(getChoosenSpecifications));
+    }
+    case CLEAR_SPECIFICATIONS: {
+      return fromJS(initialState);
     }
     default:
       return state;

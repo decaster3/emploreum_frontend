@@ -12,9 +12,12 @@ import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { selectSubmitMultipleQuestionCreationButtonState } from './selectors';
 import reducer from './reducer';
-import { submitMultipleQuestion } from './actions';
+import { submitMultipleQuestion, clearReducer } from './actions';
 import MultipleChoiceQuestionCreationCompoenent from '../../../../components/Company/QuestionCreation/MultipleChoiceQuestionCreation/Loadable';
 export class MultipleChoiceQuestionCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
   render() {
     return (
       <MultipleChoiceQuestionCreationCompoenent
@@ -26,6 +29,7 @@ export class MultipleChoiceQuestionCreation extends React.Component { // eslint-
 }
 
 MultipleChoiceQuestionCreation.propTypes = {
+  clearReducer: PropTypes.func.isRequired,
   submitMultipleQuestion: PropTypes.func.isRequired,
   submittingMultipleQuestionCreation: PropTypes.bool.isRequired,
 };
@@ -39,6 +43,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     submitMultipleQuestion: (evt) => dispatch(submitMultipleQuestion(evt)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 

@@ -7,9 +7,11 @@ import { push } from 'react-router-redux';
 
 import {
   CHANGE_SUBMIT_CREATION_MULTIPLE_QUESTION_BUTTON_STATUS,
+  CLEAR_MULTIPLE_QUESTION_CREATION,
 } from './constants';
 import { createCompanyMultipleQuestionAPI } from '../../../../services/api/CompanyTests';
 
+export const clearReducer = () => ({ type: CLEAR_MULTIPLE_QUESTION_CREATION });
 const changeSubmitCreationMultipleQuestionButtonState = () => ({ type: CHANGE_SUBMIT_CREATION_MULTIPLE_QUESTION_BUTTON_STATUS });
 
 export const submitMultipleQuestion = (values) => (

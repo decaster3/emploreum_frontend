@@ -24,9 +24,13 @@ import {
   addSpecificationWithSkills,
   deleteSpecificationFromChoosen,
   deleteSkillFromSpecification,
+  clearReducer,
 } from '../../../../SpecificationsSkills/actions';
 
 export class SpecificationSkills extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
   render() {
     return (
       <SpecificationsSkillsTestCreation
@@ -63,6 +67,7 @@ function mapDispatchToProps(dispatch) {
     deleteSkillFromSpecification: (evt, ev) => dispatch(deleteSkillFromSpecification(evt, ev)),
     addSpecificationWithSkills: (evt) => dispatch(addSpecificationWithSkills(evt)),
     deleteSpecificationFromChoosen: (evt) => dispatch(deleteSpecificationFromChoosen(evt)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 
@@ -73,6 +78,7 @@ const withReducer = injectReducer(
 );
 
 SpecificationSkills.propTypes = {
+  clearReducer: PropTypes.func,
   getSpecification: PropTypes.func,
   getSkills: PropTypes.func,
   specificationListStatus: PropTypes.string,

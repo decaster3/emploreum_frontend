@@ -20,7 +20,6 @@ export const getTests = () => (
   (dispatch) => {
     dispatch(loadingTests());
     getCompanyTestsAPI((data) => {
-      console.log(data);
       dispatch({
         type: GET_TESTS,
         payload: data,

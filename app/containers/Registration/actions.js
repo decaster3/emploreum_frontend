@@ -11,6 +11,7 @@ import {
   DOWN_REGISTRATION_STEP,
   CHANGE_SUBMIT_EMAIL_BUTTON_STATE,
   CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE,
+  CLEAR,
 } from './constants';
 
 import { registerAPI, sendVerificationCodeAPI } from '../../services/api/Register';
@@ -23,11 +24,10 @@ export const redirect = (role, dispatch) => {
     dispatch(push('/employee'));
   }
 };
+export const clearReducer = () => ({ type: CLEAR });
 
-export const changeRole = (role) => ({
-  type: CHANGE_ROLE,
-  payload: role,
-});
+export const changeRole = (role) => ({ type: CHANGE_ROLE, payload: role });
+
 export const changeSubmitEmailButtonState = () => ({ type: CHANGE_SUBMIT_EMAIL_BUTTON_STATE });
 export const changeSubmitEmailVerificationButtonState = () => ({ type: CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE });
 

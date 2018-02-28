@@ -18,7 +18,7 @@ import {
   ADD_SKILL_TO_POSSIBLE,
   DELETE_SPECIFICATION_FROM_CHOOSEN,
   DELETE_SKILL_FROM_SPECIFICATION,
-  CLEAR,
+  CLEAR_SPECIFICATION_SKILLS,
 } from './constants';
 
 const initialState = fromJS({
@@ -34,8 +34,8 @@ const initialState = fromJS({
 
 function registrationEmployeeReducer(state = initialState, action) {
   switch (action.type) {
-    case CLEAR:
-      return initialState;
+    case CLEAR_SPECIFICATION_SKILLS:
+      return fromJS(initialState);
     case GET_EMPLOYEE_SPECIFICATION_LIST:
       return state
         .set('specificationList', fromJS(action.payload));

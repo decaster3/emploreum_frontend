@@ -23,7 +23,6 @@ export const loadedTestInfo = () => ({ type: CHANGE_STATE_TEST_INFO, payload: LO
 
 export const getQuestions = (id) => (
   (dispatch) => {
-    // console.log(id);
     dispatch(loadingQuestions());
     getEditTestQuestionAPI(id, (data) => {
       dispatch({
@@ -41,7 +40,6 @@ export const getTestInfo = (id) => (
   (dispatch) => {
     dispatch(loadingTestInfo());
     getEditTestInfoAPI(id, (data) => {
-      console.log(data);
       dispatch({
         type: GET_TEST_INFO,
         payload: data,
@@ -52,9 +50,10 @@ export const getTestInfo = (id) => (
     }, dispatch);
   }
 );
+// todo
 export const getQuestionsAndTestInfo = (id) => (
   (dispatch) => {
-    dispatch(getTestInfo(id));
+    // dispatch(getTestInfo(id));
     dispatch(getQuestions(id));
   }
 );

@@ -13,11 +13,14 @@ import {
   ADD_SPECIFICATION_TO_POSSIBLE,
   DELETE_SPECIFICATION_FROM_CHOOSEN,
   GET_EMPLOYEE_SPECIFICATION_LIST,
+  CLEAR_SPECIFICATIONS,
 } from './constants';
 
 import {
   getSpecificationsAPI,
 } from '../../services/api/SkillsSpecifications';
+
+export const clearReducer = () => ({ type: CLEAR_SPECIFICATIONS });
 
 export const getSpecification = () => (
   (dispatch) => {
