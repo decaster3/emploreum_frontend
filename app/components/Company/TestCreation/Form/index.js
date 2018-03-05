@@ -18,6 +18,18 @@ const FormTestCreation = (props) => {
           validate={required}
           label="Test name"
         />
+        <Field
+          name="duration"
+          component={renderField}
+          validate={required}
+          label="Duration (min)"
+        />
+        <Field
+          name="passagePercentage"
+          component={renderField}
+          validate={required}
+          label="Passage percentage (1-100)"
+        />
         <div className="col-xs-12 no-padding text-right padding-top-30">
           <button
             type="submit"

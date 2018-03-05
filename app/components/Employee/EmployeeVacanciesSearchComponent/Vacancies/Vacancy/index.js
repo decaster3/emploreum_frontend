@@ -25,7 +25,7 @@ export const Vacancy = (props) => {
       name={currency}
     />)
   );
-  const url = `vacancy/${id}`;
+  const url = `vacancy/${id}/`;
   return (
     <div className="vacancy">
       <div className="vacancy-name">

@@ -3,7 +3,8 @@
  * TestNavigation actions
  *
  */
-
+import { toast } from 'react-toastify';
+import { push } from 'react-router-redux';
 import {
   CHANGE_STATE_TEST_QESTIONS,
   CHANGE_CURRENT_QUESTION,
@@ -11,8 +12,9 @@ import {
   LOADING,
   LOADED,
 } from './constants';
-import { getVacancyTestQuestionsAPI } from '../../../../services/api/EmployeeTests';
+import { getVacancyTestQuestionsAPI, submitTestAPI } from '../../../../services/api/EmployeeTests';
 
+const notify = () => toast('Time is out!', { hideProgressBar: true, autoClose: 10000000, type: toast.TYPE.ERROR });
 export const loadingTestQuestions = () => ({ type: CHANGE_STATE_TEST_QESTIONS, payload: LOADING });
 export const loadedTestQuestions = () => ({ type: CHANGE_STATE_TEST_QESTIONS, payload: LOADED });
 
@@ -21,10 +23,11 @@ export const changeCurrentQuestion = (currentQuestion) => (
     dispatch({ type: CHANGE_CURRENT_QUESTION, payload: currentQuestion });
   }
 );
+
 export const getTestQuestionCount = (vacancyId) => (
   (dispatch) => {
     dispatch(loadingTestQuestions());
-    getVacancyTestQuestionsAPI(vacancyId, (data) => {
+    return getVacancyTestQuestionsAPI(vacancyId, (data) => {
       const newData = data.questions.map((el, index, array) => ({
         id: el.id,
         viewId: index + 1,
@@ -39,21 +42,49 @@ export const getTestQuestionCount = (vacancyId) => (
       dispatch(loadedTestQuestions());
       dispatch(changeCurrentQuestion(newData[0]));
     }, (err) => {
-      console.log(err);
+      if (err.response.status && err.response.status === 405) {
+        notify();
+        dispatch(push(`/employee/vacancy/${vacancyId}/`));
+      }
     }, dispatch);
   }
 );
 
-// export const changeQuestion = (questionId) => {
-//     // redirect to  /employee/vacancy/vacancyId/test/questionId
-//   };
+export const getQuestionSetStartQuestion = (vacancyId, currentQuestionId) => (
+  (dispatch, getState) => {
+    dispatch(getTestQuestionCount(vacancyId)).then(() => {
+      const question = getState().get('testNavigation')
+      .get('testQuestions').get('items').toJS().find((el) =>
+        el.id === currentQuestionId) || undefined;
+      dispatch(changeCurrentQuestion(question));
+    });
+  }
+);
 
-// export const nextQuestion = () => {
-//     // getState() get next question
-//     // redirect to  /employee/vacancy/vacancyId/test/NEXTQUESTION
-//   };
+export const submitTest = (vacancyId) => (
+  (dispatch) => {
+    submitTestAPI(vacancyId, () => {
+      dispatch(push(`/employee/vacancy/${vacancyId}/`));
+    }, (err) => {
+      if (err.response.status && err.response.status === 405) {
+        notify();
+        dispatch(push(`/employee/vacancy/${vacancyId}/`));
+      }
+    }, dispatch);
+  }
+);
 
-// export const submitTest = () => {
-//     // redirect to  /employee/vacancy/vacancyId/
-//   };
-
+export const nextQuestion = () => (
+  (dispatch, getState) => {
+    const nextQuestionItem = getState().get('testNavigation')
+      .get('testQuestions').get('items').toJS().find((el) =>
+        el.id === getState().get('testNavigation').get('currentQuestion').toJS().nextId) || undefined;
+    const vacancyId = getState().get('testNavigation').get('currentQuestion').get('vacancyId');
+    if (nextQuestionItem) {
+      dispatch(changeCurrentQuestion(nextQuestionItem));
+      dispatch(push(`/employee/vacancy/${vacancyId}/test/${nextQuestionItem.id}`));
+    } else {
+      dispatch(submitTest(vacancyId));
+    }
+  }
+);

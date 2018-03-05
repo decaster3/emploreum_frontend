@@ -23,12 +23,7 @@ export const getVacancyMainInfo = (id) => (
     getCompanyInfoAPI({ id }, (data) => {
       dispatch({
         type: GET_VACANCY_MAIN_INFO,
-        payload: {
-          name: data.company.name,
-          info: data.company.about,
-          logo: data.company.logo,
-          city: data.company.city,
-        },
+        payload: data,
       });
     }, (err) => {
       console.log(err);

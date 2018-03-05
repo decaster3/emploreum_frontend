@@ -13,7 +13,7 @@ import Navigation from './Navigation/Loadable';
 import Language from './Language/Loadable';
 
 export const Header = (props) => {
-  const { serverLogout, children } = props;
+  const { serverLogout, children, userInitials } = props;
   return (
     <nav id="max-navbar" className="navbar navbar-default navbar-fixed-top">
       <div className="brand">
@@ -29,6 +29,7 @@ export const Header = (props) => {
             {children}
             <Navigation
               serverLogout={serverLogout}
+              userInitials={userInitials}
             />
             <Language />
           </ul>
@@ -44,6 +45,7 @@ Header.propTypes = {
     PropTypes.node,
   ]),
   serverLogout: PropTypes.func,
+  userInitials: PropTypes.object,
 };
 
 export default Header;

@@ -10,6 +10,11 @@ export const selectAwaitedContractsItems = createSelector(
   (currentContractsItems) => currentContractsItems.get('items').toJS()
 );
 
+export const selectIsThereAwaitedContracts = createSelector(
+  selectAwaitedContracts,
+  (currentContractsItems) => currentContractsItems.get('items').toJS().length > 0
+);
+
 export const selectAwaitedContractsStatus = createSelector(
   selectAwaitedContracts,
   (currentContractsStatus) => currentContractsStatus.get('status')

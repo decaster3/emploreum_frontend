@@ -15,6 +15,7 @@ export const Employee = (props) => {
     image,
     skills,
     lastWork,
+    name,
     id } = props;
 
 
@@ -22,10 +23,11 @@ export const Employee = (props) => {
   return (
     <div className="vacancy">
       <div className="row">
-        <div className="col-md-2 fix-width">
+        <div className="inline col-md-2">
           <a className="thumbnail">
             <img src={BASEURL + image} alt="user avatar" />
           </a>
+          <h4>{name}</h4>
         </div>
         <div className="col-md-10">
           <div className="vacancy-name">
@@ -60,6 +62,7 @@ Employee.propTypes = {
   skills: PropTypes.string,
   image: PropTypes.string,
   id: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default Employee;

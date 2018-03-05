@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SpecificationWrapper = (props) => {
   const { children } = props;
   return (
-    <div className="col-lg-12">
+    <div className="col-lg-12 no-padding padding-bottom-30">
       <h4 className="heading">Add specification</h4>
       <hr />
       {children}

@@ -15,7 +15,7 @@ import {
   selectNotificationsItems,
   selectNotificationsCount,
  } from './selectors';
-import { getNotifications, listenNotifications } from './actions';
+import { getNotifications, listenNotifications, readNotifications } from './actions';
 import Notification from '../../../components/Header/Notification/Loadable';
 import reducer from './reducer';
 import NotificationsWrapper from '../../../components/Header/Notifications/Loadable';
@@ -32,15 +32,18 @@ export class Notifications extends React.Component { // eslint-disable-line reac
     }
     return this.props.notifications.map((notification) => (
       <Notification
-        key={notification}
-        message={notification}
+        key={notification.id}
+        text={notification.text}
       />
     ));
   }
   render() {
     const notifications = this.renderNotifications();
     return (
-      <NotificationsWrapper notificationsCount={this.props.notificationsCount}>
+      <NotificationsWrapper
+        notificationsCount={this.props.notificationsCount}
+        readNotifications={this.props.readNotifications}
+      >
         { notifications }
       </NotificationsWrapper>
     );
@@ -49,6 +52,7 @@ export class Notifications extends React.Component { // eslint-disable-line reac
 
 Notifications.propTypes = {
   getNotifications: PropTypes.func.isRequired,
+  readNotifications: PropTypes.func.isRequired,
   listenNotifications: PropTypes.func.isRequired,
   notificationStatus: PropTypes.string,
   notifications: PropTypes.array,
@@ -69,6 +73,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getNotifications: () => dispatch(getNotifications()),
     listenNotifications: () => dispatch(listenNotifications()),
+    readNotifications: () => dispatch(readNotifications()),
   };
 }
 

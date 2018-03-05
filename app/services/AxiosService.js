@@ -11,11 +11,10 @@ const AxiosService = {
 };
 
 function get(url, successCallBack, errorCallBack, dispatch) {
-  axios.get(url, { withCredentials: true })
+  return axios.get(url, { withCredentials: true })
   .then((response) =>
     new Promise((resolve) => resolve(successCallBack(response.data)))
   ).catch((err) => {
-    errorCallBack(err);
     if (err.response.status && (err.response.status === 401 || err.response.status === 403)) {
       dispatch({
         type: CHANGE_USER_STATE,
@@ -26,6 +25,7 @@ function get(url, successCallBack, errorCallBack, dispatch) {
       });
       dispatch(push('/'));
     }
+    return new Promise((resolve) => resolve(errorCallBack(err)));
   });
 }
 

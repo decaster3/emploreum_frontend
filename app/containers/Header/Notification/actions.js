@@ -12,7 +12,7 @@ import {
 } from './constants';
 
 import socket from '../../../services/socket';
-import { getNotificationsAPI } from '../../../services/api/Notifications';
+import { getNotificationsAPI, readNotificationsAPI } from '../../../services/api/Notifications';
 
 export const loadingNotifications = () => ({ type: CHANGE_STATE_NOTIFICATIONS, payload: LOADING });
 export const loadedNotifications = () => ({ type: CHANGE_STATE_NOTIFICATIONS, payload: LOADED });
@@ -24,6 +24,17 @@ export const listenNotifications = () => (
     socket.on(userId, () => {
       dispatch(getNotifications());
     });
+  }
+);
+
+export const readNotifications = () => (
+  (dispatch) => {
+    readNotificationsAPI(() => {
+      dispatch(getNotifications());
+    }, (err) => {
+      console.log(err);
+      console.log('ERROR in notifications read!!!');
+    }, dispatch);
   }
 );
 

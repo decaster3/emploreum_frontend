@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const TestNavigationWrapper = (props) => {
   const { children } = props;
   return (
-    <div>
+    <div className="margin-bottom-30">
       {children}
     </div>
   );

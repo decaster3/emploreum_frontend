@@ -6,7 +6,7 @@ export const getCompanyTestsAPI = (successCallBack, errorCallBack, dispatch) => 
 };
 
 export const companyCreateTestAPI = (payload, successCallBack, errorCallBack, dispatch) => {
-  const { testName, specifications } = payload;
+  const { testName, specifications, duration, passagePercentage } = payload;
   const specs = [];
   let specification = {};
   specifications.toJS().forEach((element) => {
@@ -16,7 +16,7 @@ export const companyCreateTestAPI = (payload, successCallBack, errorCallBack, di
     specs.push(specification);
     specification = {};
   });
-  AxiosService.post(`${BASEURL}/test/company/create`, { name: testName, specifications: specs }, successCallBack, errorCallBack, dispatch);
+  AxiosService.post(`${BASEURL}/test/company/create`, { name: testName, specifications: specs, duration, passagePercentage }, successCallBack, errorCallBack, dispatch);
 };
 
 export const getEditTestQuestionAPI = (id, successCallBack, errorCallBack, dispatch) => {
@@ -28,7 +28,7 @@ export const getEditTestInfoAPI = (id, successCallBack, errorCallBack, dispatch)
 };
 
 export const createCompanyInputQuestionAPI = (payload, successCallBack, errorCallBack, dispatch) => {
-  const { testId, values } = payload;
+  const { testId, values, difficulty } = payload;
   const question = {};
   question.name = values.toJS().question;
   question.type = 'input';
@@ -36,11 +36,11 @@ export const createCompanyInputQuestionAPI = (payload, successCallBack, errorCal
     name: values.toJS().answer,
     isTrue: true,
   }];
-  AxiosService.post(`${BASEURL}/test/${testId}/question/create`, { question }, successCallBack, errorCallBack, dispatch);
+  AxiosService.post(`${BASEURL}/test/${testId}/question/create`, { question, difficulty }, successCallBack, errorCallBack, dispatch);
 };
 
 export const createCompanyMultipleQuestionAPI = (payload, successCallBack, errorCallBack, dispatch) => {
-  const { testId, values } = payload;
+  const { testId, values, difficulty } = payload;
   const question = {};
   question.name = values.toJS().question;
   question.answers = [];
@@ -60,5 +60,5 @@ export const createCompanyMultipleQuestionAPI = (payload, successCallBack, error
       });
     }
   });
-  AxiosService.post(`${BASEURL}/test/${testId}/question/create`, { question }, successCallBack, errorCallBack, dispatch);
+  AxiosService.post(`${BASEURL}/test/${testId}/question/create`, { question, difficulty }, successCallBack, errorCallBack, dispatch);
 };

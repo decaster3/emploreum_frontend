@@ -14,11 +14,13 @@ import { PulseLoader } from 'react-spinners';
 import {
   selectOpenVacanciesItems,
   selectOpenVacanciesStatus,
+  selectIsThereOpenVacancies,
 } from './selectors';
 import reducer from './reducer';
 
 import OpenVacancy from '../../../../components/Company/CompanyFinanceComponents/Vacancies/Vacancy/Loadable';
 import OpenVacanciesWrapper from '../../../../components/Company/CompanyFinanceComponents/Vacancies/VacanciesWrapper/Loadable';
+import NoOpenVacancies from '../../../../components/Company/CompanyFinanceComponents/NoOpenVacancies/Loadable';
 
 import { getOpenVacancies } from './actions';
 
@@ -43,12 +45,14 @@ export class CompanyOpenVacancies extends React.Component { // eslint-disable-li
 
   render() {
     const openVacancies = this.renderVacancies();
-
-    return (
-      <OpenVacanciesWrapper>
-        {openVacancies}
-      </OpenVacanciesWrapper>
-    );
+    if (this.props.isThereOpenVacancies) {
+      return (
+        <OpenVacanciesWrapper>
+          {openVacancies}
+        </OpenVacanciesWrapper>
+      );
+    }
+    return <NoOpenVacancies />;
   }
 }
 
@@ -56,12 +60,14 @@ CompanyOpenVacancies.propTypes = {
   openVacanciesItems: PropTypes.array,
   openVacanciesStatus: PropTypes.string,
   getOpenVacancies: PropTypes.func,
+  isThereOpenVacancies: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
     openVacanciesItems: selectOpenVacanciesItems(state),
     openVacanciesStatus: selectOpenVacanciesStatus(state),
+    isThereOpenVacancies: selectIsThereOpenVacancies(state),
   };
 }
 

@@ -9,22 +9,18 @@ import PropTypes from 'prop-types';
 import Form from './Form';
 
 export const MultipleChoiceQuestion = (props) => {
-  const { answers, submitMultipleQuestion, submitQuestion } = props;
+  const { answers, submitQuestion } = props;
   return (
-    <div>
-      <Form
-        submitMultipleQuestion={submitMultipleQuestion}
-        submitQuestion={submitQuestion}
-        answers={answers}
-      />
-    </div>
+    <Form
+      submitQuestion={submitQuestion}
+      answers={answers}
+    />
   );
 };
 
 MultipleChoiceQuestion.propTypes = {
   answers: PropTypes.array,
-  submitMultipleQuestion: PropTypes.func,
-  submitQuestion: PropTypes.bool,
+  submitQuestion: PropTypes.func,
 };
 
 export default MultipleChoiceQuestion;

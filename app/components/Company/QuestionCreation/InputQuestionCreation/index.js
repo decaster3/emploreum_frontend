@@ -5,10 +5,16 @@
 */
 
 import React from 'react';
+import Rating from 'react-rating';
 import PropTypes from 'prop-types';
 import FormInputQuestionCreation from './Form/Loadable';
 
 class InputQuestionCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.state = { value: 5 };
+  }
+
   render() {
     return (
       <div className="panel panel-headline col-md-8 col-md-offset-2">
@@ -17,10 +23,22 @@ class InputQuestionCreation extends React.Component { // eslint-disable-line rea
             Create Question
           </h3>
         </div>
-        <FormInputQuestionCreation
-          submittingInputQuestionCreationButtonState={this.props.submittingInputQuestionCreationButtonState}
-          submitInputQuestion={this.props.submitInputQuestion}
-        />
+        <div className="panel-body">
+          Choose difficulty: {this.state.value}
+          <p>
+            <Rating
+              {...this.props}
+              initialRating={this.state.value}
+              stop={10}
+              onChange={(value) => this.setState({ value })}
+            />
+          </p>
+          <FormInputQuestionCreation
+            submittingInputQuestionCreationButtonState={this.props.submittingInputQuestionCreationButtonState}
+            submitInputQuestion={this.props.submitInputQuestion}
+            difficulty={this.state.value}
+          />
+        </div>
       </div>
     );
   }

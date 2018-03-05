@@ -11,18 +11,23 @@ import { compose } from 'redux';
 import {
   selectSubmitAboutButtonState,
 } from '.././selectors';
-import AboutStep from '../../../../components/ContinueRegistration/ContinueRegistrationCompany/AboutStep/Loadable';
+import AboutStep from '../../../../components/ContinueRegistration/ContinueRegistrationEmployee/AboutStep/Loadable';
 import {
   submitAboutStep,
 } from '.././actions';
+import LanguageSelector from './LanguageSelector/Loadable';
 
 export class AboutStepContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <AboutStep
-        submitAboutStep={this.props.submitAboutStep}
-        submittingAbout={this.props.submittingAbout}
-      />
+      <div>
+        <AboutStep
+          submitAboutStep={this.props.submitAboutStep}
+          submittingAbout={this.props.submittingAbout}
+        >
+          <LanguageSelector />
+        </AboutStep>
+      </div>
     );
   }
 }

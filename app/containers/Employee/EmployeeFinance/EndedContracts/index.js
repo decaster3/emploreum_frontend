@@ -10,11 +10,13 @@ import reducer from './reducer';
 import {
   selectEndedContractsItems,
   selectEndedContractsStatus,
+  selectIsThereEndedContracts,
 } from './selectors';
 import { getEndedContracts } from './actions';
 
 import TableCreator from '../../../../components/Employee/EmployeeFinanceComponents/TableCreator/Loadable';
 import TableRow from '../../../../components/Employee/EmployeeFinanceComponents/TableRow/Loadable';
+import NoContracts from '../../../../components/Employee/EmployeeFinanceComponents/NoContracts/Loadable';
 
 class EmployeeFinanceEndedContracts extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -45,14 +47,17 @@ class EmployeeFinanceEndedContracts extends React.Component { // eslint-disable-
       'Start date',
       'End date',
     ];
-    return (
-      <TableCreator
-        tableName="Ended contracts"
-        columns={tableVariantOne}
-      >
-        {endedContractsRows}
-      </TableCreator>
-    );
+    if (this.props.isThereEndedContracts) {
+      return (
+        <TableCreator
+          tableName="Ended contracts"
+          columns={tableVariantOne}
+        >
+          {endedContractsRows}
+        </TableCreator>
+      );
+    }
+    return <NoContracts contractType={'ended'} />;
   }
 }
 
@@ -60,12 +65,14 @@ EmployeeFinanceEndedContracts.propTypes = {
   getEndedContracts: PropTypes.func.isRequired,
   endedContractsItems: PropTypes.array,
   endedContractsStatus: PropTypes.string,
+  isThereEndedContracts: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
     endedContractsItems: selectEndedContractsItems(state),
     endedContractsStatus: selectEndedContractsStatus(state),
+    isThereEndedContracts: selectIsThereEndedContracts(state),
   };
 }
 

@@ -11,12 +11,10 @@ import Form from './Form/Loadable';
 export const InputQuestion = (props) => {
   const { submittingQuestion, submitQuestion } = props;
   return (
-    <div>
-      <Form
-        submittingQuestion={submittingQuestion}
-        submitQuestion={submitQuestion}
-      />
-    </div>
+    <Form
+      submittingQuestion={submittingQuestion}
+      submitQuestion={submitQuestion}
+    />
   );
 };
 

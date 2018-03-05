@@ -10,6 +10,11 @@ export const selectEmployeeStatus = createSelector(
   (employeeStatus) => employeeStatus.get('status')
 );
 
+export const selectIsThereEmployeesContracts = createSelector(
+  selectEmployees,
+  (employeesItems) => employeesItems.get('items').toJS().length > 0
+);
+
 export const selectEmployeesItems = createSelector(
   selectEmployees,
   (employeesItems) => employeesItems.get('items').toJS()

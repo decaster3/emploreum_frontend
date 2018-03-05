@@ -14,11 +14,14 @@ import { PulseLoader } from 'react-spinners';
 import {
   selectRecentPaymentsItems,
   selectRecentPaymentsStatus,
+  selectIsTherePayments,
 } from './selectors';
 import reducer from './reducer';
 
 import PaymentsWrapper from '../../../../components/Company/CompanyFinanceComponents/Payments/RecentPaumentsWrapper/Loadable';
 import Payment from '../../../../components/Company/CompanyFinanceComponents/Payments/RecentPayment/Loadable';
+import NoPayments from '../../../../components/Company/CompanyFinanceComponents/NoPayments/Loadable';
+
 
 import { getPayments } from './actions';
 
@@ -44,11 +47,14 @@ export class CompanyRecentPayments extends React.Component { // eslint-disable-l
 
   render() {
     const recentPaments = this.renderPayments();
-    return (
-      <PaymentsWrapper>
-        {recentPaments}
-      </PaymentsWrapper>
-    );
+    if (this.props.isTherePayments) {
+      return (
+        <PaymentsWrapper>
+          {recentPaments}
+        </PaymentsWrapper>
+      );
+    }
+    return <NoPayments />;
   }
 }
 
@@ -56,12 +62,14 @@ CompanyRecentPayments.propTypes = {
   getPayments: PropTypes.func.isRequired,
   recentPaymentsItems: PropTypes.array,
   recentPaymentsStatus: PropTypes.string,
+  isTherePayments: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
     recentPaymentsItems: selectRecentPaymentsItems(state),
     recentPaymentsStatus: selectRecentPaymentsStatus(state),
+    isTherePayments: selectIsTherePayments(state),
   };
 }
 

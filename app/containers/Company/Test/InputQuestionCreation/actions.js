@@ -14,13 +14,12 @@ import { createCompanyInputQuestionAPI } from '../../../../services/api/CompanyT
 export const clearReducer = () => ({ type: CLEAR_INPUT_QUESTION_CREATION });
 const changeSubmitCreationInputQuestionButtonState = () => ({ type: CHANGE_SUBMIT_CREATION_INPUT_QUESTION_BUTTON_STATUS });
 
-export const submitInputQuestion = (values) => (
+export const submitInputQuestion = (values, difficulty) => (
   (dispatch, getState) => {
     dispatch(changeSubmitCreationInputQuestionButtonState());
     const testId = getState().get('route').get('location').get('pathname').split('/')[3];
-    createCompanyInputQuestionAPI({ testId, values }, () => {
+    createCompanyInputQuestionAPI({ testId, values, difficulty }, () => {
       dispatch(push(`/company/tests/${testId}`));
-      dispatch(changeSubmitCreationInputQuestionButtonState());
     }, (err) => {
       console.log(err);
     }, dispatch);

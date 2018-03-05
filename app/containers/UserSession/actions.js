@@ -43,6 +43,8 @@ export const login = (values) => (
             registrationStep: data.registrationStep,
             role: data.role,
             id: data.userId,
+            name: data.name,
+            photoPath: data.photoPath,
           },
         },
       });
@@ -67,6 +69,8 @@ export const loginAfterRegistration = (data) => (
           registrationStep: data.registrationStep,
           role: data.role,
           id: data.userId,
+          name: data.name,
+          photoPath: data.photoPath,
         },
       },
     });

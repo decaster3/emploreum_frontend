@@ -11,14 +11,23 @@ import PropTypes from 'prop-types';
 export const TestNavigationItem = (props) => {
   const { current, question, changeCurrentQuestion } = props;
   const questionUrl = `${question.id}`;
+  const addedClass = () => {
+    if (current) {
+      return 'btn-warning';
+    }
+    if (question.viewed) {
+      return 'btn-success';
+    }
+    return 'btn-default';
+  };
   return (
-    <div>
-      {
-        question.viewed
-        ? <span onClick={() => changeCurrentQuestion(question)}><Link type="button" className="btn-toggle-collapse" to={questionUrl}>Viwed, {question.viewId}, current:{String(current)}</Link></span>
-        : <span onClick={() => changeCurrentQuestion(question)}><Link type="button" className="btn-toggle-collapse" to={questionUrl}>Not viewed, {question.viewId}, current:{String(current)}</Link></span>
-      }
-    </div>
+    <Link
+      to={questionUrl}
+      className={`btn ${addedClass()}`}
+      onClick={() => changeCurrentQuestion(question)}
+    >
+      {question.viewId}
+    </Link>
   );
 };
 

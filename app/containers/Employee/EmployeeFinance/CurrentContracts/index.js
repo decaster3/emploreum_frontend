@@ -10,11 +10,13 @@ import reducer from './reducer';
 import {
   selectCurrentContractsItems,
   selectCurrentContractsStatus,
+  selectIsThereCurrentContracts,
 } from './selectors';
 import { getCurrentContracts } from './actions';
 
 import TableCreator from '../../../../components/Employee/EmployeeFinanceComponents/TableCreator/Loadable';
 import TableRow from '../../../../components/Employee/EmployeeFinanceComponents/TableRow/Loadable';
+import NoContracts from '../../../../components/Employee/EmployeeFinanceComponents/NoContracts/Loadable';
 
 class EmployeeFinanceCurrentContracts extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -46,14 +48,17 @@ class EmployeeFinanceCurrentContracts extends React.Component { // eslint-disabl
       'Start date',
       'End date',
     ];
-    return (
-      <TableCreator
-        tableName="Current contracts"
-        columns={tableVariantOne}
-      >
-        {currentContractsRows}
-      </TableCreator>
-    );
+    if (this.props.isThereCurrentContracts) {
+      return (
+        <TableCreator
+          tableName="Current contracts"
+          columns={tableVariantOne}
+        >
+          {currentContractsRows}
+        </TableCreator>
+      );
+    }
+    return <NoContracts contractType={'current'} />;
   }
 }
 
@@ -61,12 +66,14 @@ EmployeeFinanceCurrentContracts.propTypes = {
   getCurrentContracts: PropTypes.func.isRequired,
   currentContractsItems: PropTypes.array,
   currentContractsStatus: PropTypes.string,
+  isThereCurrentContracts: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
     currentContractsItems: selectCurrentContractsItems(state),
     currentContractsStatus: selectCurrentContractsStatus(state),
+    isThereCurrentContracts: selectIsThereCurrentContracts(state),
   };
 }
 

@@ -10,6 +10,11 @@ export const selectRecentPaymentsStatus = createSelector(
   (recentPaymentsStatus) => recentPaymentsStatus.get('status')
 );
 
+export const selectIsTherePayments = createSelector(
+  selectRecentPayments,
+  (recentPaymentsItems) => recentPaymentsItems.get('items').toJS().length > 0
+);
+
 export const selectRecentPaymentsItems = createSelector(
   selectRecentPayments,
   (recentPaymentsItems) => recentPaymentsItems.get('items').toJS()

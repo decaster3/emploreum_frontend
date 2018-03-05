@@ -53,7 +53,7 @@ export const getTestInfo = (id) => (
 // todo
 export const getQuestionsAndTestInfo = (id) => (
   (dispatch) => {
-    // dispatch(getTestInfo(id));
+    dispatch(getTestInfo(id));
     dispatch(getQuestions(id));
   }
 );

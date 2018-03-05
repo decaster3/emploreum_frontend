@@ -55,8 +55,8 @@ class MultipleQuestionCreationForm extends React.Component {
     const fakeAnswers = this.renderFakeAnswers();
     const trueAnswers = this.renderTrueAnswers();
     return (
-      <form onSubmit={this.props.handleSubmit((values) => this.props.submitMultipleQuestion(values))}>
-        <div className="modal-body" >
+      <form onSubmit={this.props.handleSubmit((values) => this.props.submitMultipleQuestion(values, this.props.difficulty))}>
+        <div>
           <Field
             name={'question'}
             component={renderField}
@@ -95,5 +95,6 @@ MultipleQuestionCreationForm.propTypes = {
   handleSubmit: PropTypes.func,
   submitMultipleQuestion: PropTypes.func.isRequired,
   submittingMultipleQuestionCreation: PropTypes.bool.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };
 

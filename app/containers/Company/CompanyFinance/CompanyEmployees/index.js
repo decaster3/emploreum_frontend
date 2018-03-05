@@ -14,11 +14,13 @@ import { PulseLoader } from 'react-spinners';
 import {
   selectEmployeesItems,
   selectEmployeeStatus,
+  selectIsThereEmployeesContracts,
 } from './selectors';
 import reducer from './reducer';
 
 import WorkingEmployee from '../../../../components/Company/CompanyFinanceComponents/Employees/WorkingEmployee/Loadable';
 import WorkingEmployeesWrapper from '../../../../components/Company/CompanyFinanceComponents/Employees/WorkingEmployeesWrapper/Loadable';
+import NoEmployees from '../../../../components/Company/CompanyFinanceComponents/NoEmployees/Loadable';
 
 import { getEmployees } from './actions';
 
@@ -45,11 +47,14 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
 
   render() {
     const workingEmployee = this.renderWorkingEmployees();
-    return (
-      <WorkingEmployeesWrapper>
-        {workingEmployee}
-      </WorkingEmployeesWrapper>
-    );
+    if (this.props.isThereEmployeesContracts) {
+      return (
+        <WorkingEmployeesWrapper>
+          {workingEmployee}
+        </WorkingEmployeesWrapper>
+      );
+    }
+    return <NoEmployees />;
   }
 }
 
@@ -57,12 +62,14 @@ CompanyFinance.propTypes = {
   getEmployees: PropTypes.func.isRequired,
   employeesItems: PropTypes.array,
   employeesStatus: PropTypes.string,
+  isThereEmployeesContracts: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
     employeesItems: selectEmployeesItems(state),
     employeesStatus: selectEmployeeStatus(state),
+    isThereEmployeesContracts: selectIsThereEmployeesContracts(state),
   };
 }
 

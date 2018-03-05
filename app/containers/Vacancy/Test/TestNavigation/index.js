@@ -17,12 +17,16 @@ import VacancyTestQuestion from '../TestQuestion/Loadable';
 
 import { selectTestQuestionsStatus, selectTestQuestionsItems } from './selectors';
 import reducer from './reducer';
-import { getTestQuestionCount, changeCurrentQuestion } from './actions';
+import { getQuestionSetStartQuestion, changeCurrentQuestion, getTestQuestionCount } from './actions';
 
 
 export class TestNavigation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getTestQuestionCount(this.props.vacancyId);
+    if (this.props.currentQuestion) {
+      this.props.getQuestionSetStartQuestion(this.props.vacancyId, this.props.currentQuestion);
+    } else {
+      this.props.getTestQuestionCount(this.props.vacancyId);
+    }
   }
 
   renderNavigationItems() {
@@ -57,11 +61,12 @@ export class TestNavigation extends React.Component { // eslint-disable-line rea
 }
 
 TestNavigation.propTypes = {
+  getQuestionSetStartQuestion: PropTypes.func.isRequired,
   getTestQuestionCount: PropTypes.func.isRequired,
   changeCurrentQuestion: PropTypes.func.isRequired,
   testQuestionsItems: PropTypes.array.isRequired,
   testQuestionsStatus: PropTypes.string.isRequired,
-  currentQuestion: PropTypes.number,
+  currentQuestion: PropTypes.string,
   vacancyId: PropTypes.number,
 };
 
@@ -74,8 +79,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getTestQuestionCount: (evt) => dispatch(getTestQuestionCount(evt)),
+    getQuestionSetStartQuestion: (evt, ev) => dispatch(getQuestionSetStartQuestion(evt, ev)),
     changeCurrentQuestion: (evt) => dispatch(changeCurrentQuestion(evt)),
+    getTestQuestionCount: (evt) => dispatch(getTestQuestionCount(evt)),
   };
 }
 
