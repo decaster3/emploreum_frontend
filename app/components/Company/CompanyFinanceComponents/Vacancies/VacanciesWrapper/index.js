@@ -1,10 +1,10 @@
 /* eslint no-script-url: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import VacancyCreationButton from '../../VacancyCreationButton/Loadable';
+
 export const Vacancies = (props) => {
   const { children } = props;
-
   return (
     <div className="col-md-12">
       <div className="panel">
@@ -19,13 +19,7 @@ export const Vacancies = (props) => {
             </tbody>
           </table>
         </div>
-        <div className="panel-footer">
-          <div className="row">
-            <div className="col-md-12 text-right">
-              <Link to="vacancy/create" className="btn btn-success">New vacation</Link>
-            </div>
-          </div>
-        </div>
+        <VacancyCreationButton />
       </div>
     </div>
   );
