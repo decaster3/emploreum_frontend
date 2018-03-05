@@ -42,7 +42,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    submitInputQuestion: (evt) => dispatch(submitInputQuestion(evt)),
+    submitInputQuestion: (evt, ev) => dispatch(submitInputQuestion(evt, ev)),
     clearReducer: () => dispatch(clearReducer()),
   };
 }

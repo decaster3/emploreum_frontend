@@ -15,15 +15,16 @@ const changeSubmitTestCreationButtonState = () => ({ type: CHANGE_SUBMIT_CREATIO
 
 export const createTest = (values) => (
   (dispatch, getState) => {
-    const { testName } = values.toJS();
+    const { testName, duration, passagePercentage } = values.toJS();
     const specifications = getState().get('specificationsSkillsTestCreation')
       .get('choosenSpecifications').get('items');
     dispatch(changeSubmitTestCreationButtonState());
-    companyCreateTestAPI({ testName, specifications }, (id) => {
+    companyCreateTestAPI({ testName, specifications, duration, passagePercentage }, (id) => {
       dispatch(changeSubmitTestCreationButtonState());
       dispatch(push(`/company/tests/${id}`));
     }, (err) => {
       console.log(err);
+      dispatch(changeSubmitTestCreationButtonState());
     }, dispatch);
   }
 );

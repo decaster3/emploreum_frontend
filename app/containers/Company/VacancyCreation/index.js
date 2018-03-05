@@ -17,6 +17,9 @@ import {
 } from './selectors';
 import reducer from '../../SpecificationsSkills/reducer';
 import VacancyCreationForm from '../../../components/Company/CompanyFinanceComponents/VacancyCreation/Loadable';
+import ChooseTest from './ChooseTest/Loadable';
+import ChoosenTest from './ChoosenTestContainer/Loadable';
+
 import {
   addSkill,
   getSpecification,
@@ -27,12 +30,12 @@ import {
   clearReducer,
 } from '../../SpecificationsSkills/actions';
 import { createVacancy } from './actions';
-
 export class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillUnmount() {
     this.props.clearReducer();
   }
   render() {
+    const renderChoosenTest = <ChoosenTest />;
     return (
       <div>
         <VacancyCreationForm
@@ -50,7 +53,10 @@ export class VacancyCreation extends React.Component { // eslint-disable-line re
           submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
           submittingSpecification={this.props.submittingSpecification}
           createVacancy={this.props.createVacancy}
+          choosenTest={this.props.choosenTest}
+          renderChoosenTest={renderChoosenTest}
         />
+        <ChooseTest />
       </div>
     );
   }
@@ -96,6 +102,7 @@ VacancyCreation.propTypes = {
   createVacancy: PropTypes.func,
   submittingSpecification: PropTypes.bool,
   choosenSpecifications: PropTypes.object,
+  choosenTest: PropTypes.object,
 };
 
 

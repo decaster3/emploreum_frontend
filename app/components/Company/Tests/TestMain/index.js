@@ -15,7 +15,11 @@ export const TestMain = (props) => {
   return (
     <div>
       <TestCardsWrapper>
-        {testCards}
+        <div className="col-md-12">
+          <div className="row">
+            {testCards}
+          </div>
+        </div>
         <AddTestButton />
       </TestCardsWrapper>
     </div>

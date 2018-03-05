@@ -18,8 +18,7 @@ import { selectFirstQuestion,
   selectSubmitQuestionButtonState,
   selectTestCurrentQuestion,
  } from './selectors';
-import { getQuestion, submitQuestion, submitMultipleQuestion } from './actions';
-import { changeCurrentQuestion } from '../TestNavigation/actions';
+import { getQuestion, submitQuestion } from './actions';
 import reducer from './reducer';
 import Question from '../../../../components/Vacancy/Test/Question/Loadable';
 
@@ -30,12 +29,9 @@ export class TestQuestion extends React.Component { // eslint-disable-line react
 
   componentWillReceiveProps(nextProps) {
     if (this.props.currentQuestion && nextProps.currentQuestion !== this.props.currentQuestion) {
-      this.props.getQuestion(this.props.currentTestQuestion.id);
-      console.log(this.props.currentTestQuestion)
-      // this.props.changeCurrentQuestion(this.props.currentTestQuestion);
+      this.props.getQuestion(nextProps.currentQuestion);
     }
   }
-
   renderQuestion() {
     if (this.props.questionStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
@@ -47,13 +43,13 @@ export class TestQuestion extends React.Component { // eslint-disable-line react
         answers={this.props.question.answers ? this.props.question.answers : undefined}
         submittingQuestion={this.props.submittingQuestion}
         submitQuestion={this.props.submitQuestion}
-        submitMultipleQuestion={this.props.submitMultipleQuestion}
       />
     );
   }
 
   render() {
     const question = this.renderQuestion();
+    console.log(this.props.currentQuestion);
     if (this.props.currentQuestion) {
       return (
         <div>
@@ -74,9 +70,7 @@ TestQuestion.propTypes = {
   currentQuestion: PropTypes.number,
   currentTestQuestion: PropTypes.object,
   getQuestion: PropTypes.func,
-  submitMultipleQuestion: PropTypes.func,
   submitQuestion: PropTypes.func,
-  changeCurrentQuestion: PropTypes.func,
   question: PropTypes.object,
   questionStatus: PropTypes.string,
   submittingQuestion: PropTypes.bool,
@@ -95,9 +89,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getQuestion: (evt) => dispatch(getQuestion(evt)),
-    submitQuestion: (evt) => dispatch(submitQuestion(evt)),
-    submitMultipleQuestion: (evt) => dispatch(submitMultipleQuestion(evt)),
-    changeCurrentQuestion: (evt) => dispatch(changeCurrentQuestion(evt)),
+    submitQuestion: (evt, ev) => dispatch(submitQuestion(evt, ev)),
   };
 }
 

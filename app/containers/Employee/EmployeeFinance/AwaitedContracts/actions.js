@@ -12,6 +12,7 @@ import { getCurrentContracts } from '../CurrentContracts/actions';
 export const loadingAwaitedContracts = () => ({ type: CHANGE_STATE_AWAITED_CONTRACTS, payload: LOADING });
 export const loadedAwaitedContracts = () => ({ type: CHANGE_STATE_AWAITED_CONTRACTS, payload: LOADED });
 
+// TODO
 export const getAwaitedContracts = () => (
   (dispatch) => {
     dispatch(loadingAwaitedContracts());

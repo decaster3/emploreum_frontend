@@ -1,25 +1,18 @@
 import { createSelector } from 'reselect';
 
-const selectRegistrationEmployeeDomain = (state) => state.get('vacancyCreation');
+const selectVacancyCreation = (state) => state.get('vacancyCreation');
 
-const selectSpecificationList = createSelector(
-    selectRegistrationEmployeeDomain,
+export const selectSpecificationList = createSelector(
+    selectVacancyCreation,
     (specificationList) => specificationList.get('specificationList').get('list')
 );
 
-const selectSpecificationListStatus = createSelector(
-    selectRegistrationEmployeeDomain,
+export const selectSpecificationListStatus = createSelector(
+    selectVacancyCreation,
     (specificationList) => specificationList.get('specificationList').get('specificationListStatus')
 );
 
-const selectChoosenSpecifications = createSelector(
-    selectRegistrationEmployeeDomain,
+export const selectChoosenSpecifications = createSelector(
+    selectVacancyCreation,
     (choosenSpecifications) => choosenSpecifications.get('choosenSpecifications').get('items')
 );
-
-export {
-  selectChoosenSpecifications,
-  selectSpecificationListStatus,
-  selectSpecificationList,
-  selectRegistrationEmployeeDomain,
-};

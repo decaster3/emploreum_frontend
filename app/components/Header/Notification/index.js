@@ -9,19 +9,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Notification = (props) => {
-  const { message } = props;
+  const { text } = props;
   return (
     <li>
       <a href="" className="notification-item">
         <span className="dot bg-danger" />
-        {message}
+        {text}
       </a>
     </li>
   );
 };
 
 Notification.propTypes = {
-  message: PropTypes.string,
+  text: PropTypes.string,
 };
 
 export default Notification;

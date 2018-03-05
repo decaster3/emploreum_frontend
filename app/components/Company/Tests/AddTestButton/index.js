@@ -8,7 +8,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const AddTestButton = () => (
-  <div className="padding-bottom-30 col-lg-12 text-right">
+  <div className="text-right col-md-12">
     <Link
       to="/company/tests/new"
       className="btn btn-success"

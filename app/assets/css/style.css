@@ -217,6 +217,14 @@ label {
     position: absolute;
     z-index: 100000!important;
 }
+.fancy-checkbox input[type="checkbox"]{
+    display: block;
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    z-index: 1000;
+    opacity: 0;
+}
 
 @media screen and (max-width: 767px) {
     #mini-navbar .navbar-form .input-group {

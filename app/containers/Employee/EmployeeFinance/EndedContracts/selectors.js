@@ -10,6 +10,12 @@ export const selectEndedContractsStatus = createSelector(
   (endedContractsStatus) => endedContractsStatus.get('status')
 );
 
+export const selectIsThereEndedContracts = createSelector(
+  selectEndedContracts,
+  (endedContractsStatus) => endedContractsStatus.get('items').toJS().length > 0
+);
+
+
 export const selectEndedContractsItems = createSelector(
   selectEndedContracts,
   (endedContractsItems) => endedContractsItems.get('items').toJS()

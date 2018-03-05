@@ -42,7 +42,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    submitMultipleQuestion: (evt) => dispatch(submitMultipleQuestion(evt)),
+    submitMultipleQuestion: (evt, ev) => dispatch(submitMultipleQuestion(evt, ev)),
     clearReducer: () => dispatch(clearReducer()),
   };
 }

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const TestCardsWrapper = (props) => {
   const { children } = props;
   return (
-    <div>
+    <div className="margin-bottom-30">
       <h3>
         My Tests
       </h3>

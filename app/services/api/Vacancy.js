@@ -1,8 +1,9 @@
 import AxiosService from '../AxiosService';
 import { BASEURL } from '../../global-constants';
 
-export const submitVacancyAPI = (specs, other, successCallBack, errorCallBack, dispatch) => {
+export const submitVacancyAPI = (specs, choosenTest, other, successCallBack, errorCallBack, dispatch) => {
   const { weekPayment, duration } = other;
+  console.log(choosenTest);
   const specifications = [];
   let specification = {};
   specs.toJS().forEach((element) => {
@@ -12,7 +13,7 @@ export const submitVacancyAPI = (specs, other, successCallBack, errorCallBack, d
     specifications.push(specification);
     specification = {};
   });
-  AxiosService.post(`${BASEURL}/company/vacancy/create`, { specifications, weekPayment, duration }, successCallBack, errorCallBack, dispatch);
+  AxiosService.post(`${BASEURL}/company/vacancy/create`, { specifications, weekPayment, duration, testId: choosenTest }, successCallBack, errorCallBack, dispatch);
 };
 
 export const getOpenVacanciesAPI = (successCallBack, errorCallBack, dispatch) =>

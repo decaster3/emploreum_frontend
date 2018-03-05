@@ -36,7 +36,7 @@ export const getSpecification = () => (
         type: GET_EMPLOYEE_SPECIFICATION_LIST,
         payload: {
           specificationListStatus: LOADED,
-          list: specList.profiles,
+          list: specList,
         },
       });
     }, (err) => {

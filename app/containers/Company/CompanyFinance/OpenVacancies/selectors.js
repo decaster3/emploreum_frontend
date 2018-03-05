@@ -10,6 +10,11 @@ export const selectOpenVacanciesStatus = createSelector(
   (openVacanciesStatus) => openVacanciesStatus.get('status')
 );
 
+export const selectIsThereOpenVacancies = createSelector(
+  selectOpenVacancies,
+  (openVacanciesItems) => openVacanciesItems.get('items').toJS().length > 0
+);
+
 export const selectOpenVacanciesItems = createSelector(
   selectOpenVacancies,
   (openVacanciesItems) => openVacanciesItems.get('items').toJS()

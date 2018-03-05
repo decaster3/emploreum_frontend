@@ -17,6 +17,7 @@ const initialState = fromJS({
 function inputQuestionCreationReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_SUBMIT_CREATION_INPUT_QUESTION_BUTTON_STATUS:
+      console.log(state.get('submittingInputQuestionCreation'));
       return state
         .set('submittingInputQuestionCreation', !state.get('submittingInputQuestionCreation'));
     case CLEAR_INPUT_QUESTION_CREATION:

@@ -30,7 +30,7 @@ export class LanguageStep extends React.Component { // eslint-disable-line react
   componentWillUnmount() {
     this.props.clearReducer();
   }
-  ender() {
+  render() {
     return (
       <div>
         <LanguageSelector

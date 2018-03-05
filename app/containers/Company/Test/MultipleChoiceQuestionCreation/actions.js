@@ -14,11 +14,11 @@ import { createCompanyMultipleQuestionAPI } from '../../../../services/api/Compa
 export const clearReducer = () => ({ type: CLEAR_MULTIPLE_QUESTION_CREATION });
 const changeSubmitCreationMultipleQuestionButtonState = () => ({ type: CHANGE_SUBMIT_CREATION_MULTIPLE_QUESTION_BUTTON_STATUS });
 
-export const submitMultipleQuestion = (values) => (
+export const submitMultipleQuestion = (values, difficulty) => (
   (dispatch, getState) => {
     dispatch(changeSubmitCreationMultipleQuestionButtonState());
     const testId = getState().get('route').get('location').get('pathname').split('/')[3];
-    createCompanyMultipleQuestionAPI({ testId, values }, () => {
+    createCompanyMultipleQuestionAPI({ testId, values, difficulty }, () => {
       dispatch(push(`/company/tests/${testId}`));
       changeSubmitCreationMultipleQuestionButtonState();
     }, (err) => {

@@ -10,11 +10,13 @@ import reducer from './reducer';
 import {
   selectAwaitedContractsStatus,
   selectAwaitedContractsItems,
+  selectIsThereAwaitedContracts,
 } from './selectors';
 import { contractConfirmationListener, getAwaitedContracts } from './actions';
 
 import TableCreator from '../../../../components/Employee/EmployeeFinanceComponents/TableCreator/Loadable';
 import TableRow from '../../../../components/Employee/EmployeeFinanceComponents/TableRow/Loadable';
+import NoContracts from '../../../../components/Employee/EmployeeFinanceComponents/NoContracts/Loadable';
 
 class EmployeeFinance extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -40,14 +42,17 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
   render() {
     const awaitedContracts = this.renderAwaitedContracts();
     const tableVariantTwo = ['Duration', 'Company', 'Salary'];
-    return (
-      <TableCreator
-        tableName="Awaited contracts"
-        columns={tableVariantTwo}
-      >
-        {awaitedContracts}
-      </TableCreator>
-    );
+    if (this.props.isThereAwaitedContracts) {
+      return (
+        <TableCreator
+          tableName="Awaited contracts"
+          columns={tableVariantTwo}
+        >
+          {awaitedContracts}
+        </TableCreator>
+      );
+    }
+    return <NoContracts contractType={'awaited'} />;
   }
 }
 
@@ -56,12 +61,14 @@ EmployeeFinance.propTypes = {
   awaitedContractsStatus: PropTypes.string,
   contractConfirmationListener: PropTypes.func,
   getAwaitedContracts: PropTypes.func,
+  isThereAwaitedContracts: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
     awaitedContractsItems: selectAwaitedContractsItems(state),
     awaitedContractsStatus: selectAwaitedContractsStatus(state),
+    isThereAwaitedContracts: selectIsThereAwaitedContracts(state),
   };
 }
 

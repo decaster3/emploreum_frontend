@@ -7,6 +7,8 @@ import EmployeeVacancies from './VacanciesSearch/Loadable';
 import EmployeeProfile from '../EmployeeProfile/Roles/SelfView/Loadable';
 import Vacancy from '../Vacancy/Roles/EmployeeView/Loadable';
 import TestVacancyEmployeeMain from '../Vacancy/Test/Loadable';
+import StartTest from '../Vacancy/TestStart/Loadable';
+
 function renderMenu() {
   return [{
     name: 'Profile',
@@ -32,6 +34,7 @@ export const EmployeeMain = () => (
       <Route path="/employee/vacancies" component={EmployeeVacancies} />
       <Route exact path="/employee/vacancy/:id" component={Vacancy} />
       <Route path="/employee/vacancy/:id/test/:question?/" component={TestVacancyEmployeeMain} />
+      <Route path="/employee/vacancy/:id/preview/test" component={StartTest} />
     </Switch>
   </AccountWrapperContainer>
 );

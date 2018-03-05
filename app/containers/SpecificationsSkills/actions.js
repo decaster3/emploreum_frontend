@@ -42,7 +42,7 @@ export const getSpecification = () => (
         type: GET_EMPLOYEE_SPECIFICATION_LIST,
         payload: {
           specificationListStatus: LOADED,
-          list: specList.profiles,
+          list: specList,
         },
       });
     }, (err) => {
@@ -154,7 +154,7 @@ export const getSkills = (specification) => (
         payload: {
           possibleSkillsStatus: LOADED,
           specification,
-          possibleSkills: response.skills,
+          possibleSkills: response,
         },
       });
     }, (err) => {

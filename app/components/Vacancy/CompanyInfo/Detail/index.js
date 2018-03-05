@@ -26,7 +26,7 @@ export const Detail = (props) => {
         <div className="com-desc">
           <strong>{mainInfo.name}</strong>
           {mainInfo.info}
-          <a href="">подробнее</a>
+          <a href=""> подробнее</a>
         </div>
       </div>
     </div>

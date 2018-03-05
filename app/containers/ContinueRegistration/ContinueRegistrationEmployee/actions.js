@@ -56,10 +56,9 @@ export const submitAboutStep = (values) => (
     const { name, about } = values.toJS();
     submitEmployeeAboutAPI({ name, about }, () => {
       dispatch(completeRegistration());
+      dispatch(push('employee/finance'));
     }, (err) => {
       console.log(err);
-    }, dispatch).then(() => {
-      dispatch(push('employee/finance'));
-    });
+    }, dispatch);
   }
 );

@@ -12,10 +12,11 @@ const FormTestCreation = (props) => {
     handleSubmit,
     submittingInputQuestionCreationButtonState,
     submitInputQuestion,
+    difficulty,
   } = props;
   return (
-    <form onSubmit={handleSubmit(submitInputQuestion)}>
-      <div className="modal-body" >
+    <form onSubmit={handleSubmit((values) => submitInputQuestion(values, difficulty))}>
+      <div>
         <Field
           name="question"
           component={renderField}
@@ -55,5 +56,6 @@ FormTestCreation.propTypes = {
   handleSubmit: PropTypes.func,
   submitInputQuestion: PropTypes.func.isRequired,
   submittingInputQuestionCreationButtonState: PropTypes.bool.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };
 
