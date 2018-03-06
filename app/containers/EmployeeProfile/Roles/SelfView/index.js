@@ -11,6 +11,7 @@ import { compose } from 'redux';
 
 import MainInfromation from '../../MainInformation/Loadable';
 import Skills from '../../Skills/Loadable';
+import Rating from '../../Rating/Loadable';
 import { selectMyId } from './selectors';
 
 export class SelfView extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -22,6 +23,7 @@ export class SelfView extends React.Component { // eslint-disable-line react/pre
             <MainInfromation employeeId={this.props.employeeId} />
           </div>
           <div className="profile-right">
+            <Rating employeeId={this.props.employeeId} />
             <Skills employeeId={this.props.employeeId} />
           </div>
           <div className="clearfix" />

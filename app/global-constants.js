@@ -4,4 +4,4 @@ export const ENABLED = 'ENABLED';
 
 // server
 
-export const BASEURL = 'http://192.168.0.102:3003';
+export const BASEURL = 'http://localhost:5000';
