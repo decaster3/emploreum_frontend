@@ -13,7 +13,8 @@ import injectReducer from 'utils/injectReducer';
 import { compose } from 'redux';
 
 import {
-  selectHeader,
+  selectMainInformationItems,
+  selectMainInformationStatus,
 } from './selectors';
 import reducer from './reducer';
 
@@ -29,8 +30,8 @@ export class MainInformation extends React.Component { // eslint-disable-line re
 
   render() {
     return (
-      <FinanceHeader address={this.props.header.address} addressStatus={this.props.header.status} >
-        <CompanyInfo balance={this.props.header.balance} spending={this.props.header.spending} employee={this.props.header.employeeCount} canBePaid={this.props.header.canBePaid} />
+      <FinanceHeader address={this.props.mainInformation.address} mainInformationStatus={this.props.mainInformationStatus} >
+        <CompanyInfo balance={this.props.mainInformation.balance} spending={this.props.mainInformation.spending} employee={this.props.mainInformation.employeeCount} canBePaid={this.props.mainInformation.canBePaid} />
       </FinanceHeader>
     );
   }
@@ -38,7 +39,8 @@ export class MainInformation extends React.Component { // eslint-disable-line re
 
 MainInformation.propTypes = {
   getAllHeader: PropTypes.func,
-  header: PropTypes.shape({
+  mainInformationStatus: PropTypes.string,
+  mainInformation: PropTypes.shape({
     address: PropTypes.string,
     status: PropTypes.string,
     balance: PropTypes.number,
@@ -50,7 +52,8 @@ MainInformation.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    header: selectHeader(state),
+    mainInformation: selectMainInformationItems(state),
+    mainInformationStatus: selectMainInformationStatus(state),
   };
 }
 

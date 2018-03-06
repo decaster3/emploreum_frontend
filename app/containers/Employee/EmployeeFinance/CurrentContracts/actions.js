@@ -17,9 +17,9 @@ export const getCurrentContracts = () => (
       const newData = data.map((el) => ({
         address: el.contract,
         company: el.company.name,
-        salary: el.vacancy.week_payment,
-        startDay: el.begin_date,
-        endDay: el.end_date,
+        salary: el.vacancy.weekPayment,
+        startDay: el.beginDate,
+        endDay: el.endDate,
       }));
       dispatch({
         type: GET_CURRENT_CONTRACTS,

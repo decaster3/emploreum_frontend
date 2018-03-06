@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ChoosenSkill = (props) => {
-  const { skillImgUrl, skill, skillName, deleteSkill, specification } = props;
+  const { photoPath, skill, skillName, deleteSkill, specification } = props;
   return (
     <div className="col-md-3 col-sm-6">
       <div className="award-item">
         <div className="hexagon">
-          <img src={skillImgUrl} alt="Skill" />
+          <img src={photoPath} alt="Skill" />
         </div>
         <span>{skillName}</span>
         <button onClick={() => deleteSkill(specification, skill)}>
@@ -20,7 +20,7 @@ const ChoosenSkill = (props) => {
 
 ChoosenSkill.propTypes = {
   skillName: PropTypes.string,
-  skillImgUrl: PropTypes.string,
+  photoPath: PropTypes.string,
   skill: PropTypes.object,
   deleteSkill: PropTypes.func,
   specification: PropTypes.object,

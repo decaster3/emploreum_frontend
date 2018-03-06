@@ -3,9 +3,14 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the companyFinanceContainer state domain
  */
-const selectCompanyHeader = (state) => state.get('companyFinanceMainInfo');
+const selectCompanyMainInformationDomain = (state) => state.get('companyFinanceMainInfo');
 
-export const selectHeader = createSelector(
-  selectCompanyHeader,
-  (state) => state.get('header').toJS()
+export const selectMainInformationItems = createSelector(
+  selectCompanyMainInformationDomain,
+  (mainInformationItems) => mainInformationItems.get('header').toJS()
+);
+
+export const selectMainInformationStatus = createSelector(
+  selectCompanyMainInformationDomain,
+  (mainInformationItemsStatus) => mainInformationItemsStatus.get('header').get('status')
 );

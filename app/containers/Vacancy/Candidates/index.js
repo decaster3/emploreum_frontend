@@ -33,7 +33,7 @@ export class Candidates extends React.Component { // eslint-disable-line react/p
         acceptCandidate={this.props.acceptCandidate}
         rejectCandidate={this.props.rejectCandidate}
         name={candidate.name}
-        imgUrl={candidate.photo_path}
+        imgUrl={candidate.photoPath}
         candidateId={candidate.user.id}
         vacancyId={this.props.vacancyId}
       />)

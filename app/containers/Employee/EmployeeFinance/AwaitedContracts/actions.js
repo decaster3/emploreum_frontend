@@ -17,14 +17,9 @@ export const getAwaitedContracts = () => (
   (dispatch) => {
     dispatch(loadingAwaitedContracts());
     return getAwaitedContractsAPI((data) => {
-      const newData = data.map((el) => ({
-        duration: el.duration,
-        company: el.company.name,
-        salary: el.week_payment,
-      }));
       dispatch({
         type: GET_AWAITED_CONTRACTS,
-        payload: newData,
+        payload: data,
       });
       dispatch(loadedAwaitedContracts());
     }, (err) => {

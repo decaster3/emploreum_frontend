@@ -19,6 +19,8 @@ export const Candidate = (props) => {
     <tr>
       <td>
         <img src={imgProfile} alt="Avatar" className="avatar img-circle" />
+      </td>
+      <td>
         <Link to={urlProfile}>{ name }</Link>
       </td>
       <td className="text-right">

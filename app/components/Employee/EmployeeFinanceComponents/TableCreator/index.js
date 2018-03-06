@@ -36,11 +36,11 @@ const TableCreator = (props) => {
             <div className="col-md-6">
               <span className="panel-note">
                 <i className="fa fa-clock-o" />
-                Показано за 1 месяц
+                1 month(s)
               </span>
             </div>
             <div className="col-md-6 text-right">
-              <a href="" className="btn btn-default">Просмотреть все</a>
+              <a href="" className="btn btn-default">Show all</a>
             </div>
           </div>
         </div>
