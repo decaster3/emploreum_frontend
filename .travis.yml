@@ -11,10 +11,6 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
-notifications:
-  email:
-    on_failure: change
-
 after_success:
   - rm -rf ./frontend_deploy/public
   - mv ./dist ./frontend_deploy/public
