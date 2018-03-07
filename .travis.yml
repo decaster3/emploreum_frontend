@@ -1,15 +1,9 @@
 language: node_js
 
-node_js:
-  - 7
-  - 6
-  - 5
 install:
   - npm install -g firebase-tools
   - npm install
 script:
-  - node ./internals/scripts/generate-templates-for-linting
-  - npm run test
   - npm run build
 
 before_install:
