@@ -50,8 +50,7 @@ export const acceptCandidate = (candidateId, vacancyId) => (
 
 export const rejectCandidate = (candidateId, vacancyId) => (
   (dispatch) => {
-    rejectCandidateAPI({ candidateId, vacancyId }, (data) => {
-      console.log(data);
+    rejectCandidateAPI({ candidateId, vacancyId }, () => {
       dispatch(getCandidates(vacancyId));
     }, (err) => {
       console.log(err);

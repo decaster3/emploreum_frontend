@@ -10,6 +10,7 @@ import {
   GET_QUESTION,
   CHANGE_STATE_QUESTION,
   CHANGE_SUBMIT_QUESTION_BUTTON_STATUS,
+  CLEAR_QUESTION_REDUCER,
 } from './constants';
 
 const initialState = fromJS({
@@ -35,6 +36,8 @@ function testQuestionReducer(state = initialState, action) {
     case CHANGE_SUBMIT_QUESTION_BUTTON_STATUS:
       return state
         .set('submittingQuestion', !state.get('submittingQuestion'));
+    case CLEAR_QUESTION_REDUCER:
+      return fromJS(initialState);
     default:
       return state;
   }

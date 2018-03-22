@@ -21,21 +21,9 @@ export const getOpenVacancies = () => (
   (dispatch) => {
     dispatch(loadingOpenVacancies());
     return getOpenVacanciesAPI((data) => {
-      const newData = data.map((el) => {
-        let position = '';
-        el.profiles.forEach((prof) => {
-          position = `${position} ${prof.name}`;
-        });
-        return {
-          position: `${position} developer`,
-          hoursPerWeek: `${el.duration} month(s)`,
-          payment: `${el.week_payment} eth`,
-          id: el.id,
-        };
-      });
       dispatch({
         type: GET_OPEN_VACANCIES,
-        payload: newData,
+        payload: data,
       });
       dispatch(loadedOpenVacancies());
     }, (err) => {

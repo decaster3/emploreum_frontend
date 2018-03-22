@@ -20,19 +20,18 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
   componentDidMount() {
     this.props.getEmployees();
   }
-
   renderEmployees() {
     if (this.props.loadingStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
     }
     return this.props.employees.map((employee) =>
       (<Employee
-        key={employee.id}
-        id={employee.id}
-        specifications={employee.specifications}
-        skills={employee.skills}
+        key={employee.userId}
+        id={employee.userId}
+        specifications={employee.specifications.slice(0, 5).join(', ')}
+        skills={employee.skills.slice(0, 5).join(', ')}
         name={employee.name}
-        image={employee.image}
+        photoPath={employee.photoPath}
         lastWork={employee.lastWork}
       />)
     );

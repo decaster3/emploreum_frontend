@@ -16,7 +16,7 @@ class ChoosenSpecification extends React.Component {
           key={item.name}
           skillName={item.name}
           skill={item}
-          skillImgUrl={`${BASEURL}/${item.photo_path}`}
+          photoPath={`${BASEURL}/${item.photoPath}`}
           specification={this.props.specification}
           deleteSkill={this.props.deleteSkill}
         />));

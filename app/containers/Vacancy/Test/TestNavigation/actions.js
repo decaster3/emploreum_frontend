@@ -3,7 +3,6 @@
  * TestNavigation actions
  *
  */
-import { toast } from 'react-toastify';
 import { push } from 'react-router-redux';
 import {
   CHANGE_STATE_TEST_QESTIONS,
@@ -11,21 +10,23 @@ import {
   GET_TEST_QUESTIONS,
   LOADING,
   LOADED,
+  CLEAR_NAVIGATION_TEST_REDUCER,
+  MARK_QWESTION_AS_VIEWED,
 } from './constants';
 import { getVacancyTestQuestionsAPI, submitTestAPI } from '../../../../services/api/EmployeeTests';
 
-const notify = () => toast('Time is out!', { hideProgressBar: true, autoClose: 10000000, type: toast.TYPE.ERROR });
 export const loadingTestQuestions = () => ({ type: CHANGE_STATE_TEST_QESTIONS, payload: LOADING });
 export const loadedTestQuestions = () => ({ type: CHANGE_STATE_TEST_QESTIONS, payload: LOADED });
-
+export const clearReducer = () => ({ type: CLEAR_NAVIGATION_TEST_REDUCER });
+export const markAsViewed = (questionId) => ({ type: MARK_QWESTION_AS_VIEWED, payload: questionId });
 export const changeCurrentQuestion = (currentQuestion) => (
   (dispatch) => {
     dispatch({ type: CHANGE_CURRENT_QUESTION, payload: currentQuestion });
   }
 );
 
-export const getTestQuestionCount = (vacancyId) => (
-  (dispatch) => {
+export const getTestQuestionCount = (vacancyId, currentQuestionId) => (
+  (dispatch, getState) => {
     dispatch(loadingTestQuestions());
     return getVacancyTestQuestionsAPI(vacancyId, (data) => {
       const newData = data.questions.map((el, index, array) => ({
@@ -40,36 +41,30 @@ export const getTestQuestionCount = (vacancyId) => (
         payload: newData,
       });
       dispatch(loadedTestQuestions());
-      dispatch(changeCurrentQuestion(newData[0]));
+
+      if (currentQuestionId) {
+        const question = getState().get('testNavigation')
+        .get('testQuestions').get('items').toJS().find((el) =>
+          el.id === currentQuestionId) || undefined;
+        dispatch(changeCurrentQuestion(question));
+      } else {
+        dispatch(changeCurrentQuestion(newData[0]));
+      }
     }, (err) => {
       if (err.response.status && err.response.status === 405) {
-        notify();
         dispatch(push(`/employee/vacancy/${vacancyId}/`));
       }
     }, dispatch);
   }
 );
 
-export const getQuestionSetStartQuestion = (vacancyId, currentQuestionId) => (
-  (dispatch, getState) => {
-    dispatch(getTestQuestionCount(vacancyId)).then(() => {
-      const question = getState().get('testNavigation')
-      .get('testQuestions').get('items').toJS().find((el) =>
-        el.id === currentQuestionId) || undefined;
-      dispatch(changeCurrentQuestion(question));
-    });
-  }
-);
 
 export const submitTest = (vacancyId) => (
   (dispatch) => {
     submitTestAPI(vacancyId, () => {
       dispatch(push(`/employee/vacancy/${vacancyId}/`));
     }, (err) => {
-      if (err.response.status && err.response.status === 405) {
-        notify();
-        dispatch(push(`/employee/vacancy/${vacancyId}/`));
-      }
+      console.log(err);
     }, dispatch);
   }
 );

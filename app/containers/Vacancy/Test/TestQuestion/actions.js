@@ -11,14 +11,16 @@ import {
   CHANGE_STATE_QUESTION,
   LOADING,
   LOADED,
+  CLEAR_QUESTION_REDUCER,
 } from './constants';
 import { getVacancyTestQuestionAPI, submitVacancyTestQuestionAPI } from '../../../../services/api/EmployeeTests';
-import { nextQuestion } from '../TestNavigation/actions';
+import { nextQuestion, markAsViewed } from '../TestNavigation/actions';
 
 const notify = () => toast('Time is out!', { hideProgressBar: true, autoClose: 10000000, type: toast.TYPE.ERROR });
 const changeSubmitQuestionButtonState = () => ({ type: CHANGE_SUBMIT_QUESTION_BUTTON_STATUS });
 const loadingQuestion = () => ({ type: CHANGE_STATE_QUESTION, payload: LOADING });
 const loadedQuestion = () => ({ type: CHANGE_STATE_QUESTION, payload: LOADED });
+export const clearReducer = () => ({ type: CLEAR_QUESTION_REDUCER });
 
 export const submitQuestion = (values, type) => (
   (dispatch, getState) => {
@@ -27,6 +29,7 @@ export const submitQuestion = (values, type) => (
     submitVacancyTestQuestionAPI({ questionId, answers: values.toJS(), type }, () => {
       dispatch(changeSubmitQuestionButtonState());
       dispatch(nextQuestion());
+      dispatch(markAsViewed(questionId));
     }, (err) => {
       dispatch(changeSubmitQuestionButtonState());
       const vacancyId = getState().get('testNavigation').get('currentQuestion').get('vacancyId');

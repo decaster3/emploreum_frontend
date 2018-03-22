@@ -13,6 +13,7 @@ import TestCreation from '../Company/Test/TestCreation/Loadable';
 import TestEdit from '../Company/Test/TestEdit/Loadable';
 import TestInputQuestionCreation from '../Company/Test/InputQuestionCreation/Loadable';
 import TestMultipleQuestionCreation from '../Company/Test/MultipleChoiceQuestionCreation/Loadable';
+import ChatCreator from '../Chat/Loadable';
 
 function renderMenu() {
   return [{
@@ -31,6 +32,10 @@ function renderMenu() {
     name: 'Tests',
     url: '/company/tests',
     icon: 'fa-edit',
+  }, {
+    name: 'Chat',
+    url: '/company/chat/',
+    icon: 'fa-comments',
   }];
 }
 
@@ -49,6 +54,7 @@ export const CompanyMain = () => (
       <Route exact path="/company/tests/:id" component={TestEdit} />
       <Route path="/company/tests/:id/question/new/inputtype" component={TestInputQuestionCreation} />
       <Route path="/company/tests/:id/question/new/multiple" component={TestMultipleQuestionCreation} />
+      <Route path="/company/chat/:chatId?/" component={ChatCreator} />
     </Switch>
   </AccountWrapperContainer>
 );

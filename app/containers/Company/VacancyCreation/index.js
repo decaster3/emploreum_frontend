@@ -31,6 +31,9 @@ import {
 } from '../../SpecificationsSkills/actions';
 import { createVacancy } from './actions';
 export class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    this.props.clearReducer();
+  }
   componentWillUnmount() {
     this.props.clearReducer();
   }

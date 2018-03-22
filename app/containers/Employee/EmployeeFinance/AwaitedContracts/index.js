@@ -32,8 +32,8 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
       (<TableRow
         key={contract.duration}
         rows={[contract.duration,
-          contract.company,
-          contract.salary,
+          contract.company.name,
+          contract.weekPayment,
         ]}
       />)
     );
@@ -41,18 +41,18 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
 
   render() {
     const awaitedContracts = this.renderAwaitedContracts();
-    const tableVariantTwo = ['Duration', 'Company', 'Salary'];
-    if (this.props.isThereAwaitedContracts) {
-      return (
-        <TableCreator
-          tableName="Awaited contracts"
-          columns={tableVariantTwo}
-        >
-          {awaitedContracts}
-        </TableCreator>
-      );
+    const tableVariantTwo = ['Duration', 'Company', 'Week Payment'];
+    if (!this.props.isThereAwaitedContracts && this.props.awaitedContractsStatus === 'LOADED') {
+      return <NoContracts contractType={'awaited'} />;
     }
-    return <NoContracts contractType={'awaited'} />;
+    return (
+      <TableCreator
+        tableName="Awaited contracts"
+        columns={tableVariantTwo}
+      >
+        {awaitedContracts}
+      </TableCreator>
+    );
   }
 }
 

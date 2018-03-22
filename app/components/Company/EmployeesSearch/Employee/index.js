@@ -12,7 +12,7 @@ import { BASEURL } from '../../../../global-constants';
 export const Employee = (props) => {
   const {
     specifications,
-    image,
+    photoPath,
     skills,
     lastWork,
     name,
@@ -25,7 +25,7 @@ export const Employee = (props) => {
       <div className="row">
         <div className="inline col-md-2">
           <a className="thumbnail">
-            <img src={BASEURL + image} alt="user avatar" />
+            <img src={BASEURL + photoPath} alt="user avatar" />
           </a>
           <h4>{name}</h4>
         </div>
@@ -60,7 +60,7 @@ Employee.propTypes = {
   specifications: PropTypes.string,
   lastWork: PropTypes.string,
   skills: PropTypes.string,
-  image: PropTypes.string,
+  photoPath: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
 };

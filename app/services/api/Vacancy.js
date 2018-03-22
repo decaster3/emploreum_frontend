@@ -3,7 +3,6 @@ import { BASEURL } from '../../global-constants';
 
 export const submitVacancyAPI = (specs, choosenTest, other, successCallBack, errorCallBack, dispatch) => {
   const { weekPayment, duration } = other;
-  console.log(choosenTest);
   const specifications = [];
   let specification = {};
   specs.toJS().forEach((element) => {

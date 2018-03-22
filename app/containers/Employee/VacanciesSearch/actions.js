@@ -20,19 +20,9 @@ export const getVacancies = () => (
   (dispatch) => {
     dispatch(loadingVacancies());
     return getEmployeeRecomendedVacanciesAPI((data) => {
-      const newData = data.map((element) => ({
-        id: element.id,
-        companyId: element.company_id,
-        profile: 'Web developer',
-        weekPaymeent: `${element.week_payment} ETH/month`,
-        companyName: `${element.name}`,
-        acceptableCurrencies: ['eth', 'btc', '$'],
-        description: element.info,
-        contractDuration: `${element.duration} months`,
-      }));
       dispatch({
         type: GET_VACANCIES,
-        payload: newData,
+        payload: data,
       });
       dispatch(loadedVacancies());
     }, (err) => {
