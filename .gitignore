@@ -2,7 +2,7 @@
 coverage
 build
 node_modules
-deploy
+deploy/public
 stats.json
 
 # Cruft
