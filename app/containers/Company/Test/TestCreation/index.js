@@ -16,6 +16,9 @@ import SpecificationsSkills from './SpecificationSkills/Loadable';
 import MainTestCreation from '../../../../components/Company/TestCreation/Loadable';
 import { createTest, clearReducer } from './actions';
 export class TestCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    this.props.clearReducer();
+  }
   componentWillUnmount() {
     this.props.clearReducer();
   }

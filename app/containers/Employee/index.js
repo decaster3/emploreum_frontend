@@ -8,6 +8,7 @@ import EmployeeProfile from '../EmployeeProfile/Roles/SelfView/Loadable';
 import Vacancy from '../Vacancy/Roles/EmployeeView/Loadable';
 import TestVacancyEmployeeMain from '../Vacancy/Test/Loadable';
 import StartTest from '../Vacancy/TestStart/Loadable';
+import ChatCreator from '../Chat/Loadable';
 
 function renderMenu() {
   return [{
@@ -22,6 +23,10 @@ function renderMenu() {
     name: 'Finance',
     url: '/employee/finance',
     icon: 'fa-dollar',
+  }, {
+    name: 'Chat',
+    url: '/employee/chat/',
+    icon: 'fa-comments',
   }];
 }
 
@@ -35,6 +40,7 @@ export const EmployeeMain = () => (
       <Route exact path="/employee/vacancy/:id" component={Vacancy} />
       <Route path="/employee/vacancy/:id/test/:question?/" component={TestVacancyEmployeeMain} />
       <Route path="/employee/vacancy/:id/preview/test" component={StartTest} />
+      <Route path="/employee/chat/:chatId?/" component={ChatCreator} />
     </Switch>
   </AccountWrapperContainer>
 );

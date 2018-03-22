@@ -14,16 +14,9 @@ export const getCurrentContracts = () => (
   (dispatch) => {
     dispatch(loadingCurrentContracts());
     return getCurrentContractsAPI((data) => {
-      const newData = data.map((el) => ({
-        address: el.contract,
-        company: el.company.name,
-        salary: el.vacancy.weekPayment,
-        startDay: el.beginDate,
-        endDay: el.endDate,
-      }));
       dispatch({
         type: GET_CURRENT_CONTRACTS,
-        payload: newData,
+        payload: data,
       });
       dispatch(loadedCurrentContracts());
     }, (err) => {

@@ -11,7 +11,7 @@ import {
   DOWN_REGISTRATION_STEP,
   CHANGE_SUBMIT_EMAIL_BUTTON_STATE,
   CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE,
-  CLEAR,
+  CLEAR_REGISTRATION,
 } from './constants';
 const initialState = fromJS({
   role: '',
@@ -37,7 +37,7 @@ function registrationEmployeeReducer(state = initialState, action) {
     case DOWN_REGISTRATION_STEP:
       return state.set('registrationStep',
         (state.get('registrationStep') - 1));
-    case CLEAR:
+    case CLEAR_REGISTRATION:
       return fromJS(initialState);
     default:
       return state;

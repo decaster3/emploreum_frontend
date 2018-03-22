@@ -30,11 +30,11 @@ class EmployeeFinanceCurrentContracts extends React.Component { // eslint-disabl
     return this.props.currentContractsItems.map((contract) =>
       (<TableRow
         key={contract.address}
-        rows={[contract.address,
-          contract.company,
-          contract.salary,
-          contract.startDay,
-          contract.endDay,
+        rows={[contract.contract,
+          contract.company.name,
+          contract.vacancy.weekPayment,
+          contract.beginDate,
+          contract.endDate,
         ]}
       />)
     );
@@ -48,17 +48,17 @@ class EmployeeFinanceCurrentContracts extends React.Component { // eslint-disabl
       'Start date',
       'End date',
     ];
-    if (this.props.isThereCurrentContracts) {
-      return (
-        <TableCreator
-          tableName="Current contracts"
-          columns={tableVariantOne}
-        >
-          {currentContractsRows}
-        </TableCreator>
-      );
+    if (!this.props.isThereCurrentContracts && this.props.currentContractsStatus === 'LOADED') {
+      return <NoContracts contractType={'current'} />;
     }
-    return <NoContracts contractType={'current'} />;
+    return (
+      <TableCreator
+        tableName="Current contracts"
+        columns={tableVariantOne}
+      >
+        {currentContractsRows}
+      </TableCreator>
+    );
   }
 }
 

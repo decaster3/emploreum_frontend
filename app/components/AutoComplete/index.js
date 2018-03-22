@@ -37,7 +37,7 @@ class AutoComplete extends React.Component {
           wrapperStyle={{}}
           inputProps={{ className: 'form-control' }}
           menuStyle={{ className: 'autocomplete' }}
-          items={this.props.list.toJS()}
+          items={this.props.list.toJS() || []}
           shouldItemRender={(item, valueString) => item.name.toLowerCase().indexOf(valueString.toLowerCase()) > -1}
           getItemValue={(item) => item.name}
           renderItem={(item) => (

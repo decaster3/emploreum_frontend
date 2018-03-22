@@ -42,17 +42,17 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
   render() {
     const awaitedContracts = this.renderAwaitedContracts();
     const tableVariantTwo = ['Duration', 'Company', 'Week Payment'];
-    if (this.props.isThereAwaitedContracts) {
-      return (
-        <TableCreator
-          tableName="Awaited contracts"
-          columns={tableVariantTwo}
-        >
-          {awaitedContracts}
-        </TableCreator>
-      );
+    if (!this.props.isThereAwaitedContracts && this.props.awaitedContractsStatus === 'LOADED') {
+      return <NoContracts contractType={'awaited'} />;
     }
-    return <NoContracts contractType={'awaited'} />;
+    return (
+      <TableCreator
+        tableName="Awaited contracts"
+        columns={tableVariantTwo}
+      >
+        {awaitedContracts}
+      </TableCreator>
+    );
   }
 }
 

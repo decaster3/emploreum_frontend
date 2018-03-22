@@ -47,14 +47,14 @@ export class CompanyRecentPayments extends React.Component { // eslint-disable-l
 
   render() {
     const recentPaments = this.renderPayments();
-    if (this.props.isTherePayments) {
-      return (
-        <PaymentsWrapper>
-          {recentPaments}
-        </PaymentsWrapper>
-      );
+    if (!this.props.isTherePayments && this.props.recentPaymentsStatus === 'LOADED') {
+      return <NoPayments />;
     }
-    return <NoPayments />;
+    return (
+      <PaymentsWrapper>
+        {recentPaments}
+      </PaymentsWrapper>
+    );
   }
 }
 

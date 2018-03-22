@@ -4,6 +4,8 @@ import { createSelector } from 'reselect';
  * Direct selector to the testNavigation state domain
  */
 const selectTestQuestionsDomain = (state) => state.get('testNavigation').get('testQuestions');
+export const selectTestCurrentQuestion = (state) => state.get('testNavigation').get('currentQuestion').toJS();
+// export const selectTestCurrentQuestion = (state) => state.get('testNavigation').get('currentQuestion');
 
 export const selectTestQuestionsStatus = createSelector(
   selectTestQuestionsDomain,
