@@ -20,10 +20,7 @@ export const createVacancy = (values) => (
   (dispatch, getState) => {
     const arrOfChoosenSpecificationsSkills = getState().get('vacancyCreation')
       .get('choosenSpecifications').get('items');
-    const choosenTest =
-      getState().get('chooseTestVacancy').get('choosenTest').get('id')
-      ? getState().get('chooseTestVacancy').get('choosenTest').get('id')
-      : null;
+    const choosenTest = getState().get('chooseTestVacancy').get('choosenTest').get('id') || null;
     return submitVacancyAPI(arrOfChoosenSpecificationsSkills, choosenTest, values.toJS(),
       () => {
         dispatch(push('/company/finance'));

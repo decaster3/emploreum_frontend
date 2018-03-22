@@ -10,6 +10,8 @@ import {
   CHANGE_CURRENT_QUESTION,
   CHANGE_STATE_TEST_QESTIONS,
   GET_TEST_QUESTIONS,
+  CLEAR_NAVIGATION_TEST_REDUCER,
+  MARK_QWESTION_AS_VIEWED,
 } from './constants';
 
 const initialState = fromJS({
@@ -34,6 +36,18 @@ function testNavigationReducer(state = initialState, action) {
       }));
     case CHANGE_CURRENT_QUESTION:
       return state.set('currentQuestion', fromJS(action.payload));
+    case CLEAR_NAVIGATION_TEST_REDUCER:
+      return fromJS(initialState);
+    case MARK_QWESTION_AS_VIEWED: {
+      const newItems = state.get('testQuestions').get('items').toJS();
+      const oldItemIndex = newItems.findIndex((x) =>
+      x.id === action.payload);
+      newItems[oldItemIndex].viewed = true;
+      return state.set('testQuestions', fromJS({
+        status: state.get('testQuestions').get('status'),
+        items: newItems,
+      }));
+    }
     default:
       return state;
   }

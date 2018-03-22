@@ -37,27 +37,27 @@ export class CompanyOpenVacancies extends React.Component { // eslint-disable-li
       (<OpenVacancy
         id={vacancy.id}
         key={vacancy.id}
-        position={vacancy.position}
-        hoursPerWeek={vacancy.hoursPerWeek}
-        payment={vacancy.payment}
+        specifications={vacancy.profiles}
+        duration={vacancy.duration}
+        weekPayment={vacancy.weekPayment}
       />)
     );
   }
 
   render() {
     const openVacancies = this.renderVacancies();
-    if (this.props.isThereOpenVacancies) {
+    if (!this.props.isThereOpenVacancies && this.props.openVacanciesStatus === 'LOADED') {
       return (
-        <OpenVacanciesWrapper >
-          {openVacancies}
-        </OpenVacanciesWrapper>
-      );
+        <div>
+          <NoOpenVacancies />
+          <VacancyCreationButton />
+        </div>);
     }
     return (
-      <div>
-        <NoOpenVacancies />
-        <VacancyCreationButton />
-      </div>);
+      <OpenVacanciesWrapper >
+        {openVacancies}
+      </OpenVacanciesWrapper>
+    );
   }
 }
 

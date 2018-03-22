@@ -28,7 +28,6 @@ export class VacanciesSearch extends React.Component { // eslint-disable-line re
   componentDidMount() {
     this.props.getVacancies();
   }
-
   renderVacancies() {
     if (this.props.vacanciesStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
@@ -37,12 +36,12 @@ export class VacanciesSearch extends React.Component { // eslint-disable-line re
       (<Vacancy
         key={vacancy.id}
         id={vacancy.id}
-        profile={vacancy.profile}
-        weekPaymeent={vacancy.weekPaymeent}
-        companyName={vacancy.companyName}
-        acceptableCurrencies={vacancy.acceptableCurrencies}
-        description={vacancy.description}
-        contractDuration={vacancy.contractDuration}
+        specifications={vacancy.profiles}
+        weekPaymeent={vacancy.weekPayment}
+        companyName={vacancy.name}
+        acceptableCurrencies={['eth']}
+        info={vacancy.info}
+        duration={vacancy.duration}
       />)
     );
   }

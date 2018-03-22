@@ -6,25 +6,24 @@
 import { push } from 'react-router-redux';
 import { toast } from 'react-toastify';
 import {
-  CHANGE_STATE_OPEN_VACANCIES,
+  CHANGE_STATE_OPEN_VACANCIES_INVITE_EMPLOYEE,
   LOADING,
   LOADED,
-  GET_OPEN_VACANCIES,
+  GET_OPEN_VACANCIES_INVITE_EMPLOYEE,
 } from './constants';
 
 import { getOpenVacanciesAPI } from '../../../services/api/Vacancy';
 import { iviteEmployeeToVacancyAPI } from '../../../services/api/EmployeeProfile';
 
-export const loadingOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, payload: LOADING });
-export const loadedOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, payload: LOADED });
+export const loadingOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES_INVITE_EMPLOYEE, payload: LOADING });
+export const loadedOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES_INVITE_EMPLOYEE, payload: LOADED });
 const notify = () => toast('You succesfully invited employee to your vacancy!', { hideProgressBar: true, autoClose: 3000, type: toast.TYPE.INFO });
 
 
 export const inviteEmployee = (vacancyId, employeeId) => (
   (dispatch) => {
-    console.log({ vacancyId, employeeId });
     iviteEmployeeToVacancyAPI({ vacancyId, employeeId }, () => {
-      dispatch(push('/company/finance'));
+      dispatch(push('/company/employee/search'));
       notify();
     }, (err) => {
       console.log(err);
@@ -44,12 +43,12 @@ export const getOpenVacancies = () => (
         return {
           position: `${position} developer`,
           hoursPerWeek: `${el.duration} month(s)`,
-          payment: `${el.week_payment} eth`,
+          payment: `${el.weekPayment} eth`,
           id: el.id,
         };
       });
       dispatch({
-        type: GET_OPEN_VACANCIES,
+        type: GET_OPEN_VACANCIES_INVITE_EMPLOYEE,
         payload: newData,
       });
       dispatch(loadedOpenVacancies());

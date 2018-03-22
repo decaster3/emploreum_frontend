@@ -13,3 +13,7 @@ export const iviteEmployeeToVacancyAPI = (payload, successCallBack, errorCallBac
   const { vacancyId, employeeId } = payload;
   AxiosService.post(`${BASEURL}/company/vacancy/${vacancyId}/invite`, { employeeId }, successCallBack, errorCallBack, dispatch);
 };
+
+export const getEmployeeRatingAPI = (employeeId, successCallBack, errorCallBack, dispatch) => {
+  AxiosService.get(`${BASEURL}/employee/rating/${employeeId}`, successCallBack, errorCallBack, dispatch);
+};

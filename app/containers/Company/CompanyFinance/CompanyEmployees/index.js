@@ -35,26 +35,26 @@ export class CompanyFinance extends React.Component { // eslint-disable-line rea
     }
     return this.props.employeesItems.map((employee) =>
       (<WorkingEmployee
-        key={employee.name}
-        avatar={employee.avatar}
-        name={employee.name}
-        position={employee.position}
-        contract={employee.contract}
-        employeeId={employee.employeeId}
+        key={employee.employee.userId}
+        photoPath={employee.employee.photoPath}
+        name={employee.employee.name}
+        position={null}
+        contract={null}
+        employeeId={employee.employee.userId}
       />)
     );
   }
 
   render() {
     const workingEmployee = this.renderWorkingEmployees();
-    if (this.props.isThereEmployeesContracts) {
-      return (
-        <WorkingEmployeesWrapper>
-          {workingEmployee}
-        </WorkingEmployeesWrapper>
-      );
+    if (!this.props.isThereEmployeesContracts && this.props.employeesStatus === 'LOADED') {
+      return <NoEmployees />;
     }
-    return <NoEmployees />;
+    return (
+      <WorkingEmployeesWrapper>
+        {workingEmployee}
+      </WorkingEmployeesWrapper>
+    );
   }
 }
 

@@ -47,17 +47,17 @@ class EmployeeFinanceEndedContracts extends React.Component { // eslint-disable-
       'Start date',
       'End date',
     ];
-    if (this.props.isThereEndedContracts) {
-      return (
-        <TableCreator
-          tableName="Ended contracts"
-          columns={tableVariantOne}
-        >
-          {endedContractsRows}
-        </TableCreator>
-      );
+    if (!this.props.isThereEndedContracts && this.props.endedContractsStatus === 'LOADED') {
+      return <NoContracts contractType={'ended'} />;
     }
-    return <NoContracts contractType={'ended'} />;
+    return (
+      <TableCreator
+        tableName="Ended contracts"
+        columns={tableVariantOne}
+      >
+        {endedContractsRows}
+      </TableCreator>
+    );
   }
 }
 

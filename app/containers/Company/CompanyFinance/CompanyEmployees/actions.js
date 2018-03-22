@@ -21,16 +21,9 @@ export const getEmployees = () => (
   (dispatch) => {
     dispatch(loadingEmployees());
     getCompanyWorkersAPI((data) => {
-      const newData = data.map((el) =>
-      ({
-        avatar: el.employee.photo_path,
-        name: el.employee.name,
-        employeeId: el.employee.user_id,
-        position: 'web developer',
-      }));
       dispatch({
         type: GET_EMPLOYEES,
-        payload: newData,
+        payload: data,
       });
       dispatch(loadedEmployees());
     }, (err) => {

@@ -11,14 +11,18 @@ import Currency from '../Currency/Loadable';
 // import styled from 'styled-components';
 export const Vacancy = (props) => {
   const {
-    profile,
+    specifications,
     weekPaymeent,
     companyName,
     acceptableCurrencies,
-    description,
-    contractDuration,
+    info,
+    duration,
     id } = props;
 
+  let position = '';
+  specifications.forEach((prof) => {
+    position = `${position} ${prof.name}`;
+  });
   const currencies = acceptableCurrencies.map((currency) =>
     (<Currency
       key={currency}
@@ -29,7 +33,7 @@ export const Vacancy = (props) => {
   return (
     <div className="vacancy">
       <div className="vacancy-name">
-        <a href="">{ profile }</a>
+        <Link to={url}>{ position } developer </Link>
         <div className="vacancy-money badge">{ weekPaymeent }</div>
         <div className="vacancy-currency">
           <p><a href="">{ companyName }</a></p>
@@ -39,7 +43,7 @@ export const Vacancy = (props) => {
         </div>
       </div>
       <div className="vacancy-desc">
-        <p> { description } </p>
+        <p> { info } </p>
         <div className="vacancy-add">
           <Link to={url}>Details</Link>
         </div>
@@ -47,7 +51,7 @@ export const Vacancy = (props) => {
           <a href="">Contacts</a>
         </div>
         <div className="vacancy-date">
-          { contractDuration }
+          { duration } month(s)
         </div>
       </div>
     </div>
@@ -55,10 +59,10 @@ export const Vacancy = (props) => {
 };
 //
 Vacancy.propTypes = {
-  contractDuration: PropTypes.string,
+  duration: PropTypes.string,
   weekPaymeent: PropTypes.string,
-  profile: PropTypes.string,
-  description: PropTypes.string,
+  specifications: PropTypes.array,
+  info: PropTypes.string,
   companyName: PropTypes.string,
   acceptableCurrencies: PropTypes.array,
   id: PropTypes.string,

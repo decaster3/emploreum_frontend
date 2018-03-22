@@ -7,8 +7,8 @@ import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
 
 import {
-  selectHeader,
-  selectAddressStatus,
+  selectMainInformationItems,
+  selectMainInformationStatus,
 } from './selectors';
 import { balanceChangeListener, getHeaderInfo } from './actions';
 
@@ -23,9 +23,8 @@ class EmployeeFinance extends React.Component { // eslint-disable-line react/pre
 
   render() {
     const { address, balance, income, endedContractsCount, currentContractsCount, status } = this.props.header;
-
     return (
-      <FinanceHeader address={address} addressStatus={status}>
+      <FinanceHeader address={address} mainInformationStatus={status}>
         <EmployeeInfo
           balance={balance}
           income={income}
@@ -52,8 +51,8 @@ EmployeeFinance.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    header: selectHeader(state),
-    addressStatus: selectAddressStatus(state),
+    header: selectMainInformationItems(state),
+    mainInformationStatus: selectMainInformationStatus(state),
   };
 }
 

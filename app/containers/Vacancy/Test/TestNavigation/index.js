@@ -15,18 +15,22 @@ import TestNavigationItem from '../../../../components/Vacancy/Test/TestNavigato
 import TestNavigationWrapper from '../../../../components/Vacancy/Test/TestNavigationWrapper/Loadable';
 import VacancyTestQuestion from '../TestQuestion/Loadable';
 
-import { selectTestQuestionsStatus, selectTestQuestionsItems } from './selectors';
+import { selectTestQuestionsStatus, selectTestQuestionsItems, selectTestCurrentQuestion } from './selectors';
 import reducer from './reducer';
-import { getQuestionSetStartQuestion, changeCurrentQuestion, getTestQuestionCount } from './actions';
+import { changeCurrentQuestion, getTestQuestionCount, clearReducer } from './actions';
 
 
 export class TestNavigation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     if (this.props.currentQuestion) {
-      this.props.getQuestionSetStartQuestion(this.props.vacancyId, this.props.currentQuestion);
+      this.props.getTestQuestionCount(this.props.vacancyId, this.props.currentQuestion);
     } else {
       this.props.getTestQuestionCount(this.props.vacancyId);
     }
+  }
+
+  componentWillUnmount() {
+    this.props.clearReducer();
   }
 
   renderNavigationItems() {
@@ -50,38 +54,36 @@ export class TestNavigation extends React.Component { // eslint-disable-line rea
         <TestNavigationWrapper>
           { navigationItems }
         </TestNavigationWrapper>
-        {
-          this.props.testQuestionsStatus === 'LOADED'
-          ? <VacancyTestQuestion currentQuestion={this.props.currentQuestion} vacancyId={this.props.vacancyId} />
-          : <div />
-        }
+        <VacancyTestQuestion testCurrentQuestion={this.props.testCurrentQuestion} vacancyId={this.props.vacancyId} />
       </div>
     );
   }
 }
 
 TestNavigation.propTypes = {
-  getQuestionSetStartQuestion: PropTypes.func.isRequired,
   getTestQuestionCount: PropTypes.func.isRequired,
   changeCurrentQuestion: PropTypes.func.isRequired,
   testQuestionsItems: PropTypes.array.isRequired,
   testQuestionsStatus: PropTypes.string.isRequired,
   currentQuestion: PropTypes.string,
-  vacancyId: PropTypes.number,
+  vacancyId: PropTypes.string,
+  clearReducer: PropTypes.func,
+  testCurrentQuestion: PropTypes.object,
 };
 
 function mapStateToProps(state) {
   return {
     testQuestionsItems: selectTestQuestionsItems(state),
     testQuestionsStatus: selectTestQuestionsStatus(state),
+    testCurrentQuestion: selectTestCurrentQuestion(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getQuestionSetStartQuestion: (evt, ev) => dispatch(getQuestionSetStartQuestion(evt, ev)),
     changeCurrentQuestion: (evt) => dispatch(changeCurrentQuestion(evt)),
-    getTestQuestionCount: (evt) => dispatch(getTestQuestionCount(evt)),
+    getTestQuestionCount: (evt, ev) => dispatch(getTestQuestionCount(evt, ev)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 

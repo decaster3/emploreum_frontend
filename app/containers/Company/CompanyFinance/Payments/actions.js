@@ -21,9 +21,9 @@ export const getPayments = () => (
     dispatch(loadingPayments());
     getCompanyTrasactionsAPI((data) => {
       const newData = data.map((el) => ({
-        address: el.transaction_hash,
+        address: el.transactionHash,
         payment: el.amount,
-        date: el.created_at,
+        date: el.createdAt,
         name: el.work.employee.name,
       }));
       dispatch({

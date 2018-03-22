@@ -16,17 +16,5 @@ export const selectSpecificationsSkillsStatus = createSelector(
 
 export const selectSpecificationsSkills = createSelector(
   selectSkillsDomain,
-  (specificationsSkills) => {
-    const specifications =
-      specificationsSkills.get('items').toJS().map((el) => ({
-        name: el.profile.name,
-        id: el.id,
-        skills: el.skills.map((skill) => ({
-          id: skill.id,
-          name: skill.name,
-          photoUrl: skill.photo_path,
-        })),
-      }));
-    return specifications;
-  }
+  (specificationsSkills) => specificationsSkills.get('items').toJS()
 );

@@ -8,30 +8,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Redirect } from 'react-router-dom';
 import { PulseLoader } from 'react-spinners';
 
 import injectReducer from 'utils/injectReducer';
-import { selectFirstQuestion,
+import {
   selectTestQuestionStatus,
   selectTestQuestion,
   selectSubmitQuestionButtonState,
-  selectTestCurrentQuestion,
  } from './selectors';
-import { getQuestion, submitQuestion } from './actions';
+import { getQuestion, submitQuestion, clearReducer } from './actions';
 import reducer from './reducer';
 import Question from '../../../../components/Vacancy/Test/Question/Loadable';
 
 export class TestQuestion extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getQuestion(this.props.currentTestQuestion.id);
+    this.props.getQuestion(this.props.testCurrentQuestion.id);
   }
-
   componentWillReceiveProps(nextProps) {
-    if (this.props.currentQuestion && nextProps.currentQuestion !== this.props.currentQuestion) {
-      this.props.getQuestion(nextProps.currentQuestion);
+    if (this.props.testCurrentQuestion && nextProps.testCurrentQuestion.id !== this.props.testCurrentQuestion.id) {
+      this.props.getQuestion(nextProps.testCurrentQuestion.id);
     }
   }
+  componentWillUnmount() {
+    this.props.clearReducer();
+  }
+
   renderQuestion() {
     if (this.props.questionStatus === 'LOADING') {
       return (<PulseLoader color={'#0081c2'} size={20} />);
@@ -49,40 +50,29 @@ export class TestQuestion extends React.Component { // eslint-disable-line react
 
   render() {
     const question = this.renderQuestion();
-    console.log(this.props.currentQuestion);
-    if (this.props.currentQuestion) {
-      return (
-        <div>
-          { question }
-        </div>
-      );
-    }
     return (
-      <Redirect
-        to={`${this.props.firstQuestionId}`}
-      />
+      <div>
+        { question }
+      </div>
     );
   }
 }
 
 TestQuestion.propTypes = {
-  firstQuestionId: PropTypes.number,
-  currentQuestion: PropTypes.number,
-  currentTestQuestion: PropTypes.object,
+  testCurrentQuestion: PropTypes.object,
   getQuestion: PropTypes.func,
   submitQuestion: PropTypes.func,
   question: PropTypes.object,
   questionStatus: PropTypes.string,
   submittingQuestion: PropTypes.bool,
+  clearReducer: PropTypes.func,
 };
 
 function mapStateToProps(state) {
   return {
-    firstQuestionId: selectFirstQuestion(state),
     question: selectTestQuestion(state),
     questionStatus: selectTestQuestionStatus(state),
     submittingQuestion: selectSubmitQuestionButtonState(state),
-    currentTestQuestion: selectTestCurrentQuestion(state),
   };
 }
 
@@ -90,6 +80,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getQuestion: (evt) => dispatch(getQuestion(evt)),
     submitQuestion: (evt, ev) => dispatch(submitQuestion(evt, ev)),
+    clearReducer: () => dispatch(clearReducer()),
   };
 }
 

@@ -34,13 +34,13 @@ export class Skills extends React.Component { // eslint-disable-line react/prefe
           key={skill.id}
           name={skill.name}
           raiting={5}
-          imgUrl={`${BASEURL}${skill.photoUrl}`}
+          imgUrl={`${BASEURL}${skill.photoPath}`}
         />
       )
     );
       return (
-        <div key={specification.id} className="col-lg-12">
-          <h4 className="text-left">{specification.name}</h4>
+        <div key={specification.id} className="col-xs-12">
+          <h4 className="text-left">{specification.profile.name}</h4>
           {skills}
         </div>
       );

@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 import { BASEURL } from '../../../../../global-constants';
 
 export const WorkingEmployee = (props) => {
-  const { avatar, name, position, workedTime, employeeId } = props;
+  const { photoPath, name, position, workedTime, employeeId } = props;
   const urlProfile = `/company/employee/${employeeId}`;
-  const imgProfile = `${BASEURL}/${avatar}`;
+  const imgProfile = `${BASEURL}/${photoPath}`;
   return (
     <li>
-      <img src={imgProfile} alt="Avatar" className="img-circle pull-left avatar" />
+      <img src={imgProfile} alt="photoPath" className="img-circle pull-left avatar" />
       <div>
         <Link to={urlProfile}>{name}</Link>
         <p>
@@ -26,7 +26,7 @@ export const WorkingEmployee = (props) => {
 };
 
 WorkingEmployee.propTypes = {
-  avatar: PropTypes.string.isRequired,
+  photoPath: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
   employeeId: PropTypes.string.isRequired,

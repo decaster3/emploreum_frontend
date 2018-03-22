@@ -21,16 +21,7 @@ export const getEmployees = () => (
   (dispatch) => {
     dispatch(setEmployeeLoadingState(LOADING));
     return getAllEmployeesAPI((data) => {
-      const employees = data.map((employee) => ({
-        id: employee.user_id,
-        name: employee.name,
-        specifications: employee.specifications.slice(0, 5).join(', '),
-        skills: employee.skills.slice(0, 5).join(', '),
-        image: employee.photo_path,
-        lastWork: employee.lastWork,
-      }));
-
-      dispatch(setEmployees(employees));
+      dispatch(setEmployees(data));
       dispatch(setEmployeeLoadingState(LOADED));
     }, (err) => {
       console.log(err);
