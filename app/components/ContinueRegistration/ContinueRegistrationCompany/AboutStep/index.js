@@ -17,7 +17,7 @@ class AboutStep extends React.Component { // eslint-disable-line react/prefer-st
         <div className="panel panel-headline col-md-8 col-md-offset-2">
           <div className="panel-body padding-bottom-30">
             <div id="preview" className="col-md-4">
-              <AvatarEditor />
+              <AvatarEditor chooseAvatar={this.props.chooseAvatar} />
             </div>
             <div className="col-md-8">
               { this.props.children }
@@ -37,6 +37,7 @@ class AboutStep extends React.Component { // eslint-disable-line react/prefer-st
 
 AboutStep.propTypes = {
   submitAboutStep: PropTypes.func,
+  chooseAvatar: PropTypes.func,
   submittingAbout: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

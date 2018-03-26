@@ -3,23 +3,19 @@
  * RegistrationEmployee actions
  *
  */
-import { push } from 'react-router-redux';
 
 import {
   GET_EMPLOYEE_REGISTRATION_STEP,
   LOADED,
   CHANGE_SUBMIT_SPECIFICATION_BUTTON_STATUS,
-  CHANGE_SUBMIT_ABOUT_BUTTON_STATUS,
 } from './constants';
 import {
   submitEmployeeSpecificationsSkillsAPI,
-  submitEmployeeAboutAPI,
 } from '../../../services/api/Register';
 
-import { updateRegistrationStep, completeRegistration } from '../../UserSession/actions';
+import { updateRegistrationStep, skipRegistrationStep } from '../../UserSession/actions';
 
 export const changeSubmitSpecificationButtonState = () => ({ type: CHANGE_SUBMIT_SPECIFICATION_BUTTON_STATUS });
-export const changeSubmitAboutButtonState = () => ({ type: CHANGE_SUBMIT_ABOUT_BUTTON_STATUS });
 
 
 export const getRegistrationStep = () => (
@@ -31,6 +27,11 @@ export const getRegistrationStep = () => (
         step: getState().get('userSession').get('userAuth').get('userInformation').get('registrationStep'),
       },
     });
+  }
+);
+export const nextStep = () => (
+  (dispatch) => {
+    dispatch(skipRegistrationStep(getRegistrationStep));
   }
 );
 
@@ -48,17 +49,5 @@ export const submitSpecificationSkillsStep = () => (
     }, dispatch).then(() => {
       dispatch(getRegistrationStep());
     });
-  }
-);
-
-export const submitAboutStep = (values) => (
-  (dispatch) => {
-    const { name, about } = values.toJS();
-    submitEmployeeAboutAPI({ name, about }, () => {
-      dispatch(completeRegistration());
-      dispatch(push('employee/finance'));
-    }, (err) => {
-      console.log(err);
-    }, dispatch);
   }
 );

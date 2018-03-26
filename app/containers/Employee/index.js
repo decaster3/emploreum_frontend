@@ -9,6 +9,7 @@ import Vacancy from '../Vacancy/Roles/EmployeeView/Loadable';
 import TestVacancyEmployeeMain from '../Vacancy/Test/Loadable';
 import StartTest from '../Vacancy/TestStart/Loadable';
 import ChatCreator from '../Chat/Loadable';
+import CompanyProfile from '../CompanyProfile/Roles/EmployeeView/Loadable';
 
 function renderMenu() {
   return [{
@@ -41,6 +42,7 @@ export const EmployeeMain = () => (
       <Route path="/employee/vacancy/:id/test/:question?/" component={TestVacancyEmployeeMain} />
       <Route path="/employee/vacancy/:id/preview/test" component={StartTest} />
       <Route path="/employee/chat/:chatId?/" component={ChatCreator} />
+      <Route path="/employee/company/:companyId" component={CompanyProfile} />
     </Switch>
   </AccountWrapperContainer>
 );

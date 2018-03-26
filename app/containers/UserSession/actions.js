@@ -12,9 +12,21 @@ import {
   ANONYMOUS,
   UPDATE_REGISTRATION_STEP,
   COMPLETE_REGISTRATION,
+  NEXT_REGISTRATION_STEP,
+  SKIP_LAST_STEP,
 } from './constants';
 
-import { loginAPI, logoutAPI } from '../../services/api/Register';
+import { loginAPI, logoutAPI, skipRegistrationStepAPI } from '../../services/api/Register';
+const nextRegistrationStep = () => ({ type: NEXT_REGISTRATION_STEP });
+export const skipLastStep = () => ({ type: SKIP_LAST_STEP });
+export const skipRegistrationStep = (getRegistrationStep) => (
+  (dispatch) => skipRegistrationStepAPI(() => {
+    dispatch(nextRegistrationStep());
+    dispatch(getRegistrationStep());
+  }, (err) => {
+    console.log(err);
+  }, dispatch)
+);
 
 export const redirect = (role, dispatch) => {
   if (role === 'COMPANY') {
@@ -23,6 +35,21 @@ export const redirect = (role, dispatch) => {
     dispatch(push('/employee'));
   }
 };
+
+export const changeUserStateFromLoggingAferClose = () => (
+  (dispatch, getState) => {
+    const currentUserState = getState().get('userSession').get('userAuth').get('userState');
+    if (currentUserState === LOGGING_IN) {
+      dispatch({
+        type: CHANGE_USER_STATE,
+        payload: {
+          userState: ANONYMOUS,
+          userInformation: {},
+        },
+      });
+    }
+  }
+);
 
 export const login = (values) => (
   (dispatch, getState) => {
@@ -51,7 +78,13 @@ export const login = (values) => (
       dispatch(redirect(getState().get('userSession')
         .get('userAuth').get('userInformation').get('role'), dispatch));
     }, (err) => {
-      dispatch(serverLogout());
+      dispatch({
+        type: CHANGE_USER_STATE,
+        payload: {
+          userState: ANONYMOUS,
+          userInformation: {},
+        },
+      });
       if (err.response.status && err.response.status === 401) {
         throw new SubmissionError({ _error: 'Wrong email address or password!' });
       }
@@ -86,10 +119,11 @@ export const updateRegistrationStep = (step) => (
   }
 );
 
-export const completeRegistration = () => (
+export const completeRegistration = (photoPath) => (
   (dispatch) => {
     dispatch({
       type: COMPLETE_REGISTRATION,
+      payload: photoPath,
     });
   }
 );

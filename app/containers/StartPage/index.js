@@ -7,25 +7,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { changeRole } from '../Registration/actions';
 import reducer from '../Registration/reducer';
-import StartPageComponent from '../../components/StartPageComponent/Loadable';
+import NavigationBar from '../../components/StartPageComponent/NavigationBar/Loadable';
+import ChooseRole from '../../components/StartPageComponent/ChooseRole/Loadable';
+import Find from '../../components/StartPageComponent/Find/Loadable';
+import Features from '../../components/StartPageComponent/Features/Loadable';
+import Footer from '../../components/StartPageComponent/Footer/Loadable';
+import StartPageWrapper from '../../components/StartPageComponent/StartPageWrapper/Loadable';
 
 export class StartPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
-        <Helmet>
-          <title>StartPage</title>
-          <meta name="description" content="Description of StartPage" />
-        </Helmet>
-        <StartPageComponent
-          changeRole={this.props.changeRole}
-        />
-      </div>
+      <StartPageWrapper>
+        <NavigationBar />
+        <ChooseRole />
+        <Features />
+        <Find />
+        <Footer />
+      </StartPageWrapper>
     );
   }
 }

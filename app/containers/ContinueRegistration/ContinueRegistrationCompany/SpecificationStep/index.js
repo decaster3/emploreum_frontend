@@ -27,7 +27,8 @@ import {
   clearReducer,
 } from '../../../Specifications/actions';
 
-import { submitSpecificationSkillsStep } from '../actions';
+
+import { submitSpecificationSkillsStep, nextStep } from '../actions';
 
 export class SpecificationStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillUnmount() {
@@ -47,6 +48,7 @@ export class SpecificationStep extends React.Component { // eslint-disable-line 
             submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
             submittingSpecification={this.props.submittingSpecification}
           />
+          <button onClick={() => this.props.nextStep()} className="btn btn-default">Next step</button>
         </div>
       </div>
     );
@@ -69,6 +71,7 @@ function mapDispatchToProps(dispatch) {
     addSpecificationWithSkills: (evt) => dispatch(addSpecificationWithSkills(evt)),
     deleteSpecificationFromChoosen: (evt) => dispatch(deleteSpecificationFromChoosen(evt)),
     clearReducer: () => dispatch(clearReducer()),
+    nextStep: () => dispatch(nextStep()),
   };
 }
 
@@ -81,6 +84,7 @@ const withReducer = injectReducer(
 
 SpecificationStep.propTypes = {
   clearReducer: PropTypes.func,
+  nextStep: PropTypes.func,
   getSpecification: PropTypes.func,
   specificationListStatus: PropTypes.string,
   specificationList: PropTypes.object,

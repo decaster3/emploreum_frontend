@@ -13,8 +13,20 @@ export const sendVerificationCodeAPI = (credentails, successCallBack, errorCallB
 export const submitEmployeeAboutAPI = (credentails, successCallBack, errorCallBack, dispatch) =>
   AxiosService.post(`${BASEURL}/auth/signup/info`, credentails, successCallBack, errorCallBack, dispatch);
 
-export const submitCompanyAboutAPI = (credentails, successCallBack, errorCallBack, dispatch) =>
-  AxiosService.post(`${BASEURL}/auth/signup/info`, credentails, successCallBack, errorCallBack, dispatch);
+export const submitCompanyAboutAPI = (credentails, successCallBack, errorCallBack, dispatch) => {
+  const { name, about, logo, choosenLanguages } = credentails;
+  const languages = [];
+  choosenLanguages.items.forEach((el) => {
+    languages.push(el.id);
+  });
+  return AxiosService.post(`${BASEURL}/auth/signup/info`, { languages, name, about, logo }, successCallBack, errorCallBack, dispatch);
+};
+
+export const submitAvatarAPI = (credentails, successCallBack, errorCallBack, dispatch) => {
+  const formData = new FormData();
+  formData.append('file', credentails);
+  return AxiosService.postFile(`${BASEURL}/file/upload`, formData, successCallBack, errorCallBack, dispatch);
+};
 
 export const submitEmployeeSpecificationsSkillsAPI = (credentails, successCallBack, errorCallBack, dispatch) => {
   const specifications = [];
@@ -39,3 +51,6 @@ export const submitCompanySpecificationsSkillsAPI = (credentails, successCallBac
 
 export const logoutAPI = (successCallBack, errorCallBack, dispatch) =>
   AxiosService.get(`${BASEURL}/auth/logout`, successCallBack, errorCallBack, dispatch);
+
+export const skipRegistrationStepAPI = (successCallBack, errorCallBack, dispatch) =>
+  AxiosService.get(`${BASEURL}/auth/signup/skip`, successCallBack, errorCallBack, dispatch);

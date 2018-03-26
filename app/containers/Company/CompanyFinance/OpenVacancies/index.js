@@ -15,6 +15,7 @@ import {
   selectOpenVacanciesItems,
   selectOpenVacanciesStatus,
   selectIsThereOpenVacancies,
+  selectMyId,
 } from './selectors';
 import reducer from './reducer';
 
@@ -27,7 +28,7 @@ import { getOpenVacancies } from './actions';
 
 export class CompanyOpenVacancies extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getOpenVacancies();
+    this.props.getOpenVacancies(this.props.companyId);
   }
   renderVacancies() {
     if (this.props.openVacanciesStatus === 'LOADING') {
@@ -66,6 +67,7 @@ CompanyOpenVacancies.propTypes = {
   openVacanciesStatus: PropTypes.string,
   getOpenVacancies: PropTypes.func,
   isThereOpenVacancies: PropTypes.bool,
+  companyId: PropTypes.string,
 };
 
 function mapStateToProps(state) {
@@ -73,12 +75,13 @@ function mapStateToProps(state) {
     openVacanciesItems: selectOpenVacanciesItems(state),
     openVacanciesStatus: selectOpenVacanciesStatus(state),
     isThereOpenVacancies: selectIsThereOpenVacancies(state),
+    companyId: selectMyId(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getOpenVacancies: () => dispatch(getOpenVacancies()),
+    getOpenVacancies: (evt) => dispatch(getOpenVacancies(evt)),
   };
 }
 

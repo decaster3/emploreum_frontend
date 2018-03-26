@@ -24,16 +24,19 @@ export const redirect = (role, dispatch) => {
     dispatch(push('/employee'));
   }
 };
-export const clearReducer = () => ({ type: CLEAR_REGISTRATION });
+const changeSubmitEmailButtonState = () => ({ type: CHANGE_SUBMIT_EMAIL_BUTTON_STATE });
+const changeSubmitEmailVerificationButtonState = () => ({ type: CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE });
+const upRegistrationStep = () => ({ type: UP_REGISTRATION_STEP });
 
+export const downRegistrationStep = () => ({ type: DOWN_REGISTRATION_STEP });
+export const clearReducer = () => ({ type: CLEAR_REGISTRATION });
 export const changeRole = (role) => ({ type: CHANGE_ROLE, payload: role });
 
-export const changeSubmitEmailButtonState = () => ({ type: CHANGE_SUBMIT_EMAIL_BUTTON_STATE });
-export const changeSubmitEmailVerificationButtonState = () => ({ type: CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE });
-
-export const upRegistrationStep = () => ({ type: UP_REGISTRATION_STEP });
-export const downRegistrationStep = () => ({ type: DOWN_REGISTRATION_STEP });
-
+// export const changeButtonStateAfterClose = () => (
+//   (dispatch, getState) => {
+//     const current
+//   }
+// );
 export const submitEmail = (values) => (
   (dispatch, getState) => {
     dispatch(changeSubmitEmailButtonState());

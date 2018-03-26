@@ -25,7 +25,7 @@ import {
 } from './constants';
 
 import SpecificationsStep from './SpecificationStep/Loadable';
-import AboutStep from './AboutStep/Loadable';
+import AboutStep from '../AboutStep/Loadable';
 
 export class ContinueRegistrationCompany extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

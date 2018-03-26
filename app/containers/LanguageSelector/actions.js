@@ -16,11 +16,10 @@ import {
   CLEAR_LANGUAGE_SELECTOR,
 } from './constants';
 
-// import {
-  // getLanguagesAPI,
-// } from '../../services/api/Languages';
+import {
+  getLanguagesAPI,
+} from '../../services/api/Languages';
 export const clearReducer = () => ({ type: CLEAR_LANGUAGE_SELECTOR });
-const mockLanguages = [{ name: 'lang1' }, { name: 'lang2' }];
 export const getLanguage = () => (
   (dispatch) => {
     dispatch({
@@ -30,18 +29,17 @@ export const getLanguage = () => (
         list: [],
       },
     });
-    // getLanguagesAPI((langList) => {
-      // console.log(langList);
-    dispatch({
-      type: GET_LANGUAGES,
-      payload: {
-        languageListStatus: LOADED,
-        list: mockLanguages,
-      },
-    });
-    // }, (err) => {
-      // console.log(err);
-    // }, dispatch);
+    getLanguagesAPI((langList) => {
+      dispatch({
+        type: GET_LANGUAGES,
+        payload: {
+          languageListStatus: LOADED,
+          list: langList,
+        },
+      });
+    }, (err) => {
+      console.log(err);
+    }, dispatch);
   }
 );
 

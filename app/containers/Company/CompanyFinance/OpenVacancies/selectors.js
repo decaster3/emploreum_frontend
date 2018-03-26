@@ -5,6 +5,9 @@ import { createSelector } from 'reselect';
  */
 const selectOpenVacancies = (state) => state.get('companyFinanceOpenVacancies').get('openVacancies');
 
+const selectMainInformation = (state) => state.get('userSession')
+.get('userAuth').get('userInformation');
+
 export const selectOpenVacanciesStatus = createSelector(
   selectOpenVacancies,
   (openVacanciesStatus) => openVacanciesStatus.get('status')
@@ -18,5 +21,10 @@ export const selectIsThereOpenVacancies = createSelector(
 export const selectOpenVacanciesItems = createSelector(
   selectOpenVacancies,
   (openVacanciesItems) => openVacanciesItems.get('items').toJS()
+);
+
+export const selectMyId = createSelector(
+  selectMainInformation,
+  (id) => id.get('id')
 );
 

@@ -11,10 +11,14 @@ import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { selectUserStatus } from './selectors';
 import Login from '../../components/Login/Loadable';
-import { login } from './actions';
+import { login, changeUserStateFromLoggingAferClose } from './actions';
 
 export class UserSession extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
+    this.props.changeUserStateFromLoggingAferClose();
+  }
+  componentWillUnmount() {
+    this.props.changeUserStateFromLoggingAferClose();
   }
   render() {
     return (
@@ -35,6 +39,7 @@ export class UserSession extends React.Component { // eslint-disable-line react/
 UserSession.propTypes = {
   login: PropTypes.func,
   userStatus: PropTypes.string,
+  changeUserStateFromLoggingAferClose: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -46,6 +51,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     login: (evt, ev) => dispatch(login(evt, ev)),
+    changeUserStateFromLoggingAferClose: () => dispatch(changeUserStateFromLoggingAferClose()),
   };
 }
 

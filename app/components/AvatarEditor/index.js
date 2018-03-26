@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import AvatarEditor from 'react-avatar-editor';
 
 class AvatarEdit extends React.Component {
@@ -39,6 +40,7 @@ class AvatarEdit extends React.Component {
         avatar: file,
         imagePreviewUrl: reader.result,
       });
+      this.props.chooseAvatar(file);
     };
     reader.readAsDataURL(file);
   }
@@ -93,5 +95,9 @@ class AvatarEdit extends React.Component {
     );
   }
 }
+AvatarEdit.propTypes = {
+  chooseAvatar: PropTypes.func,
+};
+
 
 export default AvatarEdit;

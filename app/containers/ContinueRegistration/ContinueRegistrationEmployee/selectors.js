@@ -34,11 +34,6 @@ export const selectSubmitSpecificationButtonState = createSelector(
     (submittingSpecification) => submittingSpecification.get('submittingSpecification')
 );
 
-export const selectSubmitAboutButtonState = createSelector(
-    selectRegistrationEmployeeDomain,
-    (submittingAbout) => submittingAbout.get('submittingAbout')
-);
-
 export {
   selectChoosenSpecifications,
   selectSpecificationListStatus,

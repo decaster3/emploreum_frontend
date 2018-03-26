@@ -20,6 +20,7 @@ import {
 import SpecificationSkillsStep from '../../../../components/SpecificationsSkills/Loadable';
 import {
   submitSpecificationSkillsStep,
+  nextStep,
 } from '../actions';
 import {
   addSkill,
@@ -54,6 +55,7 @@ export class SpecificationSkills extends React.Component { // eslint-disable-lin
             submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
             submittingSpecification={this.props.submittingSpecification}
           />
+          <button onClick={() => this.props.nextStep()} className="btn btn-default">Skip step</button>
         </div>
       </div>
     );
@@ -79,6 +81,7 @@ function mapDispatchToProps(dispatch) {
     addSpecificationWithSkills: (evt) => dispatch(addSpecificationWithSkills(evt)),
     deleteSpecificationFromChoosen: (evt) => dispatch(deleteSpecificationFromChoosen(evt)),
     clearReducer: () => dispatch(clearReducer()),
+    nextStep: () => dispatch(nextStep()),
   };
 }
 
@@ -90,6 +93,7 @@ const withReducer = injectReducer(
 
 SpecificationSkills.propTypes = {
   clearReducer: PropTypes.func,
+  nextStep: PropTypes.func,
   getSpecification: PropTypes.func,
   getSkills: PropTypes.func,
   specificationListStatus: PropTypes.string,

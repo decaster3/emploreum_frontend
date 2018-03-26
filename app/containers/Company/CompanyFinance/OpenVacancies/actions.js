@@ -17,10 +17,10 @@ import { getOpenVacanciesAPI } from '../../../../services/api/Vacancy';
 export const loadingOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, payload: LOADING });
 export const loadedOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, payload: LOADED });
 
-export const getOpenVacancies = () => (
+export const getOpenVacancies = (companyId) => (
   (dispatch) => {
     dispatch(loadingOpenVacancies());
-    return getOpenVacanciesAPI((data) => {
+    return getOpenVacanciesAPI(companyId, (data) => {
       dispatch({
         type: GET_OPEN_VACANCIES,
         payload: data,

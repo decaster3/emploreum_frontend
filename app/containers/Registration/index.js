@@ -29,6 +29,7 @@ import {
 } from './actions';
 
 export class Registration extends React.PureComponent {
+
   componentWillUnmount() {
     this.props.clearReducer();
   }

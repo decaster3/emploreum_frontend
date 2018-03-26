@@ -2,7 +2,6 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Switch, Route } from 'react-router-dom';
 import AccountWrapperContainer from '../AccountWrapper/Loadable';
-import CompanyProfileContainer from './CompanyProfileContainer/Loadable';
 import CompanyFinance from './CompanyFinance/Loadable';
 import EmployeesSearch from './EmployeesSearch/Loadable';
 import VacancyCreation from './VacancyCreation/Loadable';
@@ -14,6 +13,7 @@ import TestEdit from '../Company/Test/TestEdit/Loadable';
 import TestInputQuestionCreation from '../Company/Test/InputQuestionCreation/Loadable';
 import TestMultipleQuestionCreation from '../Company/Test/MultipleChoiceQuestionCreation/Loadable';
 import ChatCreator from '../Chat/Loadable';
+import CompanyProfile from '../CompanyProfile/Roles/SelfView/Loadable';
 
 function renderMenu() {
   return [{
@@ -43,7 +43,7 @@ export const CompanyMain = () => (
   <AccountWrapperContainer menu={renderMenu()}>
     <ToastContainer />
     <Switch>
-      <Route exact path="/company" component={CompanyProfileContainer} />
+      <Route exact path="/company" component={CompanyProfile} />
       <Route path="/company/employee/search" component={EmployeesSearch} />
       <Route path="/company/finance" component={CompanyFinance} />
       <Route path="/company/vacancy/create" component={VacancyCreation} />
