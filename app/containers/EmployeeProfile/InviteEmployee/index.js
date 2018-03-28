@@ -15,7 +15,7 @@ import { selectOpenVacanciesStatus, selectOpenVacanciesItems } from './selectors
 import { getOpenVacancies, inviteEmployee } from './actions';
 import reducer from './reducer';
 import OpenVacancy from '../../../components/Employee/EmployeeProfileComponents/InviteEmployee/OpenVacancy/Loadable';
-import ModalWrapper from '../../../components/Employee/EmployeeProfileComponents/InviteEmployee/ModalWrapper/Loadable';
+import ModalWrapper from '../../../components/Elements/ModalWrapper/Loadable';
 
 export class InviteEmployee extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -38,7 +38,7 @@ export class InviteEmployee extends React.Component { // eslint-disable-line rea
   render() {
     const openVacancies = this.renderVacancies();
     return (
-      <ModalWrapper>
+      <ModalWrapper title={'Invite employee'} modalName={'invite-employee'}>
         { openVacancies }
       </ModalWrapper>
     );

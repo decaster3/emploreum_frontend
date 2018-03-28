@@ -1,6 +1,16 @@
+.em-tag {
+    font-size: 15px;
+    border-radius: 8px;
+    margin-right: 5px;
+}
+
 .icon-64 {
     width: 16px !important;
     height: 16px !important;
+}
+.margin-top-15 {
+    margin-top: 10px;
+    clear: both;
 }
 
 textarea {

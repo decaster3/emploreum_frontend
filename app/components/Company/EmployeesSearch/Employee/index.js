@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { BASEURL } from '../../../../global-constants';
+import { ANONYMOUS } from '../../../../containers/UserSession/constants';
 
 export const Employee = (props) => {
   const {
@@ -16,10 +17,9 @@ export const Employee = (props) => {
     skills,
     lastWork,
     name,
+    userState,
     id } = props;
-
-
-  const url = `/company/employee/${id}`;
+  const url = userState === ANONYMOUS ? `/employee/${id}` : `/company/employee/${id}`;
   return (
     <div className="vacancy">
       <div className="row">
@@ -57,6 +57,7 @@ export const Employee = (props) => {
 };
 //
 Employee.propTypes = {
+  userState: PropTypes.string,
   specifications: PropTypes.string,
   lastWork: PropTypes.string,
   skills: PropTypes.string,

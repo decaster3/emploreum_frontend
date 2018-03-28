@@ -11,23 +11,19 @@ import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { changeRole } from '../Registration/actions';
 import reducer from '../Registration/reducer';
-import NavigationBar from '../../components/StartPageComponent/NavigationBar/Loadable';
 import ChooseRole from '../../components/StartPageComponent/ChooseRole/Loadable';
 import Find from '../../components/StartPageComponent/Find/Loadable';
 import Features from '../../components/StartPageComponent/Features/Loadable';
 import Footer from '../../components/StartPageComponent/Footer/Loadable';
-import StartPageWrapper from '../../components/StartPageComponent/StartPageWrapper/Loadable';
-
 export class StartPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <StartPageWrapper>
-        <NavigationBar />
+      <div className="full-height">
         <ChooseRole />
         <Features />
         <Find />
         <Footer />
-      </StartPageWrapper>
+      </div>
     );
   }
 }

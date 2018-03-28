@@ -29,7 +29,7 @@ export const CompanyView = (props) => {
               href=""
               className="btn btn-success"
               data-toggle="modal"
-              data-target="#modal-vacancy"
+              data-target="#modal-invite-employee"
             >
             Invite Employee
           </a>

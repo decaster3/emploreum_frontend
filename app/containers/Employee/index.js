@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import AccountWrapperContainer from '../AccountWrapper';
 import EmployeeFinance from './EmployeeFinance/Loadable';
-import EmployeeVacancies from './VacanciesSearch/Loadable';
+import EmployeeVacancies from '../VacanciesSearch/Loadable';
 import EmployeeProfile from '../EmployeeProfile/Roles/SelfView/Loadable';
 import Vacancy from '../Vacancy/Roles/EmployeeView/Loadable';
 import TestVacancyEmployeeMain from '../Vacancy/Test/Loadable';

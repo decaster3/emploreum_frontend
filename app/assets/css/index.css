@@ -1,8 +1,8 @@
-.navbar-default .brand {
+.landing-emploreum .navbar-default .brand {
   width: auto;
 }
 
-#for {
+.landing-emploreum #for {
   position: relative;
   display: table;
   width: 100%;
@@ -17,8 +17,14 @@
   -moz-background-size: cover;
   -webkit-background-size: cover;
 }
+body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
+  height: 100%;
+}
+.landing-emploreum .main-content {
+  padding: 0 !important;
+}
 
-.dark-background {
+.landing-emploreum .dark-background {
   position: absolute;
   width: 100%;
   top: 0;
@@ -27,20 +33,20 @@
   background: rgba(0, 0, 0, 0.65);
 }
 
-#for .row {
+.landing-emploreum #for .row {
   display: table-cell;
   vertical-align: middle;
 }
 
-#for .row .find-item {
+.landing-emploreum #for .row .find-item {
   margin-top: -50px;
 }
 
-#for .btn {
+.landing-emploreum #for .btn {
   margin-top: 20px;
 }
 
-#for .border {
+.landing-emploreum #for .border {
   position: absolute;
   right: 0;
   top: 0;
@@ -50,15 +56,15 @@
   background: #fff;
 }
 
-#for h1 {
+.landing-emploreum #for h1 {
   font-size: 35px;
 }
 
-#for .btn {
+.landing-emploreum #for .btn {
   font-size: 24px;
 }
 
-#info {
+.landing-emploreum #info {
   position: relative;
   padding-top: 100px;
   padding-bottom: 100px;
@@ -66,11 +72,11 @@
   background: #fff;
 }
 
-#info h3 {
+.landing-emploreum #info h3 {
   color: #343434;
 }
 
-#info .border {
+.landing-emploreum #info .border {
   position: absolute;
   right: 0;
   top: 0;
@@ -80,13 +86,13 @@
   background: #bfc8cb;
 }
 
-#info .info-item p {
+.landing-emploreum #info .info-item p {
   padding: 10px 50px;
   font-size: 20px;
   text-align: justify;
 }
 
-#search {
+.landing-emploreum #search {
   position: relative;
   display: table;
   width: 100%;
@@ -99,27 +105,27 @@
   -webkit-background-size: cover;
 }
 
-#search > .row {
+.landing-emploreum #search > .row {
   display: table-cell;
   vertical-align: middle;
 }
 
-#search select,
-#search button,
-#search input {
+.landing-emploreum #search select,
+.landing-emploreum #search button,
+.landing-emploreum #search input {
   display: block;
   height: 60px;
 }
 
-#search input {
+.landing-emploreum #search input {
   font-size: 24px;
 }
 
-#search button {
+.landing-emploreum #search button {
   font-size: 20px;
 }
 
-#with-us {
+.landing-emploreum #with-us {
   background: #3c3d41;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -127,37 +133,37 @@
   text-align: center;
 }
 
-#with-us h1 {
+.landing-emploreum #with-us h1 {
   margin-bottom: 30px;
 }
 
-#with-us .company-item p {
+.landing-emploreum #with-us .company-item p {
   margin-top: 15px;
   font-size: 25px;
 }
 
-#plus {
+.landing-emploreum #plus {
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
   background: #fff;
 }
 
-#plus h1 {
+.landing-emploreum #plus h1 {
   color: #343434;
   margin-bottom: 30px;
 }
 
-#plus .plus-item .icon-container {
+.landing-emploreum #plus .plus-item .icon-container {
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
-#plus .plus-item i {
+.landing-emploreum #plus .plus-item i {
   font-size: 40px;
 }
 
-#plus .plus-item p {
+.landing-emploreum #plus .plus-item p {
   margin-top: 10px;
   font-size: 25px;
 }
@@ -167,7 +173,7 @@
   width: 100%;
 }
 
-.footer-bs {
+.landing-emploreum .footer-bs {
   position: relative;
   z-index: 10;
   bottom: 0;
@@ -181,115 +187,115 @@
   background: #3c3d41;
 }
 
-.footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns {
+.landing-emploreum .footer-bs .footer-brand, .landing-emploreum .footer-bs .footer-nav, .landing-emploreum .footer-bs .footer-social, .landing-emploreum .footer-bs .footer-ns {
   padding: 10px 25px;
 }
 
-.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns {
+.landing-emploreum .footer-bs .footer-nav, .landing-emploreum .footer-bs .footer-social, .landing-emploreum .footer-bs .footer-ns {
   border-color: transparent;
 }
 
-.footer-bs .footer-brand h2 {
+.landing-emploreum .footer-bs .footer-brand h2 {
   margin: 0px 0px 10px;
 }
 
-.footer-bs .footer-brand p {
+.landing-emploreum .footer-bs .footer-brand p {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.70);
 }
 
-.footer-bs .footer-nav ul.pages {
+.landing-emploreum .footer-bs .footer-nav ul.pages {
   list-style: none;
   padding: 0px;
 }
 
-.footer-bs .footer-nav ul.pages li {
+.landing-emploreum .footer-bs .footer-nav ul.pages li {
   padding: 5px 0px;
 }
 
-.footer-bs .footer-nav ul.pages a {
+.landing-emploreum .footer-bs .footer-nav ul.pages a {
   color: rgba(255, 255, 255, 1.00);
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.footer-bs .footer-nav ul.pages a:hover {
+.landing-emploreum .footer-bs .footer-nav ul.pages a:hover {
   color: rgba(255, 255, 255, 0.80);
   text-decoration: none;
 }
 
-.footer-bs .footer-nav h4 {
+.landing-emploreum .footer-bs .footer-nav h4 {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 10px;
 }
 
-.footer-bs .footer-social ul {
+.landing-emploreum .footer-bs .footer-social ul {
   list-style: none;
   padding: 0px;
 }
 
-.footer-bs .footer-social h4 {
+.landing-emploreum .footer-bs .footer-social h4 {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
 
-.footer-bs .footer-social li {
+.landing-emploreum .footer-bs .footer-social li {
   padding: 5px 4px;
 }
 
-.footer-bs .footer-social a {
+.landing-emploreum .footer-bs .footer-social a {
   color: rgba(255, 255, 255, 1.00);
 }
 
-.footer-bs .footer-social a:hover {
+.landing-emploreum .footer-bs .footer-social a:hover {
   color: rgba(255, 255, 255, 0.80);
   text-decoration: none;
 }
 
 @media (min-width: 768px) {
-  .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns {
+  .landing-emploreum .footer-bs .footer-nav, .landing-emploreum .footer-bs .footer-social, .landing-emploreum .footer-bs .footer-ns {
     border-left: solid 1px rgba(255, 255, 255, 0.10);
   }
 }
 
 @media screen and (max-width: 768px) {
-  #for {
+  .landing-emploreum #for {
     margin-top: 70px;
   }
 
-  #for::after {
+  .landing-emploreum #for::after {
     display: none;
   }
 
-  .border {
+  .landing-emploreum .border {
     display: none;
   }
 
-  #info .info-item p {
+  .landing-emploreum #info .info-item p {
     padding: 5px 5px;
   }
 
-  .footer-bs {
+  .landing-emploreum .footer-bs {
     padding: 30px 10px;
   }
 
-  #for .btn {
+  .landing-emploreum #for .btn {
     font-size: 25px !important;
   }
 
-  #for .row .find-item {
+  .landing-emploreum #for .row .find-item {
     margin-top: 0;
   }
 
-  #search {
+  .landing-emploreum #search {
     padding-top: 30px;
     padding-bottom: 30px;
   }
 
-  #search input {
+  .landing-emploreum #search input {
     margin-bottom: 10px;
   }
 

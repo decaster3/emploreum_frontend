@@ -15,6 +15,20 @@ import Rating from '../../Rating/Loadable';
 import { selectMyId } from './selectors';
 
 export class SelfView extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    this.hideActiveModal();
+  }
+  // close modal window after redirect
+  hideActiveModal() {
+    if (document.getElementsByClassName('modal-backdrop')[0]) {
+      const fade = document.getElementsByClassName('modal-backdrop')[0];
+      fade.className = '';
+    }
+    if (document.getElementsByClassName('modal-open')[0]) {
+      const modal = document.getElementsByClassName('modal-open')[0];
+      modal.className = modal.className.replace('modal-open', '');
+    }
+  }
   render() {
     return (
       <div className="container-fluid">

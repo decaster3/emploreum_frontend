@@ -29,9 +29,22 @@ import {
 } from './actions';
 
 export class Registration extends React.PureComponent {
-
+  componentDidMount() {
+    this.hideActiveModal();
+  }
   componentWillUnmount() {
     this.props.clearReducer();
+  }
+  // закрыть модальное окно, после редиректа.
+  hideActiveModal() {
+    if (document.getElementsByClassName('modal-backdrop')[0]) {
+      const fade = document.getElementsByClassName('modal-backdrop')[0];
+      fade.className = '';
+    }
+    if (document.getElementsByClassName('modal-open')[0]) {
+      const modal = document.getElementsByClassName('modal-open')[0];
+      modal.className = modal.className.replace('modal-open', '');
+    }
   }
   render() {
     if (!this.props.role) {

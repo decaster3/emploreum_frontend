@@ -7,10 +7,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { selectUserStatus } from './selectors';
 import Login from '../../components/Login/Loadable';
+import LoginWrapper from '../../components/Login/LoginWrapper/Loadable';
+import ModalWrapper from '../../components/Elements/ModalWrapper/Loadable';
+
 import { login, changeUserStateFromLoggingAferClose } from './actions';
 
 export class UserSession extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -21,23 +23,31 @@ export class UserSession extends React.Component { // eslint-disable-line react/
     this.props.changeUserStateFromLoggingAferClose();
   }
   render() {
+    if (this.props.modal) {
+      return (
+        <ModalWrapper title={'Login'} modalName={'login'} >
+          <Login
+            login={this.props.login}
+            userStatus={this.props.userStatus}
+            modal={this.props.modal}
+          />
+        </ModalWrapper>
+      );
+    }
     return (
-      <div>
-        <Helmet>
-          <title>User</title>
-          <meta name="description" content="Description of User" />
-        </Helmet>
+      <LoginWrapper>
         <Login
           login={this.props.login}
           userStatus={this.props.userStatus}
         />
-      </div>
+      </LoginWrapper>
     );
   }
 }
 
 UserSession.propTypes = {
   login: PropTypes.func,
+  modal: PropTypes.boolean,
   userStatus: PropTypes.string,
   changeUserStateFromLoggingAferClose: PropTypes.func,
 };
