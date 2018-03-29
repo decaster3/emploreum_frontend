@@ -12,10 +12,10 @@ import { selectChoosenSkills, selectPossibleSkills } from './selectors';
 import reducer from './reducer';
 import { clearReducer, addSkill, deleteSkill, getSkills } from './actions';
 
-import Skill from '../../../components/Filters/SkillsFilter/Skills/Skill/Loadable';
-import SkillsWrapper from '../../../components/Filters/SkillsFilter/Skills/SkillWrapper/Loadable';
-import SkillInput from '../../../components/Filters/SkillsFilter/AddSkill/Loadable';
-import SkillFilterWrapper from '../../../components/Filters/SkillsFilter/FilterWrapper/Loadable';
+import Skill from '../../../components/Filters/Tags/Tag';
+import SkillsWrapper from '../../../components/Filters/Tags/TagsWrapper';
+import SkillInput from '../../../components/Filters/FilterAutocomplete';
+import SkillFilterWrapper from '../../../components/Filters/FilterWrapper';
 export class Keywords extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getSkills();
@@ -27,8 +27,8 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
     return this.props.selectedSkills.map((skill) =>
       (<Skill
         key={skill.id}
-        skill={skill}
-        deleteSkill={this.props.deleteSkill}
+        tag={skill}
+        deleteTag={this.props.deleteSkill}
       />)
     );
   }
@@ -37,7 +37,7 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
     const skills = this.renderSkills();
     return (
       <SkillFilterWrapper classes={this.props.classes}>
-        <SkillInput addSkill={this.props.addSkill} skills={this.props.possibleSkills} />
+        <SkillInput placeholder={'Enter skill'} addElement={this.props.addSkill} list={this.props.possibleSkills} />
         <SkillsWrapper>
           { skills }
         </SkillsWrapper>

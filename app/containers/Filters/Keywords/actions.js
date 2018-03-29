@@ -10,8 +10,19 @@ import {
   CLEAR_KEYWORDS,
   SET_KEYWORDS,
 } from './constants';
+import { getEmployees } from '../../EmployeesSearch/actions';
 
 export const clearReducer = () => ({ type: CLEAR_KEYWORDS });
+
+const reRenderEmployees = () => (
+  (dispatch, getState) => {
+    const urlArray = getState().get('route').get('location').get('pathname').slice(1).split('/');
+    const currentSearchUrl = urlArray[urlArray.length - 1];
+    const currentUrl = decodeURIComponent(currentSearchUrl) === '' ? {} : JSON.parse(decodeURIComponent(currentSearchUrl));
+    currentUrl.type = 'employees';
+    dispatch(getEmployees(encodeURIComponent(JSON.stringify(currentUrl))));
+  }
+);
 
 const addKeywordToUrl = (keyword, currentSearchUrl, allUrl) => (
   (dispatch) => {
@@ -73,6 +84,7 @@ export const addKeyword = (keyword) => (
       });
       dispatch(addKeywordToUrl(keyword, currentSearchUrl, urlArray));
     }
+    dispatch(reRenderEmployees());
   }
 );
 
@@ -85,5 +97,6 @@ export const deleteKeyword = (keyword) => (
       payload: keyword,
     });
     dispatch(deleteKeywordFromUrl(keyword, currentSearchUrl, urlArray));
+    dispatch(reRenderEmployees());
   }
 );

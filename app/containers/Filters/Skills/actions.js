@@ -18,9 +18,21 @@ import {
 } from './constants';
 
 import {
-  getLanguagesAPI,
-} from '../../../services/api/Languages';
+  getSkillsSpecificationsFilterAPI,
+} from '../../../services/api/SkillsSpecifications';
+import { getEmployees } from '../../EmployeesSearch/actions';
+
 export const clearReducer = () => ({ type: CLEAR_SKILLS_FILTER_SELECTOR });
+
+const reRenderEmployees = () => (
+  (dispatch, getState) => {
+    const urlArray = getState().get('route').get('location').get('pathname').slice(1).split('/');
+    const currentSearchUrl = urlArray[urlArray.length - 1];
+    const currentUrl = decodeURIComponent(currentSearchUrl) === '' ? {} : JSON.parse(decodeURIComponent(currentSearchUrl));
+    currentUrl.type = 'employees';
+    dispatch(getEmployees(encodeURIComponent(JSON.stringify(currentUrl))));
+  }
+);
 
 const addSkillToUrl = (skill) => (
   (dispatch, getState) => {
@@ -28,11 +40,11 @@ const addSkillToUrl = (skill) => (
     const currentUrl = decodeURIComponent(allUrl[allUrl.length - 1]) === ''
       ? {}
       : JSON.parse(decodeURIComponent(allUrl[allUrl.length - 1]));
-    if (currentUrl.skills) {
-      currentUrl.skills.push(skill);
+    if (currentUrl.profileSkills) {
+      currentUrl.profileSkills.push(skill);
     } else {
-      currentUrl.skills = [];
-      currentUrl.skills.push(skill);
+      currentUrl.profileSkills = [];
+      currentUrl.profileSkills.push(skill);
     }
     const urll = allUrl;
     urll[allUrl.length - 1] = encodeURIComponent(JSON.stringify(currentUrl));
@@ -50,9 +62,9 @@ const deleteSkillFromUrl = (skill) => (
     const currentUrl = decodeURIComponent(allUrl[allUrl.length - 1]) === ''
       ? {}
       : JSON.parse(decodeURIComponent(allUrl[allUrl.length - 1]));
-    if (currentUrl.skills) {
-      const pos = currentUrl.skills.findIndex((el) => el === skill);
-      currentUrl.skills.splice(pos, 1);
+    if (currentUrl.profileSkills) {
+      const pos = currentUrl.profileSkills.findIndex((el) => el === skill);
+      currentUrl.profileSkills.splice(pos, 1);
     }
     allUrl[allUrl.length - 1] = encodeURIComponent(JSON.stringify(currentUrl));
     let currentStringUrl = '';
@@ -67,10 +79,10 @@ const getSkillsFromUrl = () => (
     const urlArray = getState().get('route').get('location').get('pathname').slice(1).split('/');
     const currentSearchUrl = urlArray[urlArray.length - 1];
     const currentUrl = decodeURIComponent(currentSearchUrl) === '' ? {} : JSON.parse(decodeURIComponent(currentSearchUrl));
-    if (currentUrl.skills) {
+    if (currentUrl.profileSkills) {
       dispatch({
         type: SET_SKILLS_FILTERS,
-        payload: currentUrl.skills,
+        payload: currentUrl.profileSkills,
       });
     }
   }
@@ -81,19 +93,28 @@ const getPossibleSkills = () => (
     dispatch({
       type: GET_SKILLS_FILTER,
       payload: {
-        languageListStatus: LOADING,
+        status: LOADING,
         list: [],
       },
     });
-    return getLanguagesAPI((langList) => {
+    return getSkillsSpecificationsFilterAPI((data) => {
       dispatch({
         type: GET_SKILLS_FILTER,
         payload: {
-          languageListStatus: LOADED,
-          list: langList,
+          status: LOADED,
+          list: data,
         },
       });
     }, (err) => {
+      if (err[0].id) {
+        dispatch({
+          type: GET_SKILLS_FILTER,
+          payload: {
+            status: LOADED,
+            list: err,
+          },
+        });
+      }
       console.log(err);
     }, dispatch);
   }
@@ -104,10 +125,11 @@ export const chooseSkill = (skill) => (
     dispatch({
       type: CHOOSE_SKILL_FILTER,
       payload: {
-        choosenLanguageListStatus: CHOOSEN,
+        status: CHOOSEN,
         item: skill,
       },
     });
+    dispatch(reRenderEmployees());
   }
 );
 export const deleteSkillFromPossible = (skill) => (
@@ -135,6 +157,7 @@ export const deleteSkill = (skill) => (
     });
     dispatch(addSkillToPossible(skill));
     dispatch(deleteSkillFromUrl(skill));
+    dispatch(reRenderEmployees());
   }
 );
 

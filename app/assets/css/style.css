@@ -8,9 +8,14 @@
     width: 16px !important;
     height: 16px !important;
 }
-.margin-top-15 {
+.input-tag-container {
     margin-top: 10px;
     clear: both;
+}
+.input-tag-container .label {
+    white-space: normal;
+    margin-bottom: 5px;
+    display: inline-block;
 }
 
 textarea {

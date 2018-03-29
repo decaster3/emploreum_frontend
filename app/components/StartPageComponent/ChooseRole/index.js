@@ -17,14 +17,14 @@ function ChooseRole() {
         <div className="col-xs-12 col-md-8 col-md-offset-2">
           <div className="col-sm-6 find-item">
             <h1>Employee</h1>
-            <Link to="/vacancy/search">
+            <Link to="/vacancy/search/">
               <button className="btn btn-primary">Find job</button>
             </Link>
             <div className="border"></div>
           </div>
           <div className="col-sm-6 find-item">
             <h1>Company</h1>
-            <Link to="/employee/search">
+            <Link to="/employee/search/">
               <button className="btn btn-primary">Find employee</button>
             </Link>
           </div>

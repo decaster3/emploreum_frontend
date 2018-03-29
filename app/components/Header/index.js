@@ -8,7 +8,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Search from './Search/Loadable';
 import Navigation from './Navigation/Loadable';
 import Language from './Language/Loadable';
 
@@ -23,7 +22,6 @@ export const Header = (props) => {
         <div className="navbar-btn hidden-xs">
           <button type="button" className="btn-toggle-fullwidth"><i className="lnr lnr-arrow-left-circle"></i></button>
         </div>
-        <Search />
         <div id="navbar-menu">
           <ul className="nav navbar-nav navbar-right">
             {children}

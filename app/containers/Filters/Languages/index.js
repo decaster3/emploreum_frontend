@@ -12,10 +12,10 @@ import { selectChoosenLanguages, selectPossibleLanguages } from './selectors';
 import reducer from './reducer';
 import { clearReducer, addLanguage, deleteLanguage, getLanguages } from './actions';
 
-import Language from '../../../components/Filters/LanguageFilter/Languages/Language/Loadable';
-import LanguagesWrapper from '../../../components/Filters/LanguageFilter/Languages/LanguageWrapper/Loadable';
-import LanguageInput from '../../../components/Filters/LanguageFilter/AddLanguage/Loadable';
-import LanguagesFilterWrapper from '../../../components/Filters/LanguageFilter/FilterWrapper/Loadable';
+import Language from '../../../components/Filters/Tags/Tag';
+import LanguagesWrapper from '../../../components/Filters/Tags/TagsWrapper';
+import LanguageInput from '../../../components/Filters/FilterAutocomplete';
+import LanguagesFilterWrapper from '../../../components/Filters/FilterWrapper';
 
 export class Keywords extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -28,8 +28,8 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
     return this.props.selectedLanguages.map((language) =>
       (<Language
         key={language.id}
-        language={language}
-        deleteLanguage={this.props.deleteLanguage}
+        tag={language}
+        deleteTag={this.props.deleteLanguage}
       />)
     );
   }
@@ -38,7 +38,7 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
     const languages = this.renderLanguages();
     return (
       <LanguagesFilterWrapper classes={this.props.classes}>
-        <LanguageInput addLanguage={this.props.addLanguage} languages={this.props.possibleLanguages} />
+        <LanguageInput placeholder={'Enter language'} addElement={this.props.addLanguage} list={this.props.possibleLanguages} />
         <LanguagesWrapper>
           { languages }
         </LanguagesWrapper>

@@ -12,10 +12,10 @@ import { selectKeywords } from './selectors';
 import reducer from './reducer';
 import { clearReducer, addKeyword, deleteKeyword, getKeywordsFromUrl } from './actions';
 
-import Keyword from '../../../components/Filters/KeywordFilter/Keywords/Keyword/Loadable';
-import KeywordsWrapper from '../../../components/Filters/KeywordFilter/Keywords/KeywordsWrapper/Loadable';
-import KeywordInput from '../../../components/Filters/KeywordFilter/AddKeyword/Loadable';
-import KeywordsFilterWrapper from '../../../components/Filters/KeywordFilter/FilterWrapper/Loadable';
+import Keyword from '../../../components/Filters/Tags/Tag';
+import KeywordsWrapper from '../../../components/Filters/Tags/TagsWrapper';
+import KeywordInput from '../../../components/Filters/KeywordFilter/AddKeyword';
+import KeywordsFilterWrapper from '../../../components/Filters/FilterWrapper';
 
 export class Keywords extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -28,8 +28,8 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
     return this.props.selectedKeywords.map((keyword) =>
       (<Keyword
         key={keyword}
-        keyword={keyword}
-        deleteKeyword={this.props.deleteKeyword}
+        tag={keyword}
+        deleteTag={this.props.deleteKeyword}
       />)
     );
   }

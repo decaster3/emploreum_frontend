@@ -29,7 +29,6 @@ export class UserSession extends React.Component { // eslint-disable-line react/
           <Login
             login={this.props.login}
             userStatus={this.props.userStatus}
-            modal={this.props.modal}
           />
         </ModalWrapper>
       );

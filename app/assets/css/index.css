@@ -8,7 +8,6 @@
   width: 100%;
   height: 100%;
   max-height: 600px;
-  margin-top: 90px;
   color: #fff;
   text-align: center;
   background-image: url('../img/indexbackground.jpg');
@@ -22,6 +21,7 @@ body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
 }
 .landing-emploreum .main-content {
   padding: 0 !important;
+  margin-top: 90px;
 }
 
 .landing-emploreum .dark-background {

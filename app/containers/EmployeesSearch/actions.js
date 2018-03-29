@@ -12,15 +12,18 @@ import {
   ERROR,
 } from './constants';
 
-import { getAllEmployeesAPI } from './../../services/api/EmployeesSearch';
+import { getSearchEmployeesAPI } from './../../services/api/EmployeesSearch';
 
 export const setEmployeeLoadingState = (status) => ({ type: CHANGE_LOADING_STATE, status });
 export const setEmployees = (employees) => ({ type: SET_EMPLOYEES, employees });
 
-export const getEmployees = () => (
+
+export const getEmployees = (filterUrl) => (
   (dispatch) => {
+    console.log(filterUrl);
+    const defaultFilter = decodeURIComponent(JSON.stringify({ type: 'employees' }));
     dispatch(setEmployeeLoadingState(LOADING));
-    return getAllEmployeesAPI((data) => {
+    return getSearchEmployeesAPI(filterUrl || defaultFilter, (data) => {
       dispatch(setEmployees(data));
       dispatch(setEmployeeLoadingState(LOADED));
     }, (err) => {

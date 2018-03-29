@@ -33,25 +33,27 @@ class KeywordInput extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-xs-8 no-padding">
-          <input
-            className="form-control"
-            onChange={this.handleChange}
-            name="keyword"
-            value={this.state.keyword}
-            placeholder="Enter keyword"
-          />
-        </div>
-        <div className="col-xs-4 no-padding">
-          <button
-            className="btn btn-primary col-xs-12"
-            onClick={() => {
-              this.props.addKeyword(this.state.keyword);
-              this.clearInput();
-            }}
-          >
-            Add
-          </button>
+        <div className="col-xs-12">
+          <div className="col-xs-8 no-padding">
+            <input
+              className="form-control"
+              onChange={this.handleChange}
+              name="keyword"
+              value={this.state.keyword}
+              placeholder="Enter keyword"
+            />
+          </div>
+          <div className="col-xs-4 no-padding">
+            <button
+              className="btn btn-primary col-xs-12"
+              onClick={() => {
+                this.props.addKeyword(this.state.keyword);
+                this.clearInput();
+              }}
+            >
+              Add
+            </button>
+          </div>
         </div>
       </div>
     );

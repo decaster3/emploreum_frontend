@@ -22,7 +22,7 @@ function renderMenu() {
     icon: 'fa-user',
   }, {
     name: 'Employees',
-    url: '/company/employee/search',
+    url: '/company/employee/search/',
     icon: 'fa-address-book',
   }, {
     name: 'Finance',

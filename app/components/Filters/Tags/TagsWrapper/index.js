@@ -1,26 +1,26 @@
 /**
 *
-* KeywordsWrapper
+* TagsWrapper
 *
 */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const KeywordsWrapper = (props) => {
+export const TagsWrapper = (props) => {
   const { children } = props;
   return (
-    <div className="margin-top-15">
+    <div className="input-tag-container">
       {children}
     </div>
   );
 };
 
-KeywordsWrapper.propTypes = {
+TagsWrapper.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
 };
 
-export default KeywordsWrapper;
+export default TagsWrapper;

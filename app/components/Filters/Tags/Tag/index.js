@@ -11,7 +11,7 @@ export const Tag = (props) => {
   const { deleteTag, tag } = props;
   return (
     <div className="label label-primary em-tag">
-      { tag }
+      { typeof tag === 'object' ? tag.name : tag }
       <button
         onClick={() => deleteTag(tag)}
       >
@@ -23,7 +23,10 @@ export const Tag = (props) => {
 
 Tag.propTypes = {
   deleteTag: PropTypes.func,
-  tag: PropTypes.string,
+  tag: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
 };
 
 export default Tag;

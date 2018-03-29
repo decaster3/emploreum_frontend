@@ -10,9 +10,12 @@ const AxiosService = {
   post,
   postFile,
 };
-
 function get(url, successCallBack, errorCallBack, dispatch) {
-  return axios.get(url, { withCredentials: true })
+  return axios.get(
+    url,
+    { withCredentials: true,
+    },
+  )
   .then((response) =>
     new Promise((resolve) => resolve(successCallBack(response.data)))
   ).catch((err) => {
