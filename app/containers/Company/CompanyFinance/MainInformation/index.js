@@ -19,8 +19,8 @@ import {
 import reducer from './reducer';
 
 import { getAllHeader } from './actions';
-import CompanyInfo from '../../../../components/FinanceHeader/CompanyInfo/Loadable';
-import FinanceHeader from '../../../../components/FinanceHeader/FinanceHeader/Loadable';
+import CompanyInfo from '../../../../components/FinanceHeader/CompanyInfo';
+import FinanceHeader from '../../../../components/FinanceHeader/FinanceHeader';
 
 
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function

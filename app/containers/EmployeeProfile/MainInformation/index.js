@@ -19,9 +19,9 @@ import {
 import { getProfileMainInfo } from './actions';
 
 import reducer from './reducer';
-import DetailProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Detail/Loadable';
-import MainProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Main/Loadable';
-import SocialProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Social/Loadable';
+import DetailProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Detail';
+import MainProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Main';
+import SocialProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Social';
 
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

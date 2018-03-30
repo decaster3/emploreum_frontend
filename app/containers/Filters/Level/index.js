@@ -12,8 +12,8 @@ import { selectLevel } from './selectors';
 import reducer from './reducer';
 import { clearReducer, changeLevel, getLevelFromUrl } from './actions';
 
-import LevelSelector from '../../../components/Filters/LevelFilter/LevelSelector/Loadable';
-import LevelWrapper from '../../../components/Filters/FilterWrapper/Loadable';
+import LevelSelector from '../../../components/Filters/LevelFilter/LevelSelector';
+import LevelWrapper from '../../../components/Filters/FilterWrapper';
 
 export class Keywords extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

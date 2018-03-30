@@ -23,7 +23,7 @@ const notify = () => toast('You succesfully invited employee to your vacancy!', 
 export const inviteEmployee = (vacancyId, employeeId) => (
   (dispatch) => {
     iviteEmployeeToVacancyAPI({ vacancyId, employeeId }, () => {
-      dispatch(push('/company/employee/search'));
+      dispatch(push('/company/employee/search/'));
       notify();
     }, (err) => {
       console.log(err);
@@ -31,10 +31,11 @@ export const inviteEmployee = (vacancyId, employeeId) => (
   }
 );
 
-export const getOpenVacancies = () => (
+export const getOpenVacancies = (companyId) => (
   (dispatch) => {
-    dispatch(loadingOpenVacancies());
-    return getOpenVacanciesAPI((data) => {
+    // dispatch(loadingOpenVacancies());
+    console.log(companyId);
+    return getOpenVacanciesAPI(companyId, (data) => {
       const newData = data.map((el) => {
         let position = '';
         el.profiles.forEach((prof) => {

@@ -20,7 +20,7 @@ export const changeBalance = (balance) => ({ type: CHANGE_BALANCE, balance });
 
 export const getHeaderInfo = () => (
   (dispatch) => {
-    dispatch(headerLoading());
+    // dispatch(headerLoading());
     return getCompanyAddressAPI((data) => {
       dispatch({
         type: SET_HEADER,

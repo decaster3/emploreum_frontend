@@ -19,7 +19,7 @@ export const loadedEmployees = () => ({ type: CHANGE_STATE_EMPLOYEES, payload: L
 
 export const getEmployees = () => (
   (dispatch) => {
-    dispatch(loadingEmployees());
+    // dispatch(loadingEmployees());
     getCompanyWorkersAPI((data) => {
       dispatch({
         type: GET_EMPLOYEES,

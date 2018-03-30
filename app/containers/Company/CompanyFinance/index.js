@@ -1,9 +1,9 @@
 /* eslint no-script-url: 0 */
 import React from 'react';
-import CompanyFinanceHeader from './MainInformation/Loadable';
-import WorkingEmployees from './CompanyEmployees/Loadable';
-import RecentPayments from './Payments/Loadable';
-import OpenVacancies from './OpenVacancies/Loadable';
+import CompanyFinanceHeader from './MainInformation';
+import WorkingEmployees from './CompanyEmployees';
+import RecentPayments from './Payments';
+import OpenVacancies from './OpenVacancies';
 
 export const CompanyFinanceCreator = () => (
   <div className="container-fluid">

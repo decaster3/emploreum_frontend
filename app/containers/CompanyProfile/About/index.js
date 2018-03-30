@@ -18,7 +18,7 @@ import {
 import { getAboutCompanyInfo } from './actions';
 
 import reducer from './reducer';
-import About from '../../../components/Company/CompanyProfile/About/Loadable';
+import About from '../../../components/Company/CompanyProfile/About';
 
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

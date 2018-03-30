@@ -18,9 +18,9 @@ import {
 } from './selectors';
 import reducer from './reducer';
 
-import PaymentsWrapper from '../../../../components/Company/CompanyFinanceComponents/Payments/RecentPaumentsWrapper/Loadable';
-import Payment from '../../../../components/Company/CompanyFinanceComponents/Payments/RecentPayment/Loadable';
-import NoPayments from '../../../../components/Company/CompanyFinanceComponents/NoPayments/Loadable';
+import PaymentsWrapper from '../../../../components/Company/CompanyFinanceComponents/Payments/RecentPaumentsWrapper';
+import Payment from '../../../../components/Company/CompanyFinanceComponents/Payments/RecentPayment';
+import NoPayments from '../../../../components/Company/CompanyFinanceComponents/NoPayments';
 
 
 import { getPayments } from './actions';

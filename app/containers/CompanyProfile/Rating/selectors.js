@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the mainInformation state domain
  */
-const selectEmployeeRating = (state) => state.get('employeeProfileRating').get('rating');
+const selectCompanyRating = (state) => state.get('companyProfileRating').get('rating');
 
 /**
  * Other specific selectors
@@ -15,11 +15,11 @@ const selectEmployeeRating = (state) => state.get('employeeProfileRating').get('
  */
 
 export const selectRatingStatus = createSelector(
-  selectEmployeeRating,
+  selectCompanyRating,
   (ratingStatus) => ratingStatus.get('status')
 );
 
 export const selectRatingValue = createSelector(
-  selectEmployeeRating,
+  selectCompanyRating,
   (ratingValue) => ratingValue.get('value')
 );

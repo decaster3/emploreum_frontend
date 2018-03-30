@@ -15,13 +15,13 @@ import {
   selectRatingValue,
 } from './selectors';
 
-import { getEmployeeRating } from './actions';
+import { getCompanyRating } from './actions';
 
 import reducer from './reducer';
 
 export class Rating extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getEmployeeRating(this.props.employeeId);
+    this.props.getCompanyRating(this.props.companyId);
   }
   render() {
     return (
@@ -36,10 +36,10 @@ export class Rating extends React.Component { // eslint-disable-line react/prefe
 }
 
 Rating.propTypes = {
-  getEmployeeRating: PropTypes.func,
+  getCompanyRating: PropTypes.func,
   ratingStatus: PropTypes.string,
   rating: PropTypes.string,
-  employeeId: PropTypes.string,
+  companyId: PropTypes.string,
 };
 
 function mapStateToProps(state) {
@@ -51,13 +51,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getEmployeeRating: (evt) => dispatch(getEmployeeRating(evt)),
+    getCompanyRating: (evt) => dispatch(getCompanyRating(evt)),
   };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'employeeProfileRating', reducer });
+const withReducer = injectReducer({ key: 'companyProfileRating', reducer });
 
 export default compose(
   withReducer,

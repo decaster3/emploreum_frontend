@@ -14,8 +14,8 @@ import reducer from './reducer';
 import { getSpecificationsSkills } from './actions';
 import { selectSpecificationsSkillsStatus, selectSpecificationsSkills } from './selectors';
 
-import Skill from './../../../components/Employee/EmployeeProfileComponents/Skills/Skill/Loadable';
-import SkillWrapper from './../../../components/Employee/EmployeeProfileComponents/Skills/SkillsWrapper/Loadable';
+import Skill from './../../../components/Employee/EmployeeProfileComponents/Skills/Skill';
+import SkillWrapper from './../../../components/Employee/EmployeeProfileComponents/Skills/SkillsWrapper';
 
 import { BASEURL } from './../../../global-constants';
 

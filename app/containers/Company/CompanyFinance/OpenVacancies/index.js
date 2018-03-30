@@ -19,10 +19,10 @@ import {
 } from './selectors';
 import reducer from './reducer';
 
-import OpenVacancy from '../../../../components/Company/CompanyFinanceComponents/Vacancies/Vacancy/Loadable';
-import OpenVacanciesWrapper from '../../../../components/Company/CompanyFinanceComponents/Vacancies/VacanciesWrapper/Loadable';
-import NoOpenVacancies from '../../../../components/Company/CompanyFinanceComponents/NoOpenVacancies/Loadable';
-import VacancyCreationButton from '../../../../components/Company/CompanyFinanceComponents/VacancyCreationButton/Loadable';
+import OpenVacancy from '../../../../components/Company/CompanyFinanceComponents/Vacancies/Vacancy';
+import OpenVacanciesWrapper from '../../../../components/Company/CompanyFinanceComponents/Vacancies/VacanciesWrapper';
+import NoOpenVacancies from '../../../../components/Company/CompanyFinanceComponents/NoOpenVacancies';
+import VacancyCreationButton from '../../../../components/Company/CompanyFinanceComponents/VacancyCreationButton';
 
 import { getOpenVacancies } from './actions';
 

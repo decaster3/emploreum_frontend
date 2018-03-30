@@ -7,10 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MainInfromation from '../../MainInformation/Loadable';
-import Skills from '../../Skills/Loadable';
-import Login from '../../../UserSession/Loadable';
-import Rating from '../../Rating/Loadable';
+import MainInfromation from '../../MainInformation';
+import Skills from '../../Skills';
+import Login from '../../../UserSession';
+// import Rating from '../../Rating/Loadable';
 // import '../../../../assets/css/index.css';
 export const AnonymousView = (props) => {
   const { match } = props;
@@ -34,7 +34,6 @@ export const AnonymousView = (props) => {
           </div>
         </div>
         <div className="profile-right">
-          <Rating employeeId={match.params.id} />
           <Skills
             employeeId={match.params.id}
           />

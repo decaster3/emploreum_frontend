@@ -19,7 +19,7 @@ export const loadedOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, p
 
 export const getOpenVacancies = (companyId) => (
   (dispatch) => {
-    dispatch(loadingOpenVacancies());
+    // dispatch(loadingOpenVacancies());
     return getOpenVacanciesAPI(companyId, (data) => {
       dispatch({
         type: GET_OPEN_VACANCIES,

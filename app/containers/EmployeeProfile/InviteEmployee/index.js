@@ -11,15 +11,15 @@ import { compose } from 'redux';
 import { PulseLoader } from 'react-spinners';
 
 import injectReducer from 'utils/injectReducer';
-import { selectOpenVacanciesStatus, selectOpenVacanciesItems } from './selectors';
+import { selectOpenVacanciesStatus, selectOpenVacanciesItems, selectCompanyId } from './selectors';
 import { getOpenVacancies, inviteEmployee } from './actions';
 import reducer from './reducer';
-import OpenVacancy from '../../../components/Employee/EmployeeProfileComponents/InviteEmployee/OpenVacancy/Loadable';
-import ModalWrapper from '../../../components/Elements/ModalWrapper/Loadable';
+import OpenVacancy from '../../../components/Employee/EmployeeProfileComponents/InviteEmployee/OpenVacancy';
+import ModalWrapper from '../../../components/Elements/ModalWrapper';
 
 export class InviteEmployee extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getOpenVacancies();
+    this.props.getOpenVacancies(this.props.companyId);
   }
   renderVacancies() {
     if (this.props.openVacanciesStatus === 'LOADING') {
@@ -51,17 +51,19 @@ InviteEmployee.propTypes = {
   openVacanciesItems: PropTypes.array,
   openVacanciesStatus: PropTypes.string,
   employeeId: PropTypes.string,
+  companyId: PropTypes.string,
 };
 function mapStateToProps(state) {
   return {
     openVacanciesItems: selectOpenVacanciesItems(state),
     openVacanciesStatus: selectOpenVacanciesStatus(state),
+    companyId: selectCompanyId(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getOpenVacancies: () => dispatch(getOpenVacancies()),
+    getOpenVacancies: (evt) => dispatch(getOpenVacancies(evt)),
     inviteEmployee: (evt, ev) => dispatch(inviteEmployee(evt, ev)),
   };
 }

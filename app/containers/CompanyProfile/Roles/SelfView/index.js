@@ -9,9 +9,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import MainInfromation from '../../MainInformation/Loadable';
-import About from '../../About/Loadable';
-import CompanyOpenVacancies from '../../OpenVacancies/Loadable';
+import MainInfromation from '../../MainInformation';
+import About from '../../About';
+import CompanyOpenVacancies from '../../OpenVacancies';
+import Rating from '../../Rating';
 
 import { selectMyId } from './selectors';
 
@@ -38,6 +39,7 @@ export class SelfView extends React.Component { // eslint-disable-line react/pre
             <MainInfromation companyProfileId={this.props.companyProfileId} />
           </div>
           <div className="profile-right">
+            <Rating companyId={this.props.companyProfileId} />
             <About companyProfileId={this.props.companyProfileId} />
             <CompanyOpenVacancies companyProfileId={this.props.companyProfileId} />
           </div>

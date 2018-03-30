@@ -18,9 +18,9 @@ import {
 } from './selectors';
 import reducer from './reducer';
 
-import OpenVacancy from './../../../components/Company/CompanyProfile/Vacancies/Vacancy/Loadable';
-import OpenVacanciesWrapper from './../../../components/Company/CompanyProfile/Vacancies/VacanciesWrapper/Loadable';
-import NoOpenVacancies from './../../../components/Company/CompanyProfile/Vacancies/NoOpenVacancies/Loadable';
+import OpenVacancy from './../../../components/Company/CompanyProfile/Vacancies/Vacancy';
+import OpenVacanciesWrapper from './../../../components/Company/CompanyProfile/Vacancies/VacanciesWrapper';
+import NoOpenVacancies from './../../../components/Company/CompanyProfile/Vacancies/NoOpenVacancies';
 
 import { getOpenVacancies } from './actions';
 

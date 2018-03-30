@@ -18,7 +18,7 @@ export const loadedPayments = () => ({ type: CHANGE_STATE_PAYMENTS, payload: LOA
 
 export const getPayments = () => (
   (dispatch) => {
-    dispatch(loadingPayments());
+    // dispatch(loadingPayments());
     getCompanyTrasactionsAPI((data) => {
       const newData = data.map((el) => ({
         address: el.transactionHash,

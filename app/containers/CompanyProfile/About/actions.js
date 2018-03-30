@@ -19,7 +19,7 @@ export const loadedProfileMainInfo = () => ({ type: CHANGE_STATE_ABOUT_COMPANY_I
 
 export const getAboutCompanyInfo = (employeeId) => (
   (dispatch) => {
-    dispatch(loadingProfileMainInfo());
+    // dispatch(loadingProfileMainInfo());
     return getCompanyProfileMainInfoAPI(employeeId, (data) => {
       dispatch({
         type: GET_ABOUT_COMPANY_INFO,

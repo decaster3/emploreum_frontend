@@ -21,9 +21,9 @@ import reducer from './reducer';
 
 import { getVacancies } from './actions';
 
-import Vacancy from './../../components/Employee/EmployeeVacanciesSearchComponent/Vacancies/Vacancy/Loadable';
-import VacancyWrapper from './../../components/Employee/EmployeeVacanciesSearchComponent/Vacancies/VacanciesWrapper/Loadable';
-
+import Vacancy from './../../components/Employee/EmployeeVacanciesSearchComponent/Vacancies/Vacancy/';
+import VacancyWrapper from './../../components/Employee/EmployeeVacanciesSearchComponent/Vacancies/VacanciesWrapper/';
+import VacanciesFilterSelector from './../../components/Employee/EmployeeVacanciesSearchComponent/VacanciesFilterSelector/';
 export class VacanciesSearch extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getVacancies();
@@ -49,15 +49,10 @@ export class VacanciesSearch extends React.Component { // eslint-disable-line re
   render() {
     const vacancies = this.renderVacancies();
     return (
-      <div>
-        <Helmet>
-          <title>VacanciesSearch</title>
-          <meta name="description" content="Description of VacanciesSearch" />
-        </Helmet>
-        <VacancyWrapper>
-          { vacancies }
-        </VacancyWrapper>
-      </div>
+      <VacancyWrapper>
+        <VacanciesFilterSelector />
+        { vacancies }
+      </VacancyWrapper>
     );
   }
 }

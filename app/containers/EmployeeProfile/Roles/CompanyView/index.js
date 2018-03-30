@@ -7,10 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MainInfromation from '../../MainInformation/Loadable';
-import Skills from '../../Skills/Loadable';
-import InviteEmployee from '../../InviteEmployee/Loadable';
-import Rating from '../../Rating/Loadable';
+import MainInfromation from '../../MainInformation';
+import Skills from '../../Skills';
+import InviteEmployee from '../../InviteEmployee';
+// import Rating from '../../Rating/Loadable';
 
 export const CompanyView = (props) => {
   const { match } = props;
@@ -36,7 +36,6 @@ export const CompanyView = (props) => {
           </div>
         </div>
         <div className="profile-right">
-          <Rating employeeId={match.params.id} />
           <Skills
             employeeId={match.params.id}
           />

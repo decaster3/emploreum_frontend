@@ -19,7 +19,7 @@ export const loadedSpecificationsSkills = () => ({ type: CHANGE_STATE_SPECIFICAT
 
 export const getSpecificationsSkills = (employeeId) => (
   (dispatch) => {
-    dispatch(loadingSpecificationsSkills());
+    // dispatch(loadingSpecificationsSkills());
     return getEmployeeSpecificationsSkillsAPI(employeeId, (data) => {
       dispatch({
         type: GET_SPECIFICATIONS_SKILLS_EMPLOYEE,

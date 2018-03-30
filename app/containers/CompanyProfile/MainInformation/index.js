@@ -20,8 +20,8 @@ import { getProfileMainInfo } from './actions';
 
 import reducer from './reducer';
 import DetailProfile from '../../../components/Company/CompanyProfile/MainInformation/Detail';
-import MainProfile from '../../../components/Company/CompanyProfile/MainInformation/Main/Loadable';
-import SocialProfile from '../../../components/Company/CompanyProfile/MainInformation/Social/Loadable';
+import MainProfile from '../../../components/Company/CompanyProfile/MainInformation/Main';
+import SocialProfile from '../../../components/Company/CompanyProfile/MainInformation/Social';
 
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

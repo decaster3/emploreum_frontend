@@ -18,9 +18,9 @@ import {
 } from './selectors';
 import reducer from './reducer';
 
-import WorkingEmployee from '../../../../components/Company/CompanyFinanceComponents/Employees/WorkingEmployee/Loadable';
-import WorkingEmployeesWrapper from '../../../../components/Company/CompanyFinanceComponents/Employees/WorkingEmployeesWrapper/Loadable';
-import NoEmployees from '../../../../components/Company/CompanyFinanceComponents/NoEmployees/Loadable';
+import WorkingEmployee from '../../../../components/Company/CompanyFinanceComponents/Employees/WorkingEmployee';
+import WorkingEmployeesWrapper from '../../../../components/Company/CompanyFinanceComponents/Employees/WorkingEmployeesWrapper';
+import NoEmployees from '../../../../components/Company/CompanyFinanceComponents/NoEmployees';
 
 import { getEmployees } from './actions';
 
