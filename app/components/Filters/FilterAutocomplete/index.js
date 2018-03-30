@@ -52,6 +52,7 @@ class FilterAutocomplete extends React.Component {
               if (el.name === value) {
                 this.props.addElement(el);
                 this.clearInput();
+                this.props.reload();
               }
             });
           }}
@@ -62,6 +63,7 @@ class FilterAutocomplete extends React.Component {
 }
 
 FilterAutocomplete.propTypes = {
+  reload: PropTypes.func,
   addElement: PropTypes.func,
   list: PropTypes.array,
   placeholder: PropTypes.string,

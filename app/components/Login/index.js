@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
 
 import { renderField } from '../../forms/fields/FormRegisterField';
@@ -9,9 +9,6 @@ import { emailValidation } from '../../forms/validation/EmailValidation';
 import { required } from '../../forms/validation/RequiredValidation';
 import { LOGGING_IN } from '../../containers/UserSession/constants';
 
-const redirect = () => (
-  <Redirect to="/registration" />
-);
 
 const FormLogin = (props) => {
   const { error, handleSubmit, login, userStatus } = props;

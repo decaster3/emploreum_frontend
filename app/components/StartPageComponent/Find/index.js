@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import { BASEURL } from '../../../../global-constants';
 
-function Find(props) {
+function Find() {
   return (
     <div className="col-xs-12" id="search">
       <div className="dark-background" />

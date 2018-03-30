@@ -29,6 +29,7 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
       (<Keyword
         key={keyword}
         tag={keyword}
+        reload={() => this.props.dispatch(this.props.reload())}
         deleteTag={this.props.deleteKeyword}
       />)
     );
@@ -38,7 +39,7 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
     const keywords = this.renderKeywords();
     return (
       <KeywordsFilterWrapper classes={this.props.classes}>
-        <KeywordInput addKeyword={this.props.addKeyword} />
+        <KeywordInput reload={() => this.props.dispatch(this.props.reload())} addKeyword={this.props.addKeyword} />
         <KeywordsWrapper>
           { keywords }
         </KeywordsWrapper>
@@ -48,6 +49,8 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
 }
 
 Keywords.propTypes = {
+  dispatch: PropTypes.func,
+  reload: PropTypes.func,
   clearReducer: PropTypes.func,
   getKeywordsFromUrl: PropTypes.func,
   deleteKeyword: PropTypes.func,
@@ -64,6 +67,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch,
     clearReducer: () => dispatch(clearReducer()),
     getKeywordsFromUrl: () => dispatch(getKeywordsFromUrl()),
     addKeyword: (evt) => dispatch(addKeyword(evt)),

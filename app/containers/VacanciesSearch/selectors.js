@@ -5,6 +5,8 @@ import { createSelector } from 'reselect';
  */
 // const selectVacanciesSearchDomain = (state) => state.get('vacanciesSearch');
 const selectVacancies = (state) => state.get('vacanciesSearch').get('vacancies');
+export const selectUserState = (state) => state.get('userSession').get('userAuth').get('userState');
+export const selectUserRole = (state) => state.get('userSession').get('userAuth').get('userInformation').get('role') || undefined;
 
 /**
  * Other specific selectors

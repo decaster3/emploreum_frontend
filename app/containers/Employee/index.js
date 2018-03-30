@@ -18,7 +18,7 @@ function renderMenu() {
     icon: 'fa-user',
   }, {
     name: 'Vacancies',
-    url: '/employee/vacancies',
+    url: '/employee/vacancies/',
     icon: 'fa-address-book',
   }, {
     name: 'Finance',
@@ -31,13 +31,14 @@ function renderMenu() {
   }];
 }
 
+
 export const EmployeeMain = () => (
   <AccountWrapperContainer menu={renderMenu()}>
     <ToastContainer />
     <Switch>
       <Route exact path="/employee" component={EmployeeProfile} />
-      <Route path="/employee/finance" component={EmployeeFinance} />
-      <Route path="/employee/vacancies" component={EmployeeVacancies} />
+      <Route path="/employee/finance" component={EmployeeFinance}/>
+      <Route path="/employee/vacancies/" component={EmployeeVacancies} />
       <Route exact path="/employee/vacancy/:id" component={Vacancy} />
       <Route path="/employee/vacancy/:id/test/:question?/" component={TestVacancyEmployeeMain} />
       <Route path="/employee/vacancy/:id/preview/test" component={StartTest} />

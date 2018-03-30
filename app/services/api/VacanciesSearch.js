@@ -5,6 +5,11 @@ export const getEmployeeRecomendedVacanciesAPI = (successCallBack, errorCallBack
   AxiosService.get(`${BASEURL}/employee/vacancy/recommended`, successCallBack, errorCallBack, dispatch);
 };
 
+export const getSearchVacanciesAPI = (filters, successCallBack, errorCallBack, dispatch) => {
+  AxiosService.get(`${BASEURL}/user/search?filters=${filters}`, successCallBack, errorCallBack, dispatch);
+};
+
+
 export const startTestAPI = (vacancyId, successCallBack, errorCallBack, dispatch) => {
   AxiosService.get(`${BASEURL}/test/${vacancyId}/start`, successCallBack, errorCallBack, dispatch);
 };

@@ -29,6 +29,7 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
       (<Language
         key={language.id}
         tag={language}
+        reload={() => this.props.dispatch(this.props.reload())}
         deleteTag={this.props.deleteLanguage}
       />)
     );
@@ -38,7 +39,7 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
     const languages = this.renderLanguages();
     return (
       <LanguagesFilterWrapper classes={this.props.classes}>
-        <LanguageInput placeholder={'Enter language'} addElement={this.props.addLanguage} list={this.props.possibleLanguages} />
+        <LanguageInput reload={() => this.props.dispatch(this.props.reload())} placeholder={'Enter language'} addElement={this.props.addLanguage} list={this.props.possibleLanguages} />
         <LanguagesWrapper>
           { languages }
         </LanguagesWrapper>
@@ -48,6 +49,8 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
 }
 
 Keywords.propTypes = {
+  reload: PropTypes.func,
+  dispatch: PropTypes.func,
   getLanguages: PropTypes.func,
   clearReducer: PropTypes.func,
   deleteLanguage: PropTypes.func,
@@ -66,6 +69,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch,
     clearReducer: () => dispatch(clearReducer()),
     getLanguages: () => dispatch(getLanguages()),
     addLanguage: (evt) => dispatch(addLanguage(evt)),

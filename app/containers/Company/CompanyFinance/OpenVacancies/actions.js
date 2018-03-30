@@ -18,9 +18,8 @@ export const loadingOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, 
 export const loadedOpenVacancies = () => ({ type: CHANGE_STATE_OPEN_VACANCIES, payload: LOADED });
 
 export const getOpenVacancies = (companyId) => (
-  (dispatch) => {
-    // dispatch(loadingOpenVacancies());
-    return getOpenVacanciesAPI(companyId, (data) => {
+  (dispatch) =>
+    getOpenVacanciesAPI(companyId, (data) => {
       dispatch({
         type: GET_OPEN_VACANCIES,
         payload: data,
@@ -28,7 +27,6 @@ export const getOpenVacancies = (companyId) => (
       dispatch(loadedOpenVacancies());
     }, (err) => {
       console.log(err);
-    }, dispatch);
-  }
+    }, dispatch)
 );
 

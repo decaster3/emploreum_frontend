@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { PulseLoader } from 'react-spinners';
 
@@ -15,6 +14,8 @@ import injectReducer from 'utils/injectReducer';
 import {
   selectVacanciesStatus,
   selectVacanciesItems,
+  selectUserState,
+  selectUserRole,
  } from './selectors';
 
 import reducer from './reducer';
@@ -42,6 +43,8 @@ export class VacanciesSearch extends React.Component { // eslint-disable-line re
         acceptableCurrencies={['eth']}
         info={vacancy.info}
         duration={vacancy.duration}
+        userState={this.props.userState}
+        userRole={this.props.userRole}
       />)
     );
   }
@@ -58,6 +61,8 @@ export class VacanciesSearch extends React.Component { // eslint-disable-line re
 }
 
 VacanciesSearch.propTypes = {
+  userRole: PropTypes.string,
+  userState: PropTypes.string,
   getVacancies: PropTypes.func,
   vacanciesStatus: PropTypes.string,
   vacanciesItems: PropTypes.array,
@@ -67,6 +72,8 @@ function mapStateToProps(state) {
   return {
     vacanciesStatus: selectVacanciesStatus(state),
     vacanciesItems: selectVacanciesItems(state),
+    userState: selectUserState(state),
+    userRole: selectUserRole(state),
   };
 }
 

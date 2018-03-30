@@ -49,6 +49,7 @@ class KeywordInput extends React.Component {
               onClick={() => {
                 this.props.addKeyword(this.state.keyword);
                 this.clearInput();
+                this.props.reload();
               }}
             >
               Add
@@ -61,6 +62,7 @@ class KeywordInput extends React.Component {
 }
 
 KeywordInput.propTypes = {
+  reload: PropTypes.func,
   addKeyword: PropTypes.func,
 };
 

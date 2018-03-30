@@ -8,12 +8,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Tag = (props) => {
-  const { deleteTag, tag } = props;
+  const { deleteTag, tag, reload } = props;
   return (
     <div className="label label-primary em-tag">
       { typeof tag === 'object' ? tag.name : tag }
       <button
-        onClick={() => deleteTag(tag)}
+        onClick={() => { deleteTag(tag); reload(); }}
       >
         x
       </button>
@@ -22,6 +22,7 @@ export const Tag = (props) => {
 };
 
 Tag.propTypes = {
+  reload: PropTypes.func,
   deleteTag: PropTypes.func,
   tag: PropTypes.oneOfType([
     PropTypes.string,

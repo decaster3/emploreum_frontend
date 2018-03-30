@@ -33,7 +33,7 @@ export class Skills extends React.Component { // eslint-disable-line react/prefe
         <Skill
           key={skill.id}
           name={skill.name}
-          raiting={5}
+          raiting={skill.rating}
           imgUrl={`${BASEURL}${skill.photoPath}`}
         />
       )

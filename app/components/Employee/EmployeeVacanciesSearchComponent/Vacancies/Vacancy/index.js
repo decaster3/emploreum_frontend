@@ -8,32 +8,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Currency from '../Currency/Loadable';
-// import styled from 'styled-components';
+import { ANONYMOUS } from '../../../../../containers/UserSession/constants';
+
 export const Vacancy = (props) => {
   const {
-    specifications,
+    // specifications,
     weekPaymeent,
     companyName,
     acceptableCurrencies,
     info,
     duration,
+    userState,
+    userRole,
     id } = props;
 
-  let position = '';
-  specifications.forEach((prof) => {
-    position = `${position} ${prof.name}`;
-  });
+  // let position = '';
+  // // specifications.forEach((prof) => {
+  // //   position = `${position} ${prof.name}`;
+  // // });
   const currencies = acceptableCurrencies.map((currency) =>
     (<Currency
       key={currency}
       name={currency}
     />)
   );
-  const url = `vacancy/${id}/`;
+  let url;
+  if (userState === ANONYMOUS) {
+    url = `/vacancy/${id}`;
+  } else if (userRole === 'COMPANY') {
+    url = `/company/vacancy/${id}/`;
+  } else {
+    url = `/employee/vacancy/${id}/`;
+  }
+  // const url = userState === ANONYMOUS
+  // ? `/vacancy/${id}`
+  // : userRole === 'COMPANY' ? `company/vacancy/${id}/` : `employee/vacancy/${id}/`;
   return (
     <div className="vacancy">
       <div className="vacancy-name">
-        <Link to={url}>{ position } developer </Link>
+        {/* <Link to={url}>{ position } developer </Link> */}
         <div className="vacancy-money badge">{ weekPaymeent }</div>
         <div className="vacancy-currency">
           <p><a href="">{ companyName }</a></p>
@@ -59,9 +72,11 @@ export const Vacancy = (props) => {
 };
 //
 Vacancy.propTypes = {
+  userRole: PropTypes.string,
+  userState: PropTypes.string,
   duration: PropTypes.string,
   weekPaymeent: PropTypes.string,
-  specifications: PropTypes.array,
+  // specifications: PropTypes.array,
   info: PropTypes.string,
   companyName: PropTypes.string,
   acceptableCurrencies: PropTypes.array,

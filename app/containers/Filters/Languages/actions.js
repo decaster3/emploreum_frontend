@@ -20,19 +20,8 @@ import {
 import {
   getLanguagesAPI,
 } from '../../../services/api/Languages';
-import { getEmployees } from '../../EmployeesSearch/actions';
 
 export const clearReducer = () => ({ type: CLEAR_LANGUAGE_SELECTOR });
-
-const reRenderEmployees = () => (
-  (dispatch, getState) => {
-    const urlArray = getState().get('route').get('location').get('pathname').slice(1).split('/');
-    const currentSearchUrl = urlArray[urlArray.length - 1];
-    const currentUrl = decodeURIComponent(currentSearchUrl) === '' ? {} : JSON.parse(decodeURIComponent(currentSearchUrl));
-    currentUrl.type = 'employees';
-    dispatch(getEmployees(encodeURIComponent(JSON.stringify(currentUrl))));
-  }
-);
 
 const addLanguageToUrl = (language) => (
   (dispatch, getState) => {
@@ -120,7 +109,6 @@ export const chooseLanguage = (language) => (
         item: language,
       },
     });
-    dispatch(reRenderEmployees());
   }
 );
 export const deleteLanguageFromPossible = (language) => (
@@ -148,7 +136,6 @@ export const deleteLanguage = (language) => (
     });
     dispatch(addLanguageToPossible(language));
     dispatch(deleteLanguageFromUrl(language));
-    dispatch(reRenderEmployees(language));
   }
 );
 

@@ -20,19 +20,8 @@ import {
 import {
   getSkillsSpecificationsFilterAPI,
 } from '../../../services/api/SkillsSpecifications';
-import { getEmployees } from '../../EmployeesSearch/actions';
 
 export const clearReducer = () => ({ type: CLEAR_SKILLS_FILTER_SELECTOR });
-
-const reRenderEmployees = () => (
-  (dispatch, getState) => {
-    const urlArray = getState().get('route').get('location').get('pathname').slice(1).split('/');
-    const currentSearchUrl = urlArray[urlArray.length - 1];
-    const currentUrl = decodeURIComponent(currentSearchUrl) === '' ? {} : JSON.parse(decodeURIComponent(currentSearchUrl));
-    currentUrl.type = 'employees';
-    dispatch(getEmployees(encodeURIComponent(JSON.stringify(currentUrl))));
-  }
-);
 
 const addSkillToUrl = (skill) => (
   (dispatch, getState) => {
@@ -129,7 +118,6 @@ export const chooseSkill = (skill) => (
         item: skill,
       },
     });
-    dispatch(reRenderEmployees());
   }
 );
 export const deleteSkillFromPossible = (skill) => (
@@ -157,7 +145,6 @@ export const deleteSkill = (skill) => (
     });
     dispatch(addSkillToPossible(skill));
     dispatch(deleteSkillFromUrl(skill));
-    dispatch(reRenderEmployees());
   }
 );
 

@@ -28,6 +28,7 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
       (<Skill
         key={skill.id}
         tag={skill}
+        reload={() => this.props.dispatch(this.props.reload())}
         deleteTag={this.props.deleteSkill}
       />)
     );
@@ -37,7 +38,7 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
     const skills = this.renderSkills();
     return (
       <SkillFilterWrapper classes={this.props.classes}>
-        <SkillInput placeholder={'Enter skill'} addElement={this.props.addSkill} list={this.props.possibleSkills} />
+        <SkillInput reload={() => this.props.dispatch(this.props.reload())} placeholder={'Enter skill'} addElement={this.props.addSkill} list={this.props.possibleSkills} />
         <SkillsWrapper>
           { skills }
         </SkillsWrapper>
@@ -47,7 +48,9 @@ export class Keywords extends React.Component { // eslint-disable-line react/pre
 }
 
 Keywords.propTypes = {
+  dispatch: PropTypes.func,
   getSkills: PropTypes.func,
+  reload: PropTypes.func,
   clearReducer: PropTypes.func,
   deleteSkill: PropTypes.func,
   addSkill: PropTypes.func,
@@ -65,6 +68,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch,
     clearReducer: () => dispatch(clearReducer()),
     getSkills: () => dispatch(getSkills()),
     addSkill: (evt) => dispatch(addSkill(evt)),

@@ -19,17 +19,16 @@ export const changeBalance = (balance) => ({ type: CHANGE_BALANCE, balance });
 
 
 export const getHeaderInfo = () => (
-  (dispatch) => {
+  (dispatch) =>
     // dispatch(headerLoading());
-    return getCompanyAddressAPI((data) => {
+    getCompanyAddressAPI((data) => {
       dispatch({
         type: SET_HEADER,
         payload: data,
       });
     }, (err) => {
       console.log(err);
-    }, dispatch);
-  }
+    }, dispatch)
 );
 
 export const balanceChangeListener = () => (
