@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
 
-import { renderField } from '../../forms/fields/FormRegisterField';
+import renderField from '../../forms/fields/FormRegisterField';
 import { emailValidation } from '../../forms/validation/EmailValidation';
 import { required } from '../../forms/validation/RequiredValidation';
 import { LOGGING_IN } from '../../containers/UserSession/constants';

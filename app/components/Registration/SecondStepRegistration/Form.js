@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import { SyncLoader } from 'react-spinners';
-import { renderField } from '../../../forms/fields/FormRegisterField';
+import renderField from '../../../forms/fields/FormRegisterField';
 import { required } from '../../../forms/validation/RequiredValidation';
 import { verificationEmailCodeValidation } from '../../../forms/validation/VerificationEmailCode';
 
@@ -12,7 +12,7 @@ const FormRegisterSecondStep = (props) => {
     submittingEmailVerification,
     downRegistrationStep,
     role,
-    error, } = props;
+    error } = props;
   return (
     <form onSubmit={handleSubmit(submitEmailVerification)}>
       <h3>{role}</h3>
@@ -48,6 +48,7 @@ FormRegisterSecondStep.propTypes = {
   downRegistrationStep: PropTypes.func,
   submittingEmailVerification: PropTypes.bool,
   role: PropTypes.string,
+  error: PropTypes.string,
 };
 
 // const selector = formValueSelector('FormRegisterSecondStep');

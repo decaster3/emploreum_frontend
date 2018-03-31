@@ -3,7 +3,7 @@ import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import { SyncLoader } from 'react-spinners';
 
-import { renderField } from '../../../../../forms/fields/FormRegisterField';
+import renderField from '../../../../../forms/fields/FormRegisterField';
 import { required } from '../../../../../forms/validation/RequiredValidation';
 
 
