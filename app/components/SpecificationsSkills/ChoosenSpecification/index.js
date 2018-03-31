@@ -27,7 +27,7 @@ class ChoosenSpecification extends React.Component {
     const skills = this.renderChoosenSkills();
     return (
       <div>
-        <div className="form-inline">
+        <div className="form-inline" style={{ marginBottom: '15px' }}>
           <div className="form-group">
             <h4 className="heading">{this.props.specification.name}</h4>
           </div>

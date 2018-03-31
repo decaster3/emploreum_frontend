@@ -19,8 +19,8 @@ import {
 } from './selectors';
 import reducer from './reducer';
 
-import Message from '../../../components/Chat/Messages/Message/Loadable';
-import MessagesWrapper from '../../../components/Chat/Messages/MessagesWrapper/Loadable';
+import Message from '../../../components/Chat/Messages/Message';
+import MessagesWrapper from '../../../components/Chat/Messages/MessagesWrapper';
 import NoMessages from '../../../components/Chat/Messages/NoMessages';
 
 import { getMessages, listenForNewMessages } from './actions';

@@ -17,7 +17,7 @@ import {
   selectSubmitSpecificationButtonState,
 } from '../selectors';
 
-import SpecificationSkillsStep from '../../../../components/SpecificationsSkills/Loadable';
+import SpecificationSkillsStep from '../../../../components/SpecificationsSkills';
 import {
   submitSpecificationSkillsStep,
   nextStep,

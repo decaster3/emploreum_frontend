@@ -22,18 +22,21 @@ function NavigationBar(props) {
           </form>
           <div id="navbar-menu">
             <ul className="nav navbar-nav navbar-right">
-              <li className="dropdown">
+              <li>
                 <Link to="/login">
-                  <button className="btn btn-default">
-                    Login
-                  </button>
+                  Login
                 </Link>
               </li>
-              <li className="dropdown">
+              <li>
                 <Link to="/registration">
-                  <button className="btn btn-primary">
-                    Registration
-                  </button>
+                  Registration
+                </Link>
+              </li>
+              <li>
+                <Link to="/registration">
+                  <span className="btn btn-primary">
+                    Post a job
+                  </span>
                 </Link>
               </li>
             </ul>

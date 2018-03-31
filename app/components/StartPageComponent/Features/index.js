@@ -9,38 +9,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import { BASEURL } from '../../../../global-constants';
 
-function Features(props) {
+function Features() {
   return (
-    <div className="col-xs-12 col-md-10 col-md-offset-1" id="info">
-      <div className="row">
-        <div className="col-sm-6 info-item">
-          <h3>Who we are for employee</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Aliquam dolore laboriosam libero maxime neque nisi nostrum
-            officia, pariatur voluptates. Delectus deserunt esse,
-            molestias neque repellat voluptates. Aliquid eum totam vel!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Aliquam dolore laboriosam libero maxime neque nisi nostrum
-            officia, pariatur voluptates. Delectus deserunt esse,
-            molestias neque repellat voluptates. Aliquid eum totam vel!
-          </p>
-          <div className="border"></div>
-        </div>
-        <div className="col-sm-6 info-item">
-          <h3>Who we are for Company</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Aliquam dolore laboriosam libero maxime neque nisi nostrum
-            officia, pariatur voluptates. Delectus deserunt esse,
-            molestias neque repellat voluptates. Aliquid eum totam vel!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Aliquam dolore laboriosam libero maxime neque nisi nostrum
-            officia, pariatur voluptates. Delectus deserunt esse,
-            molestias neque repellat voluptates. Aliquid eum totam vel!
-          </p>
-        </div>
-      </div>
+    <div className="text-jastify col-xs-12 col-md-10 col-md-offset-1" id="info">
+      <h1>Who we are</h1>
+       Emploreum is a bridge between IT companies and specialists.Emploreum is a
+       decentralized labor exchange where all contracts between employee and employer
+       are made through Ethereum blockchain. A professional experience, education, current
+       level of knowledge in certain areas of IT is a cv-token of the employees which are
+       used to evaluate and rank them. Employees have a rating which is an indicator of the
+       quality of their work. At the same time, companies also have a rating reflecting the
+       level of the company. With the quality of maintenance of companies and employees, the
+       System is able to determine the cost per hour of employee{'\''}s work.
     </div>
   );
 }

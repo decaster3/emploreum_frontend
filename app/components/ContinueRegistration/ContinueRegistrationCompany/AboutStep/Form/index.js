@@ -3,7 +3,8 @@ import { reduxForm, Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import { SyncLoader } from 'react-spinners';
 
-import { renderField } from '../../../../../forms/fields/FormRegisterField';
+import renderField from '../../../../../forms/fields/FormRegisterField';
+import { renderTextarea } from '../../../../../forms/fields/TextAreaField';
 import { required } from '../../../../../forms/validation/RequiredValidation';
 
 
@@ -20,7 +21,7 @@ const FormRegistrationFourthStep = (props) => {
       <Field
         name="about"
         type="about"
-        component={renderField}
+        component={renderTextarea}
         validate={required}
         label="About"
       />

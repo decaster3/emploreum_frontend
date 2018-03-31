@@ -14,9 +14,9 @@ import {
 } from './selectors';
 import { contractConfirmationListener, getAwaitedContracts } from './actions';
 
-import TableCreator from '../../../../components/Employee/EmployeeFinanceComponents/TableCreator/Loadable';
-import TableRow from '../../../../components/Employee/EmployeeFinanceComponents/TableRow/Loadable';
-import NoContracts from '../../../../components/Employee/EmployeeFinanceComponents/NoContracts/Loadable';
+import TableCreator from '../../../../components/Employee/EmployeeFinanceComponents/TableCreator';
+import TableRow from '../../../../components/Employee/EmployeeFinanceComponents/TableRow';
+import NoContracts from '../../../../components/Employee/EmployeeFinanceComponents/NoContracts';
 
 class EmployeeFinance extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

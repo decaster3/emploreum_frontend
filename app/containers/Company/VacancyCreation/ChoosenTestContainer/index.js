@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { selectChoosenTest } from './selectors';
-import ChoosenTest from '../../../../components/Company/CompanyFinanceComponents/VacancyCreation/ChoosenTest/Loadable';
+import ChoosenTest from '../../../../components/Company/CompanyFinanceComponents/VacancyCreation/ChoosenTest';
 
 export class ChoosenTestVacancy extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

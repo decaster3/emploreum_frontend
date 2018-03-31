@@ -1,9 +1,9 @@
 /* eslint no-script-url: 0 */
 import React from 'react';
-import EmployeeFinanceHeader from './MainInformation/Loadable';
-import AwaitedContrats from './AwaitedContracts/Loadable';
-import CurrentContracts from './CurrentContracts/Loadable';
-import EndedContracts from './EndedContracts/Loadable';
+import EmployeeFinanceHeader from './MainInformation';
+import AwaitedContrats from './AwaitedContracts';
+import CurrentContracts from './CurrentContracts';
+import EndedContracts from './EndedContracts';
 
 export const EmployeeFinanceCreator = () => (
   <div className="container-fluid">

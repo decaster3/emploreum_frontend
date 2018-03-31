@@ -11,16 +11,18 @@ import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { changeRole } from '../Registration/actions';
 import reducer from '../Registration/reducer';
-import ChooseRole from '../../components/StartPageComponent/ChooseRole/Loadable';
-import Find from '../../components/StartPageComponent/Find/Loadable';
-import Features from '../../components/StartPageComponent/Features/Loadable';
-import Footer from '../../components/StartPageComponent/Footer/Loadable';
+import ChooseRole from '../../components/StartPageComponent/ChooseRole/';
+import Find from '../../components/StartPageComponent/Find/';
+import Features from '../../components/StartPageComponent/Features/';
+import Footer from '../../components/StartPageComponent/Footer/';
+import Pluses from '../../components/StartPageComponent/Pluses/'
 export class StartPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className="full-height">
         <ChooseRole />
         <Features />
+        <Pluses />
         <Find />
         <Footer />
       </div>

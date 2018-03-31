@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ChoosenSkill = (props) => {
   const { photoPath, skill, skillName, deleteSkill, specification } = props;
   return (
-    <div className="col-md-3 col-sm-6">
+    <div className="col-md-3 col-sm-6" style={{ marginTop: '15px' }}>
       <div className="award-item">
         <div className="hexagon">
           <img src={photoPath} alt="Skill" />

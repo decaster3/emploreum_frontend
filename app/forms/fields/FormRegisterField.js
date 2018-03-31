@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div className="form-group">
     <label htmlFor={label} className="control-label sr-only">{label}</label>
     <div>
@@ -10,6 +10,8 @@ export const renderField = ({ input, label, type, meta: { touched, error, warnin
     </div>
   </div>
 );
+
+export default renderField;
 
 renderField.propTypes = {
   meta: PropTypes.object,

@@ -16,9 +16,9 @@ import {
   selectChoosenSpecifications,
 } from './selectors';
 import reducer from '../../SpecificationsSkills/reducer';
-import VacancyCreationForm from '../../../components/Company/CompanyFinanceComponents/VacancyCreation/Loadable';
-import ChooseTest from './ChooseTest/Loadable';
-import ChoosenTest from './ChoosenTestContainer/Loadable';
+import VacancyCreationForm from '../../../components/Company/CompanyFinanceComponents/VacancyCreation';
+import ChooseTest from './ChooseTest';
+import ChoosenTest from './ChoosenTestContainer';
 
 import {
   addSkill,

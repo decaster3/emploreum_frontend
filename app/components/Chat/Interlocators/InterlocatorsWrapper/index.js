@@ -12,10 +12,8 @@ export const InterlocatorsWrapper = (props) => {
   const { children } = props;
   return (
     <div className="col-md-3">
-      <div className="chat-users">
-        <div className="users-list">
-          {children}
-        </div>
+      <div className="users-list">
+        {children}
       </div>
     </div>
   );

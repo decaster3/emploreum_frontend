@@ -1,3 +1,6 @@
+body {
+    font-family: "Exo2Regular";
+}
 .em-tag {
     font-size: 15px;
     border-radius: 8px;
@@ -31,9 +34,26 @@ textarea.form-control {
 }
 
 .navbar-default .brand {
+    font-size: 25px;
+    padding: 10px 50px;
     width: 260px;
 }
-
+.navbar-nav .icon-menu, .navbar-nav li a, .navbar-btn {
+    padding: 0;
+}
+.navbar-btn {
+    padding: 8px;
+}
+.navbar-nav li a span {
+    display: inline;
+    top: 0;
+}
+.navbar-nav li {
+    padding: 20px;
+}
+.navbar {
+    min-height: auto;
+}
 .layout-fullwidth .navbar-default .brand {
     width: auto;
 }
@@ -240,7 +260,6 @@ label {
     z-index: 1000;
     opacity: 0;
 }
-
 @media screen and (max-width: 767px) {
     #mini-navbar .navbar-form .input-group {
         width: 70%;

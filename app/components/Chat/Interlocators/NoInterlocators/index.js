@@ -9,8 +9,12 @@ import React from 'react';
 
 
 export const NoInterlocator = () => (
-  <div className="chat-user">
-    You havent got interlocators yet
+  <div className="col-md-3">
+    <div className="chat-users">
+      <div className="chat-user">
+        You havent got interlocators yet
+      </div>
+    </div>
   </div>
 );
 

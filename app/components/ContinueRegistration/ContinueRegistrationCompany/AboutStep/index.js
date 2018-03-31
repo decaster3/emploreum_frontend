@@ -21,7 +21,7 @@ class AboutStep extends React.Component { // eslint-disable-line react/prefer-st
             </div>
             <div className="col-md-8">
               { this.props.children }
-              <h4 className="heading">BIO</h4>
+              <h4 className="heading">Bio</h4>
               <hr />
               <FormRegistrationFourthStep
                 submitAboutStep={this.props.submitAboutStep}

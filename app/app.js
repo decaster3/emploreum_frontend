@@ -51,6 +51,7 @@ import '!!style-loader!css-loader!./assets/css/profile.css';
 import '!!style-loader!css-loader!./assets/css/search.css';
 import '!!style-loader!css-loader!./assets/css/chat.css';
 import '!!style-loader!css-loader!./assets/css/index.css';
+import '!!style-loader!css-loader!./assets/css/fonts.css';
 
 
 // <!-- GOOGLE FONTS -->

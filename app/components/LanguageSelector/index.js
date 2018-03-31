@@ -40,7 +40,6 @@ class LanguageSelector extends React.Component { // eslint-disable-line react/pr
               list={this.props.languageList}
               whatToAdd={'Language'}
             />
-            <hr />
             <ChoosenLanguages>
               {languages}
             </ChoosenLanguages>

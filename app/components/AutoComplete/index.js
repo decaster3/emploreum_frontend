@@ -32,44 +32,37 @@ class AutoComplete extends React.Component {
   }
   render() {
     return (
-      <div className="input-group">
-        <ReactAutocomplete
-          wrapperStyle={{}}
-          inputProps={{ className: 'form-control' }}
-          menuStyle={{ className: 'autocomplete' }}
-          items={this.props.list.toJS() || []}
-          shouldItemRender={(item, valueString) => item.name.toLowerCase().indexOf(valueString.toLowerCase()) > -1}
-          getItemValue={(item) => item.name}
-          renderItem={(item) => (
-            <div key={item.name}>
-              {item.name}
-            </div>
-          )}
-          value={this.state.valueString}
-          onChange={(e) => this.setState({ valueString: e.target.value })}
-          onSelect={(value) => {
-            this.props.list.toJS().forEach((el) => {
-              if (el.name === value) {
-                this.setState({ value: el });
-                this.setState({ valueString: value });
-                this.unlockButton();
-              }
-            });
-          }}
-        />
-        <span className="input-group-btn">
-          <button
-            className="btn btn-primary"
-            type="button"
-            disabled={!this.state.isButton}
-            onClick={() => {
-              this.sendElement(this.state.value);
-            }}
-          >
-            Add
-          </button>
-        </span>
-      </div>
+      <ReactAutocomplete
+        wrapperStyle={{ position: 'relative', width: '100%' }}
+        inputProps={{ className: 'form-control' }}
+        menuStyle={{
+          top: '34px',
+          left: '0',
+          width: '100%',
+          background: '#fff',
+          fontSize: '18px',
+          border: '1px solid #ddd',
+          zIndex: '1000',
+          position: 'absolute',
+        }}
+        items={this.props.list.toJS() || []}
+        shouldItemRender={(item, valueString) => item.name.toLowerCase().indexOf(valueString.toLowerCase()) > -1}
+        getItemValue={(item) => item.name}
+        renderItem={(item) => (
+          <div key={item.name}>
+            {item.name}
+          </div>
+        )}
+        value={this.state.valueString}
+        onChange={(e) => this.setState({ valueString: e.target.value })}
+        onSelect={(value) => {
+          this.props.list.toJS().forEach((el) => {
+            if (el.name === value) {
+              this.sendElement(el);
+            }
+          });
+        }}
+      />
     );
   }
 }

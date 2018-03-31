@@ -1,224 +1,181 @@
-/* cyrillic-ext */
+/* Код для подключения шрифта в /css/stylename.css */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2Regular";
+  src: url("../fonts/Exo2Regular/Exo2Regular.eot");
+  src: url("../fonts/Exo2Regular/Exo2Regular.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2Regular/Exo2Regular.woff") format("woff"),
+  url("../fonts/Exo2Regular/Exo2Regular.ttf") format("truetype");
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGKhisFFF-0ifc-Simo8uwJs.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  font-weight: normal;
 }
-/* cyrillic */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2Bold";
+  src: url("../fonts/Exo2Bold/Exo2Bold.eot");
+  src: url("../fonts/Exo2Bold/Exo2Bold.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2Bold/Exo2Bold.woff") format("woff"),
+  url("../fonts/Exo2Bold/Exo2Bold.ttf") format("truetype");
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGNJvocFWY_5VFjYFbAOOIik.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  font-weight: normal;
 }
-/* greek-ext */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2Light";
+  src: url("../fonts/Exo2Light/Exo2Light.eot");
+  src: url("../fonts/Exo2Light/Exo2Light.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2Light/Exo2Light.woff") format("woff"),
+  url("../fonts/Exo2Light/Exo2Light.ttf") format("truetype");
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGLGN1mc631ObjHzqJB_dFFA.woff2) format('woff2');
-  unicode-range: U+1F00-1FFF;
+  font-weight: normal;
 }
-/* greek */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2BoldItalic";
+  src: url("../fonts/Exo2BoldItalic/Exo2BoldItalic.eot");
+  src: url("../fonts/Exo2BoldItalic/Exo2BoldItalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2BoldItalic/Exo2BoldItalic.woff") format("woff"),
+  url("../fonts/Exo2BoldItalic/Exo2BoldItalic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGI3P6ux3HwbL10a8ofNXGLA.woff2) format('woff2');
-  unicode-range: U+0370-03FF;
+  font-weight: normal;
 }
-/* vietnamese */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2ExtraBold";
+  src: url("../fonts/Exo2ExtraBold/Exo2ExtraBold.eot");
+  src: url("../fonts/Exo2ExtraBold/Exo2ExtraBold.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2ExtraBold/Exo2ExtraBold.woff") format("woff"),
+  url("../fonts/Exo2ExtraBold/Exo2ExtraBold.ttf") format("truetype");
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGD_j0nMiB9fPhg_k1wdK2h0.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+  font-weight: normal;
 }
-/* latin-ext */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2ExtraBoldItalic";
+  src: url("../fonts/Exo2ExtraBoldItalic/Exo2ExtraBoldItalic.eot");
+  src: url("../fonts/Exo2ExtraBoldItalic/Exo2ExtraBoldItalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2ExtraBoldItalic/Exo2ExtraBoldItalic.woff") format("woff"),
+  url("../fonts/Exo2ExtraBoldItalic/Exo2ExtraBoldItalic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGDRVvBvQIc1z78c__uoBcyI.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+  font-weight: normal;
 }
-/* latin */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2ExtraLight";
+  src: url("../fonts/Exo2ExtraLight/Exo2ExtraLight.eot");
+  src: url("../fonts/Exo2ExtraLight/Exo2ExtraLight.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2ExtraLight/Exo2ExtraLight.woff") format("woff"),
+  url("../fonts/Exo2ExtraLight/Exo2ExtraLight.ttf") format("truetype");
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGOode0-EuMkY--TSyExeINg.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+  font-weight: normal;
 }
-/* cyrillic-ext */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2ExtraLightItalic";
+  src: url("../fonts/Exo2ExtraLightItalic/Exo2ExtraLightItalic.eot");
+  src: url("../fonts/Exo2ExtraLightItalic/Exo2ExtraLightItalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2ExtraLightItalic/Exo2ExtraLightItalic.woff") format("woff"),
+  url("../fonts/Exo2ExtraLightItalic/Exo2ExtraLightItalic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlAC5S7WFEeHRqL6ObGQGT8o.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  font-weight: normal;
 }
-/* cyrillic */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2Italic";
+  src: url("../fonts/Exo2Italic/Exo2Italic.eot");
+  src: url("../fonts/Exo2Italic/Exo2Italic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2Italic/Exo2Italic.woff") format("woff"),
+  url("../fonts/Exo2Italic/Exo2Italic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlMgmx_L9kV4w6g8dYQOLFUI.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  font-weight: normal;
 }
-/* greek-ext */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2BlackItalic";
+  src: url("../fonts/Exo2BlackItalic/Exo2BlackItalic.eot");
+  src: url("../fonts/Exo2BlackItalic/Exo2BlackItalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2BlackItalic/Exo2BlackItalic.woff") format("woff"),
+  url("../fonts/Exo2BlackItalic/Exo2BlackItalic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlMODs9238LZG2v64UiBIjng.woff2) format('woff2');
-  unicode-range: U+1F00-1FFF;
+  font-weight: normal;
 }
-/* greek */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2LightItalic";
+  src: url("../fonts/Exo2LightItalic/Exo2LightItalic.eot");
+  src: url("../fonts/Exo2LightItalic/Exo2LightItalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2LightItalic/Exo2LightItalic.woff") format("woff"),
+  url("../fonts/Exo2LightItalic/Exo2LightItalic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlFjqPhnWKseBf12Mt9_m7kc.woff2) format('woff2');
-  unicode-range: U+0370-03FF;
+  font-weight: normal;
 }
-/* vietnamese */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2Medium";
+  src: url("../fonts/Exo2Medium/Exo2Medium.eot");
+  src: url("../fonts/Exo2Medium/Exo2Medium.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2Medium/Exo2Medium.woff") format("woff"),
+  url("../fonts/Exo2Medium/Exo2Medium.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlNOAHFN6BivSraYkjhveRHY.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+  font-weight: normal;
 }
-/* latin-ext */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2MediumItalic";
+  src: url("../fonts/Exo2MediumItalic/Exo2MediumItalic.eot");
+  src: url("../fonts/Exo2MediumItalic/Exo2MediumItalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2MediumItalic/Exo2MediumItalic.woff") format("woff"),
+  url("../fonts/Exo2MediumItalic/Exo2MediumItalic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlC2Q8seG17bfDXYR_jUsrzg.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+  font-weight: normal;
 }
-/* latin */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2Black";
+  src: url("../fonts/Exo2Black/Exo2Black.eot");
+  src: url("../fonts/Exo2Black/Exo2Black.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2Black/Exo2Black.woff") format("woff"),
+  url("../fonts/Exo2Black/Exo2Black.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+  font-weight: normal;
 }
-/* cyrillic-ext */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2SemiBold";
+  src: url("../fonts/Exo2SemiBold/Exo2SemiBold.eot");
+  src: url("../fonts/Exo2SemiBold/Exo2SemiBold.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2SemiBold/Exo2SemiBold.woff") format("woff"),
+  url("../fonts/Exo2SemiBold/Exo2SemiBold.ttf") format("truetype");
   font-style: normal;
-  font-weight: 600;
-  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGAtXaCylRF0D-MaoYoCuiMM.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  font-weight: normal;
 }
-/* cyrillic */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2SemiBoldItalic";
+  src: url("../fonts/Exo2SemiBoldItalic/Exo2SemiBoldItalic.eot");
+  src: url("../fonts/Exo2SemiBoldItalic/Exo2SemiBoldItalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2SemiBoldItalic/Exo2SemiBoldItalic.woff") format("woff"),
+  url("../fonts/Exo2SemiBoldItalic/Exo2SemiBoldItalic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 600;
-  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGAAAU1WVAUWBSTvimZV06U4.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  font-weight: normal;
 }
-/* greek-ext */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2Thin";
+  src: url("../fonts/Exo2Thin/Exo2Thin.eot");
+  src: url("../fonts/Exo2Thin/Exo2Thin.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2Thin/Exo2Thin.woff") format("woff"),
+  url("../fonts/Exo2Thin/Exo2Thin.ttf") format("truetype");
   font-style: normal;
-  font-weight: 600;
-  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGCJjduVyTEemf0kCvaihHEU.woff2) format('woff2');
-  unicode-range: U+1F00-1FFF;
+  font-weight: normal;
 }
-/* greek */
+
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Exo2ThinItalic";
+  src: url("../fonts/Exo2ThinItalic/Exo2ThinItalic.eot");
+  src: url("../fonts/Exo2ThinItalic/Exo2ThinItalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/Exo2ThinItalic/Exo2ThinItalic.woff") format("woff"),
+  url("../fonts/Exo2ThinItalic/Exo2ThinItalic.ttf") format("truetype");
   font-style: normal;
-  font-weight: 600;
-  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGFnEzh12mEKZN5amaOp7-V4.woff2) format('woff2');
-  unicode-range: U+0370-03FF;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGClYwVOhDRq2vbpGRTZ7bbs.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGFKFh1TDTPrUZWzVp6FtpG8.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGCOFnW3Jk0f09zW_Yln67Ac.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
-}
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGH2tx1iQUBYLA4fTJZSoO3U.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGJaoTU19aO7Bfv-FLfOt5YM.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* greek-ext */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGHvBSgOUtlSCpvi6_8Wv308.woff2) format('woff2');
-  unicode-range: U+1F00-1FFF;
-}
-/* greek */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGO4f2SQTi4oYi3kh3bYmG2Y.woff2) format('woff2');
-  unicode-range: U+0370-03FF;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGDovqjS_dXPZszO_XltPdNg.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGFxe-GPfKKFmiXaJ_Q0GFr8.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGEo0As1BFRXtCDhS66znb_k.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+  font-weight: normal;
 }

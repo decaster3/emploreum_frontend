@@ -18,7 +18,7 @@ import {
   selectChoosenLanguages,
 } from './selectors';
 
-import LanguageSelector from './../../../../components/LanguageSelector/Loadable';
+import LanguageSelector from './../../../../components/LanguageSelector';
 import {
   getLanguage,
   addLanguage,

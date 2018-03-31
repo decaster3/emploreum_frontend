@@ -18,16 +18,15 @@ export const loadedProfileMainInfo = () => ({ type: CHANGE_STATE_COMPANY_PROFILE
 
 
 export const getProfileMainInfo = (employeeId) => (
-  (dispatch) => {
+  (dispatch) =>
     // dispatch(loadingProfileMainInfo());
-    return getCompanyProfileMainInfoAPI(employeeId, (data) => {
-      dispatch({
-        type: GET_COMPANY_PROFILE_MAIN_INFO,
-        payload: data,
-      });
-      dispatch(loadedProfileMainInfo());
-    }, (err) => {
-      console.log(err);
-    }, dispatch);
-  }
+     getCompanyProfileMainInfoAPI(employeeId, (data) => {
+       dispatch({
+         type: GET_COMPANY_PROFILE_MAIN_INFO,
+         payload: data,
+       });
+       dispatch(loadedProfileMainInfo());
+     }, (err) => {
+       console.log(err);
+     }, dispatch)
 );

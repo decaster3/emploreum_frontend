@@ -16,16 +16,13 @@ import reducer from './reducer';
 import {
   selectSubmitAboutButtonState,
 } from './selectors';
-import AboutStep from './../../../components/ContinueRegistration/ContinueRegistrationCompany/AboutStep/Loadable';
-import LanguageSelector from './LanguageSelector/Loadable';
+import AboutStep from './../../../components/ContinueRegistration/ContinueRegistrationCompany/AboutStep';
+import LanguageSelector from './LanguageSelector';
 
 import {
   submitAboutStep,
   chooseAvatar,
 } from './actions';
-import {
-  skipLastStep,
-} from '../../UserSession/actions';
 
 export class AboutStepContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -38,7 +35,6 @@ export class AboutStepContainer extends React.Component { // eslint-disable-line
         >
           <LanguageSelector />
         </AboutStep>
-        <button onClick={() => this.props.skipLastStep()} className="btn btn-default">End registration</button>
       </div>
     );
   }
@@ -54,7 +50,6 @@ function mapDispatchToProps(dispatch) {
   return {
     submitAboutStep: (evt, ev) => dispatch(submitAboutStep(evt, ev)),
     chooseAvatar: (evt) => dispatch(chooseAvatar(evt)),
-    skipLastStep: () => dispatch(skipLastStep()),
   };
 }
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
@@ -62,7 +57,6 @@ const withReducer = injectReducer({ key: 'continueRegistrationAbout', reducer })
 
 AboutStepContainer.propTypes = {
   submitAboutStep: PropTypes.func,
-  skipLastStep: PropTypes.func,
   chooseAvatar: PropTypes.func,
   submittingAbout: PropTypes.bool,
 };

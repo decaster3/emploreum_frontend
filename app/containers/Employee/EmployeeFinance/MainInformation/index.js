@@ -12,8 +12,8 @@ import {
 } from './selectors';
 import { balanceChangeListener, getHeaderInfo } from './actions';
 
-import EmployeeInfo from '../../../../components/FinanceHeader/EmployeeInfo/Loadable';
-import FinanceHeader from '../../../../components/FinanceHeader/FinanceHeader/Loadable';
+import EmployeeInfo from '../../../../components/FinanceHeader/EmployeeInfo';
+import FinanceHeader from '../../../../components/FinanceHeader/FinanceHeader';
 
 class EmployeeFinance extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

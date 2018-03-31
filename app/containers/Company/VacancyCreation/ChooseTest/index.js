@@ -14,8 +14,8 @@ import injectReducer from 'utils/injectReducer';
 import { selectTestsStatus, selectTestsItems } from './selectors';
 import { getTests, chooseTest } from './actions';
 import reducer from './reducer';
-import Test from '../../../../components/Company/CompanyFinanceComponents/VacancyCreation/SelectTest/Test/Loadable';
-import ModalWrapper from '../../../../components/Company/CompanyFinanceComponents/VacancyCreation/SelectTest/ModalWrapper/Loadable';
+import Test from '../../../../components/Company/CompanyFinanceComponents/VacancyCreation/SelectTest/Test';
+import ModalWrapper from '../../../../components/Company/CompanyFinanceComponents/VacancyCreation/SelectTest/ModalWrapper';
 
 export class InviteEmployee extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

@@ -22,7 +22,6 @@ import reducer from './reducer';
 import OpenVacancy from '../../../../components/Company/CompanyFinanceComponents/Vacancies/Vacancy';
 import OpenVacanciesWrapper from '../../../../components/Company/CompanyFinanceComponents/Vacancies/VacanciesWrapper';
 import NoOpenVacancies from '../../../../components/Company/CompanyFinanceComponents/NoOpenVacancies';
-import VacancyCreationButton from '../../../../components/Company/CompanyFinanceComponents/VacancyCreationButton';
 
 import { getOpenVacancies } from './actions';
 
@@ -48,11 +47,7 @@ export class CompanyOpenVacancies extends React.Component { // eslint-disable-li
   render() {
     const openVacancies = this.renderVacancies();
     if (!this.props.isThereOpenVacancies && this.props.openVacanciesStatus === 'LOADED') {
-      return (
-        <div>
-          <NoOpenVacancies />
-          <VacancyCreationButton />
-        </div>);
+      return <NoOpenVacancies />;
     }
     return (
       <OpenVacanciesWrapper >

@@ -19,7 +19,7 @@ import {
   selectSubmitSpecificationButtonState,
 } from './selectors';
 
-import SpecificationSkillsStep from '../../../../components/Specifications/Loadable';
+import SpecificationSkillsStep from '../../../../components/Specifications';
 import {
   getSpecification,
   addSpecificationWithSkills,
@@ -47,8 +47,8 @@ export class SpecificationStep extends React.Component { // eslint-disable-line 
             deleteSpecificationFromChoosen={this.props.deleteSpecificationFromChoosen}
             submitSpecificationSkillsStep={this.props.submitSpecificationSkillsStep}
             submittingSpecification={this.props.submittingSpecification}
+            nextStep={this.props.nextStep}
           />
-          <button onClick={() => this.props.nextStep()} className="btn btn-default">Next step</button>
         </div>
       </div>
     );

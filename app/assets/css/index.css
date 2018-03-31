@@ -7,6 +7,7 @@
   display: table;
   width: 100%;
   height: 100%;
+  margin-top: 63px;
   max-height: 600px;
   color: #fff;
   text-align: center;
@@ -21,9 +22,10 @@ body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
 }
 .landing-emploreum .main-content {
   padding: 0 !important;
-  margin-top: 90px;
 }
-
+.landing-emploreum .main-content .panel{
+  margin-top: 63px;
+}
 .landing-emploreum .dark-background {
   position: absolute;
   width: 100%;
@@ -65,31 +67,17 @@ body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
 }
 
 .landing-emploreum #info {
+  text-align: justify;
   position: relative;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  font-size: 18px;
   background: #fff;
 }
 
-.landing-emploreum #info h3 {
+.landing-emploreum #info h1 {
+  text-align: center;
   color: #343434;
-}
-
-.landing-emploreum #info .border {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 250px;
-  width: 1px;
-  margin-top: 20px;
-  background: #bfc8cb;
-}
-
-.landing-emploreum #info .info-item p {
-  padding: 10px 50px;
-  font-size: 20px;
-  text-align: justify;
 }
 
 .landing-emploreum #search {
@@ -143,10 +131,13 @@ body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
 }
 
 .landing-emploreum #plus {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 25px;
   text-align: center;
   background: #fff;
+}
+.landing-emploreum #plus .row:last-child{
+  padding-bottom: 35px;
 }
 
 .landing-emploreum #plus h1 {
@@ -154,9 +145,10 @@ body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
   margin-bottom: 30px;
 }
 
-.landing-emploreum #plus .plus-item .icon-container {
-  padding-top: 50px;
-  padding-bottom: 50px;
+.landing-emploreum #plus .plus-item .icon-container img{
+  max-width: 150px;
+  position: relative;
+  margin: 0 auto;
 }
 
 .landing-emploreum #plus .plus-item i {
@@ -165,7 +157,7 @@ body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
 
 .landing-emploreum #plus .plus-item p {
   margin-top: 10px;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 #footer-container {
@@ -262,9 +254,6 @@ body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
 }
 
 @media screen and (max-width: 768px) {
-  .landing-emploreum #for {
-    margin-top: 70px;
-  }
 
   .landing-emploreum #for::after {
     display: none;
@@ -274,7 +263,7 @@ body, html, #app, .landing-emploreum .main-content, #wrapper, .full-height {
     display: none;
   }
 
-  .landing-emploreum #info .info-item p {
+  .landing-emploreum #info {
     padding: 5px 5px;
   }
 

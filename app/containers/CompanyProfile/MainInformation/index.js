@@ -38,7 +38,10 @@ export class MainInformation extends React.Component { // eslint-disable-line re
           mainInfoStatus={this.props.mainInfoStatus}
           mainInfo={this.props.mainInfo}
         />
-        <DetailProfile />
+        <DetailProfile
+          mainInfoStatus={this.props.mainInfoStatus}
+          mainInfo={this.props.mainInfo}
+        />
         <SocialProfile />
       </div>
     );

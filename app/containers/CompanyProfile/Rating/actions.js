@@ -18,16 +18,15 @@ export const loadedCompanyRating = () => ({ type: CHANGE_STATE_RATING, payload: 
 
 
 export const getCompanyRating = (employeeId) => (
-  (dispatch) => {
+  (dispatch) =>
     // dispatch(loadingCompanyRating());
-    return getCompanyRatingAPI(employeeId, (data) => {
-      dispatch({
-        type: GET_RATING,
-        payload: data,
-      });
-      dispatch(loadedCompanyRating());
-    }, (err) => {
-      console.log(err);
-    }, dispatch);
-  }
+     getCompanyRatingAPI(employeeId, (data) => {
+       dispatch({
+         type: GET_RATING,
+         payload: data,
+       });
+       dispatch(loadedCompanyRating());
+     }, (err) => {
+       console.log(err);
+     }, dispatch)
 );

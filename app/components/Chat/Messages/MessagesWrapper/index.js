@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 export const MessagesWrapper = (props) => {
   const { children } = props;
   return (
-    <div className="col-md-9 ">
+    <div className="col-md-9 no-padding">
       <div className="chat-discussion">
         {children}
       </div>

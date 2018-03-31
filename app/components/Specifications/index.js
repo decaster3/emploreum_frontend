@@ -48,6 +48,7 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
             <ButtonSubmit
               submitting={this.props.submittingSpecification}
               submit={this.props.submitSpecificationSkillsStep}
+              nextStep={this.props.nextStep}
             />
           </Wrapper>
         );
@@ -64,6 +65,7 @@ class SpecificationSkillsStep extends React.Component { // eslint-disable-line r
 SpecificationSkillsStep.propTypes = {
   specificationList: PropTypes.object,
   getSpecification: PropTypes.func,
+  nextStep: PropTypes.func,
   submitSpecificationSkillsStep: PropTypes.func,
   deleteSpecificationFromChoosen: PropTypes.func,
   addSpecificationWithSkills: PropTypes.func,
