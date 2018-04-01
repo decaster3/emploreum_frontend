@@ -39,6 +39,7 @@ export class MainInformation extends React.Component { // eslint-disable-line re
           mainInfo={this.props.mainInfo}
         />
         <DetailVacancy
+          mainInfoStatus={this.props.mainInfoStatus}
           mainInfo={this.props.mainInfo}
           vacancyId={this.props.vacancyId}
           role={this.props.role}

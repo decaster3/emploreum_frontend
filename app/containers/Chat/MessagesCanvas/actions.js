@@ -25,7 +25,7 @@ export const changeMessage = (oldMessage, newMessage) => ({ type: CHANGE_MESSAGE
 export const getMessages = () => (
   (dispatch, getState) => {
     const currentInteractorId = getState().get('chatInterlocators').get('currentInterlocator').get('item').toJS().id;
-    dispatch(loadingMessages());
+    // dispatch(loadingMessages());
     getMessagesByIdAPI(currentInteractorId, (data) => {
       dispatch({
         type: GET_MESSAGES,

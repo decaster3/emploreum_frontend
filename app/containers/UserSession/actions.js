@@ -123,7 +123,7 @@ export const completeRegistration = (photoPath) => (
   (dispatch) => {
     dispatch({
       type: COMPLETE_REGISTRATION,
-      payload: photoPath,
+      payload: photoPath || '/upload/empty.png',
     });
   }
 );

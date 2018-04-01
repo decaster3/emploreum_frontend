@@ -18,7 +18,7 @@ export const Navigation = (props) => {
         <span>{ userInitials.name }</span>
         <i className="icon-submenu fa fa-angle-down"></i></a>
       <ul className="dropdown-menu">
-        <li><button onClick={() => props.serverLogout()} ><i className="fa fa-sign-out"></i> <span>Выход</span></button></li>
+        <li onClick={() => props.serverLogout()}><i className="fa fa-sign-out"></i> <span>Выход</span></li>
       </ul>
     </li>
   );

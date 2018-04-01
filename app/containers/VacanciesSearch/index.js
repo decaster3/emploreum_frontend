@@ -38,11 +38,12 @@ export class VacanciesSearch extends React.Component { // eslint-disable-line re
         key={vacancy.id}
         id={vacancy.id}
         specifications={vacancy.profiles}
-        weekPaymeent={vacancy.weekPayment}
+        weekPaymeent={vacancy.week_payment}
         companyName={vacancy.name}
         acceptableCurrencies={['eth']}
         info={vacancy.info}
         duration={vacancy.duration}
+        name={vacancy.name}
         userState={this.props.userState}
         userRole={this.props.userRole}
       />)

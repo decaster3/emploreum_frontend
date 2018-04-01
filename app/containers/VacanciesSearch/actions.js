@@ -18,7 +18,6 @@ export const loadedVacancies = () => ({ type: CHANGE_STATE_VACANCIES, payload: L
 
 export const getRecomendedVacancies = () => (
   (dispatch) => {
-    dispatch(loadingVacancies());
     return getEmployeeRecomendedVacanciesAPI((data) => {
       dispatch({
         type: GET_VACANCIES,
@@ -37,7 +36,9 @@ export const getVacancies = () => (
     const currentSearchUrl = urlArray[urlArray.length - 1];
     const currentUrl = decodeURIComponent(currentSearchUrl) === '' ? {} : JSON.parse(decodeURIComponent(currentSearchUrl));
     currentUrl.type = 'vacancies';
-    dispatch(loadingVacancies());
+    if (getState().get('vacanciesSearch').get('vacancies').toJS().length === 0) {
+      dispatch(loadingVacancies());
+    }
     return getSearchVacanciesAPI(encodeURIComponent(JSON.stringify(currentUrl)), (data) => {
       dispatch({
         type: GET_VACANCIES,

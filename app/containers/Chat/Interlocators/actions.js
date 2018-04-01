@@ -27,7 +27,7 @@ export const notChoosenCurrentInterlocatorStatus = () => ({ type: CHANGE_CURRENT
 
 export const getInterlocators = (chatId) => (
   (dispatch, getState) => {
-    dispatch(loadingInterlocators());
+    // dispatch(loadingInterlocators());
     dispatch(loadingCurrentInterlocatorStatus());
     getInterlocatorsAPI((data) => {
       dispatch({

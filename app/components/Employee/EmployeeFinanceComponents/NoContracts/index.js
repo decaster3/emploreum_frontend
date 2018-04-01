@@ -26,7 +26,7 @@ export const NoContracts = (props) => {
         <h4 className="text-center">
           You have{'\''}t got {contractType} contracts yet.
         </h4>
-        <hr style={{ marginTop: '3px', marginBottom: '3px' }} />
+        <hr />
         <div className="text-center">
           { info() }
         </div>

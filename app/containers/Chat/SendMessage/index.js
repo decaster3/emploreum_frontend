@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 import { sendMessage } from './actions';
 
-import SendMessage from '../../../components/Chat/SendMessage/Loadable';
+import SendMessage from '../../../components/Chat/SendMessage';
 
 export class SendMessageContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

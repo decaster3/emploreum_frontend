@@ -5,38 +5,27 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-
-function Detail() {
+function Detail(props) {
+  const { mainInfo, mainInfoStatus } = props;
   return (
     <div className="profile-info">
-      <h4 className="heading">Личная информация</h4>
+      <h4 className="heading">Information</h4>
       <ul className="list-unstyled list-justify">
-        <li>Возраст <span>20 лет</span></li>
-        <li>Пол <span>Мужской</span></li>
-        <li>Образование <span>Высшее</span></li>
-        <li>Проживание <span>г. Казань</span></li>
-        <li>Языки <span>Английский, Русский</span></li>
-        <li>Профиль<span>Фулл стек</span></li>
-        <li>Занятость<span> От 4 до 10 часов </span></li>
-        <li>
-          <span>
-            <a
-              href=""
-              data-toggle="modal"
-              data-target="#feed-modal"
-            >связаться</a>
-            <i className="fa fa-angle-right"></i>
-          </span>
-        </li>
+        <li>Email:<span>{mainInfoStatus === 'LOADED' ? mainInfo.user.email : ''}</span></li>
+      </ul>
+      <h4 className="heading">About</h4>
+      <ul className="list-unstyled list-justify">
+        <span>{mainInfoStatus === 'LOADED' ? mainInfo.about : ''}</span>
       </ul>
     </div>
   );
 }
 
 Detail.propTypes = {
-
+  mainInfo: PropTypes.object,
+  mainInfoStatus: PropTypes.string,
 };
 
 export default Detail;

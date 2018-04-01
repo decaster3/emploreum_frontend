@@ -11,7 +11,7 @@ import {
   GET_VACANCY_MAIN_INFO,
 } from './constants';
 
-import { getCompanyInfoAPI } from '../../../services/api/VacanciesSearch';
+import { getVacancyInfoAPI } from '../../../services/api/VacanciesSearch';
 
 export const loadingVacanyMainInfo = () => ({ type: CHANGE_STATE_VACANCY_MAIN_INFO, payload: LOADING });
 export const loadedVacancyMainInfo = () => ({ type: CHANGE_STATE_VACANCY_MAIN_INFO, payload: LOADED });
@@ -19,8 +19,8 @@ export const loadedVacancyMainInfo = () => ({ type: CHANGE_STATE_VACANCY_MAIN_IN
 
 export const getVacancyMainInfo = (id) => (
   (dispatch) => {
-    dispatch(loadingVacanyMainInfo());
-    getCompanyInfoAPI({ id }, (data) => {
+    // dispatch(loadingVacanyMainInfo());
+    getVacancyInfoAPI({ id }, (data) => {
       dispatch({
         type: GET_VACANCY_MAIN_INFO,
         payload: data,

@@ -28,15 +28,12 @@ export const balanceChangeListener = () => (
 );
 
 export const getHeaderInfo = () => (
-  (dispatch) => {
-    dispatch(headerLoading());
-    return getEmployeeHeaderDataAPI((data) => {
-      dispatch({
-        type: SET_HEADER,
-        payload: data,
-      });
-    }, (err) => {
-      console.log(err);
-    }, dispatch);
-  }
+  (dispatch) => getEmployeeHeaderDataAPI((data) => {
+    dispatch({
+      type: SET_HEADER,
+      payload: data,
+    });
+  }, (err) => {
+    console.log(err);
+  }, dispatch)
 );

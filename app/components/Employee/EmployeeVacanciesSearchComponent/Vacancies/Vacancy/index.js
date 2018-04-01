@@ -20,6 +20,7 @@ export const Vacancy = (props) => {
     duration,
     userState,
     userRole,
+    name,
     id } = props;
 
   // let position = '';
@@ -46,12 +47,13 @@ export const Vacancy = (props) => {
   return (
     <div className="vacancy">
       <div className="vacancy-name">
+        <h4>{ name }</h4>
         {/* <Link to={url}>{ position } developer </Link> */}
         <div className="vacancy-money badge">{ weekPaymeent }</div>
         <div className="vacancy-currency">
           <p><a href="">{ companyName }</a></p>
           <div className="clearfix"></div>
-          платят :
+          currency :
           { currencies }
         </div>
       </div>
@@ -72,6 +74,7 @@ export const Vacancy = (props) => {
 };
 //
 Vacancy.propTypes = {
+  name: PropTypes.string,
   userRole: PropTypes.string,
   userState: PropTypes.string,
   duration: PropTypes.string,

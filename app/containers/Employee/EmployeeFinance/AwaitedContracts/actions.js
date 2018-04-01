@@ -14,18 +14,15 @@ export const loadedAwaitedContracts = () => ({ type: CHANGE_STATE_AWAITED_CONTRA
 
 // TODO
 export const getAwaitedContracts = () => (
-  (dispatch) => {
-    dispatch(loadingAwaitedContracts());
-    return getAwaitedContractsAPI((data) => {
-      dispatch({
-        type: GET_AWAITED_CONTRACTS,
-        payload: data,
-      });
-      dispatch(loadedAwaitedContracts());
-    }, (err) => {
-      console.log(err);
-    }, dispatch);
-  }
+  (dispatch) => getAwaitedContractsAPI((data) => {
+    dispatch({
+      type: GET_AWAITED_CONTRACTS,
+      payload: data,
+    });
+    dispatch(loadedAwaitedContracts());
+  }, (err) => {
+    console.log(err);
+  }, dispatch)
 );
 
 export const contractConfirmationListener = () => (

@@ -9,24 +9,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Detail = (props) => {
-  const { mainInfo } = props;
+  const { mainInfo, mainInfoStatus } = props;
   return (
     <div className="profile-detail" id="sticky-social">
       <div className="profile-info">
-        <h4 className="heading">Информация о вакансии</h4>
+        <h4 className="heading">Vacancy information</h4>
         <ul className="list-unstyled list-justify">
-          <li>Занятость <span>8 часов</span></li>
-          <li>Тип работы <span>Удаленно</span></li>
-          <li>Профиль <span>Фронт</span></li>
-          <li>Образование <span>Высшее</span></li>
-          <li>Оплата<span>
-          </span></li>
+          <li>Salary <span>{mainInfoStatus === 'LOADED' ? mainInfo.weekPayment : ''} eth</span></li>
+          <li>Duration<span>{mainInfoStatus === 'LOADED' ? mainInfo.duration : ''} month(s)</span></li>
         </ul>
-        <h4 className="heading padding-top-30">Информация о компании</h4>
+        <h4 className="heading padding-top-30">About company</h4>
         <div className="com-desc">
-          <strong>{mainInfo.name}</strong>
-          {mainInfo.info}
-          <a href=""> подробнее</a>
+          {mainInfo.company.about}
         </div>
       </div>
     </div>
@@ -35,6 +29,7 @@ export const Detail = (props) => {
 
 Detail.propTypes = {
   mainInfo: PropTypes.object,
+  mainInfoStatus: PropTypes.string,
 };
 
 export default Detail;

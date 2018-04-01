@@ -13,15 +13,12 @@ export const loadedEndedContracts = () => ({ type: CHANGE_STATE_ENDED_CONTRACTS,
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const getEndedContracts = () => (
-  (dispatch) => {
-    dispatch(loadingEndedContracts());
-    return sleep(1000).then(() => {
-      dispatch({
-        type: GET_ENDED_CONTRACTS,
-        payload: mockContractss,
-      });
-      dispatch(loadedEndedContracts());
+  (dispatch) => sleep(1000).then(() => {
+    dispatch({
+      type: GET_ENDED_CONTRACTS,
+      payload: mockContractss,
     });
-  }
+    dispatch(loadedEndedContracts());
+  })
 );
 

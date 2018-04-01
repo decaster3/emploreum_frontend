@@ -18,19 +18,15 @@ export const loadedProfileMainInfo = () => ({ type: CHANGE_STATE_PROFILE_MAIN_IN
 
 
 export const getProfileMainInfo = (employeeId) => (
-  (dispatch) => {
+  (dispatch) =>
     // dispatch(loadingProfileMainInfo());
-    return getEmployeeProfileMainInfoAPI(employeeId, (data) => {
+    getEmployeeProfileMainInfoAPI(employeeId, (data) => {
       dispatch({
         type: GET_PROFILE_MAIN_INFO,
-        payload: {
-          name: data.name,
-          imgUrl: data.photo_path,
-        },
+        payload: data,
       });
       dispatch(loadedProfileMainInfo());
     }, (err) => {
       console.log(err);
-    }, dispatch);
-  }
+    }, dispatch)
 );

@@ -6,35 +6,24 @@
 
 import React from 'react';
 // import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { BASEURL } from '../../../../global-constants';
+import { BASEURL } from '../../../../global-constants';//
 
 function ProfileHeaderMain(props) {
   const { mainInfo, mainInfoStatus } = props;
-  // const imgProfile = `${BASEURL}/${mainInfo.logo}`;
+  const logoUrl = `${BASEURL}${mainInfoStatus === 'LOADED' ? mainInfo.logo : '/'}`;
+  const companyProfileUrl = mainInfoStatus === 'LOADED' ? `/employee/company/${mainInfo.company.id}` : '/';
+  const company = <Link to={companyProfileUrl}>{mainInfoStatus === 'LOADED' ? mainInfo.company.name : '/'}</Link>;
   return (
     <div className="profile-header">
       <div className="overlay" />
       <div className="profile-main">
-        <i className="fa text-avatar"></i>
+        <img alt="logo" src={logoUrl} className="img-responsive" />
         <h3 className="name">
           {mainInfoStatus === 'LOADED' ? mainInfo.name : ''}
         </h3>
-        <span className="online-status status-available">Видимость:всем</span>
-      </div>
-      <div className="profile-stat" id="sticky-rating">
-        <div className="row">
-          <div className="col-md-4 stat-item">
-                5 <span>навыков</span>
-          </div>
-          <div className="col-md-4 stat-item">
-                20 <span>тестов</span>
-          </div>
-          <div className="col-md-4 stat-item">
-            <span>5 <i className="fa fa-dollar"></i> </span>
-            <span>Мин. З.П.</span>
-          </div>
-        </div>
+          From {company}
       </div>
     </div>
   );

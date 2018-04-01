@@ -12,6 +12,12 @@ const FormCreationVacancy = (props) => {
   return (
     <form onSubmit={handleSubmit(createVacancy)}>
       <Field
+        name="name"
+        component={renderField}
+        validate={required}
+        label="Name"
+      />
+      <Field
         name="weekPayment"
         component={renderField}
         validate={required}

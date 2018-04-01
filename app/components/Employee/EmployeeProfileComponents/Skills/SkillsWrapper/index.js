@@ -12,13 +12,10 @@ export const SkillsWrapper = (props) => {
   const { children } = props;
   return (
     <div>
-      <h4 className="heading">Навыки</h4>
+      <h4 className="heading">Skills</h4>
       <div className="awards">
         <div className="row">
           { children }
-        </div>
-        <div className="text-center padding-top-30">
-          <a href="" className="btn btn-default">Просмотреть все</a>
         </div>
       </div>
     </div>

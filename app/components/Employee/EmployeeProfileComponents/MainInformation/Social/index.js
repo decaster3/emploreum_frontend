@@ -10,7 +10,7 @@ import React from 'react';
 function ProfileHeaderSocial() {
   return (
     <div className="profile-info">
-      <h4 className="heading">Социальные сети</h4>
+      <h4 className="heading">Social</h4>
       <ul className="list-inline social-icons">
         <li><a href="" className="facebook-bg"><i className="fa fa-facebook"></i></a></li>
         <li><a href="" className="twitter-bg"><i className="fa fa-twitter"></i></a></li>
