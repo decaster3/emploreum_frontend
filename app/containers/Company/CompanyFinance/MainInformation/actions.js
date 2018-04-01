@@ -3,12 +3,13 @@
  * CompanyFinanceContainer actions
  *
  */
-
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import {
   LOADING,
   CHANGE_BALANCE,
   CHANGE_HEADER_STATE,
   SET_HEADER,
+  LOADED,
 } from './constants';
 
 import socket from '../../../../services/socket';
@@ -19,16 +20,22 @@ export const changeBalance = (balance) => ({ type: CHANGE_BALANCE, balance });
 
 
 export const getHeaderInfo = () => (
-  (dispatch) =>
+  (dispatch, getState) => {
     // dispatch(headerLoading());
-    getCompanyAddressAPI((data) => {
+    if (getState().get('companyFinanceMainInfo').get('header').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
+    return getCompanyAddressAPI((data) => {
+      dispatch(hideLoading());
       dispatch({
         type: SET_HEADER,
         payload: data,
       });
     }, (err) => {
       console.log(err);
-    }, dispatch)
+      dispatch(hideLoading());
+    }, dispatch);
+  }
 );
 
 export const balanceChangeListener = () => (

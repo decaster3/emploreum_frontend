@@ -3,7 +3,7 @@
  * CompanyFinanceContainer actions
  *
  */
-
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import {
   CHANGE_STATE_PAYMENTS,
   LOADING,
@@ -17,9 +17,13 @@ export const loadingPayments = () => ({ type: CHANGE_STATE_PAYMENTS, payload: LO
 export const loadedPayments = () => ({ type: CHANGE_STATE_PAYMENTS, payload: LOADED });
 
 export const getPayments = () => (
-  (dispatch) => {
+  (dispatch, getState) => {
     // dispatch(loadingPayments());
-    getCompanyTrasactionsAPI((data) => {
+    if (getState().get('companyFinanceRecentPayments').get('recentPayments').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
+    return getCompanyTrasactionsAPI((data) => {
+      dispatch(hideLoading());
       const newData = data.map((el) => ({
         address: el.transactionHash,
         payment: el.amount,
@@ -32,6 +36,7 @@ export const getPayments = () => (
       });
       dispatch(loadedPayments());
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
     }, dispatch);
   }

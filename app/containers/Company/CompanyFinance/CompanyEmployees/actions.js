@@ -4,6 +4,7 @@
  *
  */
 
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import {
   CHANGE_STATE_EMPLOYEES,
   LOADING,
@@ -18,9 +19,13 @@ export const loadingEmployees = () => ({ type: CHANGE_STATE_EMPLOYEES, payload: 
 export const loadedEmployees = () => ({ type: CHANGE_STATE_EMPLOYEES, payload: LOADED });
 
 export const getEmployees = () => (
-  (dispatch) => {
+  (dispatch, getState) => {
     // dispatch(loadingEmployees());
+    if (getState().get('companyFinanceWorkingEmployees').get('employees').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
     getCompanyWorkersAPI((data) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_EMPLOYEES,
         payload: data,
@@ -28,6 +33,7 @@ export const getEmployees = () => (
       dispatch(loadedEmployees());
     }, (err) => {
       console.log(err);
+      dispatch(hideLoading());
     }, dispatch);
   }
 );

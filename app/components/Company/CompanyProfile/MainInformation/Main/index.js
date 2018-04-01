@@ -12,8 +12,9 @@ import { BASEURL } from '../../../../../global-constants';
 
 function ProfileHeaderMain(props) {
   const { mainInfo, mainInfoStatus } = props;
-  const logoUrl = `${BASEURL}${mainInfo.logo}`;
-  const since = moment(mainInfo.createdAt).format('LL');
+  const logoUrl = `${BASEURL}${mainInfoStatus === 'LOADED' ? mainInfo.logo : '/'}`;
+  const createdat = mainInfoStatus === 'LOADED' ? mainInfo.user.createdAt : '';
+  const since = moment(createdat).format('LL');
   return (
     <div className="profile-header">
       <div className="overlay" />

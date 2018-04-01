@@ -6,6 +6,7 @@
 
 import React from 'react';
 // import styled from 'styled-components';
+import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -42,6 +43,7 @@ function NavigationBar(props) {
             </ul>
           </div>
         </div>
+        <LoadingBar />
       </nav>
       <div className="main-content">
         { children }

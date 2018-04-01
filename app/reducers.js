@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import { reducer as formReducer } from 'redux-form/immutable';
 import UserSessionReducer from 'containers/UserSession/reducer';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 /*
  * routeReducer
  *
@@ -44,6 +45,7 @@ export default function createReducer(injectedReducers) {
   return combineReducers({
     form: formReducer,
     route: routeReducer,
+    loadingBar: loadingBarReducer,
     userSession: UserSessionReducer,
     language: languageProviderReducer,
     ...injectedReducers,

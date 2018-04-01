@@ -5,9 +5,9 @@
 */
 
 import React from 'react';
-import KeywordFilter from '../../../../containers/Filters/Keywords/Loadable';
-import LanguageFilter from '../../../../containers/Filters/Languages/Loadable';
-import SkillsFilter from '../../../../containers/Filters/Skills/Loadable';
+import KeywordFilter from '../../../../containers/Filters/Keywords';
+import LanguageFilter from '../../../../containers/Filters/Languages';
+import SkillsFilter from '../../../../containers/Filters/Skills';
 import { getEmployees } from '../../../../containers/EmployeesSearch/actions';
 
 export const EmployeeFilterSelector = () => (

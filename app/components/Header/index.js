@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Navigation from './Navigation/Loadable';
@@ -33,6 +34,7 @@ export const Header = (props) => {
           </ul>
         </div>
       </div>
+      <LoadingBar updateTime={100} maxProgress={88} progressIncrease={20} style={{ backgroundColor: '#3287B2', height: '3px' }} />
     </nav>
   );
 };

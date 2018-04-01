@@ -3,7 +3,7 @@
  * VacanciesSearch actions
  *
  */
-
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import {
   CHANGE_STATE_VACANCIES,
   LOADING,
@@ -17,14 +17,19 @@ export const loadingVacancies = () => ({ type: CHANGE_STATE_VACANCIES, payload: 
 export const loadedVacancies = () => ({ type: CHANGE_STATE_VACANCIES, payload: LOADED });
 
 export const getRecomendedVacancies = () => (
-  (dispatch) => {
+  (dispatch, getState) => {
+    if (getState().get('vacanciesSearch').get('vacancies').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
     return getEmployeeRecomendedVacanciesAPI((data) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_VACANCIES,
         payload: data,
       });
       dispatch(loadedVacancies());
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
     }, dispatch);
   }
@@ -36,16 +41,18 @@ export const getVacancies = () => (
     const currentSearchUrl = urlArray[urlArray.length - 1];
     const currentUrl = decodeURIComponent(currentSearchUrl) === '' ? {} : JSON.parse(decodeURIComponent(currentSearchUrl));
     currentUrl.type = 'vacancies';
-    if (getState().get('vacanciesSearch').get('vacancies').toJS().length === 0) {
-      dispatch(loadingVacancies());
+    if (getState().get('vacanciesSearch').get('vacancies').get('status') !== LOADED) {
+      dispatch(showLoading());
     }
     return getSearchVacanciesAPI(encodeURIComponent(JSON.stringify(currentUrl)), (data) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_VACANCIES,
         payload: data,
       });
       dispatch(loadedVacancies());
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
     }, dispatch);
   }

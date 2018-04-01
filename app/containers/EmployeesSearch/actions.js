@@ -3,11 +3,10 @@
  * VacanciesSearch actions
  *
  */
-
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import {
   SET_EMPLOYEES,
   CHANGE_LOADING_STATE,
-  LOADING,
   LOADED,
   ERROR,
 } from './constants';
@@ -24,11 +23,16 @@ export const getEmployees = () => (
     const currentSearchUrl = urlArray[urlArray.length - 1];
     const currentUrl = decodeURIComponent(currentSearchUrl) === '' ? {} : JSON.parse(decodeURIComponent(currentSearchUrl));
     currentUrl.type = 'employees';
-    dispatch(setEmployeeLoadingState(LOADING));
+    // dispatch(setEmployeeLoadingState(LOADING));
+    if (getState().get('employeesSearch').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
     return getSearchEmployeesAPI(encodeURIComponent(JSON.stringify(currentUrl)), (data) => {
+      dispatch(hideLoading());
       dispatch(setEmployees(data));
       dispatch(setEmployeeLoadingState(LOADED));
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
       dispatch(setEmployeeLoadingState(ERROR, []));
     }, dispatch);
