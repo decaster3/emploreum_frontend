@@ -13,6 +13,7 @@ const AxiosService = {
 };
 
 const notifyBadConnection = () => toast('Lost connection to the server. Please check the connection to the Internet.', { hideProgressBar: true, autoClose: 10000, type: toast.TYPE.ERROR });
+const sessionOut = () => toast('Your session is deprecated, for security reasons, please re-enter the application', { hideProgressBar: true, autoClose: 10000, type: toast.TYPE.ERROR });
 
 function get(url, successCallBack, errorCallBack, dispatch) {
   return axios.get(
@@ -33,6 +34,7 @@ function get(url, successCallBack, errorCallBack, dispatch) {
           },
         });
         dispatch(push('/'));
+        sessionOut();
       }
     } else {
       toast.dismiss();
@@ -58,6 +60,7 @@ function post(url, obj, successCallBack, errorCallBack, dispatch, ...args) {
             },
           });
           dispatch(push('/'));
+          sessionOut();
         }
       } else {
         toast.dismiss();
@@ -86,6 +89,7 @@ function postFile(url, obj, successCallBack, errorCallBack, dispatch) {
             },
           });
           dispatch(push('/'));
+          sessionOut();
         } else {
           toast.dismiss();
           notifyBadConnection();

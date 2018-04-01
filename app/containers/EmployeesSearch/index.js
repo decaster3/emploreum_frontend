@@ -38,6 +38,7 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
         photoPath={employee.photoPath}
         lastWork={employee.lastWork}
         userState={this.props.userState}
+        createdAt={employee.user.createdAt}
       />)
     );
   }

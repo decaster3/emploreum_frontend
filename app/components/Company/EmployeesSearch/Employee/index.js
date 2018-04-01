@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment/src/moment';
 import { Link } from 'react-router-dom';
 import { BASEURL } from '../../../../global-constants';
 import { ANONYMOUS } from '../../../../containers/UserSession/constants';
@@ -15,11 +16,12 @@ export const Employee = (props) => {
     specifications,
     photoPath,
     skills,
-    lastWork,
     name,
     userState,
+    createdAt,
     id } = props;
   const url = userState === ANONYMOUS ? `/employee/${id}` : `/company/employee/${id}`;
+  const since = moment(createdAt).format('LL');
   return (
     <div className="vacancy">
       <div className="row">
@@ -35,13 +37,11 @@ export const Employee = (props) => {
             <div className="vacancy-currency">
               <p><a>{skills || 'Skils...'} </a></p>
               <div className="clearfix"></div>
-              {lastWork || 'last work...'}
             </div>
           </div>
         </div>
       </div>
       <div className="vacancy-desc">
-        <p>  Work experience: 8 years </p>
         <div className="vacancy-add">
           <Link to={url}>Details</Link>
         </div>
@@ -49,7 +49,7 @@ export const Employee = (props) => {
           <a href="">Contacts</a>
         </div>
         <div className="vacancy-date">
-          On emploreum since: 2014 (4 years)
+          On Emploreum since {since}
         </div>
       </div>
     </div>
@@ -59,9 +59,9 @@ export const Employee = (props) => {
 Employee.propTypes = {
   userState: PropTypes.string,
   specifications: PropTypes.string,
-  lastWork: PropTypes.string,
   skills: PropTypes.string,
   photoPath: PropTypes.string,
+  createdAt: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
 };
