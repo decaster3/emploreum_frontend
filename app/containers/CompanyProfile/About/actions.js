@@ -4,6 +4,8 @@
  *
  */
 
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
 import {
   CHANGE_STATE_ABOUT_COMPANY_INFO,
   LOADING,
@@ -18,15 +20,21 @@ export const loadedProfileMainInfo = () => ({ type: CHANGE_STATE_ABOUT_COMPANY_I
 
 
 export const getAboutCompanyInfo = (employeeId) => (
-  (dispatch) =>
+  (dispatch, getState) => {
+    if (getState().get('companyProfileAbout').get('mainInformation').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
     // dispatch(loadingProfileMainInfo());
     getCompanyProfileMainInfoAPI(employeeId, (data) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_ABOUT_COMPANY_INFO,
         payload: data,
       });
       dispatch(loadedProfileMainInfo());
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
-    }, dispatch)
+    }, dispatch);
+  }
 );

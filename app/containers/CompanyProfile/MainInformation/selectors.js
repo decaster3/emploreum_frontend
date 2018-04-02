@@ -4,7 +4,6 @@ import { createSelector } from 'reselect';
  * Direct selector to the mainInformation state domain
  */
 const selectMainInformation = (state) => state.get('companyProfileMainInformation').get('mainInformation');
-
 /**
  * Other specific selectors
  */

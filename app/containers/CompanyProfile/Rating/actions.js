@@ -3,7 +3,7 @@
  * MainInformation actions
  *
  */
-
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import {
   CHANGE_STATE_RATING,
   LOADING,
@@ -18,15 +18,20 @@ export const loadedCompanyRating = () => ({ type: CHANGE_STATE_RATING, payload: 
 
 
 export const getCompanyRating = (employeeId) => (
-  (dispatch) =>
-    // dispatch(loadingCompanyRating());
-     getCompanyRatingAPI(employeeId, (data) => {
-       dispatch({
-         type: GET_RATING,
-         payload: data,
-       });
-       dispatch(loadedCompanyRating());
-     }, (err) => {
-       console.log(err);
-     }, dispatch)
+  (dispatch, getState) => {
+    if (getState().get('companyProfileRating').get('rating').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
+    getCompanyRatingAPI(employeeId, (data) => {
+      dispatch(hideLoading());
+      dispatch({
+        type: GET_RATING,
+        payload: data,
+      });
+      dispatch(loadedCompanyRating());
+    }, (err) => {
+      dispatch(hideLoading());
+      console.log(err);
+    }, dispatch);
+  }
 );

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export const RecentPayments = (props) => {
   const { children } = props;
   return (
-    <div className="col-md-7">
+    <div className="col-md-6">
       <div className="panel">
         <div className="panel-heading">
           <h3 className="panel-title">Recent payments</h3>

@@ -3,6 +3,7 @@
  * MainInformation actions
  *
  */
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import {
   CHANGE_STATE_PROFILE_MAIN_INFO,
@@ -18,15 +19,21 @@ export const loadedProfileMainInfo = () => ({ type: CHANGE_STATE_PROFILE_MAIN_IN
 
 
 export const getProfileMainInfo = (employeeId) => (
-  (dispatch) =>
-    // dispatch(loadingProfileMainInfo());
-    getEmployeeProfileMainInfoAPI(employeeId, (data) => {
+  (dispatch, getState) => {
+    if (getState().get('employeeProfileMainInformation').get('mainInformation').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
+    dispatch(loadingProfileMainInfo());
+    return getEmployeeProfileMainInfoAPI(employeeId, (data) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_PROFILE_MAIN_INFO,
         payload: data,
       });
       dispatch(loadedProfileMainInfo());
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
-    }, dispatch)
+    }, dispatch);
+  }
 );

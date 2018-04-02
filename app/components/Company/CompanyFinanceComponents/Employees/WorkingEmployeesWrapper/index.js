@@ -7,7 +7,7 @@ const WorkingEmployees = (props) => {
   const { children } = props;
 
   return (
-    <div className="col-md-5">
+    <div className="col-md-6">
       <div className="panel">
         <div className="panel-heading">
           <h3 className="panel-title">Employees</h3>

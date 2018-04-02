@@ -25,9 +25,9 @@ export const getVacancyMainInfo = (id) => (
         type: GET_VACANCY_MAIN_INFO,
         payload: data,
       });
+      dispatch(loadedVacancyMainInfo());
     }, (err) => {
       console.log(err);
     }, dispatch);
-    dispatch(loadedVacancyMainInfo());
   }
 );

@@ -8,11 +8,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { LOADED } from '../../containers/Registration/constants';
-import AutoComplete from '../AutoComplete/Loadable';
-import ChoosenSpecification from './ChoosenSpecification/Loadable';
-import ChoosenSpecifications from './ChoosenSpecifications/Loadable';
-import Wrapper from './SpecificationWrapper/Loadable';
-import ButtonSubmit from './ButtonSubmit/Loadable';
+import AutoComplete from '../AutoComplete';
+import ChoosenSpecification from './ChoosenSpecification';
+import ChoosenSpecifications from './ChoosenSpecifications';
+import Wrapper from './SpecificationWrapper';
+import ButtonSubmit from './ButtonSubmit';
 
 class SpecificationSkillsStep extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {

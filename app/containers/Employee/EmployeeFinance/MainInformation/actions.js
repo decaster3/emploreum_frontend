@@ -1,8 +1,11 @@
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
 import {
   LOADING,
   CHANGE_HEADER_STATE,
   SET_HEADER,
   CHANGE_BALANCE,
+  LOADED,
 } from './constants';
 
 import socket from '../../../../services/socket';
@@ -28,12 +31,19 @@ export const balanceChangeListener = () => (
 );
 
 export const getHeaderInfo = () => (
-  (dispatch) => getEmployeeHeaderDataAPI((data) => {
-    dispatch({
-      type: SET_HEADER,
-      payload: data,
-    });
-  }, (err) => {
-    console.log(err);
-  }, dispatch)
+  (dispatch, getState) => {
+    if (getState().get('employeeFinanceMainInformation').get('header').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
+    return getEmployeeHeaderDataAPI((data) => {
+      dispatch(hideLoading());
+      dispatch({
+        type: SET_HEADER,
+        payload: data,
+      });
+    }, (err) => {
+      dispatch(hideLoading());
+      console.log(err);
+    }, dispatch);
+  }
 );

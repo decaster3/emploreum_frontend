@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
 import {
   CHANGE_STATE_AWAITED_CONTRACTS,
   GET_AWAITED_CONTRACTS,
@@ -14,15 +16,22 @@ export const loadedAwaitedContracts = () => ({ type: CHANGE_STATE_AWAITED_CONTRA
 
 // TODO
 export const getAwaitedContracts = () => (
-  (dispatch) => getAwaitedContractsAPI((data) => {
-    dispatch({
-      type: GET_AWAITED_CONTRACTS,
-      payload: data,
-    });
-    dispatch(loadedAwaitedContracts());
-  }, (err) => {
-    console.log(err);
-  }, dispatch)
+  (dispatch, getState) => {
+    if (getState().get('employeeFinanceAwaitedContracts').get('awaitedContracts').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
+    return getAwaitedContractsAPI((data) => {
+      dispatch(hideLoading());
+      dispatch({
+        type: GET_AWAITED_CONTRACTS,
+        payload: data,
+      });
+      dispatch(loadedAwaitedContracts());
+    }, (err) => {
+      dispatch(hideLoading());
+      console.log(err);
+    }, dispatch);
+  }
 );
 
 export const contractConfirmationListener = () => (

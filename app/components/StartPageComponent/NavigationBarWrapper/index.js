@@ -34,7 +34,7 @@ function NavigationBar(props) {
                 </Link>
               </li>
               <li>
-                <Link to="/registration">
+                <Link to="/login">
                   <span className="btn btn-primary">
                     Post a job
                   </span>

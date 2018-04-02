@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { BASEURL } from '../../../../../global-constants';
 
 function ProfileHeaderMain(props) {
-  const { mainInfo, mainInfoStatus } = props;
+  const { mainInfo } = props;
   const logoUrl = `${BASEURL}${mainInfo.photoPath}`;
   return (
     <div className="profile-header">
@@ -17,13 +17,13 @@ function ProfileHeaderMain(props) {
       <div className="profile-main">
         <img alt="logo" src={logoUrl} className="img-responsive" />
         <h3 className="name">
-          {mainInfoStatus === 'LOADED' ? mainInfo.name : ''}
+          {mainInfo.name}
         </h3>
       </div>
       <div className="profile-stat" id="sticky-rating">
         <div className="row">
           <div className="col-md-12 stat-item">
-            5<span> skills</span>
+            3<span> skills</span>
           </div>
         </div>
       </div>
@@ -33,7 +33,6 @@ function ProfileHeaderMain(props) {
 
 ProfileHeaderMain.propTypes = {
   mainInfo: PropTypes.object,
-  mainInfoStatus: PropTypes.string,
 };
 
 export default ProfileHeaderMain;

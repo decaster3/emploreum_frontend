@@ -31,8 +31,7 @@ class FirstStepRegistration extends React.Component { // eslint-disable-line rea
               <div className="right">
                 <div className="overlay"></div>
                 <div className="content text">
-                  <h1 className="heading">Присоединить к одной из 112344 успешной компании</h1>
-                  <p>Расти и зарабатывай больше</p>
+                  <h1 className="heading">Be the company of the future</h1>
                 </div>
               </div>
             </div>

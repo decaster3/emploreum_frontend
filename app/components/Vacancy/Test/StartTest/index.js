@@ -15,11 +15,11 @@ export const StartTest = (props) => {
     <div className="panel panel-headline">
       <div className="panel-heading">
         <h3 className="panel-title">
-            BL bla blajweo; gjwoeqngqwoei ngwengowqegnwqp;oe g nweignwo qgnw qepngwqe lkgnwklej gbw ekgbw qejhg
+        By clicking on this button you agree to the processing of personal data. You will not have a second attempt to pass the test. In case you fail the test, you will never be able to submit your resume for this job
           </h3>
       </div>
       <div className="panel-body padding-bottom-30">
-        bla bla blaq;jwn ewgwqg nwrgwrgqj;wg;j ogqrwj;w;jw gjkwegqnk wgrklgweqklwg rkqwgqkklbwg lbkgwer gwe
+      The company itself sets the percentage of right answers. By clicking on this button you agree with the rule of non-disclosure of the questions seen.
       </div>
       <div className="panel-footer text-right">
         <button

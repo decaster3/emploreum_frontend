@@ -26,7 +26,9 @@
 .profile-detail .metric .icon .fa {
     color: #7c7c7c;
 }
-
+.profile-left {
+    position: relative;
+}
 .profile-left .stat-item span.badge-bg {
     background: #fff;
     color: #000;

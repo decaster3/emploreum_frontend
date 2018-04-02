@@ -27,21 +27,37 @@ export class MainInformation extends React.Component { // eslint-disable-line re
   componentDidMount() {
     this.props.getProfileMainInfo(this.props.companyProfileId);
   }
+  renderMainInfo() {
+    if (this.props.mainInfoStatus === 'LOADED') {
+      return (
+        <MainProfile
+          mainInfoStatus={this.props.mainInfoStatus}
+          mainInfo={this.props.mainInfo}
+        />);
+    }
+    return <div />;
+  }
+  renderDetailInfo() {
+    if (this.props.mainInfoStatus === 'LOADED') {
+      return (
+        <DetailProfile
+          mainInfoStatus={this.props.mainInfoStatus}
+          mainInfo={this.props.mainInfo}
+        />);
+    }
+    return <div />;
+  }
   render() {
+    const mainInfo = this.renderMainInfo();
+    const detailInfo = this.renderDetailInfo();
     return (
       <div>
         <Helmet>
           <title>MainInformation</title>
           <meta name="description" content="Description of MainInformation" />
         </Helmet>
-        <MainProfile
-          mainInfoStatus={this.props.mainInfoStatus}
-          mainInfo={this.props.mainInfo}
-        />
-        <DetailProfile
-          mainInfoStatus={this.props.mainInfoStatus}
-          mainInfo={this.props.mainInfo}
-        />
+        { mainInfo }
+        { detailInfo }
         <SocialProfile />
       </div>
     );

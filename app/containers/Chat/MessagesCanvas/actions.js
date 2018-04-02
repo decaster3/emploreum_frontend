@@ -3,6 +3,7 @@
  * CompanyFinanceContainer actions
  *
  */
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import socket from '../../../services/socket';
 import {
   CHANGE_STATE_MESSAGES,
@@ -25,14 +26,18 @@ export const changeMessage = (oldMessage, newMessage) => ({ type: CHANGE_MESSAGE
 export const getMessages = () => (
   (dispatch, getState) => {
     const currentInteractorId = getState().get('chatInterlocators').get('currentInterlocator').get('item').toJS().id;
-    // dispatch(loadingMessages());
+    if (getState().get('chatMessages').get('messages').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
     getMessagesByIdAPI(currentInteractorId, (data) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_MESSAGES,
         payload: data,
       });
       dispatch(loadedMessages());
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
     }, dispatch);
   }

@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
@@ -27,23 +26,34 @@ export class MainInformation extends React.Component { // eslint-disable-line re
   componentDidMount() {
     this.props.getVacancyMainInfo(this.props.vacancyId);
   }
-  render() {
-    return (
-      <div>
-        <Helmet>
-          <title>MainInformation</title>
-          <meta name="description" content="Description of MainInformation" />
-        </Helmet>
+  renderMainInfo() {
+    if (this.props.mainInfoStatus === 'LOADED') {
+      return (
         <MainCompany
-          mainInfoStatus={this.props.mainInfoStatus}
           mainInfo={this.props.mainInfo}
-        />
+          role={this.props.role}
+        />);
+    }
+    return <div />;
+  }
+  renderDetailInfo() {
+    if (this.props.mainInfoStatus === 'LOADED') {
+      return (
         <DetailVacancy
-          mainInfoStatus={this.props.mainInfoStatus}
           mainInfo={this.props.mainInfo}
           vacancyId={this.props.vacancyId}
           role={this.props.role}
-        />
+        />);
+    }
+    return <div />;
+  }
+  render() {
+    const mainInfo = this.renderMainInfo();
+    const detailInfo = this.renderDetailInfo();
+    return (
+      <div>
+        { mainInfo }
+        { detailInfo }
       </div>
     );
   }

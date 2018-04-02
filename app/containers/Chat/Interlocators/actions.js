@@ -3,7 +3,7 @@
  * CompanyFinanceContainer actions
  *
  */
-
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import {
   CHANGE_STATE_INTERLOCATORS,
   LOADING,
@@ -27,9 +27,11 @@ export const notChoosenCurrentInterlocatorStatus = () => ({ type: CHANGE_CURRENT
 
 export const getInterlocators = (chatId) => (
   (dispatch, getState) => {
-    // dispatch(loadingInterlocators());
-    dispatch(loadingCurrentInterlocatorStatus());
+    if (getState().get('chatInterlocators').get('interlocators').get('status') !== LOADED) {
+      dispatch(showLoading());
+    }
     getInterlocatorsAPI((data) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_INTERLOCATORS,
         payload: data,
@@ -37,6 +39,7 @@ export const getInterlocators = (chatId) => (
     }, (err) => {
       console.log(err);
     }, dispatch).then(() => {
+      dispatch(hideLoading());
       dispatch(loadedInterlocators());
       if (chatId) {
         const interlocator = getState().get('chatInterlocators')
