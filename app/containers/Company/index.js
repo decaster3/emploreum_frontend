@@ -18,24 +18,29 @@ import CompanyProfile from '../CompanyProfile/Roles/SelfView/Loadable';
 function renderMenu() {
   return [{
     name: 'Profile',
-    url: '/company',
+    url: '/company/',
     icon: 'fa-user',
+    placeholder: CompanyProfile,
   }, {
     name: 'Employees',
     url: '/company/employee/search/',
     icon: 'fa-address-book',
+    placeholder: EmployeesSearch,
   }, {
     name: 'Finance',
-    url: '/company/finance',
+    url: '/company/finance/',
     icon: 'fa-dollar',
+    placeholder: CompanyFinance,
   }, {
     name: 'Tests',
-    url: '/company/tests',
+    url: '/company/tests/',
     icon: 'fa-edit',
+    placeholder: Tests,
   }, {
     name: 'Chat',
     url: '/company/chat/',
     icon: 'fa-comments',
+    placeholder: ChatCreator,
   }];
 }
 

@@ -5,7 +5,7 @@ import Interlocators from './Interlocators/Loadable';
 export const ChatCreator = (props) => (
   <div className="col-lg-12">
     <div className="chat-view">
-      <Interlocators chatId={props.match.params.chatId} />
+      <Interlocators chatId={props.match ? props.match.params.chatId : null} />
     </div>
   </div>
 );

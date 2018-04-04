@@ -6,11 +6,13 @@ import RecentPayments from './Payments';
 import OpenVacancies from './OpenVacancies';
 
 export const CompanyFinanceCreator = () => (
-  <div className="container-fluid">
-    <CompanyFinanceHeader />
-    <WorkingEmployees />
-    <RecentPayments />
-    <OpenVacancies />
+  <div>
+    <div className="container-fluid">
+      <CompanyFinanceHeader />
+      <WorkingEmployees />
+      <RecentPayments />
+      <OpenVacancies />
+    </div>
   </div>
 );
 

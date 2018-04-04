@@ -34,7 +34,7 @@ export const Header = (props) => {
           </ul>
         </div>
       </div>
-      <LoadingBar updateTime={100} maxProgress={88} progressIncrease={20} style={{ backgroundColor: '#3287B2', height: '3px' }} />
+      <LoadingBar showFastActions updateTime={100} maxProgress={88} progressIncrease={20} style={{ backgroundColor: '#3287B2', height: '3px' }} />
     </nav>
   );
 };
