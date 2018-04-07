@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
 
 import renderField from '../../../forms/fields/FormRegisterField';
-import { passwordValidation, passwordMatch } from '../../../forms/validation/PasswordValidation';
 import { emailValidation } from '../../../forms/validation/EmailValidation';
 import { required } from '../../../forms/validation/RequiredValidation';
 
@@ -20,20 +19,6 @@ const FormRegisterFirstStep = (props) => {
         validate={[emailValidation, required]}
         label="Email"
       />
-      <Field
-        name="password"
-        type="password"
-        component={renderField}
-        validate={[required, passwordValidation]}
-        label="Password"
-      />
-      <Field
-        name="passwordConfirmation"
-        type="password"
-        component={renderField}
-        validate={[required, passwordValidation]}
-        label="Confirm password"
-      />
       {error && <strong>{error}</strong>}
       <button
         className="btn btn-primary btn-sm btn-block"
@@ -45,27 +30,14 @@ const FormRegisterFirstStep = (props) => {
             : <span>Submit</span>
         }
       </button>
-      <Link to="/" className="btn btn-default btn-xs btn-block">Login</Link>
+      <Link to="/" className="btn btn-default btn-xs btn-block">Cancel</Link>
     </form>
   );
 };
 
 export default reduxForm({
   form: 'FormRegisterFirstStep',
-  validate: passwordMatch,
-  // asyncValidate,
-  // asyncBlurFields: ['email'],
 })(FormRegisterFirstStep);
-
-// const selector = formValueSelector('FormRegisterFirstStep');
-// FormRegisterFirstStep = connect(
-//   (state) => {
-//     const { email } = selector(state, 'firstName', 'email');
-//     return {
-//       email,
-//     };
-//   }
-// )(FormRegisterFirstStep);
 
 FormRegisterFirstStep.propTypes = {
   handleSubmit: PropTypes.func,

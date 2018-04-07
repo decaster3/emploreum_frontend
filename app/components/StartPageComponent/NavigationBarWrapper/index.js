@@ -16,7 +16,7 @@ function NavigationBar(props) {
     <div id="wrapper" className="landing-emploreum">
       <nav id="max-navbar" className="navbar navbar-default navbar-fixed-top">
         <div className="brand">
-          <Link to="/">Emploreum</Link>
+          <Link to="/">Cartel</Link>
         </div>
         <div className="container-fluid">
           <form className="navbar-form navbar-left">

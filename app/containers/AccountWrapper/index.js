@@ -15,9 +15,7 @@ import {
   changeView,
 } from './actions';
 
-
 import reducer from './reducer';
-
 
 export class AccountWrapperContainer extends React.PureComponent {
   componentWillMount() {

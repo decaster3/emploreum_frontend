@@ -12,12 +12,13 @@ import {
   CHANGE_SUBMIT_EMAIL_BUTTON_STATE,
   CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE,
   CLEAR_REGISTRATION,
+  CHANGE_ADD_LOGIN_BUTTON_STATE,
 } from './constants';
 const initialState = fromJS({
-  role: '',
   registrationStep: 1,
   submittingEmail: false,
   submittingEmailVerification: false,
+  loginPending: false,
 });
 
 function registrationEmployeeReducer(state = initialState, action) {
@@ -28,6 +29,9 @@ function registrationEmployeeReducer(state = initialState, action) {
     case CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE:
       return state
         .set('submittingEmailVerification', !state.get('submittingEmailVerification'));
+    case CHANGE_ADD_LOGIN_BUTTON_STATE:
+      return state
+        .set('loginPending', !state.get('loginPending'));
     case CHANGE_ROLE:
       return state
         .set('role', fromJS(action.payload));
@@ -35,8 +39,7 @@ function registrationEmployeeReducer(state = initialState, action) {
       return state.set('registrationStep',
         (state.get('registrationStep') + 1));
     case DOWN_REGISTRATION_STEP:
-      return state.set('registrationStep',
-        (state.get('registrationStep') - 1));
+      return state.set('registrationStep', 1);
     case CLEAR_REGISTRATION:
       return fromJS(initialState);
     default:

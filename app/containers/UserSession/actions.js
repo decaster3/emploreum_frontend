@@ -99,11 +99,10 @@ export const loginAfterRegistration = (data) => (
       payload: {
         userState: LOGED_IN,
         userInformation: {
-          registrationStep: data.registrationStep,
-          role: data.role,
-          id: data.userId,
-          name: data.name,
-          photoPath: data.photoPath,
+          id: data.user.id,
+          login: data.user.login,
+          email: data.user.email,
+          photoPath: data.user.photoPath,
         },
       },
     });

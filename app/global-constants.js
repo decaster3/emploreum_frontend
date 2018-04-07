@@ -4,4 +4,4 @@ export const ENABLED = 'ENABLED';
 
 // server
 
-export const BASEURL = 'http://89.223.28.86:5000';
+export const BASEURL = 'http://10.91.40.50:3003';

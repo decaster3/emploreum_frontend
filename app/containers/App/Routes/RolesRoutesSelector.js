@@ -1,27 +1,14 @@
 import PropTypes from 'prop-types';
 import AnonymousRoutes from './AnonymousRoutes';
 import EmployeeRoutes from './EmployeeRoutes';
-import CompanyRoutes from './CompanyRoutes';
-import NotRegistredEmployeeRoutes from './NotRegistredEmployeeRoutes';
-import NotRegistredCompanyRoutes from './NotRegistredCompanyRoutes';
 import { ANONYMOUS, LOGGING_IN } from '../../UserSession/constants';
-import { COMPANY } from '../../Registration/constants';
 
 const RolesRoutes = (props) => {
-  const { userState, isUserCompleteRegistration, userRole } = props;
+  const { userState } = props;
   if (userState === ANONYMOUS || userState === LOGGING_IN) {
     return AnonymousRoutes;
   }
-  if (isUserCompleteRegistration) {
-    if (userRole === COMPANY) {
-      return CompanyRoutes;
-    }
-    return EmployeeRoutes;
-  }
-  if (userRole === COMPANY) {
-    return NotRegistredCompanyRoutes;
-  }
-  return NotRegistredEmployeeRoutes;
+  return EmployeeRoutes;
 };
 
 RolesRoutes.propTypes = {

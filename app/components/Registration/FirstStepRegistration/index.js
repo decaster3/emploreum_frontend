@@ -23,7 +23,6 @@ class FirstStepRegistration extends React.Component { // eslint-disable-line rea
                   </div>
                   <FormRegisterFirstStep
                     submitEmail={this.props.submitEmail}
-                    role={this.props.role}
                     submittingButton={this.props.submittingEmail}
                   />
                 </div>
@@ -31,8 +30,8 @@ class FirstStepRegistration extends React.Component { // eslint-disable-line rea
               <div className="right">
                 <div className="overlay"></div>
                 <div className="content text">
-                  <h1 className="heading">Присоединить к одной из 112344 успешной компании</h1>
-                  <p>Расти и зарабатывай больше</p>
+                  <h1 className="heading">Присоединить к одному из 112344 успешной чатов</h1>
+                  <p>Расти и общайся больше</p>
                 </div>
               </div>
             </div>

@@ -10,6 +10,9 @@ export const registerAPI = (credentails, successCallBack, errorCallBack, dispatc
 export const sendVerificationCodeAPI = (credentails, successCallBack, errorCallBack, dispatch) =>
   AxiosService.post(`${BASEURL}/auth/signup/verification`, credentails, successCallBack, errorCallBack, dispatch);
 
+export const addLoginAPI = (credentails, successCallBack, errorCallBack, dispatch) =>
+  AxiosService.post(`${BASEURL}/auth/signup/login`, credentails, successCallBack, errorCallBack, dispatch);
+
 export const submitEmployeeAboutAPI = (credentails, successCallBack, errorCallBack, dispatch) =>
   AxiosService.post(`${BASEURL}/auth/signup/info`, credentails, successCallBack, errorCallBack, dispatch);
 

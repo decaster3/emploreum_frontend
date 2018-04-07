@@ -15,7 +15,6 @@ const FormRegisterSecondStep = (props) => {
     error } = props;
   return (
     <form onSubmit={handleSubmit(submitEmailVerification)}>
-      <h3>{role}</h3>
       <Field
         name="code"
         component={renderField}

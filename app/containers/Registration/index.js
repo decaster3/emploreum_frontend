@@ -15,17 +15,19 @@ import {
   selectRegistrationStep,
   selectSubmitEmailButtonState,
   selectSubmitEmailVerificationButtonState,
+  selectAddLoginButtonState,
 } from './selectors';
 import reducer from './reducer';
 import FirstStep from '../../components/Registration/FirstStepRegistration/Loadable';
 import SecondStep from '../../components/Registration/SecondStepRegistration/Loadable';
-import RoleSelectionRegistration from '../../components/Registration/RoleSelectionRegistration/Loadable';
+import ThirdStep from '../../components/Registration/ThirdStepRegistration/Loadable';
 import {
   submitEmail,
   submitEmailVerification,
   changeRole,
   downRegistrationStep,
   clearReducer,
+  addLogin,
 } from './actions';
 
 export class Registration extends React.PureComponent {
@@ -47,20 +49,13 @@ export class Registration extends React.PureComponent {
     }
   }
   render() {
-    if (!this.props.role) {
-      return (
-        <RoleSelectionRegistration
-          changeRole={this.props.changeRole}
-        />
-      );
-    }
+    console.log(this.props.registrationStep);
     switch (this.props.registrationStep) {
       case 1:
         return (
           <div id="wrapper">
             <FirstStep
               submitEmail={this.props.submitEmail}
-              role={this.props.role}
               submittingEmail={this.props.submittingEmail}
             />
           </div>
@@ -70,8 +65,17 @@ export class Registration extends React.PureComponent {
           <div id="wrapper">
             <SecondStep
               submitEmailVerification={this.props.submitEmailVerification}
-              role={this.props.role}
               submittingEmailVerification={this.props.submittingEmailVerification}
+              downRegistrationStep={this.props.downRegistrationStep}
+            />
+          </div>
+        );
+      case 3:
+        return (
+          <div id="wrapper">
+            <ThirdStep
+              addLogin={this.props.addLogin}
+              pending={this.props.loginPending}
               downRegistrationStep={this.props.downRegistrationStep}
             />
           </div>
@@ -92,6 +96,7 @@ function mapStateToProps(state) {
     registrationStep: selectRegistrationStep(state),
     submittingEmail: selectSubmitEmailButtonState(state),
     submittingEmailVerification: selectSubmitEmailVerificationButtonState(state),
+    loginPending: selectAddLoginButtonState(state),
   };
 }
 
@@ -100,6 +105,7 @@ function mapDispatchToProps(dispatch) {
     changeRole: (evt) => dispatch(changeRole(evt)),
     submitEmail: (evt) => dispatch(submitEmail(evt)),
     submitEmailVerification: (evt) => dispatch(submitEmailVerification(evt)),
+    addLogin: (evt) => dispatch(addLogin(evt)),
     downRegistrationStep: () => dispatch(downRegistrationStep()),
     clearReducer: () => dispatch(clearReducer()),
   };
@@ -109,12 +115,12 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'registration', reducer });
 
 Registration.propTypes = {
-  role: PropTypes.string,
   submitEmail: PropTypes.func,
   submitEmailVerification: PropTypes.func,
+  addLogin: PropTypes.func,
   submittingEmail: PropTypes.bool,
   submittingEmailVerification: PropTypes.bool,
-  changeRole: PropTypes.func,
+  loginPending: PropTypes.bool,
   downRegistrationStep: PropTypes.func,
   clearReducer: PropTypes.func,
   registrationStep: PropTypes.number,

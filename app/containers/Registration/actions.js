@@ -7,30 +7,28 @@ import { SubmissionError } from 'redux-form/immutable';
 import { push } from 'react-router-redux';
 import {
   UP_REGISTRATION_STEP,
-  CHANGE_ROLE,
+  CHANGE_ADD_LOGIN_BUTTON_STATE,
   DOWN_REGISTRATION_STEP,
   CHANGE_SUBMIT_EMAIL_BUTTON_STATE,
   CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE,
   CLEAR_REGISTRATION,
 } from './constants';
 
-import { registerAPI, sendVerificationCodeAPI } from '../../services/api/Register';
+import { registerAPI, sendVerificationCodeAPI, addLoginAPI } from '../../services/api/Register';
 import { loginAfterRegistration } from '../UserSession/actions';
 
-export const redirect = (role, dispatch) => {
-  if (role === 'COMPANY') {
-    dispatch(push('/company'));
-  } else {
-    dispatch(push('/employee'));
-  }
+export const login = (dispatch, data) => {
+  dispatch(loginAfterRegistration(data));
+  dispatch(push('/user'));
 };
+
 const changeSubmitEmailButtonState = () => ({ type: CHANGE_SUBMIT_EMAIL_BUTTON_STATE });
 const changeSubmitEmailVerificationButtonState = () => ({ type: CHANGE_SUBMIT_EMAIL_VERIFICATION_BUTTON_STATE });
+const changeAddLoginButtonState = () => ({ type: CHANGE_ADD_LOGIN_BUTTON_STATE });
 const upRegistrationStep = () => ({ type: UP_REGISTRATION_STEP });
 
 export const downRegistrationStep = () => ({ type: DOWN_REGISTRATION_STEP });
 export const clearReducer = () => ({ type: CLEAR_REGISTRATION });
-export const changeRole = (role) => ({ type: CHANGE_ROLE, payload: role });
 
 // export const changeButtonStateAfterClose = () => (
 //   (dispatch, getState) => {
@@ -38,11 +36,10 @@ export const changeRole = (role) => ({ type: CHANGE_ROLE, payload: role });
 //   }
 // );
 export const submitEmail = (values) => (
-  (dispatch, getState) => {
+  (dispatch) => {
     dispatch(changeSubmitEmailButtonState());
-    const { email, password, passwordConfirmation } = values.toJS();
-    const role = getState().get('registration').get('role');
-    return registerAPI({ email, password, passwordConfirmation, role },
+    const { email } = values.toJS();
+    return registerAPI({ email },
       () => {
         dispatch(upRegistrationStep());
         dispatch(changeSubmitEmailButtonState());
@@ -57,22 +54,41 @@ export const submitEmail = (values) => (
 );
 
 export const submitEmailVerification = (values) => (
-  (dispatch, getState) => {
+  (dispatch) => {
     dispatch(changeSubmitEmailVerificationButtonState());
     const { code } = values.toJS();
-    const verifyCode = code;
-    return sendVerificationCodeAPI({ verifyCode },
+    return sendVerificationCodeAPI({ verifyCode: code },
       (data) => {
         dispatch(changeSubmitEmailVerificationButtonState());
-        dispatch(loginAfterRegistration(data));
-        dispatch(redirect(getState().get('userSession')
-        .get('userAuth').get('userInformation').get('role'), dispatch));
+        if (data.isNewUser) {
+          dispatch(upRegistrationStep());
+        } else {
+          dispatch(login(dispatch, data));
+        }
       },
       (err) => {
         if (err.r) {
           throw new SubmissionError({ _error: 'Wrong code!' });
         }
         dispatch(changeSubmitEmailVerificationButtonState());
+      }, dispatch);
+  }
+);
+
+export const addLogin = (values) => (
+  (dispatch) => {
+    dispatch(changeSubmitEmailVerificationButtonState());
+    const { newLogin } = values.toJS();
+    return addLoginAPI({ login: newLogin },
+      (data) => {
+        dispatch(changeAddLoginButtonState());
+        dispatch(login(dispatch, data));
+      },
+      (err) => {
+        if (err.r) {
+          throw new SubmissionError({ _error: 'Login is not avialable!' });
+        }
+        dispatch(changeAddLoginButtonState());
       }, dispatch);
   }
 );

@@ -16,8 +16,8 @@ export const Header = (props) => {
   const { serverLogout, children, userInitials } = props;
   return (
     <nav id="max-navbar" className="navbar navbar-default navbar-fixed-top">
-      <div className="brand">
-        <Link to="/">Emploreum</Link>
+      <div className="brand ">
+        <Link to="/">Cartel</Link>
       </div>
       <div className="container-fluid">
         <div className="navbar-btn hidden-xs">
