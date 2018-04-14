@@ -60,6 +60,7 @@ export const submitEmailVerification = (values) => (
     return sendVerificationCodeAPI({ verifyCode: code },
       (data) => {
         dispatch(changeSubmitEmailVerificationButtonState());
+        console.log(data);
         if (data.isNewUser) {
           dispatch(upRegistrationStep());
         } else {
@@ -78,7 +79,7 @@ export const submitEmailVerification = (values) => (
 export const addLogin = (values) => (
   (dispatch) => {
     dispatch(changeSubmitEmailVerificationButtonState());
-    const { newLogin } = values.toJS();
+    const newLogin = values.toJS().login;
     return addLoginAPI({ login: newLogin },
       (data) => {
         dispatch(changeAddLoginButtonState());

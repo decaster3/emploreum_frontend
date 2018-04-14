@@ -24,20 +24,8 @@ function NavigationBar(props) {
           <div id="navbar-menu">
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <Link to="/login">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link to="/registration">
-                  Registration
-                </Link>
-              </li>
-              <li>
-                <Link to="/registration">
-                  <span className="btn btn-primary">
-                    Post a job
-                  </span>
+                <Link to="https://yandex.ru/">
+                  Yandex
                 </Link>
               </li>
             </ul>

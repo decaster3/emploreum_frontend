@@ -22,8 +22,8 @@ export const EmployeeMain = () => (
   <AccountWrapperContainer menu={renderMenu()}>
     <ToastContainer />
     <Switch>
-      <Route exact path="/employee" component={EmployeeProfile} />
-      <Route path="/employee/chat/:chatId?/" component={ChatCreator} />
+      <Route exact path="/user" component={EmployeeProfile} />
+      <Route path="/user/chat/:chatId?/" component={ChatCreator} />
     </Switch>
   </AccountWrapperContainer>
 );

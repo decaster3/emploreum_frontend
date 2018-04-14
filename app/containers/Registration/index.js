@@ -24,7 +24,6 @@ import ThirdStep from '../../components/Registration/ThirdStepRegistration/Loada
 import {
   submitEmail,
   submitEmailVerification,
-  changeRole,
   downRegistrationStep,
   clearReducer,
   addLogin,
@@ -102,7 +101,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    changeRole: (evt) => dispatch(changeRole(evt)),
     submitEmail: (evt) => dispatch(submitEmail(evt)),
     submitEmailVerification: (evt) => dispatch(submitEmailVerification(evt)),
     addLogin: (evt) => dispatch(addLogin(evt)),

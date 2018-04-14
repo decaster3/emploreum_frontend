@@ -3,5 +3,5 @@ export const verificationEmailCodeValidation = (value) =>
     ? 'Wrong format!' : undefined;
 
 export const loginValidation = (value) =>
-  value && String(value).length === 0
+  value && String(value).length === 0 && !/^[a-zA-Z0-9]+$/g.test(value)
     ? 'Wrong login format!' : undefined;
