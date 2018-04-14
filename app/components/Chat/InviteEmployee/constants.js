@@ -1,0 +1,13 @@
+/*
+ *
+ * InviteEmployee constants
+ *
+ */
+
+
+export const GET_OPEN_VACANCIES_INVITE_EMPLOYEE = 'GET_OPEN_VACANCIES_INVITE_EMPLOYEE';
+export const CHANGE_STATE_OPEN_VACANCIES_INVITE_EMPLOYEE = 'CHANGE_STATE_OPEN_VACANCIES_INVITE_EMPLOYEE';
+
+export const LOADING = 'LOADING';
+export const NOT_LOADED = 'NOT_LOADED';
+export const LOADED = 'LOADED';

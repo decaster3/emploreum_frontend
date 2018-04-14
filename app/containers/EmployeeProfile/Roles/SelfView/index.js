@@ -30,14 +30,12 @@ export class SelfView extends React.Component { // eslint-disable-line react/pre
     }
   }
   render() {
+    console.log(this.props.employeeId);
     return (
       <div className="container-fluid">
         <div className="panel panel-profile" id="sticky-parent">
           <div className="profile-left" id="profile-left-panel">
             <MainInfromation employeeId={this.props.employeeId} />
-          </div>
-          <div className="profile-right">
-            <Skills employeeId={this.props.employeeId} />
           </div>
           <div className="clearfix" />
         </div>

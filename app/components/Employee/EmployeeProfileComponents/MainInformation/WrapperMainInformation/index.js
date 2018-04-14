@@ -9,7 +9,6 @@ import React from 'react';
 
 import Main from '../Main/Loadable';
 import Detail from '../Detail/Loadable';
-import Social from '../Social/Loadable';
 
 class WrapperMainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -18,7 +17,6 @@ class WrapperMainInformation extends React.Component { // eslint-disable-line re
         <Main />
         <div className="profile-detail" id="sticky-social">
           <Detail />
-          <Social />
         </div>
       </div>
     );

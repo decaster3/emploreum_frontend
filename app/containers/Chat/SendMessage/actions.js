@@ -17,6 +17,7 @@ export const sendMessage = (message) => (
       userId,
       id: uniqid(),
       status: 'pending',
+      name: 'R',
     };
     dispatch(addMessage(pendingMessage));
     const chatId = getState().get('chatInterlocators').get('currentInterlocator').get('item').toJS().id;

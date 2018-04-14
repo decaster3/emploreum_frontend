@@ -14,29 +14,12 @@ import InviteEmployee from '../../InviteEmployee';
 
 export const CompanyView = (props) => {
   const { match } = props;
+  console.log(match.params.id)
   return (
     <div className="container-fluid">
       <div className="panel panel-profile" id="sticky-parent">
         <div className="profile-left" id="profile-left-panel">
           <MainInfromation
-            employeeId={match.params.id}
-          />
-          <InviteEmployee
-            employeeId={match.params.id}
-          />
-          <div className="col-md-12 text-center padding-bottom-30">
-            <a
-              href=""
-              className="btn btn-success"
-              data-toggle="modal"
-              data-target="#modal-invite-employee"
-            >
-            Invite Employee
-          </a>
-          </div>
-        </div>
-        <div className="profile-right">
-          <Skills
             employeeId={match.params.id}
           />
         </div>

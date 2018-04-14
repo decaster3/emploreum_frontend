@@ -15,17 +15,10 @@ function ProfileHeaderMain(props) {
     <div className="profile-header">
       <div className="overlay" />
       <div className="profile-main">
-        <img alt="logo" src={logoUrl} className="img-responsive" />
+      <i className="fa text-avatar">{mainInfo.login.charAt(0).toUpperCase()}</i>
         <h3 className="name">
-          {mainInfoStatus === 'LOADED' ? mainInfo.name : ''}
+          {mainInfoStatus === 'LOADED' ? mainInfo.login : ''}
         </h3>
-      </div>
-      <div className="profile-stat" id="sticky-rating">
-        <div className="row">
-          <div className="col-md-12 stat-item">
-            5<span> skills</span>
-          </div>
-        </div>
       </div>
     </div>
   );

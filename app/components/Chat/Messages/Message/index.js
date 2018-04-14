@@ -6,20 +6,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BASEURL } from '../../../../global-constants';
+// import { BASEURL } from '../../../../global-constants';
 // import styled from 'styled-components';
 
 
 export const Message = (props) => {
   const { interlocator, message, myId } = props;
-  const photoPath = `${BASEURL}/${interlocator.logo}`;
-  const isMyMessage = myId === message.userId;
+  // const photoPath = `${BASEURL}/${interlocator.logo}`;
+  const isMyMessage = myId === message.senderId;
   return (
     <div className={`chat-message ${isMyMessage ? 'right' : 'left'}`}>
-      <img src={photoPath} alt="Avatar" className="message-avatar" />
+      <i className="fa text-avatar message-avatar">{ message.name.charAt(0).toUpperCase() }</i>
       {isMyMessage ? message.status : <div />}
       <div className="message">
-        <span>{interlocator.name}</span>
+        <span>{isMyMessage ? '' : interlocator.name}</span>
         <span className="message-date">{message.createdAt}</span>
         <span className="message-content">
           {message.text}

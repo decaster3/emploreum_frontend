@@ -14,15 +14,15 @@ import { selectEmployees,
   selectUserState,
  } from './selectors';
 import reducer from './reducer';
-import { getEmployees } from './actions';
+import { getEmployees, startChat } from './actions';
 
 import Employee from './../../components/Company/EmployeesSearch/Employee/Loadable';
 import EmployeesList from './../../components/Company/EmployeesSearch/EmployeesList/Loadable';
-import EmployeeFilterSelector from './../../components/Company/EmployeesSearch/EmployeeFilterSelector/Loadable';
+import FindUser from '../../components/Company/EmployeesSearch/FindUser';
 
 export class EmployeesSearch extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getEmployees();
+    this.props.getEmployees('');
   }
   renderEmployees() {
     if (this.props.loadingStatus === 'LOADING') {
@@ -30,15 +30,11 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
     }
     return this.props.employees.map((employee) =>
       (<Employee
-        key={employee.userId}
-        id={employee.userId}
-        specifications={employee.specifications.slice(0, 5).join(', ')}
-        skills={employee.skills.slice(0, 5).join(', ')}
-        name={employee.name}
-        photoPath={employee.photoPath}
-        lastWork={employee.lastWork}
-        userState={this.props.userState}
-        createdAt={employee.user.createdAt}
+        key={employee.id}
+        id={employee.id}
+        email={employee.email}
+        login={employee.login}
+        startChat={this.props.startChat}
       />)
     );
   }
@@ -47,7 +43,7 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
     const vacancies = this.renderEmployees();
     return (
       <EmployeesList>
-        <EmployeeFilterSelector />
+        <FindUser getEmployees={this.props.getEmployees} />
         { vacancies }
       </EmployeesList>
     );
@@ -55,6 +51,7 @@ export class EmployeesSearch extends React.Component { // eslint-disable-line re
 }
 
 EmployeesSearch.propTypes = {
+  startChat: PropTypes.func,
   getEmployees: PropTypes.func,
   loadingStatus: PropTypes.string,
   employees: PropTypes.array,
@@ -71,7 +68,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getEmployees: () => dispatch(getEmployees()),
+    getEmployees: (evt) => dispatch(getEmployees(evt)),
+    startChat: (evt) => dispatch(startChat(evt)),
   };
 }
 

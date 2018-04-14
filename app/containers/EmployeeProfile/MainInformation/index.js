@@ -21,10 +21,10 @@ import { getProfileMainInfo } from './actions';
 import reducer from './reducer';
 import DetailProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Detail';
 import MainProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Main';
-import SocialProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Social';
 
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
+    console.log(this.props.employeeId)
     this.props.getProfileMainInfo(this.props.employeeId);
   }
   render() {
@@ -34,15 +34,17 @@ export class MainInformation extends React.Component { // eslint-disable-line re
           <title>MainInformation</title>
           <meta name="description" content="Description of MainInformation" />
         </Helmet>
-        <MainProfile
-          mainInfoStatus={this.props.mainInfoStatus}
-          mainInfo={this.props.mainInfo}
-        />
-        <DetailProfile
-          mainInfoStatus={this.props.mainInfoStatus}
-          mainInfo={this.props.mainInfo}
-        />
-        <SocialProfile />
+        {this.props.mainInfoStatus == "LOADED" ? 
+        <div>        <MainProfile
+        mainInfoStatus={this.props.mainInfoStatus}
+        mainInfo={this.props.mainInfo}
+      />
+      <DetailProfile
+        mainInfoStatus={this.props.mainInfoStatus}
+        mainInfo={this.props.mainInfo}
+      /></div>
+      : <div />
+      }
       </div>
     );
   }

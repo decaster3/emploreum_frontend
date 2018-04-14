@@ -14,7 +14,6 @@ export const Navigation = (props) => {
   return (
     <li className="dropdown">
       <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        <img src={photoPath} className="img-circle" alt="Avatar" />
         <span>{ userInitials.login }</span>
         <i className="icon-submenu fa fa-angle-down"></i></a>
       <ul className="dropdown-menu">

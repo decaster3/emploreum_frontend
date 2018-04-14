@@ -13,11 +13,7 @@ function Detail(props) {
     <div className="profile-info">
       <h4 className="heading">Information</h4>
       <ul className="list-unstyled list-justify">
-        <li>Email:<span>{mainInfoStatus === 'LOADED' ? mainInfo.user.email : ''}</span></li>
-      </ul>
-      <h4 className="heading">About</h4>
-      <ul className="list-unstyled list-justify">
-        <span>{mainInfoStatus === 'LOADED' ? mainInfo.about : ''}</span>
+        <li>Email:<span>{mainInfoStatus === 'LOADED' ? mainInfo.email : ''}</span></li>
       </ul>
     </div>
   );

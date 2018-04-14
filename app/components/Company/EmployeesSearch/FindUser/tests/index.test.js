@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import ProfileHeaderSocial from '../index';
+// import ErolledEmployee from '../index';
 
-describe('<ProfileHeaderSocial />', () => {
+describe('<ErolledEmployee />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
