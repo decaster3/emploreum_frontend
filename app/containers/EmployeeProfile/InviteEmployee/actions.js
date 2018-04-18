@@ -34,7 +34,6 @@ export const inviteEmployee = (vacancyId, employeeId) => (
 export const getOpenVacancies = (companyId) => (
   (dispatch) => {
     // dispatch(loadingOpenVacancies());
-    console.log(companyId);
     return getOpenVacanciesAPI(companyId, (data) => {
       const newData = data.map((el) => {
         let position = '';

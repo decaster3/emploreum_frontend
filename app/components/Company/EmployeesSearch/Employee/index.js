@@ -27,16 +27,16 @@ export const Employee = (props) => {
       <div className="vacancy">
         <div className="row">
           <div className="inline col-md-2">
-            <a className="thumbnail">
+            <div className="thumbnail">
               <img src={BASEURL + photoPath} alt="user avatar" />
-            </a>
+            </div>
             <h4>{name}</h4>
           </div>
           <div className="col-md-10">
             <div className="vacancy-name">
-              <a > { specifications || 'Profiles...'}</a>
+              <p> { specifications || 'Profiles...'}</p>
               <div className="vacancy-currency">
-                <p><a>{skills || 'Skils...'} </a></p>
+                <p>{skills || 'Skils...'}</p>
                 <div className="clearfix"></div>
               </div>
             </div>
@@ -47,7 +47,7 @@ export const Employee = (props) => {
             <p>Details</p>
           </div>
           <div className="vacancy-contact">
-            <a href="">Contacts</a>
+            <p>Contacts</p>
           </div>
           <div className="vacancy-date">
             On Emploreum since {since}

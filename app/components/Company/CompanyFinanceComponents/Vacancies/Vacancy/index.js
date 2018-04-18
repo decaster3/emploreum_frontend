@@ -25,8 +25,8 @@ export const Vacancy = (props) => {
 
 Vacancy.propTypes = {
   specifications: PropTypes.array.isRequired,
-  duration: PropTypes.string.isRequired,
-  weekPayment: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
+  weekPayment: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
 };
 

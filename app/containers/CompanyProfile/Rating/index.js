@@ -44,7 +44,7 @@ Rating.propTypes = {
   getCompanyRating: PropTypes.func,
   onCloseRatingCompanyProfile: PropTypes.func,
   ratingStatus: PropTypes.string,
-  rating: PropTypes.string,
+  rating: PropTypes.number,
   companyProfileId: PropTypes.string,
   onClose: PropTypes.bool,
 };

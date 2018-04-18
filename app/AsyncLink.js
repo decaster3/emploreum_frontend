@@ -7,8 +7,8 @@ import {
 class AsyncLink extends Component {
   static contextTypes = {
     router: PropTypes.shape({
-      replace: PropTypes.func.isRequired,
-      push: PropTypes.func.isRequired,
+      replace: PropTypes.func,
+      push: PropTypes.func,
     }).isRequired,
   }
   constructor() {
@@ -48,7 +48,7 @@ class AsyncLink extends Component {
 
   render() {
     return (
-      <Link onClick={this.handleClick} {...this.props}>
+      <Link onClick={this.handleClick} to={this.props.to} className={this.props.className}>
         {this.props.children}
         {
           this.state.isStartRender
@@ -67,9 +67,10 @@ AsyncLink.propTypes = {
   ]),
   // onPreload: PropTypes.func,
   replace: PropTypes.object,
-  to: PropTypes.func,
+  className: PropTypes.string,
+  to: PropTypes.string,
   loading: PropTypes.bool,
-  placeholder: PropTypes.func,
+  placeholder: PropTypes.object,
   handleonClick: PropTypes.func,
 };
 

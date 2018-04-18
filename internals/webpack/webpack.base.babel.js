@@ -81,8 +81,8 @@ module.exports = (options) => ({
         },
       },
       { test: /assets\/*\.(jsx|js)$/,
-        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
-      }
+        loader: 'imports?jQuery=jquery,$=jquery,this=>window',
+      },
     ],
   },
   plugins: options.plugins.concat([
@@ -90,7 +90,8 @@ module.exports = (options) => ({
       // make fetch available
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
     }),
-
+    // fix module locale
+    new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/),
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // inside your code for any environment checks; UglifyJS will automatically
     // drop any unreachable code.

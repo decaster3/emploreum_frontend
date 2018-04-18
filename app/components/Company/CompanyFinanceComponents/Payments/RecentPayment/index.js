@@ -2,16 +2,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 export const Payment = (props) => {
   const { address, name, payment, date } = props;
 
   return (
     <tr>
       <td>
-        <a href="javascript:void(0)" onClick={() => addToClipboard(address)}>Copy address!</a>
+        <Link to="" onClick={() => addToClipboard(address)}>Copy address!</Link>
       </td>
-      <td><a href="">{name}</a></td>
+      <td><Link to="">{name}</Link></td>
       <td>{payment} <i className="fa fa-dollar"></i></td>
       <td>{date}</td>
     </tr>

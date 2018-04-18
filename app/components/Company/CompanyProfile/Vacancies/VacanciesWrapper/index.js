@@ -9,9 +9,11 @@ export const Vacancies = (props) => {
       <div className="table-responsive">
         <table className="table">
           <thead>
-            <td>
-              <span style={{ fontSize: '18px' }}>Open Vacancies</span>
-            </td>
+            <tr>
+              <th style={{ fontSize: '18px' }}>
+              Open Vacancies
+              </th>
+            </tr>
           </thead>
           <tbody>
             {children}

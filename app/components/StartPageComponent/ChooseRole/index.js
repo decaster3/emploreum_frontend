@@ -7,7 +7,8 @@
 import React from 'react';
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import VacanciesSearchLink from '../../../containers/VacanciesSearch/preload';
+import EmployeesSearchLink from '../../../containers/EmployeesSearch/preload';
 
 function ChooseRole() {
   return (
@@ -17,16 +18,16 @@ function ChooseRole() {
         <div className="col-xs-12 col-md-8 col-md-offset-2">
           <div className="col-sm-6 find-item">
             <h1>Employee</h1>
-            <Link to="/vacancy/search/">
+            <VacanciesSearchLink url="/vacancy/search/">
               <button className="btn btn-primary">Find job</button>
-            </Link>
+            </VacanciesSearchLink>
             <div className="border"></div>
           </div>
           <div className="col-sm-6 find-item">
             <h1>Company</h1>
-            <Link to="/employee/search/">
+            <EmployeesSearchLink url="/employee/search/">
               <button className="btn btn-primary">Find employee</button>
-            </Link>
+            </EmployeesSearchLink>
           </div>
         </div>
       </div>

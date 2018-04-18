@@ -20,7 +20,7 @@ MenuItem.propTypes = {
   url: PropTypes.string.isRequired,
   view: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  link: PropTypes.object.isRequired,
+  link: PropTypes.func.isRequired,
 };
 
 export default MenuItem;

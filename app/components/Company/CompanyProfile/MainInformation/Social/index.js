@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
 
 function ProfileHeaderSocial() {
@@ -12,11 +13,11 @@ function ProfileHeaderSocial() {
     <div className="profile-info">
       <h4 className="heading">Social</h4>
       <ul className="list-inline social-icons">
-        <li><a href="" className="facebook-bg"><i className="fa fa-facebook"></i></a></li>
-        <li><a href="" className="twitter-bg"><i className="fa fa-twitter"></i></a></li>
-        <li><a href="" className="google-plus-bg"><i className="fa fa-google-plus"></i></a>
+        <li><Link to="" className="facebook-bg"> <i className="fa fa-facebook" /></Link></li>
+        <li><Link to="" className="twitter-bg"> <i className="fa fa-twitter" /></Link></li>
+        <li><Link to="" className="google-plus-bg"> <i className="fa fa-google-plus" /></Link>
         </li>
-        <li><a href="" className="github-bg"><i className="fa fa-github"></i></a></li>
+        <li><Link to="" className="github-bg"> <i className="fa fa-github" /></Link></li>
       </ul>
     </div>
   );

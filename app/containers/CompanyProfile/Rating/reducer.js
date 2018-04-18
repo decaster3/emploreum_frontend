@@ -14,7 +14,7 @@ import {
 
 const initialState = fromJS({
   rating: {
-    value: '',
+    value: null,
     status: NOT_LOADED,
   },
 });
@@ -33,7 +33,7 @@ function employeeRatingReducer(state = initialState, action) {
       }));
     case RESET_RATING_COMPANY_PROFILE:
       return state.set('rating', fromJS({
-        value: '',
+        value: null,
         status: NOT_LOADED,
       }));
     default:
