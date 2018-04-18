@@ -11,9 +11,12 @@ import {
   LOADING,
   LOADED,
   GET_ABOUT_COMPANY_INFO,
+  RESET_ABOUT_COMPANY_PROFILE,
 } from './constants';
 
 import { getCompanyProfileMainInfoAPI } from './../../../services/api/CompanyProfile';
+
+export const onCloseAboutCompanyProfile = () => ({ type: RESET_ABOUT_COMPANY_PROFILE });
 
 export const loadingProfileMainInfo = () => ({ type: CHANGE_STATE_ABOUT_COMPANY_INFO, payload: LOADING });
 export const loadedProfileMainInfo = () => ({ type: CHANGE_STATE_ABOUT_COMPANY_INFO, payload: LOADED });

@@ -15,7 +15,7 @@ import {
   selectCompanyInfo,
 } from './selectors';
 
-import { getAboutCompanyInfo } from './actions';
+import { getAboutCompanyInfo, onCloseAboutCompanyProfile } from './actions';
 
 import reducer from './reducer';
 import About from '../../../components/Company/CompanyProfile/About';
@@ -23,6 +23,11 @@ import About from '../../../components/Company/CompanyProfile/About';
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getAboutCompanyInfo(this.props.companyProfileId);
+  }
+  componentWillUnmount() {
+    if (!this.props.onClose) {
+      this.props.onCloseAboutCompanyProfile();
+    }
   }
   render() {
     return (
@@ -36,9 +41,11 @@ export class MainInformation extends React.Component { // eslint-disable-line re
 
 MainInformation.propTypes = {
   getAboutCompanyInfo: PropTypes.func,
+  onCloseAboutCompanyProfile: PropTypes.func,
   companyInfoStatus: PropTypes.string,
   companyInfo: PropTypes.object,
   companyProfileId: PropTypes.string,
+  onClose: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
@@ -51,6 +58,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getAboutCompanyInfo: (evt) => dispatch(getAboutCompanyInfo(evt)),
+    onCloseAboutCompanyProfile: () => dispatch(onCloseAboutCompanyProfile()),
   };
 }
 

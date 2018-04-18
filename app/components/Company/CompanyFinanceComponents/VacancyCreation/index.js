@@ -6,8 +6,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SpecificationSkills from '../../../SpecificationsSkills/Loadable';
-import FormCreationVacancy from './Form/Loadable';
+import SpecificationSkills from '../../../SpecificationsSkills';
+import FormCreationVacancy from './Form';
 // import styled from 'styled-components';
 
 class VacancyCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function

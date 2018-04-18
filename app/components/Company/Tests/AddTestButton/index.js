@@ -5,16 +5,16 @@
 */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import TestCreationLink from '../../../../containers/Company/Test/TestCreation/preload';
 
 export const AddTestButton = () => (
   <div className="text-right col-md-12">
-    <Link
-      to="/company/tests/new"
+    <TestCreationLink
+      url={'/company/tests/new'}
       className="btn btn-success"
     >
       Create test
-    </Link>
+    </TestCreationLink>
   </div>
 );
 

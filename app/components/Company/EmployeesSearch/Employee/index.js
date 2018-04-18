@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment/src/moment';
-import { Link } from 'react-router-dom';
+import EmployeeProfileLink from '../../../../containers/EmployeeProfile/preload';
 import { BASEURL } from '../../../../global-constants';
 import { ANONYMOUS } from '../../../../containers/UserSession/constants';
 
@@ -23,36 +23,38 @@ export const Employee = (props) => {
   const url = userState === ANONYMOUS ? `/employee/${id}` : `/company/employee/${id}`;
   const since = moment(createdAt).format('LL');
   return (
-    <div className="vacancy">
-      <div className="row">
-        <div className="inline col-md-2">
-          <a className="thumbnail">
-            <img src={BASEURL + photoPath} alt="user avatar" />
-          </a>
-          <h4>{name}</h4>
-        </div>
-        <div className="col-md-10">
-          <div className="vacancy-name">
-            <a > { specifications || 'Profiles...'}</a>
-            <div className="vacancy-currency">
-              <p><a>{skills || 'Skils...'} </a></p>
-              <div className="clearfix"></div>
+    <EmployeeProfileLink url={url} id={id}>
+      <div className="vacancy">
+        <div className="row">
+          <div className="inline col-md-2">
+            <a className="thumbnail">
+              <img src={BASEURL + photoPath} alt="user avatar" />
+            </a>
+            <h4>{name}</h4>
+          </div>
+          <div className="col-md-10">
+            <div className="vacancy-name">
+              <a > { specifications || 'Profiles...'}</a>
+              <div className="vacancy-currency">
+                <p><a>{skills || 'Skils...'} </a></p>
+                <div className="clearfix"></div>
+              </div>
             </div>
           </div>
         </div>
+        <div className="vacancy-desc">
+          <div className="vacancy-add">
+            <p>Details</p>
+          </div>
+          <div className="vacancy-contact">
+            <a href="">Contacts</a>
+          </div>
+          <div className="vacancy-date">
+            On Emploreum since {since}
+          </div>
+        </div>
       </div>
-      <div className="vacancy-desc">
-        <div className="vacancy-add">
-          <Link to={url}>Details</Link>
-        </div>
-        <div className="vacancy-contact">
-          <a href="">Contacts</a>
-        </div>
-        <div className="vacancy-date">
-          On Emploreum since {since}
-        </div>
-      </div>
-    </div>
+    </EmployeeProfileLink>
   );
 };
 //

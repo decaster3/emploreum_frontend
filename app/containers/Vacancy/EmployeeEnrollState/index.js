@@ -11,7 +11,7 @@ import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
-import { enrollVacancy, getEnrollButtonState } from './actions';
+import { enrollVacancy, getEnrollButtonState, onCloseEnrollButton } from './actions';
 import { selectEnrollButtonState } from './selectors';
 import Available from './../../../components/Vacancy/EnrollVacancyEmployeeState/Available/Loadable';
 import Submitted from './../../../components/Vacancy/EnrollVacancyEmployeeState/Submitted/Loadable';
@@ -31,6 +31,11 @@ import {
 export class EmployeeEnrollState extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getEnrollButtonState(this.props.vacancyId);
+  }
+  componentWillUnmount() {
+    if (!this.props.onClose) {
+      this.props.onCloseEnrollButton();
+    }
   }
   renderEnrollState() {
     switch (this.props.enrollButtonState) {
@@ -79,9 +84,11 @@ export class EmployeeEnrollState extends React.Component { // eslint-disable-lin
 
 EmployeeEnrollState.propTypes = {
   vacancyId: PropTypes.string,
+  onCloseEnrollButton: PropTypes.func,
   enrollVacancy: PropTypes.func,
   getEnrollButtonState: PropTypes.func,
   enrollButtonState: PropTypes.string,
+  onClose: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
@@ -94,6 +101,7 @@ function mapDispatchToProps(dispatch) {
   return {
     enrollVacancy: (evt) => dispatch(enrollVacancy(evt)),
     getEnrollButtonState: (evt) => dispatch(getEnrollButtonState(evt)),
+    onCloseEnrollButton: () => dispatch(onCloseEnrollButton()),
   };
 }
 

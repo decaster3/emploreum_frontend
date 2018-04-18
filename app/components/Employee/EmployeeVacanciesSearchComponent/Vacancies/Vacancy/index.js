@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import EmployeeViewLinkVacancy from '../../../../../containers/Vacancy/preload';
 import Currency from '../Currency/Loadable';
 import { ANONYMOUS } from '../../../../../containers/UserSession/constants';
 
@@ -45,31 +45,33 @@ export const Vacancy = (props) => {
   // ? `/vacancy/${id}`
   // : userRole === 'COMPANY' ? `company/vacancy/${id}/` : `employee/vacancy/${id}/`;
   return (
-    <div className="vacancy">
-      <div className="vacancy-name">
-        <h4>{ name }</h4>
-        {/* <Link to={url}>{ position } developer </Link> */}
-        <div className="vacancy-money badge">{ weekPaymeent }</div>
-        <div className="vacancy-currency">
-          <p><a href="">{ companyName }</a></p>
-          <div className="clearfix"></div>
-          currency :
-          { currencies }
+    <EmployeeViewLinkVacancy url={url} id={id}>
+      <div className="vacancy">
+        <div className="vacancy-name">
+          <h4>{ name }</h4>
+          {/* <Link to={url}>{ position } developer </Link> */}
+          <div className="vacancy-money badge">{ weekPaymeent }</div>
+          <div className="vacancy-currency">
+            <p style={{ color: '#2B333E' }}>{ companyName }</p>
+            <div className="clearfix"></div>
+            currency :
+            { currencies }
+          </div>
+        </div>
+        <div className="vacancy-desc">
+          <p> { info } </p>
+          <div className="vacancy-add">
+            <EmployeeViewLinkVacancy url={url} id={id}> Details </EmployeeViewLinkVacancy>
+          </div>
+          <div className="vacancy-contact">
+            <EmployeeViewLinkVacancy url={url} id={id}>Contacts</EmployeeViewLinkVacancy>
+          </div>
+          <div className="vacancy-date">
+            { duration } month(s)
+          </div>
         </div>
       </div>
-      <div className="vacancy-desc">
-        <p> { info } </p>
-        <div className="vacancy-add">
-          <Link to={url}>Details</Link>
-        </div>
-        <div className="vacancy-contact">
-          <a href="">Contacts</a>
-        </div>
-        <div className="vacancy-date">
-          { duration } month(s)
-        </div>
-      </div>
-    </div>
+    </EmployeeViewLinkVacancy>
   );
 };
 //

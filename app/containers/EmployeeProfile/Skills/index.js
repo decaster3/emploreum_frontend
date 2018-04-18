@@ -11,7 +11,7 @@ import { compose } from 'redux';
 import { PulseLoader } from 'react-spinners';
 import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
-import { getSpecificationsSkills } from './actions';
+import { getSpecificationsSkills, onCloseSkillsEmployeeProfile } from './actions';
 import { selectSpecificationsSkillsStatus, selectSpecificationsSkills } from './selectors';
 
 import Skill from './../../../components/Employee/EmployeeProfileComponents/Skills/Skill';
@@ -22,6 +22,11 @@ import { BASEURL } from './../../../global-constants';
 export class Skills extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getSpecificationsSkills(this.props.employeeId);
+  }
+  componentWillUnmount() {
+    if (!this.props.onClose) {
+      this.props.onCloseSkillsEmployeeProfile();
+    }
   }
   renderSkills() {
     if (this.props.specificationsSkillsStatus === 'LOADING') {
@@ -59,8 +64,10 @@ export class Skills extends React.Component { // eslint-disable-line react/prefe
 Skills.propTypes = {
   employeeId: PropTypes.string,
   getSpecificationsSkills: PropTypes.func,
+  onCloseSkillsEmployeeProfile: PropTypes.func,
   specificationsSkills: PropTypes.array,
   specificationsSkillsStatus: PropTypes.string,
+  onClose: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
@@ -73,6 +80,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getSpecificationsSkills: (evt) => dispatch(getSpecificationsSkills(evt)),
+    onCloseSkillsEmployeeProfile: () => dispatch(onCloseSkillsEmployeeProfile()),
   };
 }
 

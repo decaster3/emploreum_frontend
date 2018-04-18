@@ -12,7 +12,7 @@ import {
 import {
   submitCompanyAboutAPI,
   submitAvatarAPI,
- } from './../../../services/api/Register';
+ } from '../../../services/api/Register';
 
 import { completeRegistration } from './../../UserSession/actions';
 

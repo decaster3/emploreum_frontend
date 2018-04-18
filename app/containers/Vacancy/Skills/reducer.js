@@ -9,6 +9,7 @@ import {
   CHANGE_STATE_SPECIFICATIONS_SKILLS_VACANCY,
   NOT_LOADED,
   GET_SPECIFICATIONS_SKILLS_VACANCY,
+  RESET_SKILLS_VACANCY,
 } from './constants';
 
 const initialState = fromJS({
@@ -29,6 +30,11 @@ function skillsReducer(state = initialState, action) {
       return state.set('specificationsSkills', fromJS({
         status: action.payload,
         items: state.get('specificationsSkills').get('items'),
+      }));
+    case RESET_SKILLS_VACANCY:
+      return state.set('specificationsSkills', fromJS({
+        status: NOT_LOADED,
+        items: [],
       }));
     default:
       return state;

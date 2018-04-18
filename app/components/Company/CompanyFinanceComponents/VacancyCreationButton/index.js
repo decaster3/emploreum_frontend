@@ -1,12 +1,13 @@
 /* eslint no-script-url: 0 */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import VacancyCreationLink from '../../../../containers/Company/VacancyCreation/preload';
+
 export const VacancyCreationButton = () => (
   <div className="panel-footer">
     <div className="row">
       <div className="col-md-12 text-right">
-        <Link to="vacancy/create" className="btn btn-success">New vacancy</Link>
+        <VacancyCreationLink url={'/company/vacancy/create'} className="btn btn-success">New vacancy</VacancyCreationLink>
       </div>
     </div>
   </div>

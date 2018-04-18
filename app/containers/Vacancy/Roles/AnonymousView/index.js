@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MainInfromation from '../../MainInformation/Loadable';
-import Skills from '../../Skills/Loadable';
+import MainInfromation from '../../MainInformation';
+import Skills from '../../Skills';
 
 export const AnonymousView = (props) => {
   const { match } = props;

@@ -15,32 +15,38 @@ import TestMultipleQuestionCreation from '../Company/Test/MultipleChoiceQuestion
 import ChatCreator from '../Chat/Loadable';
 import CompanyProfile from '../CompanyProfile/Roles/SelfView/Loadable';
 
+import CompanyProfileLink from '../CompanyProfile/preload';
+import ChatLink from '../Chat/preload';
+import CompanyFinanceLink from '../Company/CompanyFinance/preload';
+import EmployeesSearchLink from '../EmployeesSearch/preload';
+import CompanyTestsLink from './Test/Tests/preload';
+
 function renderMenu() {
   return [{
     name: 'Profile',
     url: '/company/',
     icon: 'fa-user',
-    placeholder: CompanyProfile,
+    link: CompanyProfileLink,
   }, {
     name: 'Employees',
     url: '/company/employee/search/',
     icon: 'fa-address-book',
-    placeholder: EmployeesSearch,
+    link: EmployeesSearchLink,
   }, {
     name: 'Finance',
     url: '/company/finance/',
     icon: 'fa-dollar',
-    placeholder: CompanyFinance,
+    link: CompanyFinanceLink,
   }, {
     name: 'Tests',
     url: '/company/tests/',
     icon: 'fa-edit',
-    placeholder: Tests,
+    link: CompanyTestsLink,
   }, {
     name: 'Chat',
     url: '/company/chat/',
     icon: 'fa-comments',
-    placeholder: ChatCreator,
+    link: ChatLink,
   }];
 }
 

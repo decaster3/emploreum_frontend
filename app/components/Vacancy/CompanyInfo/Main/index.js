@@ -6,15 +6,15 @@
 
 import React from 'react';
 // import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { BASEURL } from '../../../../global-constants';//
+import { BASEURL } from '../../../../global-constants';
+import CompanyProfileLink from '../../../../containers/CompanyProfile/preload';
 
 function ProfileHeaderMain(props) {
   const { mainInfo } = props;
   const logoUrl = `${BASEURL}${mainInfo.company.logo}`;
   const companyProfileUrl = `/employee/company/${mainInfo.company.userId}`;
-  const company = <Link to={companyProfileUrl}>{mainInfo.company.name}</Link>;
+  const company = <CompanyProfileLink id={mainInfo.company.userId} url={companyProfileUrl}>{mainInfo.company.name}</CompanyProfileLink>;
   return (
     <div className="profile-header">
       <div className="overlay" />

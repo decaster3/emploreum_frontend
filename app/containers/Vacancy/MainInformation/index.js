@@ -16,7 +16,7 @@ import {
   selectUserRole,
 } from './selectors';
 
-import { getVacancyMainInfo } from './actions';
+import { getVacancyMainInfo, onCloseMainInfo } from './actions';
 
 import reducer from './reducer';
 import DetailVacancy from '../../../components/Vacancy/CompanyInfo/Detail/Loadable';
@@ -25,6 +25,11 @@ import MainCompany from '../../../components/Vacancy/CompanyInfo/Main/Loadable';
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getVacancyMainInfo(this.props.vacancyId);
+  }
+  componentWillUnmount() {
+    if (!this.props.onClose) {
+      this.props.onCloseMainInfo();
+    }
   }
   renderMainInfo() {
     if (this.props.mainInfoStatus === 'LOADED') {
@@ -61,10 +66,12 @@ export class MainInformation extends React.Component { // eslint-disable-line re
 
 MainInformation.propTypes = {
   getVacancyMainInfo: PropTypes.func,
+  onCloseMainInfo: PropTypes.func,
   mainInfoStatus: PropTypes.string,
   mainInfo: PropTypes.object,
   vacancyId: PropTypes.string,
   role: PropTypes.string,
+  onClose: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
@@ -78,6 +85,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getVacancyMainInfo: (evt) => dispatch(getVacancyMainInfo(evt)),
+    onCloseMainInfo: () => dispatch(onCloseMainInfo()),
   };
 }
 

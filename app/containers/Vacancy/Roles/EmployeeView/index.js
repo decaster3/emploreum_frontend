@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MainInfromation from '../../MainInformation/Loadable';
-import Skills from '../../Skills/Loadable';
-import EnrollEmployeeState from '../../EmployeeEnrollState/Loadable';
+import MainInfromation from '../../MainInformation';
+import Skills from '../../Skills';
+import EnrollEmployeeState from '../../EmployeeEnrollState';
 
 export const EmployeeView = (props) => {
   const { match } = props;

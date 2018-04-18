@@ -11,39 +11,48 @@ class AsyncLink extends Component {
       push: PropTypes.func.isRequired,
     }).isRequired,
   }
-
   constructor() {
     super();
-    this.state = { loading: false };
+    this.state = {
+      isStartRender: false,
+      clicked: false,
+    };
   }
-  componentWillUnmount() {
-    this.props.handleonClick();
+  componentDidMount() {
+    if (this.props.handleonClick) {
+      this.props.handleonClick();
+    }
   }
-  sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  componentWillReceiveProps(nextProps) {
+    if (this.props.loading && !nextProps.loading && this.state.clicked) {
+      this.replaceUrl();
+    }
+  }
+  replaceUrl() {
+    const { replace, to } = this.props;
+    if (replace) {
+      this.context.router.replace(to);
+    } else {
+      this.context.router.history.push(to);
+    }
   }
   handleClick = (evt) => {
     evt.preventDefault();
-    this.setState({ loading: true });
-    this.sleep(500).then(() => {
-      this.setState({ loading: false });
-      const { replace, to } = this.props;
-      if (replace) {
-        this.context.router.replace(to);
-      } else {
-        this.context.router.history.push(to);
-      }
-    });
+    this.setState({ isStartRender: true });
+    if (!this.props.loading) {
+      this.replaceUrl();
+    } else {
+      this.setState({ clicked: true });
+    }
   };
 
   render() {
-    const Placeholder = this.props.placeholder;
     return (
       <Link onClick={this.handleClick} {...this.props}>
         {this.props.children}
         {
-          this.state.loading
-          ? (<div style={{ display: 'none' }}><Placeholder /></div>)
+          this.state.isStartRender
+          ? (<div style={{ display: 'none' }}>{this.props.placeholder}</div>)
           : <div />
         }
       </Link>
@@ -59,6 +68,7 @@ AsyncLink.propTypes = {
   // onPreload: PropTypes.func,
   replace: PropTypes.object,
   to: PropTypes.func,
+  loading: PropTypes.bool,
   placeholder: PropTypes.func,
   handleonClick: PropTypes.func,
 };

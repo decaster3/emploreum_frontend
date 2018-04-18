@@ -3,6 +3,7 @@
  * RegistrationEmployee actions
  *
  */
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import {
   LOADING,
@@ -22,6 +23,7 @@ import {
 export const clearReducer = () => ({ type: CLEAR_LANGUAGE_SELECTOR });
 export const getLanguage = () => (
   (dispatch) => {
+    dispatch(showLoading());
     dispatch({
       type: GET_LANGUAGES,
       payload: {
@@ -30,6 +32,7 @@ export const getLanguage = () => (
       },
     });
     getLanguagesAPI((langList) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_LANGUAGES,
         payload: {
@@ -38,6 +41,7 @@ export const getLanguage = () => (
         },
       });
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
     }, dispatch);
   }

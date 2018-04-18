@@ -39,7 +39,7 @@ export class SelfView extends React.Component { // eslint-disable-line react/pre
             <MainInfromation companyProfileId={this.props.companyProfileId} />
           </div>
           <div className="profile-right">
-            <Rating companyId={this.props.companyProfileId} />
+            <Rating companyProfileId={this.props.companyProfileId} />
             <About companyProfileId={this.props.companyProfileId} />
             <CompanyOpenVacancies companyProfileId={this.props.companyProfileId} />
           </div>

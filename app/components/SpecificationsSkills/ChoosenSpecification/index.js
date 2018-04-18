@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
 
-import AutoComplete from '../../AutoComplete/Loadable';
-import ChoosenSkill from '../ChoosenSkill/Loadable';
-import ChoosenSkills from '../ChoosenSkills/Loadable';
+import AutoComplete from '../../AutoComplete';
+import ChoosenSkill from '../ChoosenSkill';
+import ChoosenSkills from '../ChoosenSkills';
 
 import { BASEURL } from '../../../global-constants';
 

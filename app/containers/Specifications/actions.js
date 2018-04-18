@@ -3,6 +3,7 @@
  * RegistrationEmployee actions
  *
  */
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import {
   LOADING,
@@ -24,6 +25,7 @@ export const clearReducer = () => ({ type: CLEAR_SPECIFICATIONS });
 
 export const getSpecification = () => (
   (dispatch) => {
+    dispatch(showLoading());
     dispatch({
       type: GET_EMPLOYEE_SPECIFICATION_LIST,
       payload: {
@@ -32,6 +34,7 @@ export const getSpecification = () => (
       },
     });
     getSpecificationsAPI((specList) => {
+      dispatch(hideLoading());
       dispatch({
         type: GET_EMPLOYEE_SPECIFICATION_LIST,
         payload: {
@@ -40,6 +43,7 @@ export const getSpecification = () => (
         },
       });
     }, (err) => {
+      dispatch(hideLoading());
       console.log(err);
     }, dispatch);
   }

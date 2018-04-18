@@ -15,13 +15,18 @@ import {
   selectRatingValue,
 } from './selectors';
 
-import { getCompanyRating } from './actions';
+import { getCompanyRating, onCloseRatingCompanyProfile } from './actions';
 
 import reducer from './reducer';
 
 export class Rating extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.props.getCompanyRating(this.props.companyId);
+    this.props.getCompanyRating(this.props.companyProfileId);
+  }
+  componentWillUnmount() {
+    if (!this.props.onClose) {
+      this.props.onCloseRatingCompanyProfile();
+    }
   }
   render() {
     return (
@@ -37,9 +42,11 @@ export class Rating extends React.Component { // eslint-disable-line react/prefe
 
 Rating.propTypes = {
   getCompanyRating: PropTypes.func,
+  onCloseRatingCompanyProfile: PropTypes.func,
   ratingStatus: PropTypes.string,
   rating: PropTypes.string,
-  companyId: PropTypes.string,
+  companyProfileId: PropTypes.string,
+  onClose: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
@@ -52,6 +59,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getCompanyRating: (evt) => dispatch(getCompanyRating(evt)),
+    onCloseRatingCompanyProfile: () => dispatch(onCloseRatingCompanyProfile()),
   };
 }
 

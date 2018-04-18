@@ -16,7 +16,7 @@ import {
   selectMainInfo,
 } from './selectors';
 
-import { getProfileMainInfo } from './actions';
+import { getProfileMainInfo, onCloseMainInfo } from './actions';
 
 import reducer from './reducer';
 import DetailProfile from './../../../components/Employee/EmployeeProfileComponents/MainInformation/Detail';
@@ -26,6 +26,11 @@ import SocialProfile from './../../../components/Employee/EmployeeProfileCompone
 export class MainInformation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getProfileMainInfo(this.props.employeeId);
+  }
+  componentWillUnmount() {
+    if (!this.props.onClose) {
+      this.props.onCloseMainInfo();
+    }
   }
   renderMainInfo() {
     if (this.props.mainInfoStatus === 'LOADED') {
@@ -69,6 +74,8 @@ MainInformation.propTypes = {
   mainInfoStatus: PropTypes.string,
   mainInfo: PropTypes.object,
   employeeId: PropTypes.string,
+  onCloseMainInfo: PropTypes.func,
+  onClose: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
@@ -81,6 +88,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getProfileMainInfo: (evt) => dispatch(getProfileMainInfo(evt)),
+    onCloseMainInfo: () => dispatch(onCloseMainInfo()),
   };
 }
 

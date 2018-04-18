@@ -23,7 +23,7 @@ export const EmployeeView = (props) => {
           />
         </div>
         <div className="profile-right">
-          <Rating companyId={match.params.companyId} />
+          <Rating companyProfileId={match.params.companyId} />
           <About companyProfileId={match.params.companyId} />
           <CompanyOpenVacancies companyProfileId={match.params.companyId} />
         </div>

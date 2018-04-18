@@ -22,11 +22,16 @@ import OpenVacancy from './../../../components/Company/CompanyProfile/Vacancies/
 import OpenVacanciesWrapper from './../../../components/Company/CompanyProfile/Vacancies/VacanciesWrapper';
 import NoOpenVacancies from './../../../components/Company/CompanyProfile/Vacancies/NoOpenVacancies';
 
-import { getOpenVacancies } from './actions';
+import { getOpenVacancies, onCloseOpenVacanciesCompanyProfile } from './actions';
 
 export class CompanyOpenVacancies extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getOpenVacancies(this.props.companyProfileId);
+  }
+  componentWillUnmount() {
+    if (!this.props.onClose) {
+      this.props.onCloseOpenVacanciesCompanyProfile();
+    }
   }
   renderVacancies() {
     if (this.props.openVacanciesStatus === 'LOADING') {
@@ -64,7 +69,9 @@ CompanyOpenVacancies.propTypes = {
   openVacanciesStatus: PropTypes.string,
   companyProfileId: PropTypes.string,
   getOpenVacancies: PropTypes.func,
+  onCloseOpenVacanciesCompanyProfile: PropTypes.func,
   isThereOpenVacancies: PropTypes.bool,
+  onClose: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
@@ -78,6 +85,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getOpenVacancies: (evt) => dispatch(getOpenVacancies(evt)),
+    onCloseOpenVacanciesCompanyProfile: () => dispatch(onCloseOpenVacanciesCompanyProfile()),
   };
 }
 

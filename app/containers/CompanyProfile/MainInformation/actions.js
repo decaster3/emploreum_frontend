@@ -9,9 +9,13 @@ import {
   LOADING,
   LOADED,
   GET_COMPANY_PROFILE_MAIN_INFO,
+  RESET_MAIN_INFO_COMPANY_PROFILE,
 } from './constants';
 
 import { getCompanyProfileMainInfoAPI } from './../../../services/api/CompanyProfile';
+
+export const onCloseMainInfoCompanyProfile = () => ({ type: RESET_MAIN_INFO_COMPANY_PROFILE });
+
 
 export const loadingProfileMainInfo = () => ({ type: CHANGE_STATE_COMPANY_PROFILE_MAIN_INFO, payload: LOADING });
 export const loadedProfileMainInfo = () => ({ type: CHANGE_STATE_COMPANY_PROFILE_MAIN_INFO, payload: LOADED });

@@ -9,6 +9,7 @@ import {
   CHANGE_STATE_RATING,
   NOT_LOADED,
   GET_RATING,
+  RESET_RATING_COMPANY_PROFILE,
 } from './constants';
 
 const initialState = fromJS({
@@ -29,6 +30,11 @@ function employeeRatingReducer(state = initialState, action) {
       return state.set('rating', fromJS({
         status: action.payload,
         value: state.get('rating').get('value'),
+      }));
+    case RESET_RATING_COMPANY_PROFILE:
+      return state.set('rating', fromJS({
+        value: '',
+        status: NOT_LOADED,
       }));
     default:
       return state;

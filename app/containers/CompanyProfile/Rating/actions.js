@@ -9,9 +9,12 @@ import {
   LOADING,
   LOADED,
   GET_RATING,
+  RESET_RATING_COMPANY_PROFILE,
 } from './constants';
 
 import { getCompanyRatingAPI } from './../../../services/api/CompanyProfile';
+
+export const onCloseRatingCompanyProfile = () => ({ type: RESET_RATING_COMPANY_PROFILE });
 
 export const loadingCompanyRating = () => ({ type: CHANGE_STATE_RATING, payload: LOADING });
 export const loadedCompanyRating = () => ({ type: CHANGE_STATE_RATING, payload: LOADED });

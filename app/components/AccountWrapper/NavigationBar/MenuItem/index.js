@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
-import AsyncLink from '../../../../AsyncLink';
 
 export const MenuItem = (props) => {
-  const { name, changeView, view, url, icon, placeholder } = props;
-  const changeItem = () => {
-    changeView(name);
-  };
+  const { name, view, url, icon, link } = props;
+  const Linkk = link;
   return (
     <li>
-      <AsyncLink placeholder={placeholder} to={url} handleonClick={changeItem} className={view === name ? 'active' : ''}>
+      <Linkk url={url} className={view === name ? 'active' : ''}>
         <i className={`fa ${icon}`}></i>
         <span>{name}</span>
-      </AsyncLink>
+      </Linkk>
     </li>
   );
 };
@@ -23,8 +20,7 @@ MenuItem.propTypes = {
   url: PropTypes.string.isRequired,
   view: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  changeView: PropTypes.func.isRequired,
-  placeholder: PropTypes.object.isRequired,
+  link: PropTypes.object.isRequired,
 };
 
 export default MenuItem;

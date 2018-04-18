@@ -10,12 +10,14 @@ import {
   LOADING,
   LOADED,
   GET_PROFILE_MAIN_INFO,
+  RESET_MAIN_INFO_EMPLOYEE_PROFILE,
 } from './constants';
 
 import { getEmployeeProfileMainInfoAPI } from './../../../services/api/EmployeeProfile';
 
 export const loadingProfileMainInfo = () => ({ type: CHANGE_STATE_PROFILE_MAIN_INFO, payload: LOADING });
 export const loadedProfileMainInfo = () => ({ type: CHANGE_STATE_PROFILE_MAIN_INFO, payload: LOADED });
+export const onCloseMainInfo = () => ((dispatch) => dispatch({ type: RESET_MAIN_INFO_EMPLOYEE_PROFILE }));
 
 
 export const getProfileMainInfo = (employeeId) => (

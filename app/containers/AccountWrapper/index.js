@@ -39,7 +39,7 @@ export class AccountWrapperContainer extends React.PureComponent {
         icon={item.icon}
         changeView={changeView}
         key={item.name}
-        placeholder={item.placeholder}
+        link={item.link}
       />));
 
     return (

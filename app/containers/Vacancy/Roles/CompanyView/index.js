@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MainInfromation from '../../MainInformation/Loadable';
-import Skills from '../../Skills/Loadable';
-import Candidates from '../../Candidates/Loadable';
+import MainInfromation from '../../MainInformation';
+import Skills from '../../Skills';
+import Candidates from '../../Candidates';
 
 export const CompanyView = (props) => {
   const { match } = props;

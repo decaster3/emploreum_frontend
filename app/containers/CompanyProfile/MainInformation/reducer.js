@@ -9,6 +9,7 @@ import {
   CHANGE_STATE_COMPANY_PROFILE_MAIN_INFO,
   NOT_LOADED,
   GET_COMPANY_PROFILE_MAIN_INFO,
+  RESET_MAIN_INFO_COMPANY_PROFILE,
 } from './constants';
 
 const initialState = fromJS({
@@ -29,6 +30,11 @@ function mainInformationReducer(state = initialState, action) {
       return state.set('mainInformation', fromJS({
         status: action.payload,
         info: state.get('mainInformation').get('info'),
+      }));
+    case RESET_MAIN_INFO_COMPANY_PROFILE:
+      return state.set('mainInformation', fromJS({
+        info: {},
+        status: NOT_LOADED,
       }));
     default:
       return state;

@@ -12,7 +12,7 @@ import { PulseLoader } from 'react-spinners';
 
 import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
-import { getSpecificationsSkills } from './actions';
+import { getSpecificationsSkills, onCloseSkills } from './actions';
 import { selectSpecificationsSkillsStatus, selectSpecificationsSkills } from './selectors';
 
 import Skill from '../../../components/Vacancy/Skills/Skill/Loadable';
@@ -23,6 +23,11 @@ import { BASEURL } from '../../../global-constants';
 export class Skills extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.getSpecificationsSkills(this.props.vacancyId);
+  }
+  componentWillUnmount() {
+    if (!this.props.onClose) {
+      this.props.onCloseSkills();
+    }
   }
   renderSkills() {
     if (this.props.specificationsSkillsStatus === 'LOADING') {
@@ -58,10 +63,12 @@ export class Skills extends React.Component { // eslint-disable-line react/prefe
 }
 
 Skills.propTypes = {
+  onCloseSkills: PropTypes.func,
   getSpecificationsSkills: PropTypes.func,
   specificationsSkills: PropTypes.array,
   specificationsSkillsStatus: PropTypes.string,
   vacancyId: PropTypes.string,
+  onClose: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
@@ -74,6 +81,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getSpecificationsSkills: (evt) => dispatch(getSpecificationsSkills(evt)),
+    onCloseSkills: () => dispatch(onCloseSkills()),
   };
 }
 

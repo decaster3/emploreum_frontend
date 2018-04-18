@@ -9,6 +9,7 @@ import {
   NOT_LOADED,
   GET_COMPANY_PROFILE_OPEN_VACANCIES,
   CHANGE_STATE_COMPANY_PROFILE_OPEN_VACANCIES,
+  RESET_OPEN_VACANCIES_COMPANY_PROFILE,
 } from './constants';
 
 const initialState = fromJS({
@@ -29,6 +30,11 @@ function companyFinanceContainerReducer(state = initialState, action) {
       return state.set('openVacancies', fromJS({
         status: action.payload,
         items: state.get('openVacancies').get('items'),
+      }));
+    case RESET_OPEN_VACANCIES_COMPANY_PROFILE:
+      return state.set('openVacancies', fromJS({
+        items: [],
+        status: NOT_LOADED,
       }));
     default:
       return state;

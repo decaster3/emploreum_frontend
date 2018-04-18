@@ -17,10 +17,13 @@ import {
   CONTINUE_TEST,
   START_TEST,
   ERROR_LOADING,
+  RESET_ENROLL_BUTTON_VACANCY,
 } from './constants';
 
 const notifySuccess = () => toast('Vacancy succesfully added to your awaited list!', { hideProgressBar: true, autoClose: 3000, type: toast.TYPE.INFO });
 const notifyError = () => toast('Something went wrong! Please try again.', { hideProgressBar: true, autoClose: 3000, type: toast.TYPE.INFO });
+export const onCloseEnrollButton = () => ({ type: RESET_ENROLL_BUTTON_VACANCY });
+
 
 const changeButtonStateLoading = () => ({ type: CHANGE_BUTTON_STATE, payload: LOADING });
 const changeButtonStateAvailable = () => ({ type: CHANGE_BUTTON_STATE, payload: AVAILABLE });
